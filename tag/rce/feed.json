@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Hexo • All posts by \"rce\" tag",
+    "description": "好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生",
+    "home_page_url": "https://ry0ma24.github.io",
+    "items": [
+        {
+            "id": "https://ry0ma24.github.io/2025/02/03/htb-optimum/",
+            "url": "https://ry0ma24.github.io/2025/02/03/htb-optimum/",
+            "title": "HTB-Optimum",
+            "date_published": "2025-02-03T14:25:33.000Z",
+            "content_html": "<p><img loading=\"lazy\" data-src=\"/2025/02/03/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png\" class=\"\"></p>\n<table>\n<thead>\n<tr>\n<th style=\"text-align:left\">OS</th>\n<th style=\"text-align:left\">Difficulty</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left\">Windows</td>\n<td style=\"text-align:left\">Easy</td>\n</tr>\n</tbody>\n</table>\n<h3 id=\"nmap-scan\"><a class=\"anchor\" href=\"#nmap-scan\">#</a> Nmap Scan</h3>\n<p><img loading=\"lazy\" data-src=\"/2025/02/03/htb-optimum/image-20250202180408340.png\" class=\"\" title=\"nmap\"></p>\n<h3 id=\"信息收集\"><a class=\"anchor\" href=\"#信息收集\">#</a> 信息收集</h3>\n<p>访问目标</p>\n<p><img loading=\"lazy\" data-src=\"/2025/02/03/htb-optimum/image-20250203223205864.png\" class=\"\" title=\"获取版本信息\"></p>\n<p>使用 searchsploit 检索可利用漏洞，发现目标可能存在 RCE</p>\n<p><img loading=\"lazy\" data-src=\"/2025/02/03/htb-optimum/image-20250203223259584.png\" class=\"\" title=\"searchsploit\"></p>\n<h3 id=\"漏洞利用\"><a class=\"anchor\" href=\"#漏洞利用\">#</a> 漏洞利用</h3>\n<p>使用 msfconsole 进行漏洞利用</p>\n<p><img loading=\"lazy\" data-src=\"/2025/02/03/htb-optimum/image-20250203223401263.png\" class=\"\" title=\"漏洞利用\"></p>\n<h3 id=\"权限提升\"><a class=\"anchor\" href=\"#权限提升\">#</a> 权限提升</h3>\n<p>使用 <code>post/multi/recon/local_exploit_suggester</code>  检测下当前系统可利用的提权漏洞</p>\n<p><img loading=\"lazy\" data-src=\"/2025/02/03/htb-optimum/image-20250203223426591.png\" class=\"\" title=\"收集信息\"></p>\n<p>根据结果使用 ms16_032 进行权限提升</p>\n<p><img loading=\"lazy\" data-src=\"/2025/02/03/htb-optimum/image-20250202185340241.png\" class=\"\" title=\"提权\"></p>\n<table>\n<thead>\n<tr>\n<th style=\"text-align:left\">Flag</th>\n<th style=\"text-align:left\">Path</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left\">Flag1</td>\n<td style=\"text-align:left\">C:\\Users\\kostas\\Desktop\\user.txt</td>\n</tr>\n<tr>\n<td style=\"text-align:left\">Flag2</td>\n<td style=\"text-align:left\">C:\\Users\\Administrator\\Desktop\\root.txt</td>\n</tr>\n</tbody>\n</table>\n",
+            "tags": [
+                "RCE"
+            ]
+        }
+    ]
+}

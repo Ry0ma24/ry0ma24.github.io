@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ry0ma24.github.io</id>
+    <title>Hexo • Posts by &#34;rce&#34; tag</title>
+    <link href="https://ry0ma24.github.io" />
+    <updated>2025-02-03T14:25:33.000Z</updated>
+    <category term="密码重用" />
+    <category term="RCE" />
+    <entry>
+        <id>https://ry0ma24.github.io/2025/02/03/htb-optimum/</id>
+        <title>HTB-Optimum</title>
+        <link rel="alternate" href="https://ry0ma24.github.io/2025/02/03/htb-optimum/"/>
+        <content type="html">&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png&#34; class=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;OS&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Difficulty&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Windows&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Easy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;nmap-scan&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nmap-scan&#34;&gt;#&lt;/a&gt; Nmap Scan&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250202180408340.png&#34; class=&#34;&#34; title=&#34;nmap&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;信息收集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#信息收集&#34;&gt;#&lt;/a&gt; 信息收集&lt;/h3&gt;
+&lt;p&gt;访问目标&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250203223205864.png&#34; class=&#34;&#34; title=&#34;获取版本信息&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用 searchsploit 检索可利用漏洞，发现目标可能存在 RCE&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250203223259584.png&#34; class=&#34;&#34; title=&#34;searchsploit&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;漏洞利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞利用&#34;&gt;#&lt;/a&gt; 漏洞利用&lt;/h3&gt;
+&lt;p&gt;使用 msfconsole 进行漏洞利用&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250203223401263.png&#34; class=&#34;&#34; title=&#34;漏洞利用&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;权限提升&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#权限提升&#34;&gt;#&lt;/a&gt; 权限提升&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;post/multi/recon/local_exploit_suggester&lt;/code&gt;  检测下当前系统可利用的提权漏洞&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250203223426591.png&#34; class=&#34;&#34; title=&#34;收集信息&#34;&gt;&lt;/p&gt;
+&lt;p&gt;根据结果使用 ms16_032 进行权限提升&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250202185340241.png&#34; class=&#34;&#34; title=&#34;提权&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Flag&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Path&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Flag1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;C:\Users\kostas\Desktop\user.txt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Flag2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;C:\Users\Administrator\Desktop\root.txt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+        <category term="RCE" />
+        <updated>2025-02-03T14:25:33.000Z</updated>
+    </entry>
+</feed>

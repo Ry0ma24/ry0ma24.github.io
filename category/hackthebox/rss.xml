@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Hexo • Posts by &#34;hackthebox&#34; category</title>
+        <link>https://ry0ma24.github.io</link>
+        <description>好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生</description>
+        <language>zh-CN</language>
+        <pubDate>Mon, 03 Feb 2025 22:25:33 +0800</pubDate>
+        <lastBuildDate>Mon, 03 Feb 2025 22:25:33 +0800</lastBuildDate>
+        <category>密码重用</category>
+        <category>RCE</category>
+        <item>
+            <guid isPermalink="true">https://ry0ma24.github.io/2025/02/03/htb-optimum/</guid>
+            <title>HTB-Optimum</title>
+            <link>https://ry0ma24.github.io/2025/02/03/htb-optimum/</link>
+            <category>RCE</category>
+            <pubDate>Mon, 03 Feb 2025 22:25:33 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png&#34; class=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;OS&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Difficulty&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Windows&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Easy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;nmap-scan&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nmap-scan&#34;&gt;#&lt;/a&gt; Nmap Scan&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250202180408340.png&#34; class=&#34;&#34; title=&#34;nmap&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;信息收集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#信息收集&#34;&gt;#&lt;/a&gt; 信息收集&lt;/h3&gt;
+&lt;p&gt;访问目标&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250203223205864.png&#34; class=&#34;&#34; title=&#34;获取版本信息&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用 searchsploit 检索可利用漏洞，发现目标可能存在 RCE&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250203223259584.png&#34; class=&#34;&#34; title=&#34;searchsploit&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;漏洞利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞利用&#34;&gt;#&lt;/a&gt; 漏洞利用&lt;/h3&gt;
+&lt;p&gt;使用 msfconsole 进行漏洞利用&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250203223401263.png&#34; class=&#34;&#34; title=&#34;漏洞利用&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;权限提升&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#权限提升&#34;&gt;#&lt;/a&gt; 权限提升&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;post/multi/recon/local_exploit_suggester&lt;/code&gt;  检测下当前系统可利用的提权漏洞&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250203223426591.png&#34; class=&#34;&#34; title=&#34;收集信息&#34;&gt;&lt;/p&gt;
+&lt;p&gt;根据结果使用 ms16_032 进行权限提升&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-optimum/image-20250202185340241.png&#34; class=&#34;&#34; title=&#34;提权&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Flag&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Path&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Flag1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;C:\Users\kostas\Desktop\user.txt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Flag2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;C:\Users\Administrator\Desktop\root.txt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://ry0ma24.github.io/2025/02/03/htb-beep/</guid>
+            <title>HTB-Beep</title>
+            <link>https://ry0ma24.github.io/2025/02/03/htb-beep/</link>
+            <category>密码重用</category>
+            <pubDate>Mon, 03 Feb 2025 19:39:41 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-beep/995f465295b99869fce21ecadea4604c.png&#34; class=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;OS&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Difficulty&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Linux&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Easy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;nmap-scan&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nmap-scan&#34;&gt;#&lt;/a&gt; Nmap Scan&lt;/h3&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-beep/image-20250202162932802.png&#34; class=&#34;&#34; title=&#34;nmap&#34;&gt;&lt;/p&gt;
+&lt;p&gt;添加映射&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;10.10.10.7  beep.htb&#34;&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;tee&lt;/span&gt; /etc/hosts&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;访问&lt;a href=&#34;https://beep.htb&#34;&gt; https://beep.htb&lt;/a&gt; 发现新版火狐浏览器不支持低版本 SSL，修改浏览器配置，地址栏输入 &lt;code&gt;about:config&lt;/code&gt;  , 输入 &lt;code&gt;security.tls.version.min&lt;/code&gt;  修改值为 1&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-beep/image-20250202170324934.png&#34; class=&#34;&#34; title=&#34;修改火狐配置&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-beep/image-20250202170450821.png&#34; class=&#34;&#34; title=&#34;访问目标&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;漏洞利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞利用&#34;&gt;#&lt;/a&gt; 漏洞利用&lt;/h3&gt;
+&lt;p&gt;使用 searchsploit 检索 Elastix ，查看 &lt;code&gt;37637.pl&lt;/code&gt;  , 获取到 payload： &lt;code&gt;/vtigercrm/graph.php?current_language=../../../../../../../..//etc/amportal.conf%00&amp;amp;module=Accounts&amp;amp;action&lt;/code&gt;    搜索关键字 &amp;quot;AMPDBPASS&amp;quot; 获取到密码&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-beep/image-20250202171030333.png&#34; class=&#34;&#34; title=&#34;searchsploit&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-beep/image-20250202172215531.png&#34; class=&#34;&#34; title=&#34;payload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用获取到的密码进行 ssh 登录，发现算法不支持，修改一下本地配置：编辑～/.ssh/config 添加&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Host *&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  Ciphers +aes128-cbc&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  KexAlgorithms +diffie-hellman-group14-sha1,diffie-hellman-group1-sha1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  HostKeyAlgorithms +ssh-rsa&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-beep/image-20250202172249979.png&#34; class=&#34;&#34; title=&#34;ssh&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-beep/image-20250202172514124.png&#34; class=&#34;&#34; title=&#34;修改ssh配置&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; data-src=&#34;/2025/02/03/htb-beep/image-20250203203836733.png&#34; class=&#34;&#34; title=&#34;ssh访问&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Flag&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Path&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Flag1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;/home/fanis/user.txt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Flag2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;/root/root.txt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

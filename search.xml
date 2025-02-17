@@ -3,7 +3,7 @@
   <entry>
     <title>HTB-Arctic</title>
     <url>/2025/02/11/htb-arctic/</url>
-    <content><![CDATA[<style>.efkrjsnjiifj{zoom:50%;}</style><img src="/2025/02/11/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="efkrjsnjiifj">
+    <content><![CDATA[<style>.kprpvnlctywg{zoom:50%;}</style><img src="/2025/02/11/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="kprpvnlctywg">
 
 <span id="more"></span>
 
@@ -74,9 +74,84 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Bastard</title>
+    <url>/2025/02/15/htb-bastard/</url>
+    <content><![CDATA[<style>.fjqrrzbfebol{zoom:50%;}</style><img src="/2025/02/15/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="fjqrrzbfebol">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td align="left">Medium</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/2025/02/15/htb-bastard/image-20250215103413869.png" class="" title="Nmap">
+
+<p>开放80、135和49154端口，并且80端口发现一些目录和文件，添加域名解析到hosts文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;10.10.10.9 bastard.htb&#x27;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问 <code>/CHANGELOG.txt</code> 发现 CMS 为 <code>Drupal 7.54</code> </p>
+<img src="/2025/02/15/htb-bastard/image-20250215105400323.png" class="" title="信息收集">
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用searchsploit 检索可用exp</p>
+<img src="/2025/02/15/htb-bastard/image-20250215112934416.png" class="" title="searchsploit">
+
+<p> 修改脚本，并使用payload <code>&#39;data&#39; =&gt; &#39;&lt;?php eval($_POST[&quot;cmd&quot;]);?&gt;&#39;</code> ，运行脚本</p>
+<img src="/2025/02/15/htb-bastard/image-20250215125354575.png" class="" title="修改脚本">
+
+<img src="/2025/02/15/htb-bastard/image-20250215114456579.png" class="" title="exp">
+
+<p>配置蚁剑，连接webshell</p>
+<img src="/2025/02/15/htb-bastard/image-20250215125510849.png" class="" title="连接webshell">
+
+<p>将webshell转换为msfconsole，先生成exe 然后使用蚁剑上传并执行exe</p>
+<img src="/2025/02/15/htb-bastard/image-20250215122000088.png" class="" title="生成payload">
+
+<img src="/2025/02/15/htb-bastard/image-20250215125046135.png" class="" title="上传exe并执行">
+
+<img src="/2025/02/15/htb-bastard/image-20250215122253560.png" class="" title="GetShell">
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用local_exploit_suggester 脚本进行信息收集</p>
+<img src="/2025/02/15/htb-bastard/image-20250215122221334.png" class="" title="收集提权信息">
+
+<p>使用 <code>exploit/windows/local/ms15_051_client_copy_image</code> 进行权限提升</p>
+<img src="/2025/02/15/htb-bastard/image-20250215122939518.png" class="" title="GetShell">
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Users\dimitris\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>RCE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Beep</title>
     <url>/2025/02/03/htb-beep/</url>
-    <content><![CDATA[<style>.qnlljihbkyen{zoom:50%;}</style><img src="/2025/02/03/htb-beep/995f465295b99869fce21ecadea4604c.png" class="qnlljihbkyen">
+    <content><![CDATA[<style>.dpirwintduqk{zoom:50%;}</style><img src="/2025/02/03/htb-beep/995f465295b99869fce21ecadea4604c.png" class="dpirwintduqk">
 
 <span id="more"></span>
 
@@ -141,9 +216,59 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Blue</title>
+    <url>/2025/02/16/htb-blue/</url>
+    <content><![CDATA[<style>.kpuywkhzttlt{zoom:50%;}</style><img src="/2025/02/16/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="kpuywkhzttlt">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Windows</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/2025/02/16/htb-blue/image-20250216114713990.png" class="" title="Nmap">
+
+<p>一个开放了445端口的Win7，直接尝试使用ms17-010 攻击目标</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>直接使用msfconsole <code>exploit/windows/smb/ms17_010_eternalblue</code> 模块进行攻击</p>
+<img src="/2025/02/16/htb-blue/image-20250216120342061.png" class="" title="永恒之蓝">
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Users\haris\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>CVE</tag>
+        <tag>永恒之蓝</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Devel</title>
     <url>/2025/02/03/htb-devel/</url>
-    <content><![CDATA[<style>.kuwpkdnydrtf{zoom:50%;}</style><img src="/2025/02/03/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="kuwpkdnydrtf">
+    <content><![CDATA[<style>.cbswkbbqibrb{zoom:50%;}</style><img src="/2025/02/03/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="cbswkbbqibrb">
 
 <span id="more"></span>
 
@@ -162,7 +287,7 @@
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/2025/02/03/htb-devel/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.vzdmidmmxsus{zoom:150%;}</style><img src="/2025/02/03/htb-devel/image-20250201213757511.png" class="vzdmidmmxsus" alt="登录FTP">
+<style>.yrlexmeuihlc{zoom:150%;}</style><img src="/2025/02/03/htb-devel/image-20250201213757511.png" class="yrlexmeuihlc" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/2025/02/03/htb-devel/image-20250201215256322.png" class="" title="生成webshell">
@@ -202,9 +327,69 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Grandpa</title>
+    <url>/2025/02/12/htb-grandpa/</url>
+    <content><![CDATA[<style>.jtpyerflsxlg{zoom:50%;}</style><img src="/2025/02/12/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="jtpyerflsxlg">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/2025/02/12/htb-grandpa/image-20250212200523195.png" class="" title="Nmap">
+
+<p>发现80(IIS 6.0) 端口</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole <code>windows/iis/iis_webdav_scstoragepathfromurl</code> 模块进行漏洞利用</p>
+<img src="/2025/02/12/htb-grandpa/image-20250212201611096.png" class="" title="GetShell">
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用 <code>local_exploit_suggester</code> 模块进行本地提权的信息收集  </p>
+<img src="/2025/02/12/htb-grandpa/image-20250212202135579.png" class="" title="信息收集">
+
+<p>使用  <code>windows/local/ms14_070_tcpip_ioctl</code> 进行权限提升，提权失败</p>
+<img src="/2025/02/12/htb-grandpa/image-20250212202811599.png" class="" title="提权">
+
+<p>列出进程，迁移进程 <code>migrate 3100</code>，然后重新提权</p>
+<img src="/2025/02/12/htb-grandpa/image-20250212202917826.png" class="" title="进程">
+
+<img src="/2025/02/12/htb-grandpa/image-20250212203009824.png" class="" title="GetShell">
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Flag1</td>
+<td align="left">C:\Documents and Settings\Harry\Desktop\user.txt</td>
+</tr>
+<tr>
+<td>Flag2</td>
+<td align="left">C:\Documents and Settings\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>IIS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Lame</title>
     <url>/2025/02/03/htb-lame/</url>
-    <content><![CDATA[<style>.fvnnjqlvwlzx{zoom:50%;}</style><img src="/2025/02/03/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="fvnnjqlvwlzx">
+    <content><![CDATA[<style>.mdwujrhllkxv{zoom:50%;}</style><img src="/2025/02/03/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="mdwujrhllkxv">
 
 <span id="more"></span>
 
@@ -220,11 +405,11 @@
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.oekfgrxuylwl{zoom:150%;}</style><img src="/2025/02/03/htb-lame/image-20250201155450222.png" class="oekfgrxuylwl" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.bsyblqibeuqf{zoom:150%;}</style><img src="/2025/02/03/htb-lame/image-20250201155450222.png" class="bsyblqibeuqf" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/2025/02/03/htb-lame/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.ypxjbobdtuxu{zoom:150%;}</style><img src="/2025/02/03/htb-lame/image-20250201174838005.png" class="ypxjbobdtuxu" alt="msfconsole">
+<style>.mhfefctaweuk{zoom:150%;}</style><img src="/2025/02/03/htb-lame/image-20250201174838005.png" class="mhfefctaweuk" alt="msfconsole">
 
 <img src="/2025/02/03/htb-lame/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -257,7 +442,7 @@
   <entry>
     <title>HTB-Legacy</title>
     <url>/2025/02/04/htb-legacy/</url>
-    <content><![CDATA[<style>.veyumodxnrnu{zoom:50%;}</style><img src="/2025/02/04/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="veyumodxnrnu">
+    <content><![CDATA[<style>.zccyzvqenxwg{zoom:50%;}</style><img src="/2025/02/04/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="zccyzvqenxwg">
 
 <span id="more"></span>
 
@@ -305,7 +490,7 @@
   <entry>
     <title>HTB-Optimum</title>
     <url>/2025/02/03/htb-optimum/</url>
-    <content><![CDATA[<style>.yuwnyfhizmkq{zoom:50%;}</style><img src="/2025/02/03/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="yuwnyfhizmkq">
+    <content><![CDATA[<style>.gsxftawxihkj{zoom:50%;}</style><img src="/2025/02/03/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="gsxftawxihkj">
 
 <span id="more"></span>
 

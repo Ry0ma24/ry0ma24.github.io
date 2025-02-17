@@ -3,7 +3,7 @@
   <entry>
     <title>HTB-Arctic</title>
     <url>/2025/02/11/htb-arctic/</url>
-    <content><![CDATA[<style>.kprpvnlctywg{zoom:50%;}</style><img src="/2025/02/11/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="kprpvnlctywg">
+    <content><![CDATA[<style>.varnayxkflyo{zoom:50%;}</style><img src="/2025/02/11/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="varnayxkflyo">
 
 <span id="more"></span>
 
@@ -76,7 +76,7 @@
   <entry>
     <title>HTB-Bastard</title>
     <url>/2025/02/15/htb-bastard/</url>
-    <content><![CDATA[<style>.fjqrrzbfebol{zoom:50%;}</style><img src="/2025/02/15/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="fjqrrzbfebol">
+    <content><![CDATA[<style>.lcjekyfcwtxp{zoom:50%;}</style><img src="/2025/02/15/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="lcjekyfcwtxp">
 
 <span id="more"></span>
 
@@ -151,7 +151,7 @@
   <entry>
     <title>HTB-Beep</title>
     <url>/2025/02/03/htb-beep/</url>
-    <content><![CDATA[<style>.dpirwintduqk{zoom:50%;}</style><img src="/2025/02/03/htb-beep/995f465295b99869fce21ecadea4604c.png" class="dpirwintduqk">
+    <content><![CDATA[<style>.mpbdeesqwttd{zoom:50%;}</style><img src="/2025/02/03/htb-beep/995f465295b99869fce21ecadea4604c.png" class="mpbdeesqwttd">
 
 <span id="more"></span>
 
@@ -218,7 +218,7 @@
   <entry>
     <title>HTB-Blue</title>
     <url>/2025/02/16/htb-blue/</url>
-    <content><![CDATA[<style>.kpuywkhzttlt{zoom:50%;}</style><img src="/2025/02/16/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="kpuywkhzttlt">
+    <content><![CDATA[<style>.znejivqgfrvy{zoom:50%;}</style><img src="/2025/02/16/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="znejivqgfrvy">
 
 <span id="more"></span>
 
@@ -268,7 +268,7 @@
   <entry>
     <title>HTB-Devel</title>
     <url>/2025/02/03/htb-devel/</url>
-    <content><![CDATA[<style>.cbswkbbqibrb{zoom:50%;}</style><img src="/2025/02/03/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="cbswkbbqibrb">
+    <content><![CDATA[<style>.oervjngheqfy{zoom:50%;}</style><img src="/2025/02/03/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="oervjngheqfy">
 
 <span id="more"></span>
 
@@ -287,7 +287,7 @@
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/2025/02/03/htb-devel/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.yrlexmeuihlc{zoom:150%;}</style><img src="/2025/02/03/htb-devel/image-20250201213757511.png" class="yrlexmeuihlc" alt="登录FTP">
+<style>.bivxloltejld{zoom:150%;}</style><img src="/2025/02/03/htb-devel/image-20250201213757511.png" class="bivxloltejld" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/2025/02/03/htb-devel/image-20250201215256322.png" class="" title="生成webshell">
@@ -329,7 +329,7 @@
   <entry>
     <title>HTB-Grandpa</title>
     <url>/2025/02/12/htb-grandpa/</url>
-    <content><![CDATA[<style>.jtpyerflsxlg{zoom:50%;}</style><img src="/2025/02/12/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="jtpyerflsxlg">
+    <content><![CDATA[<style>.qntvmpdyfbnj{zoom:50%;}</style><img src="/2025/02/12/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="qntvmpdyfbnj">
 
 <span id="more"></span>
 
@@ -387,9 +387,69 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Jerry</title>
+    <url>/2025/02/16/htb-jerry/</url>
+    <content><![CDATA[<style>.zsvxkgptvule{zoom:50%;}</style><img src="/2025/02/16/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="zsvxkgptvule">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/2025/02/16/htb-jerry/image-20250216152859389.png" class="" title="Nmap">
+
+<p>开放8080(tomcat)，直接访问可以发现tomcat 默认管理页面</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问目标，点击<code>Manager App</code> 在弹出的用户名密码界面，随便输入，就会跳转到403页面</p>
+<img src="/2025/02/16/htb-jerry/image-20250216154248837.png" class="" title="tomcat管理页面">
+
+<p>页面中出现用户名密码，使用tomcat:s3cret 登录，可以看到部署页</p>
+<img src="/2025/02/16/htb-jerry/image-20250216154409280.png" class="" title="tomcat报错页面">
+
+<p>使用msfvenom 生成后门，然后部署到tomcat， 点击应用名触发shell</p>
+<img src="/2025/02/16/htb-jerry/image-20250216154608561.png" class="" title="生成后门">
+
+<img src="/2025/02/16/htb-jerry/image-20250216154519146.png" class="" title="部署war包">
+
+<img src="/2025/02/16/htb-jerry/image-20250216155106484.png" class="" title="GetShell">
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Users\Administrator\Desktop\flags\&#39;2 for the price of 1.txt’</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\flags\&#39;2 for the price of 1.txt’</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>配置错误</tag>
+        <tag>密码硬编码</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Lame</title>
     <url>/2025/02/03/htb-lame/</url>
-    <content><![CDATA[<style>.mdwujrhllkxv{zoom:50%;}</style><img src="/2025/02/03/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="mdwujrhllkxv">
+    <content><![CDATA[<style>.cqczsalrxqsu{zoom:50%;}</style><img src="/2025/02/03/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="cqczsalrxqsu">
 
 <span id="more"></span>
 
@@ -405,11 +465,11 @@
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.bsyblqibeuqf{zoom:150%;}</style><img src="/2025/02/03/htb-lame/image-20250201155450222.png" class="bsyblqibeuqf" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.nrwgccmkkolc{zoom:150%;}</style><img src="/2025/02/03/htb-lame/image-20250201155450222.png" class="nrwgccmkkolc" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/2025/02/03/htb-lame/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.mhfefctaweuk{zoom:150%;}</style><img src="/2025/02/03/htb-lame/image-20250201174838005.png" class="mhfefctaweuk" alt="msfconsole">
+<style>.tkjfupydfjky{zoom:150%;}</style><img src="/2025/02/03/htb-lame/image-20250201174838005.png" class="tkjfupydfjky" alt="msfconsole">
 
 <img src="/2025/02/03/htb-lame/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -440,9 +500,76 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Knife</title>
+    <url>/2025/02/16/htb-knife/</url>
+    <content><![CDATA[<style>.hkusrcbkrivm{zoom:50%;}</style><img src="/2025/02/16/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="hkusrcbkrivm">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/2025/02/16/htb-knife/image-20250216104801646.png" class="" title="Nmap">
+
+<p>开放了22(SSH)和80(HTTPD)</p>
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>使用whatweb获取web指纹 PHP 8.1.0-dev ，Google一下，存在一个后门</p>
+<img src="/2025/02/16/htb-knife/image-20250216104951989.png" class="" title="whatweb">
+
+<img src="/2025/02/16/htb-knife/image-20250216110740874.png" class="" title="image-20250216110740874">
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>抓包，使用payload <code>User-Agentt: zerodiumsystem(&quot;id&quot;);</code></p>
+<img src="/2025/02/16/htb-knife/image-20250216110553497.png" class="" title="后门">
+
+<p>直接反弹shell</p>
+<img src="/2025/02/16/htb-knife/image-20250216111124234.png" class="" title="反弹shell">
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用sudo -l 查看有哪些可以利用的点，找到一个knife</p>
+<img src="/2025/02/16/htb-knife/image-20250216111432749.png" class="" title="提权">
+
+<p>运行一下knife，发现可以执行命令</p>
+<img src="/2025/02/16/htb-knife/image-20250216112140995.png" class="" title="knife">
+
+<p>使用<code>sudo knife exec --exec &quot;exec &#39;/bin/sh -i &#39;&quot;</code> 成功提权</p>
+<img src="/2025/02/16/htb-knife/image-20250216112920949.png" class="" title="GetShell">
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">&#x2F;home&#x2F;james&#x2F;user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>RCE</tag>
+        <tag>后门</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Legacy</title>
     <url>/2025/02/04/htb-legacy/</url>
-    <content><![CDATA[<style>.zccyzvqenxwg{zoom:50%;}</style><img src="/2025/02/04/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="zccyzvqenxwg">
+    <content><![CDATA[<style>.kjubgpmxmezd{zoom:50%;}</style><img src="/2025/02/04/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="kjubgpmxmezd">
 
 <span id="more"></span>
 
@@ -490,7 +617,7 @@
   <entry>
     <title>HTB-Optimum</title>
     <url>/2025/02/03/htb-optimum/</url>
-    <content><![CDATA[<style>.gsxftawxihkj{zoom:50%;}</style><img src="/2025/02/03/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="gsxftawxihkj">
+    <content><![CDATA[<style>.myzbzbsjqbpj{zoom:50%;}</style><img src="/2025/02/03/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="myzbzbsjqbpj">
 
 <span id="more"></span>
 

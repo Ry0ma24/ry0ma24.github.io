@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content=".aeubrmqfyrdo{zoom:50%;}">
+    <meta name="description" content=".fkyjdsvzztfq{zoom:50%;}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTB-Tenten">
 <meta property="og:url" content="https://ry0ma24.github.io/Hackthebox/htb/htb-tenten/index.html">
 <meta property="og:site_name" content="相忘于江湖">
-<meta property="og:description" content=".aeubrmqfyrdo{zoom:50%;}">
+<meta property="og:description" content=".fkyjdsvzztfq{zoom:50%;}">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png">
 <meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-tenten/image-20250215132349182.png">
@@ -168,7 +168,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -179,7 +179,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -278,7 +278,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><style>.aeubrmqfyrdo{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="aeubrmqfyrdo">
+    <div class="post-body" itemprop="articleBody"><style>.fkyjdsvzztfq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="fkyjdsvzztfq">
 
 <span id="more"></span>
 
@@ -297,7 +297,7 @@
 <h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><img src="/Hackthebox/htb/htb-tenten/image-20250215132349182.png" class="" title="Nmap">
 
 <p>开放了80端口，添加域名解析到hosts文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &#x27;10.10.10.10 tenten.htb&#x27; | sudo tee -a /etc/hosts</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ echo &#x27;10.10.10.10 tenten.htb&#x27; | sudo tee -a /etc/hosts</span><br></pre></td></tr></table></figure>
 
 <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>使用whatweb识别站点指纹，目标为WordPress</p>
 <img src="/Hackthebox/htb/htb-tenten/image-20250215132915851.png" class="" title="whatweb">
@@ -306,7 +306,7 @@
 <img src="/Hackthebox/htb/htb-tenten/image-20250215151109164.png" class="" title="信息收集">
 
 <h3 id="漏洞扫描"><a href="#漏洞扫描" class="headerlink" title="漏洞扫描"></a>漏洞扫描</h3><p>根据获取到的指纹，使用wpscan进行扫描，新版wpscan 要想获得漏洞信息，需要在官网注册账号，然后指定apk-token</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpscan  --url tenten.htb  --api-token WRH0ACCYJIBtqTKdxxxxxxxxxxLy1ZWzsAcxa8fA3s4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wpscan  --url tenten.htb  --api-token WRH0ACCYJIBtqTKdxxxxxxxxxxLy1ZWzsAcxa8fA3s4</span><br></pre></td></tr></table></figure>
 
 <img src="/Hackthebox/htb/htb-tenten/image-20250215144154195.png" class="" title="漏洞扫描">
 

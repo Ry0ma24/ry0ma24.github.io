@@ -17,14 +17,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content=".pfrznsdkbjgb{zoom:50%;}">
+    <meta name="description" content=".ermcubmccjwh{zoom:50%;}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTB-Beep">
 <meta property="og:url" content="https://ry0ma24.github.io/Hackthebox/htb/htb-beep/index.html">
 <meta property="og:site_name" content="相忘于江湖">
-<meta property="og:description" content=".pfrznsdkbjgb{zoom:50%;}">
+<meta property="og:description" content=".ermcubmccjwh{zoom:50%;}">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png">
 <meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-beep/image-20250202162932802.png">
@@ -274,7 +274,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><style>.pfrznsdkbjgb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="pfrznsdkbjgb">
+    <div class="post-body" itemprop="articleBody"><style>.ermcubmccjwh{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="ermcubmccjwh">
 
 <span id="more"></span>
 
@@ -293,7 +293,7 @@
 <h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-beep/image-20250202162932802.png" class="" title="nmap">
 
 <p>添加映射</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;10.10.10.7  beep.htb&quot;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/hosts</span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"10.10.10.7  beep.htb"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/hosts</code></pre>
 
 <p>访问<a target="_blank" rel="noopener" href="https://beep.htb/">https://beep.htb</a> 发现新版火狐浏览器不支持低版本SSL，修改浏览器配置，地址栏输入<code>about:config</code> , 输入<code>security.tls.version.min</code> 修改值为1 </p>
 <img src="/Hackthebox/htb/htb-beep/image-20250202170324934.png" class="" title="修改火狐配置">
@@ -306,7 +306,11 @@
 <img src="/Hackthebox/htb/htb-beep/image-20250202172215531.png" class="" title="payload">
 
 <p>使用获取到的密码进行ssh登录，发现算法不支持，修改一下本地配置：编辑 ~&#x2F;.ssh&#x2F;config 添加</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host *</span><br><span class="line">  Ciphers +aes128-cbc</span><br><span class="line">  KexAlgorithms +diffie-hellman-group14-sha1,diffie-hellman-group1-sha1</span><br><span class="line">  HostKeyAlgorithms +ssh-rsa</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="language-bash" data-language="bash"><code class="language-bash">Host *
+  Ciphers +aes128-cbc
+  KexAlgorithms +diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+  HostKeyAlgorithms +ssh-rsa
+</code></pre>
 
 <img src="/Hackthebox/htb/htb-beep/image-20250202172249979.png" class="" title="ssh">
 

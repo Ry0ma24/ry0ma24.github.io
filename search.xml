@@ -149,7 +149,7 @@
       </tags>
   </entry>
   <entry>
-    <title>HackTheBox-网络优化</title>
+    <title>HackTheBox-网络延迟优化</title>
     <url>/Hackthebox/htb/hackthebox/</url>
     <content><![CDATA[<img src="/Hackthebox/htb/hackthebox/image-20250411140726536.png" class="">
 
@@ -190,7 +190,7 @@
 <h5 id="Clash"><a href="#Clash" class="headerlink" title="Clash"></a>Clash</h5><p>在Clash设置中启用<code>虚拟网卡模式</code>  端口设置中打开<code>SOCKS代理端口</code>  </p>
 <img src="/Hackthebox/htb/hackthebox/image-20250410232456699.png" class="" title="clash配置">
 
-<p>打开订阅，右键&#96;&#96;订阅文件<code>点击</code>编辑规则&#96;</p>
+<p>打开订阅，右键<code>订阅文件</code>点击<code>编辑规则</code></p>
 <img src="/Hackthebox/htb/hackthebox/image-20250410234047925.png" class="" title="clash配置">
 
 <p>在编辑规则中 ：规则类型选择<code>DOMAIN-KEYWORD</code> ，代理策略选择代理组，规则内容填写 hackthebox</p>
@@ -208,7 +208,7 @@
         <category>Hackthebox</category>
       </categories>
       <tags>
-        <tag>HTB网络优化</tag>
+        <tag>HTB网络延迟优化</tag>
       </tags>
   </entry>
   <entry>

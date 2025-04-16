@@ -20,7 +20,7 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
-<meta property="og:title" content="HackTheBox-网络优化">
+<meta property="og:title" content="HackTheBox-网络延迟优化">
 <meta property="og:url" content="https://ry0ma24.github.io/Hackthebox/htb/hackthebox/index.html">
 <meta property="og:site_name" content="相忘于江湖">
 <meta property="og:locale" content="zh_CN">
@@ -40,9 +40,9 @@
 <meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/hackthebox/image-20250410234207924.png">
 <meta property="og:image" content="https://ry0ma24.github.io/Hackthebox/htb/hackthebox/image-20250410234325521.png">
 <meta property="article:published_time" content="2025-04-10T12:00:20.000Z">
-<meta property="article:modified_time" content="2025-04-11T08:04:14.029Z">
+<meta property="article:modified_time" content="2025-04-16T02:32:38.743Z">
 <meta property="article:author" content="Ry0ma24">
-<meta property="article:tag" content="HTB网络优化">
+<meta property="article:tag" content="HTB网络延迟优化">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ry0ma24.github.io/Hackthebox/htb/hackthebox/image-20250411140726536.png">
 
@@ -50,10 +50,10 @@
 <link rel="canonical" href="https://ry0ma24.github.io/Hackthebox/htb/hackthebox/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ry0ma24.github.io/Hackthebox/htb/hackthebox/","path":"Hackthebox/htb/hackthebox/","title":"HackTheBox-网络优化"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ry0ma24.github.io/Hackthebox/htb/hackthebox/","path":"Hackthebox/htb/hackthebox/","title":"HackTheBox-网络延迟优化"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>HackTheBox-网络优化 | 相忘于江湖</title>
+<title>HackTheBox-网络延迟优化 | 相忘于江湖</title>
   
 
 
@@ -169,7 +169,7 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">27</span>
-          <span class="site-state-item-name">文章</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
@@ -227,12 +227,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="HackTheBox-网络优化 | 相忘于江湖">
+      <meta itemprop="name" content="HackTheBox-网络延迟优化 | 相忘于江湖">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          HackTheBox-网络优化
+          HackTheBox-网络延迟优化
         </h1>
 
         <div class="post-meta-container">
@@ -250,7 +250,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-11 16:04:14" itemprop="dateModified" datetime="2025-04-11T16:04:14+08:00">2025-04-11</time>
+      <time title="修改时间：2025-04-16 10:32:38" itemprop="dateModified" datetime="2025-04-16T10:32:38+08:00">2025-04-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -317,7 +317,7 @@
 <h5 id="Clash"><a href="#Clash" class="headerlink" title="Clash"></a>Clash</h5><p>在Clash设置中启用<code>虚拟网卡模式</code>  端口设置中打开<code>SOCKS代理端口</code>  </p>
 <img src="/Hackthebox/htb/hackthebox/image-20250410232456699.png" class="" title="clash配置">
 
-<p>打开订阅，右键&#96;&#96;订阅文件<code>点击</code>编辑规则&#96;</p>
+<p>打开订阅，右键<code>订阅文件</code>点击<code>编辑规则</code></p>
 <img src="/Hackthebox/htb/hackthebox/image-20250410234047925.png" class="" title="clash配置">
 
 <p>在编辑规则中 ：规则类型选择<code>DOMAIN-KEYWORD</code> ，代理策略选择代理组，规则内容填写 hackthebox</p>
@@ -339,7 +339,7 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/HTB%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/" rel="tag"># HTB网络优化</a>
+              <a href="/tags/HTB%E7%BD%91%E7%BB%9C%E5%BB%B6%E8%BF%9F%E4%BC%98%E5%8C%96/" rel="tag"># HTB网络延迟优化</a>
           </div>
 
         

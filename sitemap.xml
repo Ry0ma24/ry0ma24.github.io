@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ry0ma24.github.io/Hackthebox/htb/htb-Bashed/</loc>
+    
+    <lastmod>2025-04-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ry0ma24.github.io/Hackthebox/htb/htb-Irked/</loc>
     
     <lastmod>2025-04-20</lastmod>
@@ -310,7 +319,7 @@
 
   <url>
     <loc>https://ry0ma24.github.io/</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2025-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

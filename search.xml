@@ -66,7 +66,7 @@
   <entry>
     <title>HTB-Bashed</title>
     <url>/posts/f52f847.html</url>
-    <content><![CDATA[<style>.tgneqmnztfog{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="tgneqmnztfog" alt="Bashed">
+    <content><![CDATA[<style>.mvuucyehxgqy{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="mvuucyehxgqy" alt="Bashed">
 
 <span id="more"></span>
 
@@ -216,7 +216,7 @@ root@bashed:/scripts<span class="token comment"># id       </span>
   <entry>
     <title>HTB-Irked</title>
     <url>/posts/b88b7678.html</url>
-    <content><![CDATA[<style>.wrfrtdmztvvl{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="wrfrtdmztvvl">
+    <content><![CDATA[<style>.ebabhklxolny{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="ebabhklxolny">
 
 <span id="more"></span>
 
@@ -410,7 +410,7 @@ djmardov@irked:~$ <span class="token function">id</span>
   <entry>
     <title>HTB-Nocturnal</title>
     <url>/posts/5cd9a843.html</url>
-    <content><![CDATA[<style>.xpsmrtjxrntd{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="xpsmrtjxrntd">
+    <content><![CDATA[<style>.iqmraxdtpnrq{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="iqmraxdtpnrq">
 
 <span id="more"></span>
 
@@ -708,7 +708,8 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
     <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>Ubuntu 24.04 默认使用Wayland 作为窗口管理器，当 GNOME 桌面设置分数倍缩放后，截图和一些应用会变得模糊，如vscode、Pycharm、typra ，截图更是难崩</p>
 <span id="more"></span>
 
-<p><img src="/image-20250416234351672.png"></p>
+<img src="/posts/4e8c8a3d/image-20250416234351672.png" class="">
+
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>方法有两个：</p>
 <h4 id="1-使用X11-替换Wayland"><a href="#1-使用X11-替换Wayland" class="headerlink" title="1. 使用X11 替换Wayland"></a>1. 使用X11 替换Wayland</h4><p>修改<code>/etc/gdm3/custom.conf</code> 将 <code>WaylandEnable=false</code>  前面的注释去掉，然后<code>sudo systemctl restart gdm3 </code>重启服务</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#</span>
@@ -729,7 +730,8 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
 <span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
 
 <p>效果</p>
-<p><img src="/image-20250416233209537.png"></p>
+<img src="/posts/4e8c8a3d/image-20250416233209537.png" class="">
+
 <h4 id="2-使用如下命令（没试过，不知道是否有效）"><a href="#2-使用如下命令（没试过，不知道是否有效）" class="headerlink" title="2. 使用如下命令（没试过，不知道是否有效）"></a>2. 使用如下命令（没试过，不知道是否有效）</h4><p>可以开启 Wayland 会话、X11 会话的分数倍缩放，并且在 Wayland 下使用分数倍缩放的时候，应用程序不模糊</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">gsettings <span class="token builtin class-name">set</span> org.gnome.mutter experimental-features <span class="token string">"['scale-monitor-framebuffer', 'x11-randr-fractional-scaling', 'xwayland-native-scaling']"</span></code></pre>
 ]]></content>
@@ -831,7 +833,7 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
   <entry>
     <title>HTB-Previse</title>
     <url>/posts/21913e3f.html</url>
-    <content><![CDATA[<style>.mrxijvxknjrq{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="mrxijvxknjrq">
+    <content><![CDATA[<style>.ilwmkuuwchee{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="ilwmkuuwchee">
 
 <span id="more"></span>
 
@@ -1059,7 +1061,7 @@ root@previse:/tmp<span class="token comment"># id      </span>
   <entry>
     <title>HTB-Busqueda</title>
     <url>/posts/d91931aa.html</url>
-    <content><![CDATA[<style>.jfajqrugjcmf{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="jfajqrugjcmf">
+    <content><![CDATA[<style>.rggobmfzupmn{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="rggobmfzupmn">
 
 <span id="more"></span>
 
@@ -1320,7 +1322,7 @@ connect to <span class="token punctuation">[</span><span class="token number">10
   <entry>
     <title>HTB-Sauna</title>
     <url>/posts/5551a214.html</url>
-    <content><![CDATA[<style>.pyupantnkvnt{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="pyupantnkvnt">
+    <content><![CDATA[<style>.orpycvimifzr{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="orpycvimifzr">
 
 <span id="more"></span>
 
@@ -1586,7 +1588,7 @@ nt authority<span class="token punctuation">\</span>system
   <entry>
     <title>HTB-Heist</title>
     <url>/posts/4a8e4133.html</url>
-    <content><![CDATA[<style>.qdgebdfobbey{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="qdgebdfobbey">
+    <content><![CDATA[<style>.cwhulhtxeyxa{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="cwhulhtxeyxa">
 
 <span id="more"></span>
 
@@ -1882,7 +1884,7 @@ Mode                LastWriteTime         Length Name
   <entry>
     <title>HTB-Toolbox</title>
     <url>/posts/96a67a56.html</url>
-    <content><![CDATA[<style>.renjymyyfizg{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="renjymyyfizg">
+    <content><![CDATA[<style>.ulsvozfqeavr{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="ulsvozfqeavr">
 
 <span id="more"></span>
 
@@ -2231,7 +2233,7 @@ administrator@TOOLBOX C:<span class="token punctuation">\</span>Users<span class
   <entry>
     <title>HTB-Mirai</title>
     <url>/posts/c3392160.html</url>
-    <content><![CDATA[<style>.ktfpxfqvmfie{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="ktfpxfqvmfie">
+    <content><![CDATA[<style>.tmkxujqhmfth{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="tmkxujqhmfth">
 
 <span id="more"></span>
 
@@ -2418,7 +2420,7 @@ Do you know <span class="token keyword">if</span> there is any way to get them b
   <entry>
     <title>HTB-Blocky</title>
     <url>/posts/1cdd7a67.html</url>
-    <content><![CDATA[<style>.uhdgpwtxkddc{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="uhdgpwtxkddc">
+    <content><![CDATA[<style>.toqdubunhjxw{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="toqdubunhjxw">
 
 <span id="more"></span>
 
@@ -2565,7 +2567,7 @@ root@Blocky:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Remote</title>
     <url>/posts/685379b3.html</url>
-    <content><![CDATA[<style>.awlpwozocqlu{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="awlpwozocqlu">
+    <content><![CDATA[<style>.ugcvtwuenfrl{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="ugcvtwuenfrl">
 
 <span id="more"></span>
 
@@ -2806,7 +2808,7 @@ meterpreter <span class="token operator">></span>
   <entry>
     <title>HTB-Love</title>
     <url>/posts/e5f5ab78.html</url>
-    <content><![CDATA[<style>.dcidvbknmkig{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="dcidvbknmkig">
+    <content><![CDATA[<style>.aunvipkdjvty{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="aunvipkdjvty">
 
 <span id="more"></span>
 
@@ -3014,7 +3016,7 @@ Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM</cod
   <entry>
     <title>HTB-BountyHunter</title>
     <url>/posts/d750c67f.html</url>
-    <content><![CDATA[<style>.kijplndrjdll{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="kijplndrjdll">
+    <content><![CDATA[<style>.tqxbgdnufddb{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="tqxbgdnufddb">
 
 <span id="more"></span>
 
@@ -3203,7 +3205,7 @@ __Ticket Code:__
   <entry>
     <title>HTB-DevOops</title>
     <url>/posts/ddc47498.html</url>
-    <content><![CDATA[<style>.rvgrktknojff{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="rvgrktknojff">
+    <content><![CDATA[<style>.xewsyfvtjifk{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="xewsyfvtjifk">
 
 <span id="more"></span>
 
@@ -3509,8 +3511,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <img src="/posts/e4955058/DraggedImage-10.png" class="" title="webapps">
 <p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
 <img src="/posts/e4955058/DraggedImage-11.png" class="">
-<style>.eigvwcfxpniu{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="eigvwcfxpniu" alt="修改配置">
-<style>.tdvkgfcchisb{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="tdvkgfcchisb">
+<style>.eqhmltjjxykx{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="eqhmltjjxykx" alt="修改配置">
+<style>.qtmvwtxjkuvp{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="qtmvwtxjkuvp">
 
 <h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMTo4MDgwL3NzYy8=">http://127.0.0.1:8080/ssc/<i class="fa fa-external-link-alt"></i></span></p>
 <img src="/posts/e4955058/DraggedImage-14.png" class="" title="访问SSC">
@@ -3547,7 +3549,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Jerry</title>
     <url>/posts/4797133e.html</url>
-    <content><![CDATA[<style>.rudjxacwlujk{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="rudjxacwlujk">
+    <content><![CDATA[<style>.gylhdfvvddos{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="gylhdfvvddos">
 
 <span id="more"></span>
 
@@ -3607,7 +3609,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Blue</title>
     <url>/posts/2c4131d1.html</url>
-    <content><![CDATA[<style>.ysazgstsomzv{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="ysazgstsomzv">
+    <content><![CDATA[<style>.ecckeeqalkmq{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="ecckeeqalkmq">
 
 <span id="more"></span>
 
@@ -3657,7 +3659,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Knife</title>
     <url>/posts/872a7a04.html</url>
-    <content><![CDATA[<style>.gysqkzfjhqda{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="gysqkzfjhqda">
+    <content><![CDATA[<style>.fvfyiwmcknja{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="fvfyiwmcknja">
 
 <span id="more"></span>
 
@@ -3724,7 +3726,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Shocker</title>
     <url>/posts/38c5e2d.html</url>
-    <content><![CDATA[<style>.xrmgdibhtdji{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="xrmgdibhtdji">
+    <content><![CDATA[<style>.rlwhvhglyrso{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="rlwhvhglyrso">
 
 <span id="more"></span>
 
@@ -3784,7 +3786,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Tenten</title>
     <url>/posts/78c78349.html</url>
-    <content><![CDATA[<style>.mgbxybdvymwx{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="mgbxybdvymwx">
+    <content><![CDATA[<style>.trxojdlttqzh{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="trxojdlttqzh">
 
 <span id="more"></span>
 
@@ -3864,7 +3866,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Bastard</title>
     <url>/posts/7134392b.html</url>
-    <content><![CDATA[<style>.muohqwjtvajp{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="muohqwjtvajp">
+    <content><![CDATA[<style>.fjthyvisrwua{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="fjthyvisrwua">
 
 <span id="more"></span>
 
@@ -3939,7 +3941,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Granny</title>
     <url>/posts/6b0d212.html</url>
-    <content><![CDATA[<style>.cmawmynywxiw{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="cmawmynywxiw">
+    <content><![CDATA[<style>.mpxsryqvgvew{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="mpxsryqvgvew">
 
 <span id="more"></span>
 
@@ -3998,7 +4000,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Grandpa</title>
     <url>/posts/c75d4146.html</url>
-    <content><![CDATA[<style>.ywidirujdhyu{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="ywidirujdhyu">
+    <content><![CDATA[<style>.cucoobledwkg{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="cucoobledwkg">
 
 <span id="more"></span>
 
@@ -4058,7 +4060,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Arctic</title>
     <url>/posts/d972b09f.html</url>
-    <content><![CDATA[<style>.itvulvfekdyx{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="itvulvfekdyx">
+    <content><![CDATA[<style>.bjpnobyaolkm{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="bjpnobyaolkm">
 
 <span id="more"></span>
 
@@ -4131,7 +4133,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Legacy</title>
     <url>/posts/252e0fef.html</url>
-    <content><![CDATA[<style>.yiwoqripwyvp{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="yiwoqripwyvp">
+    <content><![CDATA[<style>.velftrffkviu{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="velftrffkviu">
 
 <span id="more"></span>
 
@@ -4179,7 +4181,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Devel</title>
     <url>/posts/97f065fe.html</url>
-    <content><![CDATA[<style>.ypyjrcmsjuvz{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="ypyjrcmsjuvz">
+    <content><![CDATA[<style>.cxuuflwemskx{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="cxuuflwemskx">
 
 <span id="more"></span>
 
@@ -4198,7 +4200,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/posts/97f065fe/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.wmkggoreldlo{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="wmkggoreldlo" alt="登录FTP">
+<style>.jnjjoecwjrob{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="jnjjoecwjrob" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/posts/97f065fe/image-20250201215256322.png" class="" title="生成webshell">
@@ -4240,7 +4242,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Lame</title>
     <url>/posts/465d4de8.html</url>
-    <content><![CDATA[<style>.qpwcrljtrlgf{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="qpwcrljtrlgf">
+    <content><![CDATA[<style>.tanibkysnrxf{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="tanibkysnrxf">
 
 <span id="more"></span>
 
@@ -4256,11 +4258,11 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.sdyfqjqettgr{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="sdyfqjqettgr" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.jhhxtcdwurlp{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="jhhxtcdwurlp" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/posts/465d4de8/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.ovyhfioocole{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="ovyhfioocole" alt="msfconsole">
+<style>.ruhxvxpslcyu{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="ruhxvxpslcyu" alt="msfconsole">
 
 <img src="/posts/465d4de8/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -4293,7 +4295,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Optimum</title>
     <url>/posts/f7bd0d80.html</url>
-    <content><![CDATA[<style>.hggsndeurbwh{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="hggsndeurbwh">
+    <content><![CDATA[<style>.ziemlcwvvusn{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="ziemlcwvvusn">
 
 <span id="more"></span>
 
@@ -4355,7 +4357,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Beep</title>
     <url>/posts/48ffce4.html</url>
-    <content><![CDATA[<style>.tqdevbtggxjt{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="tqdevbtggxjt">
+    <content><![CDATA[<style>.mfsjbsyqrgvf{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="mfsjbsyqrgvf">
 
 <span id="more"></span>
 

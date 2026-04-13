@@ -64,9 +64,67 @@
       </tags>
   </entry>
   <entry>
+    <title>Moto edge 60 解锁刷机</title>
+    <url>/posts/29579189.html</url>
+    <content><![CDATA[<style>.unddbuuzolye{zoom:50%;}</style><img src="/posts/29579189/image-20260413144029294.png" class="unddbuuzolye" alt="moto edge 60">
+
+<span id="more"></span>
+
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><ol>
+<li><p>手机打开开发者选项：【设置】-&gt;【关于本机】 -&gt;【设备标识符】-&gt; 【版本号】，连续点击7次 开启【开发者选项】，进入【设置】-&gt; 【系统】-&gt;【开发者选项】打开【USB调试】，打开【OEM解锁】</p>
+</li>
+<li><p>退出谷歌账号(重要)</p>
+</li>
+<li><p>安装摩托罗拉驱动：访问 <a href="https://en-us.support.motorola.com/app/usb-drivers">https://en-us.support.motorola.com/app/usb-drivers</a> 下载驱动并安装</p>
+ <img src="/posts/29579189/image-20250912082326246.png" class="">
+</li>
+<li><p>下载并解压 【Tiny-Fastboot-Script_v1.10.6_zh-CN_by_AlphaEva】</p>
+ <img src="/posts/29579189/image-20250912202839729.png" class="" title="image-20250912202839729"></li>
+</ol>
+<h3 id="解锁Bootloader"><a href="#解锁Bootloader" class="headerlink" title="解锁Bootloader"></a>解锁Bootloader</h3><p>使用原装数据线连接电脑，关机状态下按住【音量下键】插数据线，进入Bootloader模式</p>
+<p>进入Tiny-Fastboot-Script，双击运行flash.bat，选择【8】，再选择【4】获取解锁码</p>
+<img src="/posts/29579189/image-20250912203622841.png" class="" title="image-20250912203622841">
+
+<p>复制解锁数据，然后选【1】打开解锁官网 </p>
+<img src="/posts/29579189/image-20250912204705658.png" class="" title="image-20250912204705658">
+
+<p>使用谷歌账号登录，将复制的解锁数据贴进去，点击【Can my device be unlocked】，如果提示not qualify ，删除粘贴数据前后的空格，再请求一次即可。接受同意，然后按照步骤操作，成功后解锁码会发送到邮箱</p>
+<img src="/posts/29579189/image-20250912205058909.png" class="" title="image-20250912205058909">
+
+<img src="/posts/29579189/image-20250912205445223.png" class="" title="image-20250912205445223">
+
+<img src="/posts/29579189/image-20250912205816032.png" class="" title="image-20250912205816032">
+
+<p>返回到Tiny-Fastboot-Script 选【4】，按照提示将解锁码贴进去解锁即可，手机提示，音量键 选择 <strong>UNLOCK THE BOOTLOADER</strong> ，电源键确定解锁</p>
+<img src="/posts/29579189/image-20250912203717475.png" class="" title="image-20250912203717475">
+
+<img src="/posts/29579189/image-20250912205952666.png" class="" title="image-20250912205952666">
+
+<h3 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h3><p>解压刷机包，将所有文件都移动到Tiny-Fastboot-Script  目录下</p>
+<img src="/posts/29579189/image-20250912211436735.png" class="" title="image-20250912211436735">
+
+<p>运行flash.bat 选择 【5】全量刷入，等待几分钟刷机完毕</p>
+<img src="/posts/29579189/image-20250912210203186.png" class="" title="image-20250912210203186">
+
+<h3 id="切换软件更新通道"><a href="#切换软件更新通道" class="headerlink" title="切换软件更新通道"></a>切换软件更新通道</h3><p>切换欧版</p>
+<pre class="language-cmd" data-language="cmd"><code class="language-cmd">fastboot oem config carrier reteu</code></pre>
+
+<h3 id="开机"><a href="#开机" class="headerlink" title="开机"></a>开机</h3><p>可以正常接收到修改后的渠道更新</p>
+<style>.udrvbyilokvv{zoom: 25%;}</style><img src="/posts/29579189/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250912212307_96_122.png" class="udrvbyilokvv" alt="微信图片_20250912212307_96_122"><style>.dotohrfhgycp{zoom: 25%;}</style><img src="/posts/29579189/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250912212306_95_122.png" class="dotohrfhgycp" alt="微信图片_20250912212306_95_122"><style>.qwqesegusble{zoom:25%;}</style><img src="/posts/29579189/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250912214648_98_122-1775830313732-1.jpg" class="qwqesegusble" alt="微信图片_20250912214648_98_122">
+
+]]></content>
+      <categories>
+        <category>刷欧版系统</category>
+      </categories>
+      <tags>
+        <tag>解锁</tag>
+        <tag>刷机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>kubernetes-goat靶机搭建</title>
     <url>/posts/d0b064d0.html</url>
-    <content><![CDATA[<style>.oipugcsraiqi{zoom:50%;}</style><img src="/posts/d0b064d0/image-20260413140159229.png" class="oipugcsraiqi" alt="kubernetes-goat">
+    <content><![CDATA[<style>.qcexizvdhwnp{zoom:50%;}</style><img src="/posts/d0b064d0/image-20260413140159229.png" class="qcexizvdhwnp" alt="kubernetes-goat">
 
 <span id="more"></span>
 
@@ -289,7 +347,7 @@ Visit http://127.0.0.1:1234 to get started with your Kubernetes Goat hacking<spa
   <entry>
     <title>HTB-WingData</title>
     <url>/posts/1888ae71.html</url>
-    <content><![CDATA[<style>.rkwhupdyoriw{zoom:50%;}</style><img src="/posts/1888ae71/d419202507a3bbf06e764c1c4a524f66.png" class="rkwhupdyoriw" alt="htb-wingdata">
+    <content><![CDATA[<style>.awltwudxodjp{zoom:50%;}</style><img src="/posts/1888ae71/d419202507a3bbf06e764c1c4a524f66.png" class="awltwudxodjp" alt="htb-wingdata">
 
 <span id="more"></span>
 
@@ -481,38 +539,38 @@ root@wingdata:/tmp<span class="token comment"># id</span>
   <entry>
     <title>iOS越狱隐藏</title>
     <url>/posts/6d3db75c.html</url>
-    <content><![CDATA[<style>.ffggdgcwgeka{zoom:50%;}</style><img src="/posts/6d3db75c/image-20260410151632410.png" class="ffggdgcwgeka" alt="越狱">
+    <content><![CDATA[<style>.wslsledpuulf{zoom:50%;}</style><img src="/posts/6d3db75c/image-20260410151632410.png" class="wslsledpuulf" alt="越狱">
 
 <span id="more"></span>
 
 <h3 id="安装GTA-Car-Tracker"><a href="#安装GTA-Car-Tracker" class="headerlink" title="安装GTA Car Tracker"></a>安装GTA Car Tracker</h3><p>使用safari浏览器访问 <a href="https://api.jailbreaks.app/troll64e">https://api.jailbreaks.app/troll64e</a> ，弹出iTunes 打开，点击打开，选择安装</p>
-<style>.socdwhibhqwk{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0003-0270768.PNG" class="socdwhibhqwk" alt="IMG_0003"><style>.srlpfxdtwujk{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0004.PNG" class="srlpfxdtwujk" alt="IMG_0004">
+<style>.pgxwalywistt{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0003-0270768.PNG" class="pgxwalywistt" alt="IMG_0003"><style>.zbolpnejjibj{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0004.PNG" class="zbolpnejjibj" alt="IMG_0004">
 
-<style>.jelydheuoxpl{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0005.PNG" class="jelydheuoxpl" alt="IMG_0005"><style>.edmqpjyndbtl{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0006.PNG" class="edmqpjyndbtl" alt="IMG_0006">
+<style>.nnibgrvusqat{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0005.PNG" class="nnibgrvusqat" alt="IMG_0005"><style>.lebaxrimoxzx{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0006.PNG" class="lebaxrimoxzx" alt="IMG_0006">
 
 <h3 id="安装TrollStore"><a href="#安装TrollStore" class="headerlink" title="安装TrollStore"></a>安装TrollStore</h3><p>打开GTA Car Tracker 安装 TrollStore</p>
-<style>.jikbgsceguvx{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0007.PNG" class="jikbgsceguvx" alt="IMG_0007"><style>.idlaswkypukb{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0008.PNG" class="idlaswkypukb" alt="IMG_0008">
+<style>.wxlxxfgqthbf{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0007.PNG" class="wxlxxfgqthbf" alt="IMG_0007"><style>.foweuhkrmtfo{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0008.PNG" class="foweuhkrmtfo" alt="IMG_0008">
 
 <p>打开TrollStore 安装Idid，Persistence Helper (可选，安装后重启TrollStore不失效) </p>
-<style>.jmyefdueevnp{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0010.PNG" class="jmyefdueevnp" alt="IMG_0010">  
+<style>.zhfxypicusws{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0010.PNG" class="zhfxypicusws" alt="IMG_0010">  
 
 
 
 <h3 id="安装RootHide-Dopamine"><a href="#安装RootHide-Dopamine" class="headerlink" title="安装RootHide Dopamine"></a>安装RootHide Dopamine</h3><p>访问 <a href="https://github.com/roothide/Dopamine2-roothide">https://github.com/roothide/Dopamine2-roothide</a> 下载最新版的    Dopamine.tipa  放到iPhone 的Download 目录下然后使用TrollStore安装；打开TrollStore，右上角 “+” ，选中要安装的Dopamine.tipa ，然后安装</p>
-<style>.jpktquvcyevt{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0011.PNG" class="jpktquvcyevt" alt="IMG_0011"> 
+<style>.fcxyeeuhizgc{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0011.PNG" class="fcxyeeuhizgc" alt="IMG_0011"> 
 
 <h3 id="越狱和隐藏越狱"><a href="#越狱和隐藏越狱" class="headerlink" title="越狱和隐藏越狱"></a>越狱和隐藏越狱</h3><p>打开Dopamine，然后点击最下面越狱，选择安装Sileo或者全选，越狱完成，桌面会出现RootHide (如果没有可以到Sileo 里搜索安装)</p>
-<style>.eshbatorgjdm{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0012.PNG" class="eshbatorgjdm" alt="IMG_0012"><style>.jbgiqfelfesi{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0013.PNG" class="jbgiqfelfesi" alt="IMG_0013">
+<style>.wmqturkwnyfs{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0012.PNG" class="wmqturkwnyfs" alt="IMG_0012"><style>.dlacbjwqegda{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0013.PNG" class="dlacbjwqegda" alt="IMG_0013">
 
 
 
 <p>打开RootHide，点击var 清理，左上角选择全部，点击右上角清理</p>
-<style>.buqgtecbbgdb{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0014.PNG" class="buqgtecbbgdb" alt="IMG_0014"> 
+<style>.ieifvopsuskj{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0014.PNG" class="ieifvopsuskj" alt="IMG_0014"> 
 
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>重新下载安装app，并将app 加入黑名单；使用某银行app测试效果；</p>
-<h4 id="未打开黑名单无法正常使用-app"><a href="#未打开黑名单无法正常使用-app" class="headerlink" title="未打开黑名单无法正常使用 app"></a>未打开黑名单无法正常使用 app</h4><style>.drjnflfdxfsx{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144231485.png" class="drjnflfdxfsx" alt="image-20260205144231485"><style>.pdpptjiqmqyt{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0017.PNG" class="pdpptjiqmqyt" alt="IMG_0017">
+<h4 id="未打开黑名单无法正常使用-app"><a href="#未打开黑名单无法正常使用-app" class="headerlink" title="未打开黑名单无法正常使用 app"></a>未打开黑名单无法正常使用 app</h4><style>.auxgzaevsuts{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144231485.png" class="auxgzaevsuts" alt="image-20260205144231485"><style>.cbykjmqyfvuq{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0017.PNG" class="cbykjmqyfvuq" alt="IMG_0017">
 
-<h4 id="打开黑名单后app正常"><a href="#打开黑名单后app正常" class="headerlink" title="打开黑名单后app正常"></a>打开黑名单后app正常</h4><style>.dthosflsxoet{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144409713.png" class="dthosflsxoet" alt="image-20260205144409713"><style>.xvuepvekxott{zoom: 25%;}</style><img src="/posts/6d3db75c/IMG_0019.PNG" class="xvuepvekxott" alt="IMG_0019">
+<h4 id="打开黑名单后app正常"><a href="#打开黑名单后app正常" class="headerlink" title="打开黑名单后app正常"></a>打开黑名单后app正常</h4><style>.adstwxxvnhvh{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144409713.png" class="adstwxxvnhvh" alt="image-20260205144409713"><style>.gbxevlcvjcdh{zoom: 25%;}</style><img src="/posts/6d3db75c/IMG_0019.PNG" class="gbxevlcvjcdh" alt="IMG_0019">
 
 
 
@@ -528,7 +586,7 @@ root@wingdata:/tmp<span class="token comment"># id</span>
   <entry>
     <title>HTB-Facts</title>
     <url>/posts/a66eeeb7.html</url>
-    <content><![CDATA[<style>.fwxnxynseldz{zoom:50%;}</style><img src="/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png" class="fwxnxynseldz" alt="HTB-facts">
+    <content><![CDATA[<style>.hsurceuputoe{zoom:50%;}</style><img src="/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png" class="hsurceuputoe" alt="HTB-facts">
 
 <span id="more"></span>
 
@@ -741,7 +799,7 @@ bash-5.2<span class="token comment"># cat /root/root.txt</span></code></pre>
   <entry>
     <title>HTB-Imagery</title>
     <url>/posts/3872553c.html</url>
-    <content><![CDATA[<style>.qkwvquxuvsgr{zoom:50%;}</style><img src="/posts/3872553c/image-20251004154017644.png" class="qkwvquxuvsgr" alt="HTB-Imagery">
+    <content><![CDATA[<style>.ekdjncwxbwfy{zoom:50%;}</style><img src="/posts/3872553c/image-20251004154017644.png" class="ekdjncwxbwfy" alt="HTB-Imagery">
 
 <span id="more"></span>
 
@@ -810,7 +868,7 @@ Dictionary cache hit:
 
 2c65c8d7bfbca32a3ed42596192384f6:iambatman                                                                </code></pre>
 
-<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>使用账号<a href="mailto:&#x74;&#x65;&#115;&#116;&#117;&#115;&#101;&#114;&#x40;&#x69;&#109;&#97;&#103;&#101;&#114;&#121;&#x2e;&#x68;&#x74;&#98;">testuser@imagery.htb</a> 和破解出的密码登录目标站点，随便上传一张图片，点击<code>Transform Image</code> </p>
+<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>使用账号<a href="mailto:&#x74;&#x65;&#115;&#116;&#x75;&#x73;&#101;&#x72;&#x40;&#105;&#109;&#97;&#103;&#x65;&#114;&#x79;&#46;&#104;&#x74;&#x62;">testuser@imagery.htb</a> 和破解出的密码登录目标站点，随便上传一张图片，点击<code>Transform Image</code> </p>
 <img src="/posts/3872553c/image-20251004165324958.png" class="" title="Transform image">
 
 <p>选择Crop，点击<code>Apply Transformation</code> , 抓包修改参数 <code>y</code> </p>
@@ -944,7 +1002,7 @@ root</code></pre>
   <entry>
     <title>HTB-Expressway</title>
     <url>/posts/84373dcc.html</url>
-    <content><![CDATA[<style>.kgmrxieimkxk{zoom:50%;}</style><img src="/posts/84373dcc/75c168f01f04e5f256838733b77f13ec.png" class="kgmrxieimkxk" alt="HTB-Expressway">
+    <content><![CDATA[<style>.oojtsmavnwwj{zoom:50%;}</style><img src="/posts/84373dcc/75c168f01f04e5f256838733b77f13ec.png" class="oojtsmavnwwj" alt="HTB-Expressway">
 
 <span id="more"></span>
 
@@ -1111,7 +1169,7 @@ root@expressway:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Editor</title>
     <url>/posts/fe14f7bb.html</url>
-    <content><![CDATA[<style>.fitnhmwetnyw{zoom:50%;}</style><img src="/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png" class="fitnhmwetnyw" alt="HTB-Editor">
+    <content><![CDATA[<style>.iecvdvfxamfq{zoom:50%;}</style><img src="/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png" class="iecvdvfxamfq" alt="HTB-Editor">
 
 <span id="more"></span>
 
@@ -1276,7 +1334,7 @@ root@editor:/tmp<span class="token comment"># id</span>
   <entry>
     <title>HTB-Bashed</title>
     <url>/posts/f52f847.html</url>
-    <content><![CDATA[<style>.lugtlquxzybi{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="lugtlquxzybi" alt="Bashed">
+    <content><![CDATA[<style>.lntmplfovwyq{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="lntmplfovwyq" alt="Bashed">
 
 <span id="more"></span>
 
@@ -1426,7 +1484,7 @@ root@bashed:/scripts<span class="token comment"># id       </span>
   <entry>
     <title>HTB-Irked</title>
     <url>/posts/b88b7678.html</url>
-    <content><![CDATA[<style>.mhrsbesbjfes{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="mhrsbesbjfes">
+    <content><![CDATA[<style>.ucmhugtjjwwu{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="ucmhugtjjwwu">
 
 <span id="more"></span>
 
@@ -1620,7 +1678,7 @@ djmardov@irked:~$ <span class="token function">id</span>
   <entry>
     <title>HTB-Nocturnal</title>
     <url>/posts/5cd9a843.html</url>
-    <content><![CDATA[<style>.txkfbodzfyqy{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="txkfbodzfyqy">
+    <content><![CDATA[<style>.vjyrudybjpro{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="vjyrudybjpro">
 
 <span id="more"></span>
 
@@ -2043,7 +2101,7 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
   <entry>
     <title>HTB-Previse</title>
     <url>/posts/21913e3f.html</url>
-    <content><![CDATA[<style>.jfqixujormlv{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="jfqixujormlv">
+    <content><![CDATA[<style>.jrhpebahmpjf{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="jrhpebahmpjf">
 
 <span id="more"></span>
 
@@ -2271,7 +2329,7 @@ root@previse:/tmp<span class="token comment"># id      </span>
   <entry>
     <title>HTB-Busqueda</title>
     <url>/posts/d91931aa.html</url>
-    <content><![CDATA[<style>.dodumbuizblo{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="dodumbuizblo">
+    <content><![CDATA[<style>.erfskvygzhbj{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="erfskvygzhbj">
 
 <span id="more"></span>
 
@@ -2532,7 +2590,7 @@ connect to <span class="token punctuation">[</span><span class="token number">10
   <entry>
     <title>HTB-Sauna</title>
     <url>/posts/5551a214.html</url>
-    <content><![CDATA[<style>.idggexslredp{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="idggexslredp">
+    <content><![CDATA[<style>.umkgcwaeosfo{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="umkgcwaeosfo">
 
 <span id="more"></span>
 
@@ -2798,7 +2856,7 @@ nt authority<span class="token punctuation">\</span>system
   <entry>
     <title>HTB-Heist</title>
     <url>/posts/4a8e4133.html</url>
-    <content><![CDATA[<style>.loilevucmgiw{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="loilevucmgiw">
+    <content><![CDATA[<style>.rgsrzlsleooc{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="rgsrzlsleooc">
 
 <span id="more"></span>
 
@@ -3094,7 +3152,7 @@ Mode                LastWriteTime         Length Name
   <entry>
     <title>HTB-Toolbox</title>
     <url>/posts/96a67a56.html</url>
-    <content><![CDATA[<style>.hrvehowbpunx{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="hrvehowbpunx">
+    <content><![CDATA[<style>.cushvofyvctf{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="cushvofyvctf">
 
 <span id="more"></span>
 
@@ -3443,7 +3501,7 @@ administrator@TOOLBOX C:<span class="token punctuation">\</span>Users<span class
   <entry>
     <title>HTB-Mirai</title>
     <url>/posts/c3392160.html</url>
-    <content><![CDATA[<style>.abzpkejkdess{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="abzpkejkdess">
+    <content><![CDATA[<style>.mtvcekrufcmg{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="mtvcekrufcmg">
 
 <span id="more"></span>
 
@@ -3630,7 +3688,7 @@ Do you know <span class="token keyword">if</span> there is any way to get them b
   <entry>
     <title>HTB-Blocky</title>
     <url>/posts/1cdd7a67.html</url>
-    <content><![CDATA[<style>.jtgoxpwkdnsg{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="jtgoxpwkdnsg">
+    <content><![CDATA[<style>.stwkriihskum{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="stwkriihskum">
 
 <span id="more"></span>
 
@@ -3777,7 +3835,7 @@ root@Blocky:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Remote</title>
     <url>/posts/685379b3.html</url>
-    <content><![CDATA[<style>.ncigpxmxtgcj{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="ncigpxmxtgcj">
+    <content><![CDATA[<style>.mwspidkkdmgo{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="mwspidkkdmgo">
 
 <span id="more"></span>
 
@@ -4018,7 +4076,7 @@ meterpreter <span class="token operator">></span>
   <entry>
     <title>HTB-Love</title>
     <url>/posts/e5f5ab78.html</url>
-    <content><![CDATA[<style>.wzpoekymdlyx{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="wzpoekymdlyx">
+    <content><![CDATA[<style>.vflpoglaphdd{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="vflpoglaphdd">
 
 <span id="more"></span>
 
@@ -4226,7 +4284,7 @@ Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM</cod
   <entry>
     <title>HTB-BountyHunter</title>
     <url>/posts/d750c67f.html</url>
-    <content><![CDATA[<style>.dwjeoxofrbhf{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="dwjeoxofrbhf">
+    <content><![CDATA[<style>.upjlwxwbvjbi{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="upjlwxwbvjbi">
 
 <span id="more"></span>
 
@@ -4415,7 +4473,7 @@ __Ticket Code:__
   <entry>
     <title>HTB-DevOops</title>
     <url>/posts/ddc47498.html</url>
-    <content><![CDATA[<style>.fjhzlcwcpdcr{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="fjhzlcwcpdcr">
+    <content><![CDATA[<style>.yqbgixaikmyr{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="yqbgixaikmyr">
 
 <span id="more"></span>
 
@@ -4721,8 +4779,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <img src="/posts/e4955058/DraggedImage-10.png" class="" title="webapps">
 <p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
 <img src="/posts/e4955058/DraggedImage-11.png" class="">
-<style>.ikcvqfayuohz{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="ikcvqfayuohz" alt="修改配置">
-<style>.jifteoqbyxmo{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="jifteoqbyxmo">
+<style>.ocrepfnmztil{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="ocrepfnmztil" alt="修改配置">
+<style>.xxhdqkgigqio{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="xxhdqkgigqio">
 
 <h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <a href="http://127.0.0.1:8080/ssc/">http://127.0.0.1:8080/ssc/</a></p>
 <img src="/posts/e4955058/DraggedImage-14.png" class="" title="访问SSC">
@@ -4759,7 +4817,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Jerry</title>
     <url>/posts/4797133e.html</url>
-    <content><![CDATA[<style>.ncubpchflbcu{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="ncubpchflbcu">
+    <content><![CDATA[<style>.nszqwwmgufdq{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="nszqwwmgufdq">
 
 <span id="more"></span>
 
@@ -4819,7 +4877,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Blue</title>
     <url>/posts/2c4131d1.html</url>
-    <content><![CDATA[<style>.wbpzbjkelibv{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="wbpzbjkelibv">
+    <content><![CDATA[<style>.clhiklbiiiha{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="clhiklbiiiha">
 
 <span id="more"></span>
 
@@ -4869,7 +4927,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Knife</title>
     <url>/posts/872a7a04.html</url>
-    <content><![CDATA[<style>.xvdgkuhuyutb{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="xvdgkuhuyutb">
+    <content><![CDATA[<style>.icxuxovnebon{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="icxuxovnebon">
 
 <span id="more"></span>
 
@@ -4936,7 +4994,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Shocker</title>
     <url>/posts/38c5e2d.html</url>
-    <content><![CDATA[<style>.mkbabbrgoyuw{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="mkbabbrgoyuw">
+    <content><![CDATA[<style>.kislpqrnoroj{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="kislpqrnoroj">
 
 <span id="more"></span>
 
@@ -4996,7 +5054,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Tenten</title>
     <url>/posts/78c78349.html</url>
-    <content><![CDATA[<style>.xknrroiepmbr{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="xknrroiepmbr">
+    <content><![CDATA[<style>.lvqvylqfvfkb{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="lvqvylqfvfkb">
 
 <span id="more"></span>
 
@@ -5076,7 +5134,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Bastard</title>
     <url>/posts/7134392b.html</url>
-    <content><![CDATA[<style>.fidnfqvldvvk{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="fidnfqvldvvk">
+    <content><![CDATA[<style>.eiwxcgqlphdx{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="eiwxcgqlphdx">
 
 <span id="more"></span>
 
@@ -5151,7 +5209,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Granny</title>
     <url>/posts/6b0d212.html</url>
-    <content><![CDATA[<style>.lhyzonjlbxnm{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="lhyzonjlbxnm">
+    <content><![CDATA[<style>.muebflqpwoqy{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="muebflqpwoqy">
 
 <span id="more"></span>
 
@@ -5210,7 +5268,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Grandpa</title>
     <url>/posts/c75d4146.html</url>
-    <content><![CDATA[<style>.rpzyxdicvxqh{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="rpzyxdicvxqh">
+    <content><![CDATA[<style>.qwfwncifihsp{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="qwfwncifihsp">
 
 <span id="more"></span>
 
@@ -5270,7 +5328,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Arctic</title>
     <url>/posts/d972b09f.html</url>
-    <content><![CDATA[<style>.kymoudfbvnff{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="kymoudfbvnff">
+    <content><![CDATA[<style>.vethjwkrhflq{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="vethjwkrhflq">
 
 <span id="more"></span>
 
@@ -5343,7 +5401,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Legacy</title>
     <url>/posts/252e0fef.html</url>
-    <content><![CDATA[<style>.debkdvaefqya{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="debkdvaefqya">
+    <content><![CDATA[<style>.qmdhidkcdatw{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="qmdhidkcdatw">
 
 <span id="more"></span>
 
@@ -5391,7 +5449,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Devel</title>
     <url>/posts/97f065fe.html</url>
-    <content><![CDATA[<style>.zyydpnfidejx{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="zyydpnfidejx">
+    <content><![CDATA[<style>.dhwqrgeosvvf{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="dhwqrgeosvvf">
 
 <span id="more"></span>
 
@@ -5410,7 +5468,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/posts/97f065fe/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.trmzjdgeryiz{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="trmzjdgeryiz" alt="登录FTP">
+<style>.obpepxqqvfuk{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="obpepxqqvfuk" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/posts/97f065fe/image-20250201215256322.png" class="" title="生成webshell">
@@ -5452,7 +5510,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Lame</title>
     <url>/posts/465d4de8.html</url>
-    <content><![CDATA[<style>.ykdicxkxrdvr{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="ykdicxkxrdvr">
+    <content><![CDATA[<style>.hfuswsxwqkzf{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="hfuswsxwqkzf">
 
 <span id="more"></span>
 
@@ -5468,11 +5526,11 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.fcmpwhhgrkmv{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="fcmpwhhgrkmv" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.nqnhwewywett{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="nqnhwewywett" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/posts/465d4de8/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.eaosheqdvtyv{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="eaosheqdvtyv" alt="msfconsole">
+<style>.jsewcvvuwqav{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="jsewcvvuwqav" alt="msfconsole">
 
 <img src="/posts/465d4de8/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -5505,7 +5563,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Optimum</title>
     <url>/posts/f7bd0d80.html</url>
-    <content><![CDATA[<style>.zlexuatsdukl{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="zlexuatsdukl">
+    <content><![CDATA[<style>.wymslokvnekp{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="wymslokvnekp">
 
 <span id="more"></span>
 
@@ -5567,7 +5625,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Beep</title>
     <url>/posts/48ffce4.html</url>
-    <content><![CDATA[<style>.enopuyhbcfxo{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="enopuyhbcfxo">
+    <content><![CDATA[<style>.jqwvpczyirqs{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="jqwvpczyirqs">
 
 <span id="more"></span>
 

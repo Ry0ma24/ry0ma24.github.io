@@ -47,18 +47,7 @@ NexT.boot.refresh = function() {
     background: 'var(--content-bg-color)'
   });
   CONFIG.lazyload && window.lozad('.post-body img').observe();
-  if (CONFIG.pangu) {
-    // Polyfill for requestIdleCallback if not supported
-    if (!window.requestIdleCallback) {
-      window.requestIdleCallback = function(cb) {
-        cb({
-          didTimeout   : false,
-          timeRemaining: () => 100
-        });
-      };
-    }
-    [...document.getElementsByTagName('main')].forEach(e => window.pangu.spacingNode(e));
-  }
+  CONFIG.pangu && window.pangu.spacingPage();
 
   CONFIG.exturl && NexT.utils.registerExtURL();
   NexT.utils.wrapTableWithBox();

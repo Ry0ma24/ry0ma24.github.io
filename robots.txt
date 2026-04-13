@@ -1,5 +1,5 @@
+# robots.txt generated at http://www.w3cschool.cn/
 User-agent: *
-Allow: /
-
+Disallow: 
 Sitemap: https://ry0ma24.github.io/sitemap.xml
-Sitemap: https://ry0ma24.github.io/sitemap.txt
+

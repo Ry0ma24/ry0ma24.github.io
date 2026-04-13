@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ry0ma24.github.io/posts/d0b064d0.html</loc>
+    
+    <lastmod>2026-04-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ry0ma24.github.io/posts/1888ae71.html</loc>
     
     <lastmod>2026-04-10</lastmod>
@@ -380,6 +389,20 @@
 
   
   <url>
+    <loc>https://ry0ma24.github.io/tags/k8s/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ry0ma24.github.io/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://ry0ma24.github.io/tags/%E8%B6%8A%E7%8B%B1/</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -604,6 +627,13 @@
   </url>
   
 
+  
+  <url>
+    <loc>https://ry0ma24.github.io/categories/%E4%BA%91%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://ry0ma24.github.io/categories/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AE%89%E5%85%A8/</loc>

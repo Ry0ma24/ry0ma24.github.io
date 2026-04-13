@@ -64,9 +64,232 @@
       </tags>
   </entry>
   <entry>
+    <title>kubernetes-goat靶机搭建</title>
+    <url>/posts/d0b064d0.html</url>
+    <content><![CDATA[<style>.oipugcsraiqi{zoom:50%;}</style><img src="/posts/d0b064d0/image-20260413140159229.png" class="oipugcsraiqi" alt="kubernetes-goat">
+
+<span id="more"></span>
+
+<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><table>
+<thead>
+<tr>
+<th align="left">应用</th>
+<th align="left">版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">RockyLinux</td>
+<td align="left">10.1</td>
+</tr>
+<tr>
+<td align="left">Docker</td>
+<td align="left">29.4.0</td>
+</tr>
+<tr>
+<td align="left">minikube</td>
+<td align="left">1.38.1</td>
+</tr>
+<tr>
+<td align="left">helm</td>
+<td align="left">4.1.4</td>
+</tr>
+</tbody></table>
+<h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3><p>单机版的K8s 需要用docker</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># dnf -y install dnf-plugins-core git</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># dnf install docker-ce docker-ce-cli  docker-buildx-plugin docker-compose-plugin</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># systemctl start docker </span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># docker info</span>
+Client: Docker Engine - Community
+ Version:    <span class="token number">29.4</span>.0
+ Context:    default
+ Debug Mode: <span class="token boolean">false</span>
+ Plugins:
+<span class="token operator">&lt;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># systemctl enable docker  //设置开机自启</span></code></pre>
+
+<h3 id="minikube"><a href="#minikube" class="headerlink" title="minikube"></a>minikube</h3><h4 id="安装minikube"><a href="#安装minikube" class="headerlink" title="安装minikube"></a>安装minikube</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># rpm -Uvh minikube-latest.x86_64.rpm</span></code></pre>
+
+<h4 id="启动minikube"><a href="#启动minikube" class="headerlink" title="启动minikube"></a>启动minikube</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># minikube start --force</span>
+😄  minikube v1.38.1 on Rocky <span class="token number">10.1</span>
+❗  minikube skips various validations when <span class="token parameter variable">--force</span> is supplied<span class="token punctuation">;</span> this may lead to unexpected behavior
+✨  Automatically selected the <span class="token function">docker</span> driver. Other choices: ssh, none
+🛑  The <span class="token string">"docker"</span> driver should not be used with root privileges. If you wish to <span class="token builtin class-name">continue</span> as root, use --force.
+💡  If you are running minikube within a VM, consider using <span class="token parameter variable">--driver</span><span class="token operator">=</span>none:
+📘    https://minikube.sigs.k8s.io/docs/reference/drivers/none/
+❗  Starting v1.39.0, minikube will default to <span class="token string">"containerd"</span> container runtime. See <span class="token comment">#21973 for more info.</span>
+📌  Using Docker driver with root privileges
+👍  Starting <span class="token string">"minikube"</span> primary control-plane <span class="token function">node</span> <span class="token keyword">in</span> <span class="token string">"minikube"</span> cluster
+🚜  Pulling base image v0.0.50 <span class="token punctuation">..</span>.
+💾  Downloading Kubernetes v1.35.1 preload <span class="token punctuation">..</span>.
+    <span class="token operator">></span> preloaded-images-k8s-v18-v1<span class="token punctuation">..</span>.:  <span class="token number">272.45</span> MiB / <span class="token number">272.45</span> MiB  <span class="token number">100.00</span>% <span class="token number">5.76</span> Mi
+    <span class="token operator">></span> gcr.io/k8s-minikube/kicbase<span class="token punctuation">..</span>.:  <span class="token number">519.58</span> MiB / <span class="token number">519.58</span> MiB  <span class="token number">100.00</span>% <span class="token number">4.66</span> Mi
+🔥  Creating <span class="token function">docker</span> container <span class="token punctuation">(</span>CPUs<span class="token operator">=</span><span class="token number">2</span>, <span class="token assign-left variable">Memory</span><span class="token operator">=</span>3072MB<span class="token punctuation">)</span> <span class="token punctuation">..</span>.
+🐳  Preparing Kubernetes v1.35.1 on Docker <span class="token number">29.2</span>.1 <span class="token punctuation">..</span>.
+🔗  Configuring bridge CNI <span class="token punctuation">(</span>Container Networking Interface<span class="token punctuation">)</span> <span class="token punctuation">..</span>.
+🔎  Verifying Kubernetes components<span class="token punctuation">..</span>.
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+💡  kubectl not found. If you need it, try: <span class="token string">'minikube kubectl -- get pods -A'</span>
+🏄  Done<span class="token operator">!</span> kubectl is now configured to use <span class="token string">"minikube"</span> cluster and <span class="token string">"default"</span> namespace by default</code></pre>
+
+<h4 id="查看minikube-状态"><a href="#查看minikube-状态" class="headerlink" title="查看minikube 状态"></a>查看minikube 状态</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost  ~<span class="token punctuation">]</span><span class="token comment"># minikube kubectl -- get pods -A</span>
+    <span class="token operator">></span> kubectl.sha256:  <span class="token number">64</span> B / <span class="token number">64</span> B <span class="token punctuation">[</span>-------------------------<span class="token punctuation">]</span> <span class="token number">100.00</span>% ? p/s 0s
+    <span class="token operator">></span> kubectl:  <span class="token number">55.88</span> MiB / <span class="token number">55.88</span> MiB <span class="token punctuation">[</span>-------------<span class="token punctuation">]</span> <span class="token number">100.00</span>% <span class="token number">9.87</span> MiB p/s <span class="token number">5</span>.9s
+NAMESPACE     NAME                               READY   STATUS    RESTARTS      AGE
+kube-system   coredns-7d764666f9-lq6vl           <span class="token number">1</span>/1     Running   <span class="token number">0</span>             76s
+kube-system   etcd-minikube                      <span class="token number">1</span>/1     Running   <span class="token number">0</span>             82s
+kube-system   kube-apiserver-minikube            <span class="token number">1</span>/1     Running   <span class="token number">0</span>             82s
+kube-system   kube-controller-manager-minikube   <span class="token number">1</span>/1     Running   <span class="token number">0</span>             82s
+kube-system   kube-proxy-xmq5q                   <span class="token number">1</span>/1     Running   <span class="token number">0</span>             77s
+kube-system   kube-scheduler-minikube            <span class="token number">1</span>/1     Running   <span class="token number">0</span>             82s
+kube-system   storage-provisioner                <span class="token number">1</span>/1     Running   <span class="token number">1</span> <span class="token punctuation">(</span>46s ago<span class="token punctuation">)</span>   <span class="token number">81</span></code></pre>
+
+<h4 id="配置kubectl"><a href="#配置kubectl" class="headerlink" title="配置kubectl"></a>配置kubectl</h4><p>kubernetes-goat 需要使用kubectl，但是minikube使用 kubectl 命令为 <code>minikube kubectl</code> ，做个软链接即可</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost kubernetes-goat<span class="token punctuation">]</span><span class="token comment"># ln -s $(which minikube) /usr/local/bin/kubectl</span></code></pre>
+
+<h3 id="helm"><a href="#helm" class="headerlink" title="helm"></a>helm</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash</span>
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+<span class="token number">100</span> <span class="token number">11929</span>  <span class="token number">100</span> <span class="token number">11929</span>    <span class="token number">0</span>     <span class="token number">0</span>  <span class="token number">17516</span>      <span class="token number">0</span> --:--:-- --:--:-- --:--:-- <span class="token number">17516</span>
+Downloading https://get.helm.sh/helm-v4.1.4-linux-amd64.tar.gz
+Verifying checksum<span class="token punctuation">..</span>. Done.
+Preparing to <span class="token function">install</span> helm into /usr/local/bin
+helm installed into /usr/local/bin/helm</code></pre>
+
+<h3 id="kubernetes-goat"><a href="#kubernetes-goat" class="headerlink" title="kubernetes-goat"></a>kubernetes-goat</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>第一次安装会报错  The Deployment “health-check-deployment” is invalid: spec.template.spec.initContainers[0].volumeMounts[1].name: Not found: “socket-link”</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost kubernetes-goat<span class="token punctuation">]</span><span class="token comment"># ./setup-kubernetes-goat.sh </span>
+kubectl setup looks good.
+deploying insecure super admin scenario
+serviceaccount/superadmin unchanged
+clusterrolebinding.rbac.authorization.k8s.io/superadmin unchanged
+deploying helm chart metadata-db scenario
+NAME: metadata-db
+LAST DEPLOYED: Sun Apr <span class="token number">12</span> 01:42:54 <span class="token number">2026</span>
+NAMESPACE: default
+STATUS: deployed
+REVISION: <span class="token number">1</span>
+DESCRIPTION: Install complete
+NOTES:
+<span class="token number">1</span>. Get the application URL by running these commands:
+  <span class="token builtin class-name">export</span> <span class="token assign-left variable">POD_NAME</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>kubectl get pods <span class="token parameter variable">--namespace</span> default <span class="token parameter variable">-l</span> <span class="token string">"app.kubernetes.io/name=metadata-db,app.kubernetes.io/instance=metadata-db"</span> <span class="token parameter variable">-o</span> <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">"&#123;.items[0].metadata.name&#125;"</span><span class="token variable">)</span></span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"Visit http://127.0.0.1:8080 to use your application"</span>
+  kubectl port-forward <span class="token variable">$POD_NAME</span> <span class="token number">8080</span>:80
+deploying the vulnerable scenarios manifests
+job.batch/batch-check-job unchanged
+deployment.apps/build-code-deployment unchanged
+service/build-code-service unchanged
+namespace/secure-middleware unchanged
+service/cache-store-service unchanged
+deployment.apps/cache-store-deployment unchanged
+service/health-check-service unchanged
+The Deployment <span class="token string">"health-check-deployment"</span> is invalid: spec.template.spec.initContainers<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.volumeMounts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>.name: Not found: <span class="token string">"socket-link"</span>
+namespace/big-monolith unchanged
+role.rbac.authorization.k8s.io/secret-reader unchanged
+rolebinding.rbac.authorization.k8s.io/secret-reader-binding unchanged
+serviceaccount/big-monolith-sa unchanged
+secret/vaultapikey unchanged
+secret/webhookapikey unchanged
+deployment.apps/hunger-check-deployment unchanged
+service/hunger-check-service unchanged
+deployment.apps/internal-proxy-deployment unchanged
+service/internal-proxy-api-service unchanged
+service/internal-proxy-info-app-service unchanged
+deployment.apps/kubernetes-goat-home-deployment unchanged
+service/kubernetes-goat-home-service unchanged
+deployment.apps/poor-registry-deployment unchanged
+service/poor-registry-service unchanged
+secret/goatvault unchanged
+deployment.apps/system-monitor-deployment unchanged
+service/system-monitor-service unchanged
+job.batch/hidden-in-layers unchanged
+Successfully deployed Kubernetes Goat. Have fun learning Kubernetes Security<span class="token operator">!</span>
+Ensure pods are <span class="token keyword">in</span> running status before running access-kubernetes-goat.sh script
+Now run the <span class="token function">bash</span> access-kubernetes-goat.sh to access the Kubernetes Goat environment.</code></pre>
+
+<h4 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># cd /root/kubernetes-goat/scenarios/health-check</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># sed -i '/socket-link/d' deployment.yaml </span>
+<span class="token punctuation">[</span>root@localhost kubernetes-goat<span class="token punctuation">]</span><span class="token comment"># helm list --all-namespaces</span>
+NAME            NAMESPACE       REVISION        UPDATED                                 STATUS      CHART                    APP VERSION
+metadata-db     default         <span class="token number">1</span>               <span class="token number">2026</span>-04-12 01:42:54.41527795 +0800 CST  deployed    metadata-db-0.1.0        <span class="token number">1.0</span>        
+<span class="token punctuation">[</span>root@localhost kubernetes-goat<span class="token punctuation">]</span><span class="token comment"># helm uninstall metadata-db //卸载残留文件</span>
+release <span class="token string">"metadata-db"</span> uninstalled
+<span class="token punctuation">[</span>root@localhost kubernetes-goat<span class="token punctuation">]</span><span class="token comment"># ./setup-kubernetes-goat.sh  //重新安装</span>
+kubectl setup looks good.
+deploying insecure super admin scenario
+serviceaccount/superadmin unchanged
+clusterrolebinding.rbac.authorization.k8s.io/superadmin unchanged
+deploying helm chart metadata-db scenario
+NAME: metadata-db
+LAST DEPLOYED: Sun Apr <span class="token number">12</span> 01:49:55 <span class="token number">2026</span>
+NAMESPACE: default
+STATUS: deployed
+REVISION: <span class="token number">1</span>
+DESCRIPTION: Install complete
+NOTES:
+<span class="token number">1</span>. Get the application URL by running these commands:
+  <span class="token builtin class-name">export</span> <span class="token assign-left variable">POD_NAME</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>kubectl get pods <span class="token parameter variable">--namespace</span> default <span class="token parameter variable">-l</span> <span class="token string">"app.kubernetes.io/name=metadata-db,app.kubernetes.io/instance=metadata-db"</span> <span class="token parameter variable">-o</span> <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">"&#123;.items[0].metadata.name&#125;"</span><span class="token variable">)</span></span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"Visit http://127.0.0.1:8080 to use your application"</span>
+  kubectl port-forward <span class="token variable">$POD_NAME</span> <span class="token number">8080</span>:80
+deploying the vulnerable scenarios manifests
+job.batch/batch-check-job unchanged
+deployment.apps/build-code-deployment unchanged
+service/build-code-service unchanged
+namespace/secure-middleware unchanged
+service/cache-store-service unchanged
+deployment.apps/cache-store-deployment unchanged
+deployment.apps/health-check-deployment unchanged
+service/health-check-service unchanged
+namespace/big-monolith unchanged
+role.rbac.authorization.k8s.io/secret-reader unchanged
+rolebinding.rbac.authorization.k8s.io/secret-reader-binding unchanged
+serviceaccount/big-monolith-sa unchanged
+secret/vaultapikey unchanged
+secret/webhookapikey unchanged
+deployment.apps/hunger-check-deployment unchanged
+service/hunger-check-service unchanged
+deployment.apps/internal-proxy-deployment unchanged
+service/internal-proxy-api-service unchanged
+service/internal-proxy-info-app-service unchanged
+deployment.apps/kubernetes-goat-home-deployment unchanged
+service/kubernetes-goat-home-service unchanged
+deployment.apps/poor-registry-deployment unchanged
+service/poor-registry-service unchanged
+secret/goatvault unchanged
+deployment.apps/system-monitor-deployment unchanged
+service/system-monitor-service unchanged
+job.batch/hidden-in-layers unchanged
+Successfully deployed Kubernetes Goat. Have fun learning Kubernetes Security<span class="token operator">!</span>
+Ensure pods are <span class="token keyword">in</span> running status before running access-kubernetes-goat.sh script
+Now run the <span class="token function">bash</span> access-kubernetes-goat.sh to access the Kubernetes Goat environment.</code></pre>
+
+<h4 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost kubernetes-goat<span class="token punctuation">]</span><span class="token comment"># chmod +x access-kubernetes-goat.sh </span>
+<span class="token punctuation">[</span>root@localhost kubernetes-goat<span class="token punctuation">]</span><span class="token comment"># ./access-kubernetes-goat.sh </span>
+kubectl setup looks good.
+Creating port forward <span class="token keyword">for</span> all the Kubernetes Goat resources to locally. We will be using <span class="token number">1230</span> to <span class="token number">1236</span> ports locally<span class="token operator">!</span>
+Visit http://127.0.0.1:1234 to get started with your Kubernetes Goat hacking<span class="token operator">!</span>
+<span class="token punctuation">[</span>root@localhost kubernetes-goat<span class="token punctuation">]</span><span class="token comment"># systemctl stop firewalld</span></code></pre>
+
+<h3 id="搭建完成"><a href="#搭建完成" class="headerlink" title="搭建完成"></a>搭建完成</h3><img src="/posts/d0b064d0/image-20260412141744115.png" class="" title="kubernetes-goat">
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>云安全</category>
+      </categories>
+      <tags>
+        <tag>k8s</tag>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTB-WingData</title>
     <url>/posts/1888ae71.html</url>
-    <content><![CDATA[<style>.othlagmpxhvj{zoom:50%;}</style><img src="/posts/1888ae71/d419202507a3bbf06e764c1c4a524f66.png" class="othlagmpxhvj" alt="htb-wingdata">
+    <content><![CDATA[<style>.rkwhupdyoriw{zoom:50%;}</style><img src="/posts/1888ae71/d419202507a3bbf06e764c1c4a524f66.png" class="rkwhupdyoriw" alt="htb-wingdata">
 
 <span id="more"></span>
 
@@ -258,38 +481,38 @@ root@wingdata:/tmp<span class="token comment"># id</span>
   <entry>
     <title>iOS越狱隐藏</title>
     <url>/posts/6d3db75c.html</url>
-    <content><![CDATA[<style>.cbhvyxzrrxim{zoom:50%;}</style><img src="/posts/6d3db75c/image-20260410151632410.png" class="cbhvyxzrrxim" alt="越狱">
+    <content><![CDATA[<style>.ffggdgcwgeka{zoom:50%;}</style><img src="/posts/6d3db75c/image-20260410151632410.png" class="ffggdgcwgeka" alt="越狱">
 
 <span id="more"></span>
 
 <h3 id="安装GTA-Car-Tracker"><a href="#安装GTA-Car-Tracker" class="headerlink" title="安装GTA Car Tracker"></a>安装GTA Car Tracker</h3><p>使用safari浏览器访问 <a href="https://api.jailbreaks.app/troll64e">https://api.jailbreaks.app/troll64e</a> ，弹出iTunes 打开，点击打开，选择安装</p>
-<style>.gdddunexgidx{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0003-0270768.PNG" class="gdddunexgidx" alt="IMG_0003"><style>.byebgcldtlbd{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0004.PNG" class="byebgcldtlbd" alt="IMG_0004">
+<style>.socdwhibhqwk{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0003-0270768.PNG" class="socdwhibhqwk" alt="IMG_0003"><style>.srlpfxdtwujk{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0004.PNG" class="srlpfxdtwujk" alt="IMG_0004">
 
-<style>.qkcqqhbozybt{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0005.PNG" class="qkcqqhbozybt" alt="IMG_0005"><style>.adqaqsueoefq{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0006.PNG" class="adqaqsueoefq" alt="IMG_0006">
+<style>.jelydheuoxpl{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0005.PNG" class="jelydheuoxpl" alt="IMG_0005"><style>.edmqpjyndbtl{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0006.PNG" class="edmqpjyndbtl" alt="IMG_0006">
 
 <h3 id="安装TrollStore"><a href="#安装TrollStore" class="headerlink" title="安装TrollStore"></a>安装TrollStore</h3><p>打开GTA Car Tracker 安装 TrollStore</p>
-<style>.ctsrgrppwhni{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0007.PNG" class="ctsrgrppwhni" alt="IMG_0007"><style>.rzourlasbjhf{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0008.PNG" class="rzourlasbjhf" alt="IMG_0008">
+<style>.jikbgsceguvx{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0007.PNG" class="jikbgsceguvx" alt="IMG_0007"><style>.idlaswkypukb{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0008.PNG" class="idlaswkypukb" alt="IMG_0008">
 
 <p>打开TrollStore 安装Idid，Persistence Helper (可选，安装后重启TrollStore不失效) </p>
-<style>.xmlsscqfyutr{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0010.PNG" class="xmlsscqfyutr" alt="IMG_0010">  
+<style>.jmyefdueevnp{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0010.PNG" class="jmyefdueevnp" alt="IMG_0010">  
 
 
 
 <h3 id="安装RootHide-Dopamine"><a href="#安装RootHide-Dopamine" class="headerlink" title="安装RootHide Dopamine"></a>安装RootHide Dopamine</h3><p>访问 <a href="https://github.com/roothide/Dopamine2-roothide">https://github.com/roothide/Dopamine2-roothide</a> 下载最新版的    Dopamine.tipa  放到iPhone 的Download 目录下然后使用TrollStore安装；打开TrollStore，右上角 “+” ，选中要安装的Dopamine.tipa ，然后安装</p>
-<style>.sfhazjzzldyr{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0011.PNG" class="sfhazjzzldyr" alt="IMG_0011"> 
+<style>.jpktquvcyevt{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0011.PNG" class="jpktquvcyevt" alt="IMG_0011"> 
 
 <h3 id="越狱和隐藏越狱"><a href="#越狱和隐藏越狱" class="headerlink" title="越狱和隐藏越狱"></a>越狱和隐藏越狱</h3><p>打开Dopamine，然后点击最下面越狱，选择安装Sileo或者全选，越狱完成，桌面会出现RootHide (如果没有可以到Sileo 里搜索安装)</p>
-<style>.wwpllewuwuci{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0012.PNG" class="wwpllewuwuci" alt="IMG_0012"><style>.khxydpinmxek{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0013.PNG" class="khxydpinmxek" alt="IMG_0013">
+<style>.eshbatorgjdm{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0012.PNG" class="eshbatorgjdm" alt="IMG_0012"><style>.jbgiqfelfesi{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0013.PNG" class="jbgiqfelfesi" alt="IMG_0013">
 
 
 
 <p>打开RootHide，点击var 清理，左上角选择全部，点击右上角清理</p>
-<style>.isogpiehvcab{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0014.PNG" class="isogpiehvcab" alt="IMG_0014"> 
+<style>.buqgtecbbgdb{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0014.PNG" class="buqgtecbbgdb" alt="IMG_0014"> 
 
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>重新下载安装app，并将app 加入黑名单；使用某银行app测试效果；</p>
-<h4 id="未打开黑名单无法正常使用-app"><a href="#未打开黑名单无法正常使用-app" class="headerlink" title="未打开黑名单无法正常使用 app"></a>未打开黑名单无法正常使用 app</h4><style>.mmsauvyhbutg{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144231485.png" class="mmsauvyhbutg" alt="image-20260205144231485"><style>.niyfoyhsfpdn{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0017.PNG" class="niyfoyhsfpdn" alt="IMG_0017">
+<h4 id="未打开黑名单无法正常使用-app"><a href="#未打开黑名单无法正常使用-app" class="headerlink" title="未打开黑名单无法正常使用 app"></a>未打开黑名单无法正常使用 app</h4><style>.drjnflfdxfsx{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144231485.png" class="drjnflfdxfsx" alt="image-20260205144231485"><style>.pdpptjiqmqyt{zoom:25%;}</style><img src="/posts/6d3db75c/IMG_0017.PNG" class="pdpptjiqmqyt" alt="IMG_0017">
 
-<h4 id="打开黑名单后app正常"><a href="#打开黑名单后app正常" class="headerlink" title="打开黑名单后app正常"></a>打开黑名单后app正常</h4><style>.avjspllhywiv{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144409713.png" class="avjspllhywiv" alt="image-20260205144409713"><style>.flceustjsatb{zoom: 25%;}</style><img src="/posts/6d3db75c/IMG_0019.PNG" class="flceustjsatb" alt="IMG_0019">
+<h4 id="打开黑名单后app正常"><a href="#打开黑名单后app正常" class="headerlink" title="打开黑名单后app正常"></a>打开黑名单后app正常</h4><style>.dthosflsxoet{zoom: 37%;}</style><img src="/posts/6d3db75c/image-20260205144409713.png" class="dthosflsxoet" alt="image-20260205144409713"><style>.xvuepvekxott{zoom: 25%;}</style><img src="/posts/6d3db75c/IMG_0019.PNG" class="xvuepvekxott" alt="IMG_0019">
 
 
 
@@ -305,7 +528,7 @@ root@wingdata:/tmp<span class="token comment"># id</span>
   <entry>
     <title>HTB-Facts</title>
     <url>/posts/a66eeeb7.html</url>
-    <content><![CDATA[<style>.pqpsuijhtsys{zoom:50%;}</style><img src="/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png" class="pqpsuijhtsys" alt="HTB-facts">
+    <content><![CDATA[<style>.fwxnxynseldz{zoom:50%;}</style><img src="/posts/a66eeeb7/bdcd209c32f156fbfb2268f099971f75.png" class="fwxnxynseldz" alt="HTB-facts">
 
 <span id="more"></span>
 
@@ -518,7 +741,7 @@ bash-5.2<span class="token comment"># cat /root/root.txt</span></code></pre>
   <entry>
     <title>HTB-Imagery</title>
     <url>/posts/3872553c.html</url>
-    <content><![CDATA[<style>.gtvplrtjobec{zoom:50%;}</style><img src="/posts/3872553c/image-20251004154017644.png" class="gtvplrtjobec" alt="HTB-Imagery">
+    <content><![CDATA[<style>.qkwvquxuvsgr{zoom:50%;}</style><img src="/posts/3872553c/image-20251004154017644.png" class="qkwvquxuvsgr" alt="HTB-Imagery">
 
 <span id="more"></span>
 
@@ -587,7 +810,7 @@ Dictionary cache hit:
 
 2c65c8d7bfbca32a3ed42596192384f6:iambatman                                                                </code></pre>
 
-<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>使用账号<a href="mailto:&#116;&#x65;&#115;&#116;&#x75;&#x73;&#101;&#114;&#64;&#x69;&#x6d;&#x61;&#103;&#x65;&#x72;&#121;&#x2e;&#x68;&#x74;&#98;">testuser@imagery.htb</a> 和破解出的密码登录目标站点，随便上传一张图片，点击<code>Transform Image</code> </p>
+<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>使用账号<a href="mailto:&#x74;&#x65;&#115;&#116;&#117;&#115;&#101;&#114;&#x40;&#x69;&#109;&#97;&#103;&#101;&#114;&#121;&#x2e;&#x68;&#x74;&#98;">testuser@imagery.htb</a> 和破解出的密码登录目标站点，随便上传一张图片，点击<code>Transform Image</code> </p>
 <img src="/posts/3872553c/image-20251004165324958.png" class="" title="Transform image">
 
 <p>选择Crop，点击<code>Apply Transformation</code> , 抓包修改参数 <code>y</code> </p>
@@ -721,7 +944,7 @@ root</code></pre>
   <entry>
     <title>HTB-Expressway</title>
     <url>/posts/84373dcc.html</url>
-    <content><![CDATA[<style>.wtwobsrqsmwq{zoom:50%;}</style><img src="/posts/84373dcc/75c168f01f04e5f256838733b77f13ec.png" class="wtwobsrqsmwq" alt="HTB-Expressway">
+    <content><![CDATA[<style>.kgmrxieimkxk{zoom:50%;}</style><img src="/posts/84373dcc/75c168f01f04e5f256838733b77f13ec.png" class="kgmrxieimkxk" alt="HTB-Expressway">
 
 <span id="more"></span>
 
@@ -888,7 +1111,7 @@ root@expressway:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Editor</title>
     <url>/posts/fe14f7bb.html</url>
-    <content><![CDATA[<style>.oiivjgmgxsqt{zoom:50%;}</style><img src="/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png" class="oiivjgmgxsqt" alt="HTB-Editor">
+    <content><![CDATA[<style>.fitnhmwetnyw{zoom:50%;}</style><img src="/posts/fe14f7bb/ba9dec0d022d3c3b6a96aa5dba4772c7-1755522406355-3.png" class="fitnhmwetnyw" alt="HTB-Editor">
 
 <span id="more"></span>
 
@@ -1053,7 +1276,7 @@ root@editor:/tmp<span class="token comment"># id</span>
   <entry>
     <title>HTB-Bashed</title>
     <url>/posts/f52f847.html</url>
-    <content><![CDATA[<style>.khoovtaikkph{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="khoovtaikkph" alt="Bashed">
+    <content><![CDATA[<style>.lugtlquxzybi{zoom:50%;}</style><img src="/posts/f52f847/0f058b73659ca043de9f5240abd651ca.png" class="lugtlquxzybi" alt="Bashed">
 
 <span id="more"></span>
 
@@ -1203,7 +1426,7 @@ root@bashed:/scripts<span class="token comment"># id       </span>
   <entry>
     <title>HTB-Irked</title>
     <url>/posts/b88b7678.html</url>
-    <content><![CDATA[<style>.ldnvpmmmsycp{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="ldnvpmmmsycp">
+    <content><![CDATA[<style>.mhrsbesbjfes{zoom:50%;}</style><img src="/posts/b88b7678/5fb846e75cf0db0c4b27e2dc64a9bf82.png" class="mhrsbesbjfes">
 
 <span id="more"></span>
 
@@ -1397,7 +1620,7 @@ djmardov@irked:~$ <span class="token function">id</span>
   <entry>
     <title>HTB-Nocturnal</title>
     <url>/posts/5cd9a843.html</url>
-    <content><![CDATA[<style>.aumxfhbbning{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="aumxfhbbning">
+    <content><![CDATA[<style>.txkfbodzfyqy{zoom:50%;}</style><img src="/posts/5cd9a843/f6a56cec6e9826b4ed124fb4155abc66.png" class="txkfbodzfyqy">
 
 <span id="more"></span>
 
@@ -1820,7 +2043,7 @@ ispconfig-shell<span class="token comment"># cat /root/root.txt</span></code></p
   <entry>
     <title>HTB-Previse</title>
     <url>/posts/21913e3f.html</url>
-    <content><![CDATA[<style>.ejkkkjujqzpu{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="ejkkkjujqzpu">
+    <content><![CDATA[<style>.jfqixujormlv{zoom:50%;}</style><img src="/posts/21913e3f/e3c542ada4b134e29e534e3081ef9650.png" class="jfqixujormlv">
 
 <span id="more"></span>
 
@@ -2048,7 +2271,7 @@ root@previse:/tmp<span class="token comment"># id      </span>
   <entry>
     <title>HTB-Busqueda</title>
     <url>/posts/d91931aa.html</url>
-    <content><![CDATA[<style>.ckupxwcniitx{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="ckupxwcniitx">
+    <content><![CDATA[<style>.dodumbuizblo{zoom:50%;}</style><img src="/posts/d91931aa/a6942ab57b6a79f71240420442027334.png" class="dodumbuizblo">
 
 <span id="more"></span>
 
@@ -2309,7 +2532,7 @@ connect to <span class="token punctuation">[</span><span class="token number">10
   <entry>
     <title>HTB-Sauna</title>
     <url>/posts/5551a214.html</url>
-    <content><![CDATA[<style>.mecnuesknurm{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="mecnuesknurm">
+    <content><![CDATA[<style>.idggexslredp{zoom:50%;}</style><img src="/posts/5551a214/f31d5d0264fadc267e7f38a9d7729d14.png" class="idggexslredp">
 
 <span id="more"></span>
 
@@ -2575,7 +2798,7 @@ nt authority<span class="token punctuation">\</span>system
   <entry>
     <title>HTB-Heist</title>
     <url>/posts/4a8e4133.html</url>
-    <content><![CDATA[<style>.msyqfjjkfnvl{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="msyqfjjkfnvl">
+    <content><![CDATA[<style>.loilevucmgiw{zoom:50%;}</style><img src="/posts/4a8e4133/131dbaba68b169bd5ff59ac09420b09f.png" class="loilevucmgiw">
 
 <span id="more"></span>
 
@@ -2871,7 +3094,7 @@ Mode                LastWriteTime         Length Name
   <entry>
     <title>HTB-Toolbox</title>
     <url>/posts/96a67a56.html</url>
-    <content><![CDATA[<style>.sxwyckkxffju{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="sxwyckkxffju">
+    <content><![CDATA[<style>.hrvehowbpunx{zoom:50%;}</style><img src="/posts/96a67a56/9d218e64149bfb00a002d94868f2e4b1.png" class="hrvehowbpunx">
 
 <span id="more"></span>
 
@@ -3220,7 +3443,7 @@ administrator@TOOLBOX C:<span class="token punctuation">\</span>Users<span class
   <entry>
     <title>HTB-Mirai</title>
     <url>/posts/c3392160.html</url>
-    <content><![CDATA[<style>.nnpwwziqbtrr{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="nnpwwziqbtrr">
+    <content><![CDATA[<style>.abzpkejkdess{zoom:50%;}</style><img src="/posts/c3392160/4ef1ea77e69185063d4200d7d0142baa.png" class="abzpkejkdess">
 
 <span id="more"></span>
 
@@ -3407,7 +3630,7 @@ Do you know <span class="token keyword">if</span> there is any way to get them b
   <entry>
     <title>HTB-Blocky</title>
     <url>/posts/1cdd7a67.html</url>
-    <content><![CDATA[<style>.fcfqgmzhuuqg{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="fcfqgmzhuuqg">
+    <content><![CDATA[<style>.jtgoxpwkdnsg{zoom:50%;}</style><img src="/posts/1cdd7a67/f412784c311bdf52c3655381d2c9cd21.png" class="jtgoxpwkdnsg">
 
 <span id="more"></span>
 
@@ -3554,7 +3777,7 @@ root@Blocky:~<span class="token comment"># id</span>
   <entry>
     <title>HTB-Remote</title>
     <url>/posts/685379b3.html</url>
-    <content><![CDATA[<style>.urxpdoyzpedm{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="urxpdoyzpedm">
+    <content><![CDATA[<style>.ncigpxmxtgcj{zoom:50%;}</style><img src="/posts/685379b3/8d7c152dc9c28c9556b07dc724c6a37b.png" class="ncigpxmxtgcj">
 
 <span id="more"></span>
 
@@ -3795,7 +4018,7 @@ meterpreter <span class="token operator">></span>
   <entry>
     <title>HTB-Love</title>
     <url>/posts/e5f5ab78.html</url>
-    <content><![CDATA[<style>.ypqeoddwqcye{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="ypqeoddwqcye">
+    <content><![CDATA[<style>.wzpoekymdlyx{zoom:50%;}</style><img src="/posts/e5f5ab78/c00774d8d806b82c709c596937a92d14.png" class="wzpoekymdlyx">
 
 <span id="more"></span>
 
@@ -4003,7 +4226,7 @@ Server username: NT AUTHORITY<span class="token punctuation">\</span>SYSTEM</cod
   <entry>
     <title>HTB-BountyHunter</title>
     <url>/posts/d750c67f.html</url>
-    <content><![CDATA[<style>.ueshgihxsrmf{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="ueshgihxsrmf">
+    <content><![CDATA[<style>.dwjeoxofrbhf{zoom:50%;}</style><img src="/posts/d750c67f/a24c032885e56a17a6c74cc58b63e8f4.png" class="dwjeoxofrbhf">
 
 <span id="more"></span>
 
@@ -4192,7 +4415,7 @@ __Ticket Code:__
   <entry>
     <title>HTB-DevOops</title>
     <url>/posts/ddc47498.html</url>
-    <content><![CDATA[<style>.hfcblwfyredg{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="hfcblwfyredg">
+    <content><![CDATA[<style>.fjhzlcwcpdcr{zoom:50%;}</style><img src="/posts/ddc47498/c74d84352f781ad5c7a4c35c0c3aa0ac.png" class="fjhzlcwcpdcr">
 
 <span id="more"></span>
 
@@ -4498,8 +4721,8 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <img src="/posts/e4955058/DraggedImage-10.png" class="" title="webapps">
 <p>进入<code>Apache Software Foundation\\Tomcat 9.0\\bin</code>, 点开tomcat9w –&gt; Java –&gt; Java options 添加<code>-Dfortify.home=E:\SSC\fortify </code>  –&gt; 修改内存(初始化4G，最大推荐16以上) –&gt; 应用, 然后启动Tomcat</p>
 <img src="/posts/e4955058/DraggedImage-11.png" class="">
-<style>.igivniuhhjnj{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="igivniuhhjnj" alt="修改配置">
-<style>.nmnvtqwykgxi{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="nmnvtqwykgxi">
+<style>.ikcvqfayuohz{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-12.png" class="ikcvqfayuohz" alt="修改配置">
+<style>.jifteoqbyxmo{zoom:150%;}</style><img src="/posts/e4955058/DraggedImage-13.png" class="jifteoqbyxmo">
 
 <h4 id="安装SSC"><a href="#安装SSC" class="headerlink" title="安装SSC"></a>安装SSC</h4><p> 打开浏览器访问 <a href="http://127.0.0.1:8080/ssc/">http://127.0.0.1:8080/ssc/</a></p>
 <img src="/posts/e4955058/DraggedImage-14.png" class="" title="访问SSC">
@@ -4536,7 +4759,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Jerry</title>
     <url>/posts/4797133e.html</url>
-    <content><![CDATA[<style>.ngvfttjcmqje{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="ngvfttjcmqje">
+    <content><![CDATA[<style>.ncubpchflbcu{zoom:50%;}</style><img src="/posts/4797133e/59f03a24178dbb2bdc94968c201e21f8.png" class="ncubpchflbcu">
 
 <span id="more"></span>
 
@@ -4596,7 +4819,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Blue</title>
     <url>/posts/2c4131d1.html</url>
-    <content><![CDATA[<style>.husmbegxhlxa{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="husmbegxhlxa">
+    <content><![CDATA[<style>.wbpzbjkelibv{zoom:50%;}</style><img src="/posts/2c4131d1/52e077ae40899ab8b024afd51cb29b1c.png" class="wbpzbjkelibv">
 
 <span id="more"></span>
 
@@ -4646,7 +4869,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Knife</title>
     <url>/posts/872a7a04.html</url>
-    <content><![CDATA[<style>.nfrfcosddqtm{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="nfrfcosddqtm">
+    <content><![CDATA[<style>.xvdgkuhuyutb{zoom:50%;}</style><img src="/posts/872a7a04/110fe6608793064cf171080150ebd0dc.png" class="xvdgkuhuyutb">
 
 <span id="more"></span>
 
@@ -4713,7 +4936,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Shocker</title>
     <url>/posts/38c5e2d.html</url>
-    <content><![CDATA[<style>.wetxheiiugxr{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="wetxheiiugxr">
+    <content><![CDATA[<style>.mkbabbrgoyuw{zoom:50%;}</style><img src="/posts/38c5e2d/efef52a0fb63d9c8db0ab6e50cb6ac79.png" class="mkbabbrgoyuw">
 
 <span id="more"></span>
 
@@ -4773,7 +4996,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Tenten</title>
     <url>/posts/78c78349.html</url>
-    <content><![CDATA[<style>.thvrfgiksive{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="thvrfgiksive">
+    <content><![CDATA[<style>.xknrroiepmbr{zoom:50%;}</style><img src="/posts/78c78349/e58a465e93364c423cd2162945f8f7bf.png" class="xknrroiepmbr">
 
 <span id="more"></span>
 
@@ -4853,7 +5076,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Bastard</title>
     <url>/posts/7134392b.html</url>
-    <content><![CDATA[<style>.kkhywlwcrpiy{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="kkhywlwcrpiy">
+    <content><![CDATA[<style>.fidnfqvldvvk{zoom:50%;}</style><img src="/posts/7134392b/a8d2ae87fbe6d1ccfe93522d74defb3a.png" class="fidnfqvldvvk">
 
 <span id="more"></span>
 
@@ -4928,7 +5151,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Granny</title>
     <url>/posts/6b0d212.html</url>
-    <content><![CDATA[<style>.gebwhvmdxvfz{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="gebwhvmdxvfz">
+    <content><![CDATA[<style>.lhyzonjlbxnm{zoom:50%;}</style><img src="/posts/6b0d212/e8a122e2d713a4fb4a180bb9ccd20248.png" class="lhyzonjlbxnm">
 
 <span id="more"></span>
 
@@ -4987,7 +5210,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Grandpa</title>
     <url>/posts/c75d4146.html</url>
-    <content><![CDATA[<style>.fnbiiprxmhhz{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="fnbiiprxmhhz">
+    <content><![CDATA[<style>.rpzyxdicvxqh{zoom:50%;}</style><img src="/posts/c75d4146/381683fd107da11f1dc916401ae8aee0.png" class="rpzyxdicvxqh">
 
 <span id="more"></span>
 
@@ -5047,7 +5270,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Arctic</title>
     <url>/posts/d972b09f.html</url>
-    <content><![CDATA[<style>.pocuqwknqfkw{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="pocuqwknqfkw">
+    <content><![CDATA[<style>.kymoudfbvnff{zoom:50%;}</style><img src="/posts/d972b09f/0d6275efbd5e48fcdc96e61b9724ae5e.png" class="kymoudfbvnff">
 
 <span id="more"></span>
 
@@ -5120,7 +5343,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Legacy</title>
     <url>/posts/252e0fef.html</url>
-    <content><![CDATA[<style>.rdflosuiiffy{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="rdflosuiiffy">
+    <content><![CDATA[<style>.debkdvaefqya{zoom:50%;}</style><img src="/posts/252e0fef/60dc190c4c015cfe3a3aef9b5afca254.png" class="debkdvaefqya">
 
 <span id="more"></span>
 
@@ -5168,7 +5391,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Devel</title>
     <url>/posts/97f065fe.html</url>
-    <content><![CDATA[<style>.mwckpfbjrlbi{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="mwckpfbjrlbi">
+    <content><![CDATA[<style>.zyydpnfidejx{zoom:50%;}</style><img src="/posts/97f065fe/0fb6455a29eb4f2682f04a780ce26cb1.png" class="zyydpnfidejx">
 
 <span id="more"></span>
 
@@ -5187,7 +5410,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <h3 id="Nmap-scan"><a href="#Nmap-scan" class="headerlink" title="Nmap scan"></a>Nmap scan</h3><img src="/posts/97f065fe/image-20250201213314487.png" class="" title="Nmap">
 
 <p>发现两个开放端口 21和80，FTP允许匿名登录，先登录FTP看看，FTP的目录底下是主站点的文件</p>
-<style>.fphdzmqupseb{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="fphdzmqupseb" alt="登录FTP">
+<style>.trmzjdgeryiz{zoom:150%;}</style><img src="/posts/97f065fe/image-20250201213757511.png" class="trmzjdgeryiz" alt="登录FTP">
 
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>生成一个webshell然后通过ftp上传</p>
 <img src="/posts/97f065fe/image-20250201215256322.png" class="" title="生成webshell">
@@ -5229,7 +5452,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Lame</title>
     <url>/posts/465d4de8.html</url>
-    <content><![CDATA[<style>.lmtdsndgsffr{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="lmtdsndgsffr">
+    <content><![CDATA[<style>.ykdicxkxrdvr{zoom:50%;}</style><img src="/posts/465d4de8/fb2d9f98400e3c802a0d7145e125c4ff.png" class="ykdicxkxrdvr">
 
 <span id="more"></span>
 
@@ -5245,11 +5468,11 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
 <td>Easy</td>
 </tr>
 </tbody></table>
-<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.jajlbwkswxph{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="jajlbwkswxph" alt="Nmap">
+<h3 id="Nmap-Scan"><a href="#Nmap-Scan" class="headerlink" title="Nmap Scan"></a>Nmap Scan</h3><style>.fcmpwhhgrkmv{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201155450222.png" class="fcmpwhhgrkmv" alt="Nmap">
 
 <p>发现两个可疑服务21(vsftpd 2.3.4)和445(Samba 3.0.20)，使用searchsploit 检索可用exp<img src="/posts/465d4de8/image-20250201160141376.png" class="" title="searchploit"></p>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>使用vsftpd的漏洞，失败，换smb漏洞, 成功</p>
-<style>.hdqdrkvookyb{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="hdqdrkvookyb" alt="msfconsole">
+<style>.eaosheqdvtyv{zoom:150%;}</style><img src="/posts/465d4de8/image-20250201174838005.png" class="eaosheqdvtyv" alt="msfconsole">
 
 <img src="/posts/465d4de8/image-20250201175040335.png" class="" title="searchsploit">
 
@@ -5282,7 +5505,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Optimum</title>
     <url>/posts/f7bd0d80.html</url>
-    <content><![CDATA[<style>.jhtlzrumqpdq{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="jhtlzrumqpdq">
+    <content><![CDATA[<style>.zlexuatsdukl{zoom:50%;}</style><img src="/posts/f7bd0d80/bb09ffeaffe2f5220a1d591bb7b4f95e.png" class="zlexuatsdukl">
 
 <span id="more"></span>
 
@@ -5344,7 +5567,7 @@ oAvexd1JRMkbC7YOgrzZ9iOxHP+mg/LLENmHimcyKCqaY3XzqXqk9lOhA3ymOcLw
   <entry>
     <title>HTB-Beep</title>
     <url>/posts/48ffce4.html</url>
-    <content><![CDATA[<style>.xbuxmwgrqolm{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="xbuxmwgrqolm">
+    <content><![CDATA[<style>.enopuyhbcfxo{zoom:50%;}</style><img src="/posts/48ffce4/995f465295b99869fce21ecadea4604c.png" class="enopuyhbcfxo">
 
 <span id="more"></span>
 
